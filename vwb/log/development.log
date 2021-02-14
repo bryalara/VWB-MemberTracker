@@ -3657,3 +3657,74 @@ Processing by EventController#delete as HTML
 Completed 200 OK in 92ms (Views: 40.8ms | ActiveRecord: 2.1ms | Allocations: 10544)
 
 
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 23:34:51 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (2.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 29.2ms | Allocations: 4875)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 47ms (Views: 36.5ms | ActiveRecord: 7.4ms | Allocations: 9142)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00007f870c0727f0%3E" for 127.0.0.1 at 2021-02-13 23:34:55 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1222)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 24.7ms | ActiveRecord: 0.0ms | Allocations: 4756)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 23:36:10 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (0.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 788)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 29.1ms | ActiveRecord: 0.5ms | Allocations: 4150)
+
+
+Started GET "/point_event/2/edit" for 127.0.0.1 at 2021-02-13 23:36:11 -0600
+Processing by PointEventController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPointEvent Load (2.8ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:25:in `edit'
+  Rendering point_event/edit.html.erb within layouts/application
+  Rendered point_event/edit.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1122)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 39ms (Views: 29.8ms | ActiveRecord: 5.4ms | Allocations: 5306)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 23:36:56 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (1.1ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 788)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 15.9ms | ActiveRecord: 1.1ms | Allocations: 4148)
+
+
+Started GET "/point_event/2/delete" for 127.0.0.1 at 2021-02-13 23:36:58 -0600
+Processing by PointEventController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPointEvent Load (4.0ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:39:in `delete'
+  Rendering point_event/delete.html.erb within layouts/application
+  Rendered point_event/_form.html.erb (Duration: 1.1ms | Allocations: 161)
+  Rendered point_event/delete.html.erb within layouts/application (Duration: 7.5ms | Allocations: 584)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 57ms (Views: 49.4ms | ActiveRecord: 4.0ms | Allocations: 4652)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 23:38:50 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (0.4ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 787)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.4ms | ActiveRecord: 0.4ms | Allocations: 4151)
+
+

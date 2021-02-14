@@ -14,6 +14,7 @@ class PointEventController < ApplicationController
 	def create
 		@pointEvent = PointEvent.new(pointEventParams)
 
+		#if true
 		if @pointEvent.save
 			redirect_to point_event_index_path
 		else
@@ -28,6 +29,7 @@ class PointEventController < ApplicationController
 	def update
 		@pointEvent = PointEvent.find(params[:id])
 
+		#if true
 		if @pointEvent.update(pointEventParams)
 			redirect_to @pointEvent
 		else

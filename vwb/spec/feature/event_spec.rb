@@ -289,7 +289,7 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to_not have_content('Edited Test Description')
 		end
 
-		it 'is not valid without an event Type' do
+		it 'is not valid without an event type' do
 			event = Event.create!(name: 'Test Event',
 						description: 'Test Description',
 						points: 5,

@@ -110,17 +110,75 @@
           null
         ]
       },
+      "/home/daniel/Projects/VWB-MemberTracker/vwb/app/controllers/point_event_controller.rb": {
+        "lines": [
+          1,
+          1,
+          21,
+          null,
+          null,
+          1,
+          4,
+          null,
+          null,
+          1,
+          7,
+          null,
+          null,
+          1,
+          7,
+          null,
+          null,
+          7,
+          3,
+          null,
+          4,
+          null,
+          null,
+          null,
+          1,
+          7,
+          null,
+          null,
+          1,
+          7,
+          null,
+          null,
+          7,
+          3,
+          null,
+          4,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          14,
+          null,
+          null,
+          null
+        ]
+      },
       "/home/daniel/Projects/VWB-MemberTracker/vwb/app/models/point_event.rb": {
         "lines": [
-          0,
-          0,
-          0,
+          1,
+          1,
+          1,
           null,
-          0,
-          0
-        ],
-        "branches": {
-        }
+          1,
+          null
+        ]
       },
       "/home/daniel/Projects/VWB-MemberTracker/vwb/app/jobs/application_job.rb": {
         "lines": [
@@ -131,66 +189,6 @@
           null,
           null,
           0
-        ],
-        "branches": {
-        }
-      },
-      "/home/daniel/Projects/VWB-MemberTracker/vwb/app/controllers/point_event_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null
         ],
         "branches": {
         }
@@ -226,6 +224,6 @@
         }
       }
     },
-    "timestamp": 1613279614
+    "timestamp": 1613281500
   }
 }
