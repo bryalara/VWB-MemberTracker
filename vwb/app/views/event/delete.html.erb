@@ -2,6 +2,6 @@
 
 <h1>Delete <%= @event.name %>?</h1>
 
-<%= render "event/form", event: @event %>
+<%= render "form", event: @event %>
 
 <td><%= link_to "Delete", event_path(@event), method: :delete, data: {confirm: "Are you sure you want to delete \"#{@event.name}\"?\nOnce deleted, the data will be lost forever. Points that students received from this event will also dissappear!"} %></td>

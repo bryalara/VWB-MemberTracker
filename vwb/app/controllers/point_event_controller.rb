@@ -15,7 +15,7 @@ class PointEventController < ApplicationController
 		@pointEvent = PointEvent.new(pointEventParams)
 
 		if @pointEvent.save
-			redirect_to @pointEvent
+			redirect_to point_event_index_path
 		else
 			render :new
 		end
@@ -48,7 +48,7 @@ class PointEventController < ApplicationController
 
 	private
 		def pointEventParams
-			params.require(:pointEvent).permit(:points, :name, :description, :type)
+			params.require(:point_event).permit(:points, :name, :description, :eventType)
 		end
 end
 

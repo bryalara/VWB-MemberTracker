@@ -1,0 +1,29 @@
+<%= link_to "Back to Points Events", point_event_index_path %>
+
+<h1>Edit a Points Event</h1>
+
+<p>* denotes required fields.<p>
+
+<%= form_with :method => :PATCH, url:"/point_event/#{@pointEvent.id}", model: @pointEvent do |form| %>
+	<table style="text-align: left">
+		<tr>
+			<th><%= form.label :name %>*</th>
+			<td><%= form.text_field :name %></td>
+		</tr>
+		<tr>
+			<th><%= form.label :description %></th>
+			<td><%= form.text_field :description %></td>
+		</tr>
+		<tr>
+			<th><%= form.label :points %>*</th>
+			<td><%= form.number_field :points %></td>
+		</tr>
+		<tr>
+			<th>Event Type*</th>
+			<td><%= form.text_field :eventType %></td>
+		</tr>
+	</table>
+
+	<%= form.submit "Save Changes to Points Event" %>
+
+<% end %>

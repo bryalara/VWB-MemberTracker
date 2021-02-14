@@ -2349,3 +2349,975 @@ Processing by EventController#index as HTML
 Completed 200 OK in 15ms (Views: 13.5ms | ActiveRecord: 0.8ms | Allocations: 4048)
 
 
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 18:50:19 -0600
+  [1m[35m (10.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (6.1ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:27
+  Rendered point_event/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 1636)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 69ms (Views: 46.3ms | ActiveRecord: 7.6ms | Allocations: 9310)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00005563b1fd2a18%3E" for 127.0.0.1 at 2021-02-13 18:50:23 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 23.9ms | Allocations: 2818)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 94ms (Views: 50.0ms | ActiveRecord: 2.1ms | Allocations: 10017)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 18:50:52 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (3.0ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 960)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 20.8ms | ActiveRecord: 3.0ms | Allocations: 5249)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00007f8c7001f730%3E" for 127.0.0.1 at 2021-02-13 18:50:55 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1062)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 4617)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 18:51:05 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"AdnTkPsKoj7d9XYL8BLA829fOGUh+p3XYDVjQYh/yP1ndAMK3SZy3uKCBosvtyB68zmXSiotvNoQXd7vN3PjDg==", "point_event"=>{"name"=>"Test", "description"=>"Wow", "points"=>"3", "eventType"=>"Cow"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 634)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 18:51:12 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"AdnTkPsKoj7d9XYL8BLA829fOGUh+p3XYDVjQYh/yP1ndAMK3SZy3uKCBosvtyB68zmXSiotvNoQXd7vN3PjDg==", "point_event"=>{"name"=>"Test", "description"=>"Wow", "points"=>"3", "eventType"=>"Cow"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 636)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 18:51:45 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"AdnTkPsKoj7d9XYL8BLA829fOGUh+p3XYDVjQYh/yP1ndAMK3SZy3uKCBosvtyB68zmXSiotvNoQXd7vN3PjDg==", "point_event"=>{"name"=>"Test", "description"=>"Wow", "points"=>"3", "eventType"=>"Cow"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 1074)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00007f8c7001f730%3E" for 127.0.0.1 at 2021-02-13 18:53:11 -0600
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 38.7ms | Allocations: 2959)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 147ms (Views: 107.3ms | ActiveRecord: 6.4ms | Allocations: 14709)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 18:53:13 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"9/SdiBuM/TSzPEej32IRl+C0au2dkZ34r26oOy+EbuWRWU0SPaAt1IxLNyMAx/EefNLFwpZGvPXfBhWVkIhFFg==", "point_event"=>{"name"=>"Test", "description"=>"Wow", "points"=>"3", "eventType"=>"Cow"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 646)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started GET "/event" for 127.0.0.1 at 2021-02-13 18:55:36 -0600
+Processing by EventController#index as HTML
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (6.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:27
+  Rendered event/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 1563)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 19.7ms | ActiveRecord: 7.0ms | Allocations: 6000)
+
+
+Started GET "/event/new.%23%3CEvent::ActiveRecord_Relation:0x00007fab845bde20%3E" for 127.0.0.1 at 2021-02-13 18:55:37 -0600
+Processing by EventController#new as 
+  Rendering event/new.html.erb within layouts/application
+  Rendered event/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1450)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 15.8ms | ActiveRecord: 1.4ms | Allocations: 9355)
+
+
+Started GET "/event" for 127.0.0.1 at 2021-02-13 18:55:40 -0600
+Processing by EventController#index as HTML
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:27
+  Rendered event/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 692)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 1.5ms | Allocations: 4054)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 18:55:45 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (3.1ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 962)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 22.2ms | ActiveRecord: 3.1ms | Allocations: 4494)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00007fab843d00e0%3E" for 127.0.0.1 at 2021-02-13 18:55:47 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 8.1ms | Allocations: 811)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.0ms | Allocations: 4190)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 18:55:52 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"7JQ/Y5ve7IhK4QTre0mowB7SS65ZbBUc832suArQvSyKOe/5vfI8aHWWdGuk7EhJgrTkgVK7NBGDFREWtdyW3w==", "point_event"=>{"name"=>"W", "description"=>"", "points"=>"", "eventType"=>""}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms | Allocations: 630)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 18:59:41 -0600
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (4.4ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 33.7ms | Allocations: 1604)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 119ms (Views: 92.5ms | ActiveRecord: 10.0ms | Allocations: 9249)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x0000561b514a4da0%3E" for 127.0.0.1 at 2021-02-13 18:59:45 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 27.0ms | Allocations: 2819)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 74ms (Views: 39.2ms | ActiveRecord: 3.2ms | Allocations: 10028)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:00:05 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"EAzpkKNvsFs5lgeB8cFvfWTQJTq+GBjDQcXA6Dyo6xd2oTkKhUNguwbhdwEuZI/0+LaKFbXPOc4xrX1Gg6TA5A==", "point_event"=>{"name"=>"W", "description"=>"", "points"=>"312", "eventType"=>"rwea"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 640)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x0000561b514a4da0%3E" for 127.0.0.1 at 2021-02-13 19:05:48 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 933)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 15.5ms | ActiveRecord: 0.0ms | Allocations: 8514)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:05:50 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"uhyUIsMAWUtNCC6hcMdMn7dTPARKKjkDrMz8b9vIBfvcsUS45SyJq3J/XiGvYqwWKzWTK0H9GA7cpEHBZMQuCA==", "point_event"=>{"name"=>"W", "description"=>"", "points"=>"312", "eventType"=>"rwea"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 634)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x0000561b514a4da0%3E" for 127.0.0.1 at 2021-02-13 19:06:26 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 274.6ms | Allocations: 64011)
+Completed 500 Internal Server Error in 280ms (ActiveRecord: 0.0ms | Allocations: 65217)
+
+
+  
+ActionView::Template::Error (undefined method `point_events_path' for #<#<Class:0x0000561b514b4480>:0x0000561b51490670>
+Did you mean?  point_event_path
+               point_event_url
+               edit_event_path):
+    4: 
+    5: <p>* denotes required fields.<p>
+    6: 
+    7: <%= form_with model: @pointEvent do |form| %>
+    8: 	<table style="text-align: left">
+    9: 		<tr>
+   10: 			<th><%= form.label :name %>*</th>
+  
+app/views/point_event/new.html.erb:7
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x0000561b514a4da0%3E" for 127.0.0.1 at 2021-02-13 19:07:58 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1062)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 25.9ms | ActiveRecord: 0.0ms | Allocations: 5395)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:08:00 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"c8HXallKlUrJ5GOXzZopq8Xw0dJi6jL6Bd2My7Ns7l0VbAfwf2ZFqvaTExcSP8kiWZZ+/Wk9E/d1tTFlDGDFrg==", "point_event"=>{"name"=>"W", "description"=>"", "points"=>"312", "eventType"=>"rwea"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 641)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x0000561b514a4da0%3E" for 127.0.0.1 at 2021-02-13 19:09:06 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/daniel/Projects/VWB-MemberTracker/vwb/app/controllers/point_event_controller.rb:53: syntax error, unexpected ':', expecting `end'
+	private: pointEventParams
+	       ^
+):
+  
+app/controllers/point_event_controller.rb:53: syntax error, unexpected ':', expecting `end'
+app/controllers/point_event_controller.rb:53: syntax error, unexpected ':', expecting `end'
+app/controllers/point_event_controller.rb:53: syntax error, unexpected ':', expecting `end'
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x0000561b514a4da0%3E" for 127.0.0.1 at 2021-02-13 19:09:25 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2855)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 47ms (Views: 31.6ms | ActiveRecord: 7.2ms | Allocations: 14090)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:09:28 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (3.2ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1033)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 13.4ms | ActiveRecord: 3.2ms | Allocations: 4576)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00007f7af4a12ec8%3E" for 127.0.0.1 at 2021-02-13 19:09:29 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 811)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 0.0ms | Allocations: 4188)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:09:35 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"1JsobdGgUbPjbQlfBkuw602H3IEOYQ8+SYUXdq+KymqyNvj394yBU9waed/Z7lBi0eFzrgW2LjM57arYEIbhmQ==", "point_event"=>{"name"=>"W", "description"=>"", "points"=>"213", "eventType"=>"41"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 634)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:10:03 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"1JsobdGgUbPjbQlfBkuw602H3IEOYQ8+SYUXdq+KymqyNvj394yBU9waed/Z7lBi0eFzrgW2LjM57arYEIbhmQ==", "point_event"=>{"name"=>"W", "description"=>"faewf", "points"=>"213", "eventType"=>"41"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms | Allocations: 629)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00007f7af4a12ec8%3E" for 127.0.0.1 at 2021-02-13 19:12:07 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1159)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 22.1ms | ActiveRecord: 7.0ms | Allocations: 10062)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:12:08 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (2.6ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 947)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 12.4ms | ActiveRecord: 2.6ms | Allocations: 4467)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00007f7af48d2b08%3E" for 127.0.0.1 at 2021-02-13 19:12:10 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 810)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 12.3ms | ActiveRecord: 0.0ms | Allocations: 4180)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:12:12 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"SM9k3nWu8t45M+zPrPkSqlKPJOlzCyKttEiuFuGmPX8uYrREU4IiPgZEnE9zXPIjzumLxnjcA6DEIBO4XqoWjA==", "point_event"=>{"name"=>"", "description"=>"", "points"=>"", "eventType"=>""}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 625)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:12:12 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"SM9k3nWu8t45M+zPrPkSqlKPJOlzCyKttEiuFuGmPX8uYrREU4IiPgZEnE9zXPIjzumLxnjcA6DEIBO4XqoWjA==", "point_event"=>{"name"=>"", "description"=>"", "points"=>"", "eventType"=>""}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 625)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:12:13 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"SM9k3nWu8t45M+zPrPkSqlKPJOlzCyKttEiuFuGmPX8uYrREU4IiPgZEnE9zXPIjzumLxnjcA6DEIBO4XqoWjA==", "point_event"=>{"name"=>"", "description"=>"", "points"=>"", "eventType"=>""}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 623)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:19:13 -0600
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (4.7ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 22.5ms | Allocations: 1602)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 109ms (Views: 81.2ms | ActiveRecord: 6.7ms | Allocations: 9245)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00005625500d3628%3E" for 127.0.0.1 at 2021-02-13 19:19:15 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 50.5ms | Allocations: 2818)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 148ms (Views: 85.5ms | ActiveRecord: 2.0ms | Allocations: 10013)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:19:18 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (0.4ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 698)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.4ms | Allocations: 4077)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x0000562550a80068%3E" for 127.0.0.1 at 2021-02-13 19:19:20 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 809)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.0ms | Allocations: 4187)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:19:29 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"aP7ugOwTM2EbLIZXChD1u3zXK4LpSZ6lCxlzlMzokRwOUz4ayj/jgSRb9tfVtRUy4LGEreKev6h7cc46c+S67w==", "point_event"=>{"name"=>"Hello", "description"=>"Pleas", "points"=>"213", "eventType"=>"Work"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 649)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:21:14 -0600
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (0.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 14.7ms | Allocations: 1602)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 80ms (Views: 65.2ms | ActiveRecord: 4.9ms | Allocations: 9249)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x0000557dcc3c42c8%3E" for 127.0.0.1 at 2021-02-13 19:21:21 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 19.7ms | Allocations: 2818)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 101ms (Views: 60.1ms | ActiveRecord: 6.4ms | Allocations: 10024)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:21:28 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"IX/o/kCSae0Vmzrns44/v3idn0cRPX1p6X+6gpuLgP5H0jhkZr65DSrsSmdsK9825PswaBrqXGSZFwcsJIerDQ==", "point_event"=>{"name"=>"Help", "description"=>"Me", "points"=>"123", "eventType"=>"Please"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 641)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:23:06 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"IX/o/kCSae0Vmzrns44/v3idn0cRPX1p6X+6gpuLgP5H0jhkZr65DSrsSmdsK9825PswaBrqXGSZFwcsJIerDQ==", "point_event"=>{"name"=>"Help", "description"=>"Me", "points"=>"123", "eventType"=>"Please"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 628)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:23:12 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (1.8ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 964)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 19.9ms | ActiveRecord: 1.8ms | Allocations: 5286)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00007f0c0ca159e0%3E" for 127.0.0.1 at 2021-02-13 19:23:13 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1084)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 21.7ms | ActiveRecord: 0.0ms | Allocations: 4643)
+
+
+Started POST "/pointEvent" for 127.0.0.1 at 2021-02-13 19:23:15 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/pointEvent"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:24:24 -0600
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (0.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 9.9ms | Allocations: 1602)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 79ms (Views: 66.6ms | ActiveRecord: 2.9ms | Allocations: 9239)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00005577bb2c3700%3E" for 127.0.0.1 at 2021-02-13 19:24:26 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 26.1ms | Allocations: 2819)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 87ms (Views: 42.2ms | ActiveRecord: 6.1ms | Allocations: 10022)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:24:41 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"pqqAh5kXZQ3GNdFyOs671oMf47rwscP5CfDdS4N+tQHAB1Advzu17flCofLla1tfH3lMlftm4vR5mGDlPHKe8g==", "point_event"=>{"name"=>"Wow", "description"=>"WAER", "points"=>"123", "eventType"=>"142"}, "commit"=>"Add Points Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 643)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: pointEvent):
+  
+app/controllers/point_event_controller.rb:51:in `pointEventParams'
+app/controllers/point_event_controller.rb:15:in `create'
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:26:27 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1064)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 23.5ms | ActiveRecord: 1.2ms | Allocations: 5142)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00007f5cdc32b438%3E" for 127.0.0.1 at 2021-02-13 19:26:28 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 926)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 19.1ms | ActiveRecord: 3.2ms | Allocations: 7651)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:26:34 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"ZD8oPbiCh0zOBoCU/UV3SUHzc11inx/A3DwV8/rMB8YCkvinnq5XrPFx8BQi4JfA3ZXccmlIPs2sVKhdRcAsNQ==", "point_event"=>{"name"=>"Tikes", "description"=>"rawe", "points"=>"312", "eventType"=>"41"}, "commit"=>"Add Points Event"}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/point_event_controller.rb:17:in `create'
+  [1m[36mPointEvent Create (3.9ms)[0m  [1m[32mINSERT INTO "point_events" ("name", "description", "points", "eventType", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tikes"], ["description", "rawe"], ["points", 312], ["eventType", "41"], ["created_at", "2021-02-14 01:26:34.342333"], ["updated_at", "2021-02-14 01:26:34.342333"]]
+  ↳ app/controllers/point_event_controller.rb:17:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/point_event_controller.rb:17:in `create'
+Redirected to http://localhost:3000/point_event
+Completed 200 OK in 17ms (ActiveRecord: 5.1ms | Allocations: 3066)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:26:34 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (0.4ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 803)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 16.4ms | ActiveRecord: 0.4ms | Allocations: 4157)
+
+
+Started GET "/point_event/1" for 127.0.0.1 at 2021-02-13 19:27:10 -0600
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPointEvent Load (0.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:7:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered point_event/_form.html.erb (Duration: 23.8ms | Allocations: 3157)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 26.8ms | Allocations: 3499)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 0.8ms | Allocations: 6828)
+
+
+  
+ActionView::Template::Error (undefined method `pointEventType' for #<PointEvent:0x00007f5cdc0e2c58>
+Did you mean?  points_before_type_cast):
+    13: 	</tr>
+    14: 	<tr>
+    15: 		<th>Type</th>
+    16: 		<td><%= @pointEvent.pointEventType %></td>
+    17: 	</tr>
+    18: </table>
+  
+app/views/point_event/_form.html.erb:16
+app/views/point_event/show.html.erb:5
+Started GET "/point_event/1" for 127.0.0.1 at 2021-02-13 19:27:33 -0600
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPointEvent Load (2.1ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:7:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered point_event/_form.html.erb (Duration: 1.0ms | Allocations: 162)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 491)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 22.3ms | ActiveRecord: 2.1ms | Allocations: 5326)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:27:35 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (3.4ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 1048)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 18.0ms | ActiveRecord: 3.4ms | Allocations: 4551)
+
+
+Started GET "/point_event/1/edit" for 127.0.0.1 at 2021-02-13 19:27:37 -0600
+Processing by PointEventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPointEvent Load (0.2ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:25:in `edit'
+  Rendering point_event/edit.html.erb within layouts/application
+  Rendered point_event/edit.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1122)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 18.8ms | ActiveRecord: 0.2ms | Allocations: 5183)
+
+
+Started PATCH "/point_event/1" for 127.0.0.1 at 2021-02-13 19:27:39 -0600
+Processing by PointEventController#update as JS
+  Parameters: {"authenticity_token"=>"ql1T7QTGB3u78aBM6SsOCvCT3KT/cicvxl94AmLu4TzUmtysel6LC/N3jHWGtUtpgwo1fJnAgr8f3ae0Mt9GkA==", "point_event"=>{"name"=>"Tikes", "description"=>"rawe", "points"=>"312", "eventType"=>"412"}, "commit"=>"Save Changes to Points Event", "id"=>"1"}
+  [1m[36mPointEvent Load (1.8ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:29:in `update'
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/point_event_controller.rb:31:in `update'
+  [1m[36mPointEvent Update (0.4ms)[0m  [1m[33mUPDATE "point_events" SET "eventType" = $1, "updated_at" = $2 WHERE "point_events"."id" = $3[0m  [["eventType", "412"], ["updated_at", "2021-02-14 01:27:39.311645"], ["id", 1]]
+  ↳ app/controllers/point_event_controller.rb:31:in `update'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/point_event_controller.rb:31:in `update'
+Redirected to http://localhost:3000/point_event/1
+Completed 200 OK in 15ms (ActiveRecord: 5.0ms | Allocations: 3490)
+
+
+Started GET "/point_event/1" for 127.0.0.1 at 2021-02-13 19:27:39 -0600
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:7:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered point_event/_form.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 110)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 10.7ms | ActiveRecord: 0.3ms | Allocations: 4021)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:27:40 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (1.7ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 788)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 10.8ms | ActiveRecord: 1.7ms | Allocations: 4151)
+
+
+Started GET "/point_event/1/delete" for 127.0.0.1 at 2021-02-13 19:27:41 -0600
+Processing by PointEventController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPointEvent Load (1.8ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:39:in `delete'
+  Rendering point_event/delete.html.erb within layouts/application
+  Rendered point_event/_form.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered point_event/delete.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1191)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.8ms | Allocations: 2306)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"point_event", :id=>nil}, missing required keys: [:id]):
+    4: 
+    5: <%= render "form", pointEvent: @pointEvent %>
+    6: 
+    7: <td><%= link_to "Delete", point_event_path(@event), method: :delete, data: {confirm: "Are you sure you want to delete \"#{@pointEvent.name}\"?\nOnce deleted, the data will be lost forever. Points that students received from this event will also dissappear!"} %></td>
+  
+app/views/point_event/delete.html.erb:7
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:30:10 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (0.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 786)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 14.5ms | ActiveRecord: 0.5ms | Allocations: 4166)
+
+
+Started GET "/point_event/1/edit" for 127.0.0.1 at 2021-02-13 19:30:11 -0600
+Processing by PointEventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPointEvent Load (0.2ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:25:in `edit'
+  Rendering point_event/edit.html.erb within layouts/application
+  Rendered point_event/edit.html.erb within layouts/application (Duration: 9.9ms | Allocations: 863)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 27ms (Views: 23.5ms | ActiveRecord: 0.2ms | Allocations: 4779)
+
+
+Started PATCH "/point_event/1" for 127.0.0.1 at 2021-02-13 19:30:14 -0600
+Processing by PointEventController#update as JS
+  Parameters: {"authenticity_token"=>"H+GWJJjNmMLZLiXAWHgj8Q7lqIZZAhgLzF6wuiShywdhJhll5lUUspGoCfk35maSfXxBXj+wvZsV3G8MdJBsqw==", "point_event"=>{"name"=>"Tikessss", "description"=>"rawe", "points"=>"312", "eventType"=>"412"}, "commit"=>"Save Changes to Points Event", "id"=>"1"}
+  [1m[36mPointEvent Load (0.8ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:29:in `update'
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/point_event_controller.rb:31:in `update'
+  [1m[36mPointEvent Update (3.0ms)[0m  [1m[33mUPDATE "point_events" SET "name" = $1, "updated_at" = $2 WHERE "point_events"."id" = $3[0m  [["name", "Tikessss"], ["updated_at", "2021-02-14 01:30:14.852385"], ["id", 1]]
+  ↳ app/controllers/point_event_controller.rb:31:in `update'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/point_event_controller.rb:31:in `update'
+Redirected to http://localhost:3000/point_event/1
+Completed 200 OK in 20ms (ActiveRecord: 6.6ms | Allocations: 3436)
+
+
+Started GET "/point_event/1" for 127.0.0.1 at 2021-02-13 19:30:14 -0600
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPointEvent Load (1.8ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:7:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered point_event/_form.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 110)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 14.4ms | ActiveRecord: 1.8ms | Allocations: 4017)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:30:16 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (3.4ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 784)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 17.6ms | ActiveRecord: 3.4ms | Allocations: 4145)
+
+
+Started GET "/point_event/1" for 127.0.0.1 at 2021-02-13 19:30:17 -0600
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPointEvent Load (0.2ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:7:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered point_event/_form.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 110)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 18.4ms | ActiveRecord: 0.2ms | Allocations: 4025)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:30:18 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (2.1ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 784)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 16.2ms | ActiveRecord: 2.1ms | Allocations: 4141)
+
+
+Started GET "/point_event/1/delete" for 127.0.0.1 at 2021-02-13 19:30:21 -0600
+Processing by PointEventController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPointEvent Load (4.4ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:39:in `delete'
+  Rendering point_event/delete.html.erb within layouts/application
+  Rendered point_event/_form.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered point_event/delete.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1043)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 4.4ms | Allocations: 2019)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"point_event", :id=>nil}, missing required keys: [:id]):
+    4: 
+    5: <%= render "form", pointEvent: @pointEvent %>
+    6: 
+    7: <td><%= link_to "Delete", point_event_path(@event), method: :delete, data: {confirm: "Are you sure you want to delete \"#{@pointEvent.name}\"?\nOnce deleted, the data will be lost forever. Points that students received from this event will also dissappear!"} %></td>
+  
+app/views/point_event/delete.html.erb:7
+Started GET "/point_event/1/delete" for 127.0.0.1 at 2021-02-13 19:30:52 -0600
+Processing by PointEventController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPointEvent Load (1.8ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:39:in `delete'
+  Rendering point_event/delete.html.erb within layouts/application
+  Rendered point_event/_form.html.erb (Duration: 0.5ms | Allocations: 160)
+  Rendered point_event/delete.html.erb within layouts/application (Duration: 4.5ms | Allocations: 588)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 20.1ms | ActiveRecord: 1.8ms | Allocations: 5416)
+
+
+Started DELETE "/point_event/1" for 127.0.0.1 at 2021-02-13 19:30:57 -0600
+Processing by PointEventController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xJ5VLcQt+MPsvHsCA7IN3p3CUXQHK/6cVUDTR5QurTOiM4W34gEoI9PLC4LcF+1XAaT+Wwz835ElKG7pKyKGwA==", "id"=>"1"}
+  [1m[36mPointEvent Load (0.6ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:43:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/point_event_controller.rb:44:in `destroy'
+  [1m[36mPointEvent Destroy (0.3ms)[0m  [1m[31mDELETE FROM "point_events" WHERE "point_events"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/point_event_controller.rb:44:in `destroy'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/point_event_controller.rb:44:in `destroy'
+Redirected to http://localhost:3000/point_event
+Completed 302 Found in 20ms (ActiveRecord: 1.7ms | Allocations: 2735)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:30:57 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (2.6ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 947)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 12.4ms | ActiveRecord: 2.6ms | Allocations: 4438)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00005577bb6bd838%3E" for 127.0.0.1 at 2021-02-13 19:31:37 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1065)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 32ms (Views: 31.1ms | ActiveRecord: 0.0ms | Allocations: 5402)
+
+
+Started POST "/point_event" for 127.0.0.1 at 2021-02-13 19:31:48 -0600
+Processing by PointEventController#create as JS
+  Parameters: {"authenticity_token"=>"uB/B5NduZ9H8/StF2pduXQZp3pt6fkPAlWrKK+vDL37eshF+8UK3McOKW8UFMo7Umg9xtHGpYs3lAneFVM8EjQ==", "point_event"=>{"name"=>"Test", "description"=>"Wow", "points"=>"24", "eventType"=>"1"}, "commit"=>"Add Points Event"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/point_event_controller.rb:17:in `create'
+  [1m[36mPointEvent Create (0.4ms)[0m  [1m[32mINSERT INTO "point_events" ("name", "description", "points", "eventType", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Test"], ["description", "Wow"], ["points", 24], ["eventType", "1"], ["created_at", "2021-02-14 01:31:48.947224"], ["updated_at", "2021-02-14 01:31:48.947224"]]
+  ↳ app/controllers/point_event_controller.rb:17:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/point_event_controller.rb:17:in `create'
+Redirected to http://localhost:3000/point_event
+Completed 200 OK in 12ms (ActiveRecord: 1.3ms | Allocations: 2807)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:31:48 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (1.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1049)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 1.5ms | Allocations: 4544)
+
+
+Started GET "/point_event/2" for 127.0.0.1 at 2021-02-13 19:31:51 -0600
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:7:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered point_event/_form.html.erb (Duration: 0.4ms | Allocations: 162)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 491)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 15.2ms | ActiveRecord: 0.3ms | Allocations: 4536)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:31:52 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (0.7ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 792)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 0.7ms | Allocations: 4158)
+
+
+Started GET "/point_event/new.%23%3CPointEvent::ActiveRecord_Relation:0x00007f5cdc6677f0%3E" for 127.0.0.1 at 2021-02-13 19:31:54 -0600
+Processing by PointEventController#new as 
+  Rendering point_event/new.html.erb within layouts/application
+  Rendered point_event/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 809)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 23.4ms | ActiveRecord: 0.0ms | Allocations: 4170)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:31:55 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (1.8ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 784)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 16.4ms | ActiveRecord: 1.8ms | Allocations: 4142)
+
+
+Started GET "/point_event/2/edit" for 127.0.0.1 at 2021-02-13 19:31:56 -0600
+Processing by PointEventController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPointEvent Load (0.2ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:25:in `edit'
+  Rendering point_event/edit.html.erb within layouts/application
+  Rendered point_event/edit.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1117)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 20.3ms | ActiveRecord: 0.2ms | Allocations: 5166)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:31:58 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (2.4ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 788)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 17.0ms | ActiveRecord: 2.4ms | Allocations: 4152)
+
+
+Started GET "/point_event/2/delete" for 127.0.0.1 at 2021-02-13 19:31:59 -0600
+Processing by PointEventController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPointEvent Load (0.2ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:39:in `delete'
+  Rendering point_event/delete.html.erb within layouts/application
+  Rendered point_event/_form.html.erb (Duration: 0.2ms | Allocations: 16)
+  Rendered point_event/delete.html.erb within layouts/application (Duration: 1.1ms | Allocations: 302)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 0.2ms | Allocations: 4349)
+
+
+Started GET "/point_event" for 127.0.0.1 at 2021-02-13 19:32:01 -0600
+Processing by PointEventController#index as HTML
+  Rendering point_event/index.html.erb within layouts/application
+  [1m[36mPointEvent Load (1.9ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 787)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 17.2ms | ActiveRecord: 1.9ms | Allocations: 4155)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-02-13 19:32:10 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/events"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/event" for 127.0.0.1 at 2021-02-13 19:32:13 -0600
+Processing by EventController#index as HTML
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (3.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:27
+  Rendered event/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 1459)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 16.4ms | ActiveRecord: 4.6ms | Allocations: 5841)
+
+
