@@ -14,6 +14,7 @@ class EventController < ApplicationController
 	def create
 		@event = Event.new(eventParams)
 
+		#if true
 		if @event.save
 			redirect_to event_index_path
 		else
@@ -28,6 +29,7 @@ class EventController < ApplicationController
 	def update
 		@event = Event.find(params[:id])
 
+		#if true
 		if @event.update(eventParams)
 			redirect_to @event
 		else

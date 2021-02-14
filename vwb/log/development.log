@@ -3585,3 +3585,75 @@ Processing by EventController#index as HTML
 Completed 200 OK in 22ms (Views: 20.8ms | ActiveRecord: 0.4ms | Allocations: 4645)
 
 
+Started GET "/event/" for 127.0.0.1 at 2021-02-13 21:39:22 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventController#index as HTML
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:27
+  Rendered event/index.html.erb within layouts/application (Duration: 86.1ms | Allocations: 7046)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 204ms (Views: 166.9ms | ActiveRecord: 9.4ms | Allocations: 14880)
+
+
+Started GET "/event/new.%23%3CEvent::ActiveRecord_Relation:0x000055610ef002c0%3E" for 127.0.0.1 at 2021-02-13 21:39:25 -0600
+Processing by EventController#new as 
+  Rendering event/new.html.erb within layouts/application
+  Rendered event/new.html.erb within layouts/application (Duration: 10.5ms | Allocations: 3004)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.0ms | Allocations: 6568)
+
+
+Started GET "/event" for 127.0.0.1 at 2021-02-13 22:00:01 -0600
+Processing by EventController#index as HTML
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (3.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:27
+  Rendered event/index.html.erb within layouts/application (Duration: 33.4ms | Allocations: 5955)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 69ms (Views: 60.0ms | ActiveRecord: 3.9ms | Allocations: 10029)
+
+
+Started GET "/event/new.%23%3CEvent::ActiveRecord_Relation:0x000055610f333d10%3E" for 127.0.0.1 at 2021-02-13 22:00:03 -0600
+Processing by EventController#new as 
+  Rendering event/new.html.erb within layouts/application
+  Rendered event/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 916)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 19.6ms | ActiveRecord: 0.0ms | Allocations: 4285)
+
+
+Started POST "/event" for 127.0.0.1 at 2021-02-13 22:00:11 -0600
+Processing by EventController#create as JS
+  Parameters: {"authenticity_token"=>"Swig7NRuqWvFfLiMyVY1XlfmkgCZO1+pcs70qWBsOTQtpXB28kJ5i/oLyAwW89XXy4A9L5LsfqQCpkkH32ASxw==", "event"=>{"name"=>"", "description"=>"asdf", "points"=>"312", "eventType"=>"afwe", "startDate"=>"2021-02-13", "endDate"=>"2021-02-20"}, "commit"=>"Add Event"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/event_controller.rb:18:in `create'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "startDate", "endDate", "points", "eventType", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", ""], ["description", "asdf"], ["startDate", "2021-02-13 00:00:00"], ["endDate", "2021-02-20 00:00:00"], ["points", 312], ["eventType", "afwe"], ["created_at", "2021-02-14 04:00:11.669805"], ["updated_at", "2021-02-14 04:00:11.669805"]]
+  ↳ app/controllers/event_controller.rb:18:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/event_controller.rb:18:in `create'
+Redirected to http://localhost:3000/event
+Completed 200 OK in 18ms (ActiveRecord: 1.7ms | Allocations: 3301)
+
+
+Started GET "/event" for 127.0.0.1 at 2021-02-13 22:00:11 -0600
+Processing by EventController#index as HTML
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:27
+  Rendered event/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1400)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 19.5ms | ActiveRecord: 0.9ms | Allocations: 4775)
+
+
+Started GET "/event/5/delete" for 127.0.0.1 at 2021-02-13 23:09:25 -0600
+Processing by EventController#delete as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:41:in `delete'
+  Rendering event/delete.html.erb within layouts/application
+  Rendered event/_form.html.erb (Duration: 2.6ms | Allocations: 227)
+  Rendered event/delete.html.erb within layouts/application (Duration: 10.8ms | Allocations: 673)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 92ms (Views: 40.8ms | ActiveRecord: 2.1ms | Allocations: 10544)
+
+
