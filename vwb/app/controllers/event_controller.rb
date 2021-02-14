@@ -15,7 +15,7 @@ class EventController < ApplicationController
 		@event = Event.new(eventParams)
 
 		if @event.save
-			redirect_to @event
+			redirect_to event_index_path
 		else
 			render :new
 		end
@@ -35,6 +35,10 @@ class EventController < ApplicationController
 		end
 	end
 
+	def delete
+		@event = Event.find(params[:id])
+	end
+
 	def destroy
 		@event = Event.find(params[:id])
 		@event.destroy
@@ -44,6 +48,6 @@ class EventController < ApplicationController
 
 	private
 		def eventParams
-			params.require(:event).permit(:points, :name, :description, :type)
+			params.require(:event).permit(:points, :name, :description, :eventType, :startDate, :endDate)
 		end
 end

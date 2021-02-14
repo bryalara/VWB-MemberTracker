@@ -16,21 +16,21 @@ ActiveRecord::Schema.define(version: 2021_02_13_203432) do
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
     t.datetime "startDate"
     t.datetime "endDate"
     t.integer "points"
-    t.string "name"
-    t.string "description"
-    t.string "type"
+    t.string "eventType"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "point_events", force: :cascade do |t|
-    t.integer "points"
     t.string "name"
     t.string "description"
-    t.string "type"
+    t.integer "points"
+    t.string "eventType"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

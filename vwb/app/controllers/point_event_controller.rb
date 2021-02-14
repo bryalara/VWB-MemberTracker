@@ -35,6 +35,10 @@ class PointEventController < ApplicationController
 		end
 	end
 
+	def delete
+		@pointEvent = PointEvent.find(params[:id])
+	end
+
 	def destroy
 		@pointEvent = PointEvent.find(params[:id])
 		@pointEvent.destroy

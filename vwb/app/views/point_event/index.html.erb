@@ -1,1 +1,25 @@
-<h1>Point Event!</h1>
+
+<h1>Point Opportunities</h1>
+<%= link_to "Add an Opportunity", new_point_event_path(@pointEvents) %>
+<table style="text-align: left">
+	<tr>
+		<th>Event</th>
+		<th>Description</th>
+		<th>Points</th>
+		<th>Type</th>
+		<th>Actions</th>
+	</tr>
+
+	<% @pointEvents.each do |pointEvent| %>
+	<tr>
+		<td><%= pointEvent.name %></td>
+		<td><%= pointEvent.description %></td>
+		<td><%= pointEvent.points %></td>
+		<td><%= pointEvent.eventType %></td>
+
+		<td><%= link_to "Show", point_event_path(pointEvent) %></td>
+		<td><%= link_to "Edit", edit_point_event_path(event) %></td>
+		<td><%= link_to "Delete", delete_point_event_path(event) %></td>
+	</tr>
+	<% end %>
+</table>

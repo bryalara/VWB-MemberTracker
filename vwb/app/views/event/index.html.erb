@@ -1,1 +1,41 @@
-<h1>Events!</h1>
+<style>
+th, td, tr {
+	padding-right: 15px;
+}
+
+.alert {
+	border-radius: 5px;
+	padding: 15px;
+	background: #d8ecdb;
+	color: #295529;
+}
+</style>
+
+<h1>Events</h1>
+<%= link_to "Add an Event", new_event_path(@events) %>
+<table style="text-align: left">
+	<tr>
+		<th>Event</th>
+		<th>Description</th>
+		<th>Points</th>
+		<th>Start Time</th>
+		<th>End Time</th>
+		<th>Event Type</th>
+		<th>Actions</th>
+	</tr>
+
+	<% @events.each do |event| %>
+	<tr>
+		<td><%= event.name %></td>
+		<td><%= event.description %></td>
+		<td><%= event.points %></td>
+		<td><%= event.startDate %></td>
+		<td><%= event.endDate %></td>
+		<td><%= event.eventType %></td>
+
+		<td><%= link_to "Show", event_path(event) %></td>
+		<td><%= link_to "Edit", edit_event_path(event) %></td>
+		<td><%= link_to "Delete", delete_event_path(event) %></td>
+	</tr>
+	<% end %>
+</table>
