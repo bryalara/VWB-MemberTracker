@@ -191,7 +191,7 @@ RSpec.describe 'PointEvents', type: :feature do
 	end
 
 	describe 'Deleting a points event' do
-		it 'succeeded in deleting event' do
+		it 'succeeded in deleting one event' do
 			event = PointEvent.create!(name: 'Test Event',
 						description: 'Test Description',
 						points: 5,
@@ -204,6 +204,50 @@ RSpec.describe 'PointEvents', type: :feature do
 
 			visit point_event_index_path
 			expect(page).to_not have_content('Test Event')
+		end
+
+		it 'succeeded in deleting three events' do
+			event1 = PointEvent.create!(name: 'Test Event 1',
+						description: 'Test Description 1',
+						points: 5,
+						eventType: 'Test Type 1')
+			event2 = PointEvent.create!(name: 'Test Event 2',
+						description: 'Test Description 2',
+						points: 5,
+						eventType: 'Test Type 2')
+			event3 = PointEvent.create!(name: 'Test Event 3',
+						description: 'Test Description 3',
+						points: 5,
+						eventType: 'Test Type 3')
+
+			visit point_event_index_path
+			expect(page).to have_content('Test Event 1')
+			expect(page).to have_content('Test Event 2')
+			expect(page).to have_content('Test Event 3')
+
+			visit delete_point_event_path(id: event2.id)
+			click_on 'Delete'
+
+			visit point_event_index_path
+			expect(page).to have_content('Test Event 1')
+			expect(page).to_not have_content('Test Event 2')
+			expect(page).to have_content('Test Event 3')
+
+			visit delete_point_event_path(id: event1.id)
+			click_on 'Delete'
+
+			visit point_event_index_path
+			expect(page).to_not have_content('Test Event 1')
+			expect(page).to_not have_content('Test Event 2')
+			expect(page).to have_content('Test Event 3')
+
+			visit delete_point_event_path(id: event3.id)
+			click_on 'Delete'
+
+			visit point_event_index_path
+			expect(page).to_not have_content('Test Event 1')
+			expect(page).to_not have_content('Test Event 2')
+			expect(page).to_not have_content('Test Event 3')
 		end
 	end
 end
