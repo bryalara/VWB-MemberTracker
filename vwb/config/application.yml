@@ -1,0 +1,6 @@
+production:
+  GOOGLE_CLIENT_ID: '40978083485-59nfkeolbkaja9m6as77qs4tteif8qrr.apps.googleusercontent.com'
+  GOOGLE_CLIENT_SECRET: 'kxKwWzW6ui4CXPBBzz3QBLdw'
+development:
+  GOOGLE_CLIENT_ID: '40978083485-59nfkeolbkaja9m6as77qs4tteif8qrr.apps.googleusercontent.com'
+  GOOGLE_CLIENT_SECRET: 'kxKwWzW6ui4CXPBBzz3QBLdw'
