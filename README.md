@@ -1,2 +1,3 @@
 # VWB-MemberTracker
-CSCE 431 Project
+CSCE 431 Project - Branching SNN
+
