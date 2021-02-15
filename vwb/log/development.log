@@ -1,0 +1,459 @@
+Started GET "/" for 127.0.0.1 at 2021-02-14 21:00:32 -0600
+  
+PG::ConnectionBad (could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?
+):
+  
+pg (1.2.3) lib/pg.rb:58:in `initialize'
+pg (1.2.3) lib/pg.rb:58:in `new'
+pg (1.2.3) lib/pg.rb:58:in `connect'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/postgresql_adapter.rb:46:in `postgresql_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:1119:in `retrieve_connection'
+activerecord (6.0.3.5) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
+activerecord (6.0.3.5) lib/active_record/connection_handling.rb:189:in `connection'
+activerecord (6.0.3.5) lib/active_record/migration.rb:562:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-02-14 21:01:34 -0600
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/entao/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/entao/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 30.3ms | Allocations: 294)
+Completed 200 OK in 43ms (Views: 35.6ms | ActiveRecord: 0.0ms | Allocations: 4268)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8536163733643263690)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210215030156)
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (29.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8536163733643263690)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8536163733643263690)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210215030156)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8536163733643263690)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (5450.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "vwb_development"[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (142.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "vwb_development"[0m
+  [1m[35m (2047.2ms)[0m  [1m[35mCREATE DATABASE "vwb_development" ENCODING = 'unicode'[0m
+  [1m[35m (26.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8536163733643263690)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210215030156)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (101.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210215030156"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-15 03:09:08.523081"], ["updated_at", "2021-02-15 03:09:08.523081"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(8536163733643263690)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-02-14 21:10:16 -0600
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/entao/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/entao/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.1ms | Allocations: 294)
+Completed 200 OK in 18ms (Views: 10.8ms | ActiveRecord: 0.0ms | Allocations: 4267)
+
+
+Started GET "/user" for 127.0.0.1 at 2021-02-14 21:10:20 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2021-02-14 21:11:32 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/signup" for 127.0.0.1 at 2021-02-14 21:11:38 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/users/signup"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/signup" for 127.0.0.1 at 2021-02-14 21:12:15 -0600
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/users/signup"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/user" for 127.0.0.1 at 2021-02-14 21:15:56 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-02-14 21:16:13 -0600
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/entao/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/entao/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.3ms | Allocations: 183)
+Completed 200 OK in 16ms (Views: 12.1ms | ActiveRecord: 0.0ms | Allocations: 3482)
+
+
+Started GET "/users/new" for ::1 at 2021-02-14 21:16:17 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/users/new"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/user" for ::1 at 2021-02-14 21:16:21 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users" for ::1 at 2021-02-14 21:16:29 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/signin" for ::1 at 2021-02-14 21:16:34 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/users/signin"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/sign_up" for ::1 at 2021-02-14 21:16:41 -0600
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/entao/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/entao/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/devise-4.7.3/app/views/devise/shared/_error_messages.html.erb (Duration: 11.0ms | Allocations: 195)
+  Rendered /home/entao/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 35.9ms | Allocations: 507)
+  Rendered /home/entao/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 288.1ms | Allocations: 7424)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /mnt/c/Files/学习资料/Spring 2021/CSCE 431/VWB-MemberTracker1/vwb/public/packs
+[Webpacker] /home/entao/.rbenv/versions/2.7.0/bin/ruby: warning: shebang line ending with \r may cause problems
+
+[Webpacker] Hash: 76145d9ce4575ebaa29b
+Version: webpack 4.46.0
+Time: 2051ms
+Built at: 02/14/2021 9:16:47 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-c229f7c7014cf8c8d494.js    124 KiB  application  [emitted] [immutable]  application
+js/application-c229f7c7014cf8c8d494.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-c229f7c7014cf8c8d494.js js/application-c229f7c7014cf8c8d494.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 5919ms (Views: 5900.7ms | ActiveRecord: 8.3ms | Allocations: 38562)
+
+
