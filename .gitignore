@@ -66,3 +66,7 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 vwb/tmp/cache/bootsnap
+vwb/tmp/cache/bootsnap/load-path-cache
+vwb/tmp/cache/bootsnap/compile-cache/28/08d6fae61a7a15
+vwb/tmp/cache/bootsnap/compile-cache/a4/cab4f630fd9f1d
+vwb/tmp/cache/bootsnap/compile-cache/e8/21ccd34479e326
