@@ -10,4 +10,5 @@ Status of adding features to project:
     -  
     Done:
     - Created branch
+    - Created Postgres Database
 
