@@ -2311,3 +2311,636 @@ Processing by PagesController#show as HTML
 Completed 200 OK in 37ms (Views: 35.2ms | ActiveRecord: 0.0ms | Allocations: 3290)
 
 
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 04:36:37 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 2.3ms | Allocations: 188)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 53.1ms | ActiveRecord: 0.0ms | Allocations: 6676)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 04:37:05 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.2ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 35.0ms | ActiveRecord: 0.0ms | Allocations: 3296)
+
+
+Started GET "/pages/home" for 127.0.0.1 at 2021-02-17 04:37:07 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"home"}
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.5ms | Allocations: 79)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 39.2ms | ActiveRecord: 0.0ms | Allocations: 3515)
+
+
+Started GET "/pages/home" for 127.0.0.1 at 2021-02-17 04:38:29 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"home"}
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.7ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 120ms (Views: 117.1ms | ActiveRecord: 0.0ms | Allocations: 4864)
+
+
+Started GET "/pages/home" for 127.0.0.1 at 2021-02-17 04:38:46 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"home"}
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.6ms | Allocations: 79)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 46.1ms | ActiveRecord: 0.0ms | Allocations: 4312)
+
+
+Started GET "/pages/home" for 127.0.0.1 at 2021-02-17 04:38:47 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"home"}
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 32.6ms | ActiveRecord: 0.0ms | Allocations: 3303)
+
+
+Started GET "/pages/home" for 127.0.0.1 at 2021-02-17 04:40:52 -0600
+Started GET "/" for 127.0.0.1 at 2021-02-17 04:40:52 -0600
+Started GET "/" for 127.0.0.1 at 2021-02-17 04:40:52 -0600
+Started GET "/pages/home" for 127.0.0.1 at 2021-02-17 04:40:52 -0600
+Started GET "/pages/home" for 127.0.0.1 at 2021-02-17 04:40:52 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"home"}
+  Rendering pages/home.html.erb within layouts/application
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"home"}
+  Rendered pages/home.html.erb within layouts/application (Duration: 8.8ms | Allocations: 2570)
+  Rendering pages/home.html.erb within layouts/application
+Processing by PagesController#show as HTML
+Processing by PagesController#show as HTML
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"home"}
+  Parameters: {"page"=>"home"}
+  Parameters: {"page"=>"home"}
+  Rendering pages/home.html.erb within layouts/application
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 168ms (Views: 166.6ms | ActiveRecord: 0.0ms | Allocations: 22138)
+
+
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 150ms (Views: 148.7ms | ActiveRecord: 0.0ms | Allocations: 19129)
+
+
+Completed 200 OK in 157ms (Views: 155.6ms | ActiveRecord: 0.0ms | Allocations: 20420)
+
+
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 230ms (Views: 222.8ms | ActiveRecord: 0.0ms | Allocations: 32927)
+
+
+Completed 200 OK in 178ms (Views: 176.4ms | ActiveRecord: 0.0ms | Allocations: 22313)
+
+
+Started GET "/pages/home" for 127.0.0.1 at 2021-02-17 04:41:33 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"home"}
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.6ms | Allocations: 189)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 75ms (Views: 61.5ms | ActiveRecord: 0.0ms | Allocations: 6676)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 04:41:37 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 1.7ms | Allocations: 78)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 39ms (Views: 37.0ms | ActiveRecord: 0.0ms | Allocations: 3504)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 04:55:22 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 2.9ms | Allocations: 253)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 55ms (Views: 52.0ms | ActiveRecord: 0.0ms | Allocations: 4485)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 04:55:35 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 2.5ms | Allocations: 253)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 42.1ms | ActiveRecord: 0.0ms | Allocations: 4474)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 04:55:39 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.3ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 39.3ms | ActiveRecord: 0.0ms | Allocations: 3312)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 04:58:07 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 2.7ms | Allocations: 249)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 49.3ms | ActiveRecord: 0.0ms | Allocations: 4473)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 04:58:38 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 2.4ms | Allocations: 199)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 47ms (Views: 45.3ms | ActiveRecord: 0.0ms | Allocations: 4410)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:02:02 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 2.5ms | Allocations: 197)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 54ms (Views: 51.5ms | ActiveRecord: 0.0ms | Allocations: 4415)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:02:11 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.2ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 35.7ms | ActiveRecord: 0.0ms | Allocations: 3281)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:02:13 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.2ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 39.3ms | ActiveRecord: 0.0ms | Allocations: 3296)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:02:15 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.2ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 35.1ms | ActiveRecord: 0.0ms | Allocations: 3288)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:05:53 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.2ms | Allocations: 4)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/sainikhilnaru/VWB-MemberTracker/vwb/public/packs
+[Webpacker] Hash: aed58881463ab45ec832
+Version: webpack 4.46.0
+Time: 1262ms
+Built at: 02/17/2021 5:05:58 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-3dc68f3c6aad6d698ccb.js    124 KiB  application  [emitted] [immutable]  application
+js/application-3dc68f3c6aad6d698ccb.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-3dc68f3c6aad6d698ccb.js js/application-3dc68f3c6aad6d698ccb.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 802 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 4523ms (Views: 4519.9ms | ActiveRecord: 0.0ms | Allocations: 4460)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:08:04 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.2ms | Allocations: 4)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/sainikhilnaru/VWB-MemberTracker/vwb/public/packs
+[Webpacker] Hash: 90157ae2966cf59f0230
+Version: webpack 4.46.0
+Time: 1243ms
+Built at: 02/17/2021 5:08:09 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-83ecfd16ecbabfd70d60.js    124 KiB  application  [emitted] [immutable]  application
+js/application-83ecfd16ecbabfd70d60.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-83ecfd16ecbabfd70d60.js js/application-83ecfd16ecbabfd70d60.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 821 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 4549ms (Views: 4546.4ms | ActiveRecord: 0.0ms | Allocations: 4445)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:19:55 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 2.0ms | Allocations: 203)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/sainikhilnaru/VWB-MemberTracker/vwb/public/packs
+[Webpacker] Hash: 90157ae2966cf59f0230
+Version: webpack 4.46.0
+Time: 1395ms
+Built at: 02/17/2021 5:20:00 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-83ecfd16ecbabfd70d60.js    124 KiB  application  [emitted] [immutable]  application
+js/application-83ecfd16ecbabfd70d60.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-83ecfd16ecbabfd70d60.js js/application-83ecfd16ecbabfd70d60.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 821 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 4821ms (Views: 4818.7ms | ActiveRecord: 0.0ms | Allocations: 5535)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:21:34 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 17.4ms | ActiveRecord: 0.0ms | Allocations: 3292)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:21:47 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.0ms | Allocations: 3302)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:23:37 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 0.0ms | Allocations: 3297)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:24:13 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 14.8ms | ActiveRecord: 0.0ms | Allocations: 3297)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:24:17 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.2ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 36.1ms | ActiveRecord: 0.0ms | Allocations: 3292)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:24:26 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms | Allocations: 3288)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:25:35 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 14.3ms | ActiveRecord: 0.0ms | Allocations: 3284)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:29:47 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.0ms | Allocations: 3315)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:31:54 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 2.1ms | Allocations: 123)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 55ms (Views: 52.5ms | ActiveRecord: 0.0ms | Allocations: 4341)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:37:08 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 2.1ms | Allocations: 120)
+[Webpacker] Compiling...
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:37:10 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/sainikhilnaru/VWB-MemberTracker/vwb/public/packs
+[Webpacker] Hash: 90157ae2966cf59f0230
+Version: webpack 4.46.0
+Time: 1029ms
+Built at: 02/17/2021 5:37:12 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-83ecfd16ecbabfd70d60.js    124 KiB  application  [emitted] [immutable]  application
+js/application-83ecfd16ecbabfd70d60.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-83ecfd16ecbabfd70d60.js js/application-83ecfd16ecbabfd70d60.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 821 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 3931ms (Views: 3928.2ms | ActiveRecord: 0.0ms | Allocations: 9428)
+
+
+[Webpacker] Compiled all packs in /home/sainikhilnaru/VWB-MemberTracker/vwb/public/packs
+[Webpacker] Hash: 90157ae2966cf59f0230
+Version: webpack 4.46.0
+Time: 1143ms
+Built at: 02/17/2021 5:37:14 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-83ecfd16ecbabfd70d60.js    124 KiB  application  [emitted] [immutable]  application
+js/application-83ecfd16ecbabfd70d60.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-83ecfd16ecbabfd70d60.js js/application-83ecfd16ecbabfd70d60.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 821 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 4013ms (Views: 4011.9ms | ActiveRecord: 0.0ms | Allocations: 6183)
+
+
+Started GET "/pages/vwb/app/javascript/channels/member.js" for 127.0.0.1 at 2021-02-17 05:37:14 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/pages/vwb/app/javascript/channels/member.js"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:45:20 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 13.9ms | Allocations: 2480)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 3700)
+
+
+  
+ActionView::Template::Error (Webpacker can't find my_js in /home/sainikhilnaru/VWB-MemberTracker/vwb/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+  "application.js": "/packs/js/application-83ecfd16ecbabfd70d60.js",
+  "application.js.map": "/packs/js/application-83ecfd16ecbabfd70d60.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-83ecfd16ecbabfd70d60.js"
+      ],
+      "js.map": [
+        "/packs/js/application-83ecfd16ecbabfd70d60.js.map"
+      ]
+    }
+  }
+}
+):
+     7: <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+     8: <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+     9: 
+    10: <%= javascript_pack_tag 'my_js' %>
+    11: 
+    12: <div class="container">
+    13:     <table id="myTable" class=" table order-list">
+  
+app/views/pages/member.html.erb:10
+app/controllers/pages_controller.rb:3:in `show'
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:45:59 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 9.2ms | Allocations: 2508)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 3711)
+
+
+  
+ActionView::Template::Error (Webpacker can't find member in /home/sainikhilnaru/VWB-MemberTracker/vwb/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+  "application.js": "/packs/js/application-83ecfd16ecbabfd70d60.js",
+  "application.js.map": "/packs/js/application-83ecfd16ecbabfd70d60.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-83ecfd16ecbabfd70d60.js"
+      ],
+      "js.map": [
+        "/packs/js/application-83ecfd16ecbabfd70d60.js.map"
+      ]
+    }
+  }
+}
+):
+    1: <h2>Memeber Page</h2>
+    2: 
+    3: <p>This would be a static member page in a Rails application.</p>
+    4: <%= javascript_pack_tag 'member' %>
+    5: 
+    6: 
+    7: <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  
+app/views/pages/member.html.erb:4
+app/controllers/pages_controller.rb:3:in `show'
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:48:03 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  Rendered pages/member.html.erb within layouts/application (Duration: 369.3ms | Allocations: 74630)
+Completed 500 Internal Server Error in 374ms (ActiveRecord: 0.0ms | Allocations: 75833)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_channels_tag' for #<#<Class:0x00007f5db4c69210>:0x00007f5db4c5f5d0>
+Did you mean?  javascript_pack_tag):
+    1: <h2>Memeber Page</h2>
+    2: 
+    3: <p>This would be a static member page in a Rails application.</p>
+    4: <%= javascript_channels_tag 'member' %>
+    5: 
+    6: 
+    7: <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  
+app/views/pages/member.html.erb:4
+app/controllers/pages_controller.rb:3:in `show'
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:49:30 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/sainikhilnaru/VWB-MemberTracker/vwb/public/packs
+[Webpacker] Hash: 18ca10981fcdd7380c44
+Version: webpack 4.46.0
+Time: 1276ms
+Built at: 02/17/2021 5:49:35 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-83ecfd16ecbabfd70d60.js    124 KiB  application  [emitted] [immutable]  application
+js/application-83ecfd16ecbabfd70d60.js.map    139 KiB  application  [emitted] [dev]        application
+         js/member-cf1b742665752ad1725b.js   4.89 KiB       member  [emitted] [immutable]  member
+     js/member-cf1b742665752ad1725b.js.map    4.9 KiB       member  [emitted] [dev]        member
+                             manifest.json  668 bytes               [emitted]              
+Entrypoint application = js/application-83ecfd16ecbabfd70d60.js js/application-83ecfd16ecbabfd70d60.js.map
+Entrypoint member = js/member-cf1b742665752ad1725b.js js/member-cf1b742665752ad1725b.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 821 bytes {application} [built]
+[./app/javascript/packs/member.js] 1.02 KiB {member} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered pages/member.html.erb within layouts/application (Duration: 4327.6ms | Allocations: 2927)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 4352ms (Views: 4350.9ms | ActiveRecord: 0.0ms | Allocations: 7069)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:51:29 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 11.0ms | Allocations: 1776)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 53ms (Views: 52.4ms | ActiveRecord: 0.0ms | Allocations: 5904)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:51:39 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 10.9ms | Allocations: 1775)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 42.0ms | ActiveRecord: 0.0ms | Allocations: 5907)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:52:26 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 9.4ms | Allocations: 1777)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 32.2ms | ActiveRecord: 0.0ms | Allocations: 5902)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-17 05:53:27 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/sainikhilnaru/VWB-MemberTracker/vwb/public/packs
+[Webpacker] Hash: 5950ed696d18568efebc
+Version: webpack 4.46.0
+Time: 1244ms
+Built at: 02/17/2021 5:53:32 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-83ecfd16ecbabfd70d60.js    124 KiB  application  [emitted] [immutable]  application
+js/application-83ecfd16ecbabfd70d60.js.map    139 KiB  application  [emitted] [dev]        application
+         js/member-077fed9f946afa2f09f1.js   4.98 KiB       member  [emitted] [immutable]  member
+     js/member-077fed9f946afa2f09f1.js.map   5.01 KiB       member  [emitted] [dev]        member
+                             manifest.json  668 bytes               [emitted]              
+Entrypoint application = js/application-83ecfd16ecbabfd70d60.js js/application-83ecfd16ecbabfd70d60.js.map
+Entrypoint member = js/member-077fed9f946afa2f09f1.js js/member-077fed9f946afa2f09f1.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 821 bytes {application} [built]
+[./app/javascript/packs/member.js] 1.11 KiB {member} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered pages/member.html.erb within layouts/application (Duration: 4586.5ms | Allocations: 2775)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 4611ms (Views: 4610.6ms | ActiveRecord: 0.0ms | Allocations: 5985)
+
+
