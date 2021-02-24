@@ -12,4 +12,9 @@ class Event < ApplicationRecord
 			errors.add(:endDate, 'must be possible')
 		end
 	end
+
+	def self.dateTimeDisplay(datetime)
+		return if datetime.blank?
+		datetime.strftime("%Y/%m/%e %I:%M %p")
+	end
 end

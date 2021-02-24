@@ -24,11 +24,11 @@
 		</tr>
 		<tr>
 			<th>Start Time*</th>
-			<td><%= form.date_field :startDate %></td>
+			<td><%= form.datetime_select :startDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
 		</tr>
 		<tr>
 			<th>End Time*</th>
-			<td><%= form.date_field :endDate %></td>
+			<td><%= form.datetime_select :endDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
 		</tr>
 	</table>
 
