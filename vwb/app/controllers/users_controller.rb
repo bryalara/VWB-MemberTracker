@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  http_basic_authenticate_with name: "vwb", password: "password"
+
   def index
     @users= User.all
   end

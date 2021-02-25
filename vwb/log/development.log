@@ -1225,3 +1225,83 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.2ms | Allocations: 4036)
 
 
+Started GET "/users/1" for 127.0.0.1 at 2021-02-16 21:52:57 -0600
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+Filter chain halted as #<Proc:0x0000559cc736b140 /home/bryalara/.rvm/gems/ruby-2.7.0/gems/actionpack-6.0.3.4/lib/action_controller/metal/http_authentication.rb:73> rendered or redirected
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms | Allocations: 335)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-02-16 21:52:57 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+Filter chain halted as #<Proc:0x0000559cc736b140 /home/bryalara/.rvm/gems/ruby-2.7.0/gems/actionpack-6.0.3.4/lib/action_controller/metal/http_authentication.rb:73> rendered or redirected
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 228)
+
+
+Started GET "/users/" for 127.0.0.1 at 2021-02-16 21:53:02 -0600
+Processing by UsersController#index as HTML
+Filter chain halted as #<Proc:0x0000559cc736b140 /home/bryalara/.rvm/gems/ruby-2.7.0/gems/actionpack-6.0.3.4/lib/action_controller/metal/http_authentication.rb:73> rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 237)
+
+
+Started GET "/users/" for 127.0.0.1 at 2021-02-16 21:53:08 -0600
+Processing by UsersController#index as HTML
+Filter chain halted as #<Proc:0x0000559cc736b140 /home/bryalara/.rvm/gems/ruby-2.7.0/gems/actionpack-6.0.3.4/lib/action_controller/metal/http_authentication.rb:73> rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 269)
+
+
+Started GET "/users/" for 127.0.0.1 at 2021-02-16 21:53:14 -0600
+Processing by UsersController#index as HTML
+Filter chain halted as #<Proc:0x0000559cc736b140 /home/bryalara/.rvm/gems/ruby-2.7.0/gems/actionpack-6.0.3.4/lib/action_controller/metal/http_authentication.rb:73> rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 257)
+
+
+Started GET "/users/" for 127.0.0.1 at 2021-02-16 21:53:21 -0600
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 12.3ms | Allocations: 8067)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 15.8ms | ActiveRecord: 2.5ms | Allocations: 15658)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-02-16 21:53:27 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 432)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 3.5ms | ActiveRecord: 0.4ms | Allocations: 6761)
+
+
+Started GET "/users/" for 127.0.0.1 at 2021-02-16 21:53:39 -0600
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 726)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms | Allocations: 4014)
+
+
+Started GET "/users/" for 127.0.0.1 at 2021-02-16 21:53:40 -0600
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 724)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 4100)
+
+
+Started GET "/users/" for 127.0.0.1 at 2021-02-16 21:53:49 -0600
+Processing by UsersController#index as HTML
+Filter chain halted as #<Proc:0x0000559cc736b140 /home/bryalara/.rvm/gems/ruby-2.7.0/gems/actionpack-6.0.3.4/lib/action_controller/metal/http_authentication.rb:73> rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 135)
+
+
