@@ -1,0 +1,16 @@
+<h1><%= @user.firstName %> <%= @user.lastName %>  </h1>
+
+<p>email: <%= @user.email %></p>
+<p>role: <%= @user.role %> </p>
+<p>firstName: <%= @user.firstName %> </p>
+<p>lastName: <%= @user.lastName %> </p>
+<p>phoneNumber: <%= @user.phoneNumber %> </p>
+<p>classification: <%= @user.classification %> </p>
+<p>tShirtSize: <%= @user.tShirtSize %> </p>
+<p>optInEmail: <%= @user.optInEmail %> </p>
+<p>participationPoints: <%= @user.participationPoints %> </p>
+<p> <%= link_to "Edit User", edit_user_path(@user) %></p>
+<p><%= link_to "Destroy", user_path(@user),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></p>
+<%= link_to "View All Users", users_path %>

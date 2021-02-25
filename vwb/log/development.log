@@ -1,3 +1,4 @@
+
 Started GET "/" for 127.0.0.1 at 2021-02-13 13:33:47 -0600
   
 PG::ConnectionBad (could not connect to server: Connection refused
@@ -25,6 +26,7 @@ actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+
 web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
 web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
 web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
@@ -54,6 +56,7 @@ puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.7) lib/puma/server.rb:472:in `process_client'
 puma (4.3.7) lib/puma/server.rb:328:in `block in run'
 puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+
 Started GET "/" for 127.0.0.1 at 2021-02-13 13:36:35 -0600
   
 PG::ConnectionBad (fe_sendauth: no password supplied
@@ -79,6 +82,7 @@ actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+
 web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
 web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
 web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
@@ -108,6 +112,7 @@ puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.7) lib/puma/server.rb:472:in `process_client'
 puma (4.3.7) lib/puma/server.rb:328:in `block in run'
 puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+
 Started GET "/" for 127.0.0.1 at 2021-02-13 13:37:09 -0600
   
 PG::ConnectionBad (FATAL:  password authentication failed for user "postgres"
@@ -134,6 +139,7 @@ actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+
 web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
 web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
 web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
@@ -163,6 +169,7 @@ puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.7) lib/puma/server.rb:472:in `process_client'
 puma (4.3.7) lib/puma/server.rb:328:in `block in run'
 puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+
 Started GET "/" for 127.0.0.1 at 2021-02-13 13:37:38 -0600
   
 PG::ConnectionBad (fe_sendauth: no password supplied
@@ -188,6 +195,7 @@ actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+
 web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
 web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
 web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
@@ -217,6 +225,7 @@ puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.7) lib/puma/server.rb:472:in `process_client'
 puma (4.3.7) lib/puma/server.rb:328:in `block in run'
 puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+
 Started GET "/" for 127.0.0.1 at 2021-02-13 13:39:12 -0600
   
 ActiveRecord::NoDatabaseError (FATAL:  database "vwb_development" does not exist
@@ -240,6 +249,7 @@ actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+
 web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
 web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
 web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
@@ -269,6 +279,7 @@ puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.7) lib/puma/server.rb:472:in `process_client'
 puma (4.3.7) lib/puma/server.rb:328:in `block in run'
 puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+
   [1m[35m (204.7ms)[0m  [1m[35mCREATE DATABASE "vwb_development" ENCODING = 'unicode'[0m
   [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "vwb_development" ENCODING = 'unicode'[0m
 Started GET "/" for 127.0.0.1 at 2021-02-13 13:40:26 -0600
@@ -348,6 +359,7 @@ Completed 200 OK in 36ms (Views: 15.0ms | ActiveRecord: 0.0ms | Allocations: 163
 Started GET "/events" for 127.0.0.1 at 2021-02-13 16:46:20 -0600
   
 ActionController::RoutingError (No route matches [GET] "/events"):
+
   
 actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
 web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
@@ -379,6 +391,7 @@ puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.7) lib/puma/server.rb:472:in `process_client'
 puma (4.3.7) lib/puma/server.rb:328:in `block in run'
 puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+
 Started GET "/event" for 127.0.0.1 at 2021-02-13 16:46:24 -0600
   
 SyntaxError (/home/daniel/Projects/VWB-MemberTracker/vwb/app/controllers/event_controller.rb:50: syntax error, unexpected `end', expecting end-of-input):
@@ -456,6 +469,7 @@ actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+
 web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
 web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
 web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
@@ -485,6 +499,7 @@ puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.7) lib/puma/server.rb:472:in `process_client'
 puma (4.3.7) lib/puma/server.rb:328:in `block in run'
 puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+
 Started GET "/point_event" for 127.0.0.1 at 2021-02-13 16:52:49 -0600
   
 ActionController::RoutingError (uninitialized constant PointEventController
@@ -514,6 +529,7 @@ actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
 actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+
 web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
 web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
 web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
@@ -543,6 +559,7 @@ puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.7) lib/puma/server.rb:472:in `process_client'
 puma (4.3.7) lib/puma/server.rb:328:in `block in run'
 puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+
 Started GET "/point_event" for 127.0.0.1 at 2021-02-13 16:53:35 -0600
   
 TypeError (superclass mismatch for class PointPointEventController):
@@ -558,6 +575,7 @@ Processing by PointEventController#index as HTML
 Version: webpack 4.46.0
 Time: 3709ms
 Built at: 02/13/2021 4:53:54 PM
+
                                      Asset       Size       Chunks                         Chunk Names
     js/application-c229f7c7014cf8c8d494.js    124 KiB  application  [emitted] [immutable]  application
 js/application-c229f7c7014cf8c8d494.js.map    139 KiB  application  [emitted] [dev]        application
@@ -3726,5 +3744,6 @@ Processing by PointEventController#index as HTML
   Rendered point_event/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 787)
 [Webpacker] Everything's up-to-date. Nothing to do
 Completed 200 OK in 17ms (Views: 15.4ms | ActiveRecord: 0.4ms | Allocations: 4151)
+
 
 

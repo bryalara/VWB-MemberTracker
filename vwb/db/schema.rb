@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_02_13_203432) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,8 +32,26 @@ ActiveRecord::Schema.define(version: 2021_02_13_203432) do
     t.string "description"
     t.integer "points"
     t.string "eventType"
+    
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+end
+
+ActiveRecord::Schema.define(version: 2021_02_15_210059) do
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.integer "role"
+    t.string "firstName"
+    t.string "lastName"
+    t.string "phoneNumber"
+    t.string "classification"
+    t.string "tShirtSize"
+    t.boolean "optInEmail"
+    t.integer "participationPoints"
+
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 end
