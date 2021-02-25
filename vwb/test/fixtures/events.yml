@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  startDate: 2021-02-13 14:34:14
+  endDate: 2021-02-13 14:34:14
+  points: 1
+  name: MyString
+  description: MyString
+  type: 
+
+two:
+  startDate: 2021-02-13 14:34:14
+  endDate: 2021-02-13 14:34:14
+  points: 1
+  name: MyString
+  description: MyString
+  type: 

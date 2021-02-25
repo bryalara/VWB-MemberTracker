@@ -1,0 +1,7 @@
+<%= link_to "Back to Point Events", point_event_index_path %>
+
+<h1>Delete <%= @pointEvent.name %>?</h1>
+
+<%= render "form", pointEvent: @pointEvent %>
+
+<td><%= link_to "Delete", point_event_path(@pointEvent), method: :delete, data: {confirm: "Are you sure you want to delete \"#{@pointEvent.name}\"?\nOnce deleted, the data will be lost forever. Points that students received from this event will also dissappear!"} %></td>

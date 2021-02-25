@@ -1,0 +1,37 @@
+<%= link_to "Back to Events", event_index_path %>
+
+<h1>Edit an Event</h1>
+
+<p>* denotes required fields.<p>
+
+<%= form_with :method => :PATCH, url:"/event/#{@event.id}", model: @event do |form| %>
+	<table style="text-align: left">
+		<tr>
+			<th><%= form.label :name %>*</th>
+			<td><%= form.text_field :name %></td>
+		</tr>
+		<tr>
+			<th><%= form.label :description %></th>
+			<td><%= form.text_field :description %></td>
+		</tr>
+		<tr>
+			<th><%= form.label :points %>*</th>
+			<td><%= form.number_field :points %></td>
+		</tr>
+		<tr>
+			<th>Event Type*</th>
+			<td><%= form.text_field :eventType %></td>
+		</tr>
+		<tr>
+			<th>Start Time*</th>
+			<td><%= form.datetime_select :startDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
+		</tr>
+		<tr>
+			<th>End Time*</th>
+			<td><%= form.datetime_select :endDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
+		</tr>
+	</table>
+
+	<%= form.submit "Save Changes to Event" %>
+
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  points: 1
+  name: MyString
+  description: MyString
+  type: 
+
+two:
+  points: 1
+  name: MyString
+  description: MyString
+  type: 
