@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_203432) do
-
+ActiveRecord::Schema.define(version: 2021_02_15_210059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,26 +31,24 @@ ActiveRecord::Schema.define(version: 2021_02_13_203432) do
     t.string "description"
     t.integer "points"
     t.string "eventType"
-    
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-end
-
-ActiveRecord::Schema.define(version: 2021_02_15_210059) do
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.integer "role"
-    t.string "firstName"
-    t.string "lastName"
-    t.string "phoneNumber"
-    t.string "classification"
-    t.string "tShirtSize"
-    t.boolean "optInEmail"
-    t.integer "participationPoints"
+    t.string "email", default: "emailneeded", null: false
+    t.integer "role", default: 0, null: false
+    t.string "firstName", default: "FirstName", null: false
+    t.string "lastName", default: "LastName", null: false
+    t.string "phoneNumber", default: "1234567890", null: false
+    t.string "classification", default: "Freshmen", null: false
+    t.string "tShirtSize", default: "M", null: false
+    t.boolean "optInEmail", default: true, null: false
+    t.integer "participationPoints", default: 0, null: false
+    t.boolean "approved", default: true, null: false
 
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
 end
