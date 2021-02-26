@@ -59,4 +59,7 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
 end
+ENV['GOOGLE_OAUTH_CLIENT_ID'] = '40978083485-59nfkeolbkaja9m6as77qs4tteif8qrr.apps.googleusercontent.com'
+ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = 'kxKwWzW6ui4CXPBBzz3QBLdw'

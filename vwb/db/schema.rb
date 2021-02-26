@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_203432) do
-
+ActiveRecord::Schema.define(version: 2021_02_25_181553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,14 +31,20 @@ ActiveRecord::Schema.define(version: 2021_02_13_203432) do
     t.string "description"
     t.integer "points"
     t.string "eventType"
-    
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-end
+  create_table "userlogins", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "full_name"
+    t.string "uid"
+    t.string "avatar_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_userlogins_on_email", unique: true
+  end
 
-ActiveRecord::Schema.define(version: 2021_02_15_210059) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.integer "role"
@@ -50,8 +55,8 @@ ActiveRecord::Schema.define(version: 2021_02_15_210059) do
     t.string "tShirtSize"
     t.boolean "optInEmail"
     t.integer "participationPoints"
-
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
 end

@@ -32,7 +32,7 @@ development:
   username: postgres
 
   # The password associated with the postgres role (username).
-  password: 'password'
+  password: 'postgres'
 
 
   # Connect on a TCP socket. Omitted by default since the client uses a
