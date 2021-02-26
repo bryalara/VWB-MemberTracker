@@ -113,3 +113,62 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 19ms (Views: 10.8ms | ActiveRecord: 0.0ms | Allocations: 2207)
 
 
+Started GET "/" for 127.0.0.1 at 2021-02-26 02:40:38 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 242)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/mariaelisa/Documents/TAMU/Spring2021/CSCE 431/VWB Project/Code/VWB-MemberTracker/vwb/public/packs
+[Webpacker] Hash: 9469712506f366693618
+Version: webpack 4.46.0
+Time: 14466ms
+Built at: 02/26/2021 2:41:01 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-0d63fdf9e9e2a8d2334c.js   1.32 MiB  application  [emitted] [immutable]  application
+js/application-0d63fdf9e9e2a8d2334c.js.map   1.45 MiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-0d63fdf9e9e2a8d2334c.js js/application-0d63fdf9e9e2a8d2334c.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 954 bytes {application} [built]
+[./app/javascript/stylesheets/application.scss] 664 bytes {application} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/stylesheets/application.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/javascript/stylesheets/application.scss 674 KiB {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 8 hidden modules
+
+Completed 200 OK in 22103ms (Views: 22090.0ms | ActiveRecord: 0.0ms | Allocations: 22531)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-26 02:41:17 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 95ms (Views: 94.5ms | ActiveRecord: 0.0ms | Allocations: 4210)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-26 02:41:19 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 18.7ms | ActiveRecord: 0.0ms | Allocations: 4221)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-26 02:41:19 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms | Allocations: 4207)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-26 02:41:20 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 14.8ms | ActiveRecord: 0.0ms | Allocations: 4216)
+
+
