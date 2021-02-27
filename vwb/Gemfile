@@ -19,7 +19,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use bootstrap 4.6.0
 gem 'bootstrap', '~> 4.0'
-
+#import for csv file
+gem 'activerecord-import'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

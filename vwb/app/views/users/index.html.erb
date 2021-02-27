@@ -1,3 +1,5 @@
+<%= flash[:notice]%>
+
 <h1>Users</h1>
 
 <ul>
@@ -8,4 +10,14 @@
     <% end %>
 </ul>
 
+<div>
+    <h4> Import data from csv file </h4>
+        <%= form_tag import_users_path, multipart: true do %>
+            <%= file_field_tag :file %>
+            <%= submit_tag "Import CSV" %>
+        <% end %>
+</div>
+
 <%= link_to "Create New User", new_user_path %>
+
+<%= link_to "View Pending Users", pendingApproval_path %>

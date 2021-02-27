@@ -36,17 +36,16 @@ ActiveRecord::Schema.define(version: 2021_02_15_210059) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "emailneeded", null: false
-    t.integer "role", default: 0, null: false
-    t.string "firstName", default: "FirstName", null: false
-    t.string "lastName", default: "LastName", null: false
-    t.string "phoneNumber", default: "1234567890", null: false
-    t.string "classification", default: "Freshmen", null: false
-    t.string "tShirtSize", default: "M", null: false
-    t.boolean "optInEmail", default: true, null: false
-    t.integer "participationPoints", default: 0, null: false
-    t.boolean "approved", default: true, null: false
-
+    t.string "email"
+    t.integer "role"
+    t.string "firstName"
+    t.string "lastName"
+    t.string "phoneNumber"
+    t.string "classification"
+    t.string "tShirtSize"
+    t.boolean "optInEmail"
+    t.integer "participationPoints"
+    t.boolean "approved"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
