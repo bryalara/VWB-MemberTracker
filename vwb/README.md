@@ -1,16 +1,24 @@
-# VWB-MemberTracker
-CSCE 431 Project
+# README
 
-How to setup and run:
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-http://127.0.0.1:3000/pages/home
+Things you may want to cover:
 
-Status of adding features to project:
+* Ruby version
 
-    To Do:
-    -  
-    Done:
-    - Created branch
-    - Created Postgres Database
-    - Added dynamic table to add user information using Javascript
-    - Have basic bootstrap template for website design header
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
