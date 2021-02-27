@@ -26,5 +26,4 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
       run: |
-      cd vwb/
       bundle exec rake
