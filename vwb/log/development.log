@@ -3571,3 +3571,76 @@ Processing by PagesController#show as HTML
 Completed 200 OK in 43ms (Views: 40.5ms | ActiveRecord: 0.0ms | Allocations: 3338)
 
 
+Started GET "/" for 127.0.0.1 at 2021-02-27 17:53:15 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"home"}
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.5ms | Allocations: 189)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/sainikhilnaru/VWB-MemberTracker/vwb/public/packs
+[Webpacker] Hash: 670116bcacf9ef7d50f1
+Version: webpack 4.46.0
+Time: 2852ms
+Built at: 02/27/2021 5:53:23 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-3dc68f3c6aad6d698ccb.js    124 KiB  application  [emitted] [immutable]  application
+js/application-3dc68f3c6aad6d698ccb.js.map    139 KiB  application  [emitted] [dev]        application
+         js/member-077fed9f946afa2f09f1.js   4.98 KiB       member  [emitted] [immutable]  member
+     js/member-077fed9f946afa2f09f1.js.map   5.01 KiB       member  [emitted] [dev]        member
+                             manifest.json  668 bytes               [emitted]              
+Entrypoint application = js/application-3dc68f3c6aad6d698ccb.js js/application-3dc68f3c6aad6d698ccb.js.map
+Entrypoint member = js/member-077fed9f946afa2f09f1.js js/member-077fed9f946afa2f09f1.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 802 bytes {application} [built]
+[./app/javascript/packs/member.js] 1.11 KiB {member} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 7963ms (Views: 7949.6ms | ActiveRecord: 0.0ms | Allocations: 7864)
+
+
+Started GET "/member" for 127.0.0.1 at 2021-02-27 17:53:27 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/member"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/pages/member" for 127.0.0.1 at 2021-02-27 17:53:31 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 13.6ms | Allocations: 1800)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 66ms (Views: 64.8ms | ActiveRecord: 0.0ms | Allocations: 5220)
+
+
