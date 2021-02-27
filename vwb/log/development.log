@@ -1341,3 +1341,53 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 42ms (Views: 40.7ms | ActiveRecord: 0.0ms | Allocations: 4445)
 
 
+Started GET "/" for 127.0.0.1 at 2021-02-26 20:53:30 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 413)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2142ms (Views: 2130.4ms | ActiveRecord: 0.0ms | Allocations: 40436)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-26 20:53:49 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 100ms (Views: 99.0ms | ActiveRecord: 0.0ms | Allocations: 4483)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-26 21:01:14 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 203ms (Views: 202.1ms | ActiveRecord: 0.0ms | Allocations: 4612)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-26 21:01:20 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.6ms | ActiveRecord: 0.0ms | Allocations: 4489)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-26 21:01:24 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 20.9ms | ActiveRecord: 0.0ms | Allocations: 4477)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-26 21:01:26 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 13.6ms | ActiveRecord: 0.0ms | Allocations: 4477)
+
+
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE DATABASE "vwb_development" ENCODING = 'unicode'[0m
+  [1m[35m (455.4ms)[0m  [1m[35mCREATE DATABASE "vwb_test" ENCODING = 'unicode'[0m

@@ -19,6 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use bootstrap 4.6.0
 gem 'bootstrap', '~> 4.0'
+gem 'simplecov', :require => false, :group => :test
 
 
 # Use Redis adapter to run Action Cable in production
@@ -33,6 +34,16 @@ gem 'bootstrap', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+# The RSpec testing framework
+  gem 'rspec-rails'
+
+  # Capybara, the library that allows us to interact with the browser using Ruby
+  gem 'capybara'
+
+  # The following gems aids with the nuts and bolts
+  # of interacting with the browser.
+  #gem 'webdrivers'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -48,7 +59,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  #gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'

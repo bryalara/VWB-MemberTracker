@@ -1,0 +1,489 @@
+  [1m[35m (42.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "vwb_test"[0m
+  [1m[35m (206.0ms)[0m  [1m[35mCREATE DATABASE "vwb_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (7.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (36.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (0)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-02-27 03:20:50.644723"], ["updated_at", "2021-02-27 03:20:50.644723"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "83e6e9510955ef04f606b0339b1f0d53760104f9"], ["created_at", "2021-02-27 03:20:50.651091"], ["updated_at", "2021-02-27 03:20:50.651091"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 21:24:10 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 303)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/mariaelisa/Documents/TAMU/Spring2021/CSCE 431/VWB Project/Code/VWB-MemberTracker/vwb/public/packs-test
+[Webpacker] Hash: 0586bf3c849376aa0925
+Version: webpack 4.46.0
+Time: 4753ms
+Built at: 02/26/2021 9:24:20 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-cc1f70472fb7dc949585.js   2.46 MiB  application  [emitted] [immutable]  application
+js/application-cc1f70472fb7dc949585.js.map   2.71 MiB  application  [emitted] [dev]        application
+           js/home-07294b67face083e06e8.js    315 KiB         home  [emitted] [immutable]  home
+       js/home-07294b67face083e06e8.js.map    372 KiB         home  [emitted] [dev]        home
+                             manifest.json  694 bytes               [emitted]              
+Entrypoint application = js/application-cc1f70472fb7dc949585.js js/application-cc1f70472fb7dc949585.js.map
+Entrypoint home = js/home-07294b67face083e06e8.js js/home-07294b67face083e06e8.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/home/bootstrap/css/bootstrap.min.css] 627 bytes {application} [built]
+[./app/javascript/home/bootstrap/js/bootstrap.bundle.min.js] 111 KiB {application} [built]
+[./app/javascript/home/jquery-easing/jquery.easing.min.js] 4.19 KiB {application} [built]
+[./app/javascript/home/jquery/jquery.min.js] 133 KiB {application} [built]
+[./app/javascript/packs/application.js] 1.15 KiB {application} [built]
+[./app/javascript/packs/home.js] 1020 bytes {home} {application} [built]
+[./app/javascript/stylesheets/application.scss] 664 bytes {application} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./app/javascript/home/bootstrap/css/bootstrap.min.css] ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./app/javascript/home/bootstrap/css/bootstrap.min.css 914 KiB {application} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/stylesheets/application.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/javascript/stylesheets/application.scss 674 KiB {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} {home} [built]
+    + 8 hidden modules
+
+Completed 200 OK in 10923ms (Views: 10911.3ms | ActiveRecord: 0.0ms | Allocations: 32893)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 21:24:21 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 21:24:21 -0600
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 21:25:17 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2473ms (Views: 2463.6ms | ActiveRecord: 0.0ms | Allocations: 17021)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 21:25:19 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 21:25:20 -0600
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 21:40:55 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2426ms (Views: 2416.5ms | ActiveRecord: 0.0ms | Allocations: 17093)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 21:40:58 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 21:40:58 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 21:40:58 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 2845)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 21:41:30 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2271ms (Views: 2263.7ms | ActiveRecord: 0.0ms | Allocations: 17108)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 21:41:33 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 21:41:33 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 21:41:33 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.0ms | Allocations: 2845)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 21:42:32 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2504ms (Views: 2475.7ms | ActiveRecord: 0.0ms | Allocations: 17138)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 21:42:34 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 21:42:35 -0600
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 21:53:18 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3118ms (Views: 3111.7ms | ActiveRecord: 0.0ms | Allocations: 17179)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 21:53:22 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 21:53:22 -0600
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 21:54:32 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3856ms (Views: 3848.2ms | ActiveRecord: 0.0ms | Allocations: 17200)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 21:54:36 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 21:54:37 -0600
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 21:56:23 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2841ms (Views: 2834.4ms | ActiveRecord: 0.0ms | Allocations: 17223)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 21:56:26 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 21:56:26 -0600
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:01:16 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2622ms (Views: 2612.7ms | ActiveRecord: 0.0ms | Allocations: 17259)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:01:18 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:01:19 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:01:19 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 3278)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:01:43 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2844ms (Views: 2836.6ms | ActiveRecord: 0.0ms | Allocations: 17289)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:01:46 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:01:47 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:01:47 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 28.3ms | ActiveRecord: 0.0ms | Allocations: 3722)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:07:31 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3413ms (Views: 3405.1ms | ActiveRecord: 0.0ms | Allocations: 17315)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:07:35 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:07:35 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:07:36 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 3278)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:10:35 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2399ms (Views: 2393.1ms | ActiveRecord: 0.0ms | Allocations: 17343)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:10:38 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:10:38 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:10:38 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.0ms | Allocations: 3278)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:12:56 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2452ms (Views: 2439.4ms | ActiveRecord: 0.0ms | Allocations: 17373)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:12:58 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:12:59 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:12:59 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 3217)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:13:21 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2078ms (Views: 2060.0ms | ActiveRecord: 0.0ms | Allocations: 17408)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:13:23 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:13:24 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:13:24 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 10.6ms | ActiveRecord: 0.0ms | Allocations: 3278)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:14:34 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2413ms (Views: 2403.2ms | ActiveRecord: 0.0ms | Allocations: 17448)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:14:36 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:14:37 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:14:37 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 17.6ms | ActiveRecord: 0.0ms | Allocations: 4229)
+  [1m[35m (9.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:14:59 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2706ms (Views: 2697.9ms | ActiveRecord: 0.0ms | Allocations: 17469)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:15:01 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:15:02 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:15:02 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 3283)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:15:24 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2048ms (Views: 2040.7ms | ActiveRecord: 0.0ms | Allocations: 17493)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:15:26 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:15:26 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:15:26 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 3217)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:24:38 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2805ms (Views: 2796.5ms | ActiveRecord: 0.0ms | Allocations: 17529)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:24:41 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:24:41 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:24:42 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 171)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.0ms | Allocations: 3232)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:25:12 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2222ms (Views: 2216.5ms | ActiveRecord: 0.0ms | Allocations: 17568)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:25:14 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:25:14 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:25:15 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.0ms | Allocations: 2845)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:25:57 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2748ms (Views: 2739.4ms | ActiveRecord: 0.0ms | Allocations: 17583)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:26:00 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:26:01 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:26:01 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.0ms | Allocations: 2850)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:34:05 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2641ms (Views: 2632.1ms | ActiveRecord: 0.0ms | Allocations: 17619)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:34:08 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:34:09 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:34:09 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 2845)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:34:31 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2674ms (Views: 2666.4ms | ActiveRecord: 0.0ms | Allocations: 17653)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:34:34 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:34:34 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:34:35 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 2845)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:39:47 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 358)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3103ms (Views: 3093.2ms | ActiveRecord: 0.0ms | Allocations: 17959)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-02-26 22:39:50 -0600
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-02-26 22:39:50 -0600
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:39:51 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 19.1ms | ActiveRecord: 0.0ms | Allocations: 3225)
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:39:56 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.0ms | Allocations: 2675)
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:39:57 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms | Allocations: 3276)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:40:02 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.0ms | Allocations: 2670)
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:40:02 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 12.7ms | ActiveRecord: 0.0ms | Allocations: 2670)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:40:07 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 2670)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:40:13 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.0ms | Allocations: 2672)
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:40:13 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.0ms | Allocations: 2670)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:40:18 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.7ms | ActiveRecord: 0.0ms | Allocations: 2670)
+Started GET "/home" for 127.0.0.1 at 2021-02-26 22:40:18 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.0ms | Allocations: 3822)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
