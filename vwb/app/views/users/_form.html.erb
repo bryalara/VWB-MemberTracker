@@ -22,7 +22,7 @@
     
     <div>
         <%= form.label :role %><br>
-        <%= form.select :role, options_for_select([["Member", "0"], ["Admin", 1]]) %>
+        <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]]), :prompt => 'Select Role' %>
     </div>
 
     <div>
@@ -32,12 +32,12 @@
 
     <div>
         <%= form.label :classification %><br>
-        <%= form.select :classification, options_for_select(["Freshman","Sophomore", "Junior", "Senior"]) %>
+        <%= form.select :classification, options_for_select(["Freshman","Sophomore", "Junior", "Senior"]),:prompt => 'Select Year' %>
     </div>
 
     <div>
         <%= form.label :tShirtSize %><br>
-        <%= form.select :tShirtSize, options_for_select(["XXS","XS","S", "M", "L", "XL", "XXL"]) %>
+        <%= form.select :tShirtSize, options_for_select(["XXS","XS","S", "M", "L", "XL", "XXL"]), :prompt => 'Select Size' %>
     </div>
 
     <div>

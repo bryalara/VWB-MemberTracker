@@ -20,6 +20,5 @@ class User < ApplicationRecord
     validates :phoneNumber, presence: true, length: {is: 10}
     validates :classification, presence: true
     validates :tShirtSize, presence: true
-    validates :optInEmail, presence: true
     validates :participationPoints, presence: true, numericality: {only_integer: true, :greater_than_or_equal_to => 0}
 end
