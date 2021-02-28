@@ -57,6 +57,8 @@ GEM
     activerecord (6.0.3.5)
       activemodel (= 6.0.3.5)
       activesupport (= 6.0.3.5)
+    activerecord-import (1.0.8)
+      activerecord (>= 3.2)
     activestorage (6.0.3.5)
       actionpack (= 6.0.3.5)
       activejob (= 6.0.3.5)
@@ -80,9 +82,6 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.35.3)
@@ -138,10 +137,6 @@ GEM
     nio4r (2.5.5)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
-      racc (~> 1.4)
-    nokogiri (1.11.1-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.11.1-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.4)
       faraday (>= 0.8, < 2.0)
@@ -230,11 +225,6 @@ GEM
     rspec-support (3.10.2)
     ruby2_keywords (0.0.4)
     rubyzip (2.3.0)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -297,14 +287,11 @@ GEM
 
 PLATFORMS
   ruby
-  x86_64-darwin-19
-  x86_64-linux
 
 DEPENDENCIES
   activerecord-import
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.0)
-  bootstrap-sass (~> 3.3.6)
   byebug
   capybara (>= 2.15)
   devise!
@@ -334,4 +321,4 @@ RUBY VERSION
    ruby 2.7.0p0
 
 BUNDLED WITH
-   2.2.9
+   2.1.2
