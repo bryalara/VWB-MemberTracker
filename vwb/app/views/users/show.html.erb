@@ -51,10 +51,7 @@ tr:nth-child(even) {
 </table>
 
 
-<button value="Edit User" style="margin: 2px 20%"> <%= link_to "Edit User", edit_user_path(@user) %></button>
+<%= link_to "Edit User", edit_user_path(@user) %>
 
-
+ <%= link_to "Destroy", user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
-<%= link_to 'Destroy', user_path(@user),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
