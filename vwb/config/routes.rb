@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 		collection {post :import} #used for csv importing
 	end
 
-	root to: 'users#index'
 	devise_for :userlogins, controllers: {omniauth_callbacks: "userlogins/omniauth_callbacks"}
 	devise_scope :userlogin do
 		get 'userlogins/sign_in', to: 'userlogins/sessions#new', as: :new_userlogin_session
