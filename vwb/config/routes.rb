@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
 
   
+  # get 'home/index'
+  # root to: 'home#index'            ---SNN
+  # resources :home                   ---SNN
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :point_event do
