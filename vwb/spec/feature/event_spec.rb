@@ -405,6 +405,9 @@ RSpec.describe 'Events', type: :feature do
 			visit delete_event_path(id: event.id)
 			click_on 'Delete'
 
+			a = page.driver.browser.switch_to.alert
+			a.accept
+
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
@@ -436,6 +439,8 @@ RSpec.describe 'Events', type: :feature do
 
 			visit delete_event_path(id: event2.id)
 			click_on 'Delete'
+			a = page.driver.browser.switch_to.alert
+			a.accept
 
 			visit event_index_path
 			expect(page).to have_content('Test Event 1')
@@ -444,6 +449,8 @@ RSpec.describe 'Events', type: :feature do
 
 			visit delete_event_path(id: event1.id)
 			click_on 'Delete'
+			a2 = page.driver.browser.switch_to.alert
+			a2.accept
 
 			visit event_index_path
 			expect(page).to_not have_content('Test Event 1')
@@ -452,6 +459,8 @@ RSpec.describe 'Events', type: :feature do
 
 			visit delete_event_path(id: event3.id)
 			click_on 'Delete'
+			a3 = page.driver.browser.switch_to.alert
+			a3.accept
 
 			visit event_index_path
 			expect(page).to_not have_content('Test Event 1')
