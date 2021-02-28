@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  http_basic_authenticate_with name: "vwb", password: "password"
+  # http_basic_authenticate_with name: "vwb", password: "password"
 
   def index
     @users= User.where(approved: true)
@@ -25,7 +25,14 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user
     else
-      render :new
+      if @user.valid?
+        @msg="New user: "+@user.firstName+" "+@user.lastName+" created"
+      else
+        @msg = @user.errors.full_messages[0]
+        puts @msg
+        flash.now[:notice] = @msg
+        render :new
+      end
     end
   end
 
