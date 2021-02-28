@@ -1,5 +1,4 @@
 <%= form_with model: @user do |form| %>
-
     <div>
         <%= form.label :email %><br>
         <%= form.email_field :email %>
@@ -23,7 +22,7 @@
     
     <div>
         <%= form.label :role %><br>
-        <%= form.number_field  :role %>
+        <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]]), :prompt => 'Select Role' %>
     </div>
 
     <div>
@@ -33,13 +32,19 @@
 
     <div>
         <%= form.label :classification %><br>
-        <%= form.text_field :classification %>
+        <%= form.select :classification, options_for_select(["Freshman","Sophomore", "Junior", "Senior"]),:prompt => 'Select Year' %>
     </div>
 
     <div>
         <%= form.label :tShirtSize %><br>
-        <%= form.text_field :tShirtSize %>
+        <%= form.select :tShirtSize, options_for_select(["XXS","XS","S", "M", "L", "XL", "XXL"]), :prompt => 'Select Size' %>
     </div>
+
+    <div>
+        <%= form.label :participationPoints %><br>
+        <%= form.number_field  :participationPoints %>
+    </div>
+
 
     <div>
         <%= form.label :optInEmail %><br>
@@ -47,9 +52,9 @@
    </div>
 
     <div>
-        <%= form.label :participationPoints %><br>
-        <%= form.number_field  :participationPoints %>
-    </div>
+        <%= form.label :approved %><br>
+        <%= form.check_box :approved %>
+   </div>
 
     <div>
         <%= form.submit %>

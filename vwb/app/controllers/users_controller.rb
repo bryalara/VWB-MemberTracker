@@ -1,15 +1,20 @@
 class UsersController < ApplicationController
 
-  http_basic_authenticate_with name: "vwb", password: "password"
+  # http_basic_authenticate_with name: "vwb", password: "password"
 
   def index
-    @users= User.all
+    @users= User.where(approved: true)
+  end
+
+  def import
+    User.my_import(params[:file])
+    redirect_to users_path, notice: "Users' information imported from csv file"
   end
 
   def show
     @user = User.find(params[:id])
   end
-
+  
   def new
     @user = User.new
   end
@@ -20,7 +25,14 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user
     else
-      render :new
+      if @user.valid?
+        @msg="New user: "+@user.firstName+" "+@user.lastName+" created"
+      else
+        @msg = @user.errors.full_messages[0]
+        puts @msg
+        flash.now[:notice] = @msg
+        render :new
+      end
     end
   end
 
@@ -40,14 +52,18 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    tmp = @user
     @user.destroy
 
-    redirect_to root_path
+    redirect_to users_path, notice:"Succesfully deleted user: "+@user.firstName+" "+@user.lastName+"."
   end
 
+  def pendingApproval
+    @users = User.where(approved: false)
+  end
 
   private
     def user_params
-      params.require(:user).permit(:email, :role, :firstName, :lastName, :phoneNumber, :classification, :tShirtSize, :optInEmail, :participationPoints)
+      params.require(:user).permit(:email, :role, :firstName, :lastName, :phoneNumber, :classification, :tShirtSize, :optInEmail, :participationPoints, :approved)
     end
 end

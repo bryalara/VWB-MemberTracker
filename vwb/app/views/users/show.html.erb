@@ -1,16 +1,57 @@
-<h1><%= @user.firstName %> <%= @user.lastName %>  </h1>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
 
-<p>email: <%= @user.email %></p>
-<p>role: <%= @user.role %> </p>
-<p>firstName: <%= @user.firstName %> </p>
-<p>lastName: <%= @user.lastName %> </p>
-<p>phoneNumber: <%= @user.phoneNumber %> </p>
-<p>classification: <%= @user.classification %> </p>
-<p>tShirtSize: <%= @user.tShirtSize %> </p>
-<p>optInEmail: <%= @user.optInEmail %> </p>
-<p>participationPoints: <%= @user.participationPoints %> </p>
-<p> <%= link_to "Edit User", edit_user_path(@user) %></p>
-<p><%= link_to "Destroy", user_path(@user),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %></p>
-<%= link_to "View All Users", users_path %>
+.center {
+  margin-left: auto;
+  margin-right: auto;
+} 
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<button><%= link_to "Return to all users", users_path %></button>
+<div>
+<h1 ><%= @user.firstName %> <%= @user.lastName %></h1>
+<table  class="center"> 
+    <tr>    
+        <th>Attr</th>    
+        <th>Info</th>
+    
+    </tr>
+
+<tr> <td> email: </td> <td> <%= @user.email %> </td> </tr>
+<tr> <td> role: </td> <td> <%= @user.role %>  </td> </tr>
+<tr> <td> firstName: </td> <td> <%= @user.firstName %>  </td> </tr>
+<tr> <td> lastName: </td> <td> <%= @user.lastName %>  </td> </tr>
+<tr> <td> phoneNumber: </td> <td> <%= @user.phoneNumber %>  </td> </tr>
+<tr> <td> classification: </td> <td> <%= @user.classification %>  </td> </tr>
+<tr> <td> tShirtSize: </td> <td> <%= @user.tShirtSize %>  </td> </tr>
+<tr> <td> optInEmail: </td> <td> <%= @user.optInEmail %>  </td> </tr>
+<tr> <td> participationPoints: </td> <td> <%= @user.participationPoints %>  </td> </tr>
+<tr> <td> approved: </td> <td> <%= @user.approved%>  </td> </tr>
+
+</table>
+
+
+<%= link_to "Edit User", edit_user_path(@user) %>
+
+ <%= link_to "Destroy", user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
+</div>

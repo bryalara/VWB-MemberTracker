@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :users
+  
+  resources :users do
+    collection {post :import} #used for csv importing
+  end
   root to: 'users#index'
   devise_for :userlogins, controllers: {omniauth_callbacks: "userlogins/omniauth_callbacks"}
   devise_scope :userlogin do
@@ -11,6 +14,10 @@ Rails.application.routes.draw do
   # get 'home/index'
   # root to: 'home#index'            ---SNN
   # resources :home                   ---SNN
+
+
+  get '/pendingApproval', to: 'users#pendingApproval'
+  get '/import', to: 'users#my_import'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :point_event do

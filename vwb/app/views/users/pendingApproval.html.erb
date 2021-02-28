@@ -16,7 +16,7 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 </style>
-
+<button><%= link_to "Return to all users", users_path %></button>
 <h1>Users</h1>
 <table>
     <tr>
@@ -28,6 +28,7 @@ tr:nth-child(even) {
         <th> Role</th>
         <th> T-Shirt </th>
         <th> Points</th>
+        <th> Approved</th>
     </tr>
 
 <% @users.each do |user| %>
@@ -40,6 +41,7 @@ tr:nth-child(even) {
         <td><%=  user.role == 0 ? :"Member" : :"Admin"  %> </td>
         <td><%=  user.tShirtSize  %> </td>
         <td><%=  user.participationPoints  %> </td>
+        <td><%=  user.approved  %> </td>
         <td><%= link_to "View Details", user %> </td>
     </tr>
 <% end %>
@@ -51,10 +53,3 @@ tr:nth-child(even) {
 
 <button> <%= link_to "View Pending Users", pendingApproval_path %> </button>
 
-<div>
-    <h4> Import data from csv file </h4>
-        <%= form_tag import_users_path, multipart: true do %>
-            <%= file_field_tag :file %>
-            <%= submit_tag "Import CSV" %>
-        <% end %>
-</div>
