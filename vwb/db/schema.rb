@@ -55,8 +55,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_181553) do
     t.string "tShirtSize", default: "M", null: false
     t.boolean "optInEmail", default: true, null: false
     t.integer "participationPoints", default: 0, null: false
-    t.boolean "approved", default: true, null: false
-
+    t.boolean "approved", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
