@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   		get :delete
   	end
   end
+  # root "pages#show", page: "home"   # --- SNN
+  get "/pages/:page" => "pages#show"
+  
 end
