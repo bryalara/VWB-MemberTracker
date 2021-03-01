@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "pages#show", page: "home"   # --- SNN
+  # root "pages#show", page: "home"   # --- SNN
   get "/pages/:page" => "pages#show"
   resources :users do
     collection {post :import} #used for csv importing
@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   end
 
   
-  # get 'home/index'
-  # root to: 'home#index'            ---SNN
-  # resources :home                   ---SNN
+  get 'home/index'
+  root to: 'home#index'            
+  resources :home                   
 
 
   get '/pendingApproval', to: 'users#pendingApproval'
