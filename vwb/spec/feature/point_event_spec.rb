@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'PointEvents', type: :feature do
+
+	setup do
+		login_with_oauth
+	end
+
 	describe 'index page' do
 		it 'shows the right content' do
 			visit point_event_index_path

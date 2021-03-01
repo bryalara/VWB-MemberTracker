@@ -1,4 +1,6 @@
 class EventController < ApplicationController
+	protect_from_forgery with: :exception
+    before_action :authenticate_userlogin!
 	def index
 		@events = Event.all
 	end

@@ -1,10 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'Events', type: :feature do
+
+	setup do
+		login_with_oauth
+	end
+
 	describe 'index page' do
 		it 'shows the right content' do
 			visit event_index_path
-			#sleep(10)
 			expect(page).to have_content('Events')
 		end
 	end

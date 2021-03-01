@@ -1,4 +1,7 @@
 class PointEventController < ApplicationController
+	protect_from_forgery with: :exception
+    before_action :authenticate_userlogin!
+	
 	def index
 		@pointEvents = PointEvent.all
 	end
