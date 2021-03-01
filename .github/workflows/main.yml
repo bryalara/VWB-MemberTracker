@@ -40,8 +40,8 @@ jobs:
         run: |
           sudo apt-get -yqq install libpq-dev
           gem install bundler
+          cd vwb/
           bundle install --jobs 4 --retry 3
-          ls
           bundle exec rake db:create
           bundle exec rake db:migrate
           bundle exec rspec .
