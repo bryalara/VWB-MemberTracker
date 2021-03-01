@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Use "login_with_oauth" in your tests to bypass google oauth authentication! - Daniel Phan
