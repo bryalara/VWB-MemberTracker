@@ -1,10 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :feature do
+
+	setup do
+		login_with_oauth
+	end
+
 	describe 'index page' do
 		it 'shows the right content' do
 			visit users_path
-			sleep(10)
+			sleep(1)
 			expect(page).to have_content('Users')
 		end
 	end
