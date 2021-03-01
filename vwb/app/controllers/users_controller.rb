@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  protect_from_forgery with: :exception
+  before_action :authenticate_userlogin!
   # http_basic_authenticate_with name: "vwb", password: "password"
 
   def index

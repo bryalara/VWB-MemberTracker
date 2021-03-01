@@ -33,11 +33,11 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="home">Home</a></li>
         <li><a href="member">Member Page</a></li>
-        <li><a href="#">Page 2</a></li>
+        <li><a href="<%= event_index_path %>">Events</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="<%= userlogin_google_oauth2_omniauth_authorize_path %>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="<%= userlogin_google_oauth2_omniauth_authorize_path %>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </nav>

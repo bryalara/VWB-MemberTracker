@@ -1,11 +1,10 @@
 require 'rails_helper'
 
-
 RSpec.describe 'Users', type: :feature do
 	describe 'index page' do
 		it 'shows the right content' do
 			visit users_path
-			# sleep(10)
+			sleep(10)
 			expect(page).to have_content('Users')
 		end
 	end
@@ -25,9 +24,10 @@ RSpec.describe 'Users', type: :feature do
 			# check('approved', allow_label_click: true)
 			check 'user_optInEmail'
 			check 'user_approved'
-			
+			sleep(1)
 			
 			click_on 'Create User'
+			sleep(1)
 			visit users_path
 			expect(page).to have_content('John Doe')
 		end
@@ -622,7 +622,9 @@ RSpec.describe 'Users', type: :feature do
 			
 			puts user_path(id: user.id)
 			click_on 'Destroy'
+			sleep(1)
 			page.driver.browser.switch_to.alert.accept
+			sleep(1)
 
 			visit users_path
 			expect(page).to_not have_content('featureRead@tamu.edu')
@@ -670,16 +672,22 @@ RSpec.describe 'Users', type: :feature do
 
 			visit user_path(id: user1.id)
 			click_on 'Destroy'
+			sleep(1)
 			page.driver.browser.switch_to.alert.accept
+			sleep(1)
 			
 
 			visit user_path(id: user2.id)
 			click_on 'Destroy'
+			sleep(1)
 			page.driver.browser.switch_to.alert.accept
+			sleep(1)
 
 			visit user_path(id: user3.id)
 			click_on 'Destroy'
+			sleep(1)
 			page.driver.browser.switch_to.alert.accept
+			sleep(1)
 
 			visit users_path
 			expect(page).to_not have_content('featureRead1@tamu.edu')
