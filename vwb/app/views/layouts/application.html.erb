@@ -30,7 +30,7 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/">Veteranians Without Borders</a>
       </div>  
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" style=" text-align: center">
         <li class="<%= request.env['PATH_INFO']=='/' ? :'active' : :'' %>"><a href="/">Home</a></li>
         <li class="<%= request.env['PATH_INFO']=='/pages/member' ? :'active' : :'' %>"><a href="pages/member">Member Page</a></li>
         <li class="<%= request.env['PATH_INFO']=='/event' ? :'active' : :'' %>"><a href="<%= event_index_path %>">Events</a></li>
@@ -39,6 +39,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/userlogins/sign_out"><span class="glyphicon glyphicon-log-in"></span> Signout</a></li>
         <li><a href="<%= userlogin_google_oauth2_omniauth_authorize_path %>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
     </div>
   </nav>
     <div class="container">
