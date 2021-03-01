@@ -19,7 +19,7 @@ class PointEventController < ApplicationController
 
 		#if true
 		if @pointEvent.save
-			redirect_to point_event_index_path
+			redirect_to event_index_path
 		else
 			render :new
 		end
@@ -34,7 +34,7 @@ class PointEventController < ApplicationController
 
 		#if true
 		if @pointEvent.update(pointEventParams)
-			redirect_to @pointEvent
+			redirect_to event_index_path
 		else
 			render :edit
 		end
@@ -48,7 +48,7 @@ class PointEventController < ApplicationController
 		@pointEvent = PointEvent.find(params[:id])
 		@pointEvent.destroy
 
-		redirect_to point_event_index_path
+		redirect_to event_index_path
 	end
 
 	private

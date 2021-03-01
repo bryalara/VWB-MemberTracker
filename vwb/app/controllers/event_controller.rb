@@ -3,6 +3,7 @@ class EventController < ApplicationController
     before_action :authenticate_userlogin!
 	def index
 		@events = Event.all
+		@pointEvents = PointEvent.all
 	end
 
 	def show

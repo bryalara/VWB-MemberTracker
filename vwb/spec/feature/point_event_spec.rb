@@ -8,7 +8,7 @@ RSpec.describe 'PointEvents', type: :feature do
 
 	describe 'index page' do
 		it 'shows the right content' do
-			visit point_event_index_path
+			visit event_index_path
 			#sleep(10)
 			expect(page).to have_content('Points Events')
 		end
@@ -22,7 +22,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_points', with: 5
 			fill_in 'point_event_eventType', with: 'Test Type'
 			click_on 'Add Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to have_content('Test Event')
 		end
 
@@ -32,7 +32,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_points', with: 5
 			fill_in 'point_event_eventType', with: 'Test Type'
 			click_on 'Add Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to have_content('Test Event')
 		end
 
@@ -42,7 +42,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_points', with: 5
 			fill_in 'point_event_eventType', with: 'Test Type'
 			click_on 'Add Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to_not have_content('Test Description')
 		end
 
@@ -52,7 +52,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_description', with: 'Test Description'
 			fill_in 'point_event_eventType', with: 'Test Type'
 			click_on 'Add Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
 
@@ -63,7 +63,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_points', with: 0
 			fill_in 'point_event_eventType', with: 'Test Type'
 			click_on 'Add Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to have_content('Test Event')
 		end
 
@@ -74,7 +74,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_points', with: -1
 			fill_in 'point_event_eventType', with: 'Test Type'
 			click_on 'Add Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
 
@@ -84,7 +84,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_description', with: 'Test Description'
 			fill_in 'point_event_points', with: 5
 			click_on 'Add Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
 	end
@@ -112,7 +112,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			visit edit_point_event_path(id: event.id)
 			fill_in 'point_event_name', with: "Edited Event Name"
 			click_on 'Save Changes to Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to have_content('Edited Event Name')
 		end
 
@@ -125,7 +125,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_name', with: "Edited Event Name"
 			fill_in 'point_event_description', with: ""
 			click_on 'Save Changes to Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to have_content('Edited Event Name')
 		end
 
@@ -138,7 +138,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_name', with: ""
 			fill_in 'point_event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
 
@@ -151,7 +151,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_points', with: ""
 			fill_in 'point_event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
 
@@ -164,7 +164,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_points', with: 0
 			fill_in 'point_event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to have_content('Edited Test Description')
 		end
 
@@ -177,7 +177,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_points', with: -5
 			fill_in 'point_event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
 
@@ -190,7 +190,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_eventType', with: ""
 			fill_in 'point_event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Points Event'
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
 	end
@@ -201,7 +201,7 @@ RSpec.describe 'PointEvents', type: :feature do
 						description: 'Test Description',
 						points: 5,
 						eventType: 'Test Type')
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to have_content('Test Event')
 
 			visit delete_point_event_path(id: event.id)
@@ -211,7 +211,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			a.accept
 			sleep(1)
 
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
 
@@ -229,7 +229,7 @@ RSpec.describe 'PointEvents', type: :feature do
 						points: 5,
 						eventType: 'Test Type 3')
 
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to have_content('Test Event 1')
 			expect(page).to have_content('Test Event 2')
 			expect(page).to have_content('Test Event 3')
@@ -241,7 +241,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			a.accept
 			sleep(1)
 
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to have_content('Test Event 1')
 			expect(page).to_not have_content('Test Event 2')
 			expect(page).to have_content('Test Event 3')
@@ -253,7 +253,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			a2.accept
 			sleep(1)
 
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to_not have_content('Test Event 1')
 			expect(page).to_not have_content('Test Event 2')
 			expect(page).to have_content('Test Event 3')
@@ -265,7 +265,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			a3.accept
 			sleep(1)
 
-			visit point_event_index_path
+			visit event_index_path
 			expect(page).to_not have_content('Test Event 1')
 			expect(page).to_not have_content('Test Event 2')
 			expect(page).to_not have_content('Test Event 3')
