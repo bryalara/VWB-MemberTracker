@@ -23,12 +23,16 @@ Rails.application.routes.draw do
   resources :point_event do
   	member do
   		get :delete
+      get :attend
+      post :attend
   	end
   end
 
   resources :event do
   	member do
   		get :delete
+      get :attend
+      post :attend
   	end
   end
 end

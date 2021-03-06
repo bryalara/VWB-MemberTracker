@@ -13,6 +13,7 @@ class User < ApplicationRecord
         end
         User.import users, recursive: true
     end
+
     validates :email, presence: true, uniqueness: true
     validates :role, presence: true, numericality: {only_integer: true, :greater_than_or_equal_to => 0, :less_than =>2}
     validates :firstName, presence: true
@@ -23,4 +24,7 @@ class User < ApplicationRecord
     validates_inclusion_of :optInEmail, in: [true, false]
     validates_inclusion_of :approved, in: [true, false]
     validates :participationPoints, presence: true, numericality: {only_integer: true, :greater_than_or_equal_to => 0}
+
+    has_and_belongs_to_many :events, :uniq => true
+    has_and_belongs_to_many :point_events, :uniq => true
 end
