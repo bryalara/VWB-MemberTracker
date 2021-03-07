@@ -6,10 +6,31 @@ RSpec.describe 'Events', type: :feature do
 		login_with_oauth
 	end
 
-	describe 'index page' do
-		it 'shows the right content' do
+	describe 'Routes for' do
+		it 'index shows the right content' do
 			visit event_index_path
 			expect(page).to have_content('Events')
+		end
+
+		it 'qr shows the right content' do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
+			visit qr_event_path(id: event.id)
+			expect(page).to have_content('Test Event')
+	
+		end
+	
+		it 'attend shows the right content' do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
+			visit attend_event_path(id: event.id)
+			expect(page).to have_content('Test Event')
 		end
 	end
 
