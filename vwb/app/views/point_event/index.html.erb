@@ -18,7 +18,6 @@ th, td, tr {
 		<th>Event</th>
 		<th>Description</th>
 		<th>Points</th>
-		<th>Event Type</th>
 		<th>Actions</th>
 	</tr>
 
@@ -27,7 +26,6 @@ th, td, tr {
 		<td><%= pointEvent.name %></td>
 		<td><%= pointEvent.description %></td>
 		<td><%= pointEvent.points %></td>
-		<td><%= pointEvent.eventType %></td>
 
 		<td><%= link_to "Show", point_event_path(pointEvent) %></td>
 		<td><%= link_to "Edit", edit_point_event_path(pointEvent) %></td>

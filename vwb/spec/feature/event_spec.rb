@@ -19,7 +19,6 @@ RSpec.describe 'Events', type: :feature do
 			fill_in 'event_name', with: 'Test Event'
 			fill_in 'event_description', with: 'Test Description'
 			fill_in 'event_points', with: 5
-			fill_in 'event_eventType', with: 'Test Type'
 			fill_in 'event_startDate', with: DateTime.now
 			fill_in 'event_endDate', with: DateTime.now + 1.week
 		end
@@ -88,13 +87,6 @@ RSpec.describe 'Events', type: :feature do
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
-
-		it 'is not valid without an event type' do
-			fill_in 'event_eventType', with: nil
-			click_on 'Add Event'
-			visit event_index_path
-			expect(page).to_not have_content('Test Event')
-		end
 	end
 
 	describe 'Reading an existing event' do
@@ -102,14 +94,12 @@ RSpec.describe 'Events', type: :feature do
 			event = Event.create!(name: 'Test Event',
 						description: 'Test Description',
 						points: 5,
-						eventType: 'Test Type',
 						startDate: DateTime.now,
 						endDate: DateTime.now + 1.week)
 			visit event_path(id: event.id)
 			expect(page).to have_content('Test Event')
 			expect(page).to have_content('Test Description')
 			expect(page).to have_content('5')
-			expect(page).to have_content('Test Type')
 			expect(page).to have_content(Event.dateTimeDisplay(event.startDate))
 			expect(page).to have_content(Event.dateTimeDisplay(event.endDate))
 		end
@@ -121,7 +111,6 @@ RSpec.describe 'Events', type: :feature do
 			event = Event.create!(name: 'Test Event',
 						description: 'Test Description',
 						points: 5,
-						eventType: 'Test Type',
 						startDate: DateTime.now,
 						endDate: DateTime.now + 1.week)
 			visit edit_event_path(id: event.id)
@@ -197,14 +186,6 @@ RSpec.describe 'Events', type: :feature do
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
-
-		it 'is not valid without an event type' do
-			fill_in 'event_eventType', with: ""
-			fill_in 'event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Event'
-			visit event_index_path
-			expect(page).to_not have_content('Edited Test Description')
-		end
 	end
 
 	describe 'Deleting an event' do
@@ -212,7 +193,6 @@ RSpec.describe 'Events', type: :feature do
 			event = Event.create!(name: 'Test Event',
 						description: 'Test Description',
 						points: 5,
-						eventType: 'Test Type',
 						startDate: DateTime.now,
 						endDate: DateTime.now + 1.week)
 			visit event_index_path
@@ -234,19 +214,16 @@ RSpec.describe 'Events', type: :feature do
 			event1 = Event.create!(name: 'Test Event 1',
 						description: 'Test Description 1',
 						points: 5,
-						eventType: 'Test Type 1',
 						startDate: DateTime.now,
 						endDate: DateTime.now + 1.week)
 			event2 = Event.create!(name: 'Test Event 2',
 						description: 'Test Description 2',
 						points: 5,
-						eventType: 'Test Type 2',
 						startDate: DateTime.now,
 						endDate: DateTime.now + 1.week)
 			event3 = Event.create!(name: 'Test Event 3',
 						description: 'Test Description 3',
 						points: 5,
-						eventType: 'Test Type 3',
 						startDate: DateTime.now,
 						endDate: DateTime.now + 1.week)
 

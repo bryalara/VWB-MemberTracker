@@ -4,8 +4,7 @@ RSpec.describe PointEvent, :type => :model do
 	subject {
 		described_class.new(name: "Event Name",
 							description: "Sample Description",
-							points: 2,
-							eventType: "Cowabunga")
+							points: 2)
 	}
 	
 	it "has and belongs to many users" do
@@ -39,11 +38,6 @@ RSpec.describe PointEvent, :type => :model do
 
 	it "is not valid with negative points" do
 		subject.points = -1
-		expect(subject).to_not be_valid
-	end
-
-	it "is not valid without an event type" do
-		subject.eventType = nil
 		expect(subject).to_not be_valid
 	end
 end

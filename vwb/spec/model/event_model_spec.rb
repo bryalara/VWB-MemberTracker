@@ -6,8 +6,7 @@ RSpec.describe Event, :type => :model do
 							description: "Sample Description",
 							points: 2,
 							startDate: DateTime.now,
-							endDate: DateTime.now + 1.week,
-							eventType: "Cowabunga")
+							endDate: DateTime.now + 1.week)
 	}
 
 	it "has and belongs to many users" do
@@ -57,11 +56,6 @@ RSpec.describe Event, :type => :model do
 	it "is not valid if the end date is before the start date" do
 		subject.startDate = DateTime.now
 		subject.endDate = DateTime.now - 1.week
-		expect(subject).to_not be_valid
-	end
-
-	it "is not valid without an event type" do
-		subject.eventType = nil
 		expect(subject).to_not be_valid
 	end
 end
