@@ -17,8 +17,6 @@ RSpec.describe 'PointEvents', type: :feature do
 				points: 5)
 			visit qr_point_event_path(id: event.id)
 			expect(page).to have_content('Test Event')
-			sleep(5)
-
 		end
 
 		it 'attend shows the right content' do
@@ -27,7 +25,6 @@ RSpec.describe 'PointEvents', type: :feature do
 				points: 5)
 			visit attend_point_event_path(id: event.id)
 			expect(page).to have_content('Test Event')
-			sleep(5)
 		end
 	end
 
