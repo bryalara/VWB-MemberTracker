@@ -49,6 +49,11 @@ class EventController < ApplicationController
 		redirect_to event_index_path
 	end
 
+	def qr
+		@event = Event.find(params[:id])
+		@qrCode = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_event_path(@event))
+	end
+
 	def attend
 		@event = Event.find(params[:id])
 		@user = User.where(email: current_userlogin.email).first

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :point_event do
   	member do
   		get :delete
+      get :qr
       get :attend
       post :attend
   	end
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
   resources :event do
   	member do
   		get :delete
+      get :qr
       get :attend
       post :attend
   	end
