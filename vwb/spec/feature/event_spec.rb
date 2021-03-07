@@ -14,197 +14,83 @@ RSpec.describe 'Events', type: :feature do
 	end
 
 	describe 'Creating a new event' do
-		it 'is valid with valid inputs' do
+		setup do
 			visit new_event_path
 			fill_in 'event_name', with: 'Test Event'
 			fill_in 'event_description', with: 'Test Description'
 			fill_in 'event_points', with: 5
 			fill_in 'event_eventType', with: 'Test Type'
-			select '2021', :from => 'event_startDate_1i'
-			select 'February', :from => 'event_startDate_2i'
-			select '24', :from => 'event_startDate_3i'
-			select '12 PM', :from => 'event_startDate_4i'
-			select '00', :from => 'event_startDate_5i'
-			select '2021', :from => 'event_endDate_1i'
-			select 'February', :from => 'event_endDate_2i'
-			select '24', :from => 'event_endDate_3i'
-			select '01 PM', :from => 'event_endDate_4i'
-			select '00', :from => 'event_endDate_5i'
+			fill_in 'event_startDate', with: DateTime.now
+			fill_in 'event_endDate', with: DateTime.now + 1.week
+		end
+
+		it 'is valid with valid inputs' do
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to have_content('Test Event')
 		end
 
 		it 'is valid without a description' do
-			visit new_event_path
-			fill_in 'event_name', with: 'Test Event'
-			fill_in 'event_points', with: 5
-			fill_in 'event_eventType', with: 'Test Type'
-			select '2021', :from => 'event_startDate_1i'
-			select 'February', :from => 'event_startDate_2i'
-			select '24', :from => 'event_startDate_3i'
-			select '12 PM', :from => 'event_startDate_4i'
-			select '00', :from => 'event_startDate_5i'
-			select '2021', :from => 'event_endDate_1i'
-			select 'February', :from => 'event_endDate_2i'
-			select '24', :from => 'event_endDate_3i'
-			select '01 PM', :from => 'event_endDate_4i'
-			select '00', :from => 'event_endDate_5i'
+			fill_in 'event_description', with: ''
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to have_content('Test Event')
 		end
 
 		it 'is not valid without a name' do
-			visit new_event_path
-			fill_in 'event_description', with: 'Test Description'
-			fill_in 'event_points', with: 5
-			fill_in 'event_eventType', with: 'Test Type'
-			select '2021', :from => 'event_startDate_1i'
-			select 'February', :from => 'event_startDate_2i'
-			select '24', :from => 'event_startDate_3i'
-			select '12 PM', :from => 'event_startDate_4i'
-			select '00', :from => 'event_startDate_5i'
-			select '2021', :from => 'event_endDate_1i'
-			select 'February', :from => 'event_endDate_2i'
-			select '24', :from => 'event_endDate_3i'
-			select '01 PM', :from => 'event_endDate_4i'
-			select '00', :from => 'event_endDate_5i'
+			fill_in 'event_name', with: ''
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to_not have_content('Test Description')
 		end
 
 		it 'is not valid without points' do
-			visit new_event_path
-			fill_in 'event_name', with: 'Test Event'
-			fill_in 'event_description', with: 'Test Description'
-			fill_in 'event_eventType', with: 'Test Type'
-			select '2021', :from => 'event_startDate_1i'
-			select 'February', :from => 'event_startDate_2i'
-			select '24', :from => 'event_startDate_3i'
-			select '12 PM', :from => 'event_startDate_4i'
-			select '00', :from => 'event_startDate_5i'
-			select '2021', :from => 'event_endDate_1i'
-			select 'February', :from => 'event_endDate_2i'
-			select '24', :from => 'event_endDate_3i'
-			select '01 PM', :from => 'event_endDate_4i'
-			select '00', :from => 'event_endDate_5i'
+			fill_in 'event_points', with: nil
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
 
 		it 'is valid with 0 points' do
-			visit new_event_path
-			fill_in 'event_name', with: 'Test Event'
-			fill_in 'event_description', with: 'Test Description'
 			fill_in 'event_points', with: 0
-			fill_in 'event_eventType', with: 'Test Type'
-			select '2021', :from => 'event_startDate_1i'
-			select 'February', :from => 'event_startDate_2i'
-			select '24', :from => 'event_startDate_3i'
-			select '12 PM', :from => 'event_startDate_4i'
-			select '00', :from => 'event_startDate_5i'
-			select '2021', :from => 'event_endDate_1i'
-			select 'February', :from => 'event_endDate_2i'
-			select '24', :from => 'event_endDate_3i'
-			select '01 PM', :from => 'event_endDate_4i'
-			select '00', :from => 'event_endDate_5i'
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to have_content('Test Event')
 		end
 
 		it 'is not valid with negative points' do
-			visit new_event_path
-			fill_in 'event_name', with: 'Test Event'
-			fill_in 'event_description', with: 'Test Description'
 			fill_in 'event_points', with: -1
-			fill_in 'event_eventType', with: 'Test Type'
-			select '2021', :from => 'event_startDate_1i'
-			select 'February', :from => 'event_startDate_2i'
-			select '24', :from => 'event_startDate_3i'
-			select '12 PM', :from => 'event_startDate_4i'
-			select '00', :from => 'event_startDate_5i'
-			select '2021', :from => 'event_endDate_1i'
-			select 'February', :from => 'event_endDate_2i'
-			select '24', :from => 'event_endDate_3i'
-			select '01 PM', :from => 'event_endDate_4i'
-			select '00', :from => 'event_endDate_5i'
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
 
 		it 'is not valid without a start date' do
-			visit new_event_path
-			fill_in 'event_name', with: 'Test Event'
-			fill_in 'event_description', with: 'Test Description'
-			fill_in 'event_points', with: 5
-			fill_in 'event_eventType', with: 'Test Type'
-			select '2021', :from => 'event_endDate_1i'
-			select 'February', :from => 'event_endDate_2i'
-			select '24', :from => 'event_endDate_3i'
-			select '01 PM', :from => 'event_endDate_4i'
-			select '00', :from => 'event_endDate_5i'
+			fill_in 'event_startDate', with: ''
+			sleep(1)
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
 
 		it 'is not valid without an end date' do
-			visit new_event_path
-			fill_in 'event_name', with: 'Test Event'
-			fill_in 'event_description', with: 'Test Description'
-			fill_in 'event_points', with: 5
-			fill_in 'event_eventType', with: 'Test Type'
-			select '2021', :from => 'event_startDate_1i'
-			select 'February', :from => 'event_startDate_2i'
-			select '24', :from => 'event_startDate_3i'
-			select '12 PM', :from => 'event_startDate_4i'
-			select '00', :from => 'event_startDate_5i'
+			fill_in 'event_endDate', with: ''
+			sleep(1)
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
 
 		it 'is not valid if the end date is before the start date' do
-			visit new_event_path
-			fill_in 'event_name', with: 'Test Event'
-			fill_in 'event_description', with: 'Test Description'
-			fill_in 'event_points', with: 5
-			fill_in 'event_eventType', with: 'Test Type'
-			select '2021', :from => 'event_startDate_1i'
-			select 'February', :from => 'event_startDate_2i'
-			select '24', :from => 'event_startDate_3i'
-			select '12 PM', :from => 'event_startDate_4i'
-			select '00', :from => 'event_startDate_5i'
-			select '2021', :from => 'event_endDate_1i'
-			select 'February', :from => 'event_endDate_2i'
-			select '24', :from => 'event_endDate_3i'
-			select '05 AM', :from => 'event_endDate_4i'
-			select '00', :from => 'event_endDate_5i'
+			fill_in 'event_endDate', with: DateTime.now - 1.week
+			sleep(1)
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
 
 		it 'is not valid without an event type' do
-			visit new_event_path
-			fill_in 'event_name', with: 'Test Event'
-			fill_in 'event_description', with: 'Test Description'
-			fill_in 'event_points', with: 5
-			select '2021', :from => 'event_startDate_1i'
-			select 'February', :from => 'event_startDate_2i'
-			select '24', :from => 'event_startDate_3i'
-			select '12 PM', :from => 'event_startDate_4i'
-			select '00', :from => 'event_startDate_5i'
-			select '2021', :from => 'event_endDate_1i'
-			select 'February', :from => 'event_endDate_2i'
-			select '24', :from => 'event_endDate_3i'
-			select '01 PM', :from => 'event_endDate_4i'
-			select '00', :from => 'event_endDate_5i'
+			fill_in 'event_eventType', with: nil
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
@@ -230,7 +116,8 @@ RSpec.describe 'Events', type: :feature do
 	end
 
 	describe 'Updating an event' do
-		it 'is valid with valid changes' do
+
+		setup do
 			event = Event.create!(name: 'Test Event',
 						description: 'Test Description',
 						points: 5,
@@ -238,6 +125,9 @@ RSpec.describe 'Events', type: :feature do
 						startDate: DateTime.now,
 						endDate: DateTime.now + 1.week)
 			visit edit_event_path(id: event.id)
+		end
+
+		it 'is valid with valid changes' do
 			fill_in 'event_name', with: "Edited Event Name"
 			click_on 'Save Changes to Event'
 			visit event_index_path
@@ -245,13 +135,6 @@ RSpec.describe 'Events', type: :feature do
 		end
 
 		it 'is valid with the description deleted' do
-			event = Event.create!(name: 'Test Event',
-						description: 'Test Description',
-						points: 5,
-						eventType: 'Test Type',
-						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
-			visit edit_event_path(id: event.id)
 			fill_in 'event_name', with: "Edited Event Name"
 			fill_in 'event_description', with: ""
 			click_on 'Save Changes to Event'
@@ -260,13 +143,6 @@ RSpec.describe 'Events', type: :feature do
 		end
 
 		it 'is not valid without a name' do
-			event = Event.create!(name: 'Test Event',
-						description: 'Test Description',
-						points: 5,
-						eventType: 'Test Type',
-						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
-			visit edit_event_path(id: event.id)
 			fill_in 'event_name', with: ""
 			fill_in 'event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Event'
@@ -275,13 +151,6 @@ RSpec.describe 'Events', type: :feature do
 		end
 
 		it 'is not valid without points' do
-			event = Event.create!(name: 'Test Event',
-						description: 'Test Description',
-						points: 5,
-						eventType: 'Test Type',
-						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
-			visit edit_event_path(id: event.id)
 			fill_in 'event_points', with: ""
 			fill_in 'event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Event'
@@ -290,13 +159,6 @@ RSpec.describe 'Events', type: :feature do
 		end
 
 		it 'is valid with 0 points' do
-			event = Event.create!(name: 'Test Event',
-						description: 'Test Description',
-						points: 5,
-						eventType: 'Test Type',
-						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
-			visit edit_event_path(id: event.id)
 			fill_in 'event_points', with: 0
 			fill_in 'event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Event'
@@ -305,13 +167,6 @@ RSpec.describe 'Events', type: :feature do
 		end
 
 		it 'is not valid with negative points' do
-			event = Event.create!(name: 'Test Event',
-						description: 'Test Description',
-						points: 5,
-						eventType: 'Test Type',
-						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
-			visit edit_event_path(id: event.id)
 			fill_in 'event_points', with: -5
 			fill_in 'event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Event'
@@ -320,18 +175,7 @@ RSpec.describe 'Events', type: :feature do
 		end
 
 		it 'is not valid without a start date' do
-			event = Event.create!(name: 'Test Event',
-						description: 'Test Description',
-						points: 5,
-						eventType: 'Test Type',
-						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
-			visit edit_event_path(id: event.id)
-			select "Year", :from => 'event_startDate_1i'
-			select "Month", :from => 'event_startDate_2i'
-			select "Day", :from => 'event_startDate_3i'
-			select "Hour", :from => 'event_startDate_4i'
-			select "Min", :from => 'event_startDate_5i'
+			fill_in 'event_startDate', with: ""
 			fill_in 'event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Event'
 			visit event_index_path
@@ -339,18 +183,7 @@ RSpec.describe 'Events', type: :feature do
 		end
 
 		it 'is not valid without an end date' do
-			event = Event.create!(name: 'Test Event',
-						description: 'Test Description',
-						points: 5,
-						eventType: 'Test Type',
-						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
-			visit edit_event_path(id: event.id)
-			select "Year", :from => 'event_endDate_1i'
-			select "Month", :from => 'event_endDate_2i'
-			select "Day", :from => 'event_endDate_3i'
-			select "Hour", :from => 'event_endDate_4i'
-			select "Min", :from => 'event_endDate_5i'
+			fill_in 'event_endDate', with: ""
 			fill_in 'event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Event'
 			visit event_index_path
@@ -358,21 +191,7 @@ RSpec.describe 'Events', type: :feature do
 		end
 
 		it 'is not valid if the end date is before the start date' do
-			event = Event.create!(name: 'Test Event',
-						description: 'Test Description',
-						points: 5,
-						eventType: 'Test Type',
-						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
-
-			futureDate = event.startDate + 2.week
-
-			visit edit_event_path(id: event.id)
-			select futureDate.strftime("%Y"), :from => 'event_startDate_1i'
-			select futureDate.strftime("%B"), :from => 'event_startDate_2i'
-			select futureDate.strftime("%d"), :from => 'event_startDate_3i'
-			select futureDate.strftime("%I %p"), :from => 'event_startDate_4i'
-			select futureDate.strftime("%M"), :from => 'event_startDate_5i'
+			fill_in 'event_endDate', with: DateTime.now - 1.week
 			fill_in 'event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Event'
 			visit event_index_path
@@ -380,13 +199,6 @@ RSpec.describe 'Events', type: :feature do
 		end
 
 		it 'is not valid without an event type' do
-			event = Event.create!(name: 'Test Event',
-						description: 'Test Description',
-						points: 5,
-						eventType: 'Test Type',
-						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
-			visit edit_event_path(id: event.id)
 			fill_in 'event_eventType', with: ""
 			fill_in 'event_description', with: "Edited Test Description"
 			click_on 'Save Changes to Event'
