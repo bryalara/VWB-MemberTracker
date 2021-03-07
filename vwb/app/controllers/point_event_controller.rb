@@ -51,6 +51,25 @@ class PointEventController < ApplicationController
 		redirect_to event_index_path
 	end
 
+	def qr
+		@pointEvent = PointEvent.find(params[:id])
+		@qrCode = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_point_event_path(@pointEvent))
+	end
+
+	def attend
+		@pointEvent = PointEvent.find(params[:id])
+		@user = User.where(email: current_userlogin.email).first
+
+		if request.post?
+			@pointEvent.users << @user
+			if @pointEvent.save
+				# nothing for now
+			else
+				render :attend
+			end
+		end
+	end
+
 	private
 		def pointEventParams
 			params.require(:point_event).permit(:points, :name, :description, :eventType)

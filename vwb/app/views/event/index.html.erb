@@ -36,6 +36,7 @@ th, td, tr {
 		<td><%= link_to "Show", event_path(event) %></td>
 		<td><%= link_to "Edit", edit_event_path(event) %></td>
 		<td><%= link_to "Delete", delete_event_path(event) %></td>
+		<td><%= link_to "QR", qr_event_path(event) %></td>
 	</tr>
 	<% end %>
 </table>
