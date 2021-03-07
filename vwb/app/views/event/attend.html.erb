@@ -1,0 +1,7 @@
+<h1>Event: <%= @event.name %></h1>
+<h1>User: <%= @user.nil? ? "Register first!" : @user.email %></h1>
+
+<%= if !@user.nil?
+        link_to "Click to attend!", attend_event_path(@event), method: :post 
+    end
+%>

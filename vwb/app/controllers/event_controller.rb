@@ -17,7 +17,6 @@ class EventController < ApplicationController
 	def create
 		@event = Event.new(eventParams)
 
-		#if true
 		if @event.save
 			redirect_to event_index_path
 		else
@@ -32,7 +31,6 @@ class EventController < ApplicationController
 	def update
 		@event = Event.find(params[:id])
 
-		#if true
 		if @event.update(eventParams)
 			redirect_to @event
 		else
@@ -49,6 +47,20 @@ class EventController < ApplicationController
 		@event.destroy
 
 		redirect_to event_index_path
+	end
+
+	def attend
+		@event = Event.find(params[:id])
+		@user = User.where(email: current_userlogin.email).first
+
+		if request.post?
+			@event.users << @user
+			if @event.save
+				# nothing for now
+			else
+				render :attend
+			end
+		end
 	end
 
 	private
