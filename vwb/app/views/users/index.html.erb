@@ -39,7 +39,7 @@ tr:nth-child(even) {
         <td><%=  user.classification %> </td>
         <td><%=  user.role == 0 ? :"Member" : :"Admin"  %> </td>
         <td><%=  user.tShirtSize  %> </td>
-        <td><%=  user.participationPoints  %> </td>
+        <td><%=  user.get_total_points(user) %> </td>
         <td><%= link_to "View Details", user %> </td>
     </tr>
 <% end %>

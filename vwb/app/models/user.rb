@@ -14,6 +14,17 @@ class User < ApplicationRecord
         User.import users, recursive: true
     end
 
+    def get_total_points(user)
+        totalPoints = user.participationPoints
+        user.events.each do |event|
+            totalPoints += event.points
+        end
+        user.point_events.each do |pEvent|
+            totalPoints += pEvent.points
+        end
+        totalPoints
+    end
+
     validates :email, presence: true, uniqueness: true
     validates :role, presence: true, numericality: {only_integer: true, :greater_than_or_equal_to => 0, :less_than =>2}
     validates :firstName, presence: true
