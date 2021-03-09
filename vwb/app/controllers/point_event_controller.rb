@@ -61,11 +61,12 @@ class PointEventController < ApplicationController
 		@user = User.where(email: current_userlogin.email).first
 
 		if request.post?
-			@pointEvent.users << @user
-			if @pointEvent.save
-				# nothing for now
+			begin 
+				@pointEvent.users << @user
+			rescue ActiveRecord::RecordNotUnique
+				redirect_to attend_point_event_path(@pointEvent)
 			else
-				render :attend
+				# do nothing
 			end
 		end
 	end

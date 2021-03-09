@@ -36,6 +36,6 @@ class User < ApplicationRecord
     validates_inclusion_of :approved, in: [true, false]
     validates :participationPoints, presence: true, numericality: {only_integer: true, :greater_than_or_equal_to => 0}
 
-    has_and_belongs_to_many :events, :uniq => true
-    has_and_belongs_to_many :point_events, :uniq => true
+    has_and_belongs_to_many :events, -> { distinct }
+    has_and_belongs_to_many :point_events, -> { distinct }
 end

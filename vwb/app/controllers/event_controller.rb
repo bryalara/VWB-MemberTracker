@@ -59,11 +59,12 @@ class EventController < ApplicationController
 		@user = User.where(email: current_userlogin.email).first
 
 		if request.post?
-			@event.users << @user
-			if @event.save
-				# nothing for now
+			begin 
+				@event.users << @user
+			rescue ActiveRecord::RecordNotUnique
+				redirect_to attend_event_path(@event)
 			else
-				render :attend
+				# do nothing
 			end
 		end
 	end

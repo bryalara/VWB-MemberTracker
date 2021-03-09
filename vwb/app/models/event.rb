@@ -5,7 +5,7 @@ class Event < ApplicationRecord
 	validates :name, presence:true
 	#validates :description, presence:true
 
-	has_and_belongs_to_many :users, :before_add => :validate_not_duplicate
+	has_and_belongs_to_many :users, -> { distinct }
 
 	def endDateIsBigger?
 		return if [endDate.blank?, startDate.blank?].any?
@@ -17,10 +17,5 @@ class Event < ApplicationRecord
 	def self.dateTimeDisplay(datetime)
 		return if datetime.blank?
 		datetime.strftime("%Y/%m/%e %I:%M %p")
-	end
-
-	private
-	def validate_not_duplicate(user)
-		rails "user already has these points" if users.include? user
 	end
 end
