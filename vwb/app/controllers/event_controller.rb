@@ -18,6 +18,7 @@ class EventController < ApplicationController
 		@event = Event.new(eventParams)
 
 		if @event.save
+			flash[:notice] = "Successfully created #{@event.name}."
 			redirect_to event_index_path
 		else
 			render :new
@@ -32,6 +33,7 @@ class EventController < ApplicationController
 		@event = Event.find(params[:id])
 
 		if @event.update(eventParams)
+			flash[:notice] = "Successfully edited #{@event.name}."
 			redirect_to @event
 		else
 			render :edit
@@ -46,6 +48,7 @@ class EventController < ApplicationController
 		@event = Event.find(params[:id])
 		@event.destroy
 
+		flash[:notice] = "Successfully deleted #{@event.name}."
 		redirect_to event_index_path
 	end
 
@@ -62,8 +65,10 @@ class EventController < ApplicationController
 			begin 
 				@event.users << @user
 			rescue ActiveRecord::RecordNotUnique
+				flash[:notice] = "You have already attended #{@event.name}!"
 				redirect_to attend_event_path(@event)
 			else
+				flash[:notice] = "Successfully attended #{@event.name}!"
 				# do nothing
 			end
 		end
@@ -71,6 +76,6 @@ class EventController < ApplicationController
 
 	private
 		def eventParams
-			params.require(:event).permit(:points, :name, :description, :eventType, :startDate, :endDate)
+			params.require(:event).permit(:points, :name, :description, :startDate, :endDate)
 		end
 end

@@ -17,10 +17,11 @@ class PointEventController < ApplicationController
 	def create
 		@pointEvent = PointEvent.new(pointEventParams)
 
-		#if true
 		if @pointEvent.save
+			flash[:notice] = "Successfully created #{@pointEvent.name}."
 			redirect_to event_index_path
 		else
+			flash[:notice] = "Please fill in the required fields."
 			render :new
 		end
 	end
@@ -32,9 +33,9 @@ class PointEventController < ApplicationController
 	def update
 		@pointEvent = PointEvent.find(params[:id])
 
-		#if true
 		if @pointEvent.update(pointEventParams)
-			redirect_to event_index_path
+			flash[:notice] = "Successfully edited #{@pointEvent.name}."
+			redirect_to @pointEvent
 		else
 			render :edit
 		end
@@ -73,7 +74,7 @@ class PointEventController < ApplicationController
 
 	private
 		def pointEventParams
-			params.require(:point_event).permit(:points, :name, :description, :eventType)
+			params.require(:point_event).permit(:points, :name, :description)
 		end
 end
 

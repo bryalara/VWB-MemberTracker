@@ -1,3 +1,9 @@
+<% flash.each do |type, msg| %>
+	<div class="alert">
+		<%= msg %>
+	</div>
+<% end %>
+
 <%= link_to "Back to Events", event_index_path %>
 
 <h1>Event Details</h1>

@@ -11,6 +11,12 @@ th, td, tr {
 }
 </style>
 
+<% flash.each do |type, msg| %>
+	<div class="alert">
+		<%= msg %>
+	</div>
+<% end %>
+
 <h1>Events</h1>
 <%= link_to "Add an Event", new_event_path(@events) %>
 <table style="text-align: left">

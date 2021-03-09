@@ -1,3 +1,9 @@
+<% flash.each do |type, msg| %>
+	<div class="alert">
+		<%= msg %>
+	</div>
+<% end %>
+
 <%= link_to "Back to Events", event_index_path %>
 
 <h1>Edit an Event</h1>
@@ -8,7 +14,7 @@
 	<table style="text-align: left">
 		<tr>
 			<th><%= form.label :name %>*</th>
-			<td><%= form.text_field :name %></td>
+			<td><%= form.text_field :name, required: true %></td>
 		</tr>
 		<tr>
 			<th><%= form.label :description %></th>
@@ -16,15 +22,15 @@
 		</tr>
 		<tr>
 			<th><%= form.label :points %>*</th>
-			<td><%= form.number_field :points %></td>
+			<td><%= form.number_field :points, required: true %></td>
 		</tr>
 		<tr>
 			<th>Start Time*</th>
-			<td><%= form.datetime_field :startDate %></td>
+			<td><%= form.datetime_field :startDate, required: true %></td>
 		</tr>
 		<tr>
 			<th>End Time*</th>
-			<td><%= form.datetime_field :endDate %></td>
+			<td><%= form.datetime_field :endDate, required: true %></td>
 		</tr>
 	</table>
 
