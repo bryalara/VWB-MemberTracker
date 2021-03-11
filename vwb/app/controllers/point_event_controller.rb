@@ -62,12 +62,17 @@ class PointEventController < ApplicationController
 		@user = User.where(email: current_userlogin.email).first
 
 		if request.post?
-			begin 
-				@pointEvent.users << @user
+			begin
+				if @user.approved == true
+					@pointEvent.users << @user
+					flash[:notice] = "Successfully attended #{@pointEvent.name}!"
+				else
+					flash[:notice] = "Could not attend the points event because #{@user.email} has not been approved by an administrator."
+					redirect_to attend_point_event_path(@pointEvent)
+				end
 			rescue ActiveRecord::RecordNotUnique
+				flash[:notice] = "You have already attended #{@pointEvent.name}!"
 				redirect_to attend_point_event_path(@pointEvent)
-			else
-				# do nothing
 			end
 		end
 	end

@@ -62,14 +62,17 @@ class EventController < ApplicationController
 		@user = User.where(email: current_userlogin.email).first
 
 		if request.post?
-			begin 
-				@event.users << @user
+			begin
+				if @user.approved == true
+					@event.users << @user
+					flash[:notice] = "Successfully attended #{@event.name}!"
+				else
+					flash[:notice] = "Could not attend the event because #{@user.email} has not been approved by an administrator."
+					redirect_to attend_event_path(@event)
+				end
 			rescue ActiveRecord::RecordNotUnique
 				flash[:notice] = "You have already attended #{@event.name}!"
 				redirect_to attend_event_path(@event)
-			else
-				flash[:notice] = "Successfully attended #{@event.name}!"
-				# do nothing
 			end
 		end
 	end
