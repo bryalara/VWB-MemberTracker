@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # http_basic_authenticate_with name: "vwb", password: "password"
 
   def index
+    @user = User.find_by_email(current_userlogin.email)
     @users= User.where(approved: true)
   end
 
@@ -17,7 +18,11 @@ class UsersController < ApplicationController
   end
   
   def new
-    @user = User.new
+    if User.find_by_email(current_userlogin.email).role == 0
+      redirect_to users_path, notice: "You are not an Admin"
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -61,6 +66,10 @@ class UsersController < ApplicationController
 
   def pendingApproval
     @users = User.where(approved: false)
+  end
+
+  def registration
+    @user = User.new
   end
 
   private

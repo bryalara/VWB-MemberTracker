@@ -46,19 +46,19 @@ ActiveRecord::Schema.define(version: 2021_02_25_181553) do
   end
 
   create_table "users", force: :cascade do |t|
-    
-    t.string "email", null: false
-    t.integer "role", null: false
-    t.string "firstName", null: false
-    t.string "lastName", null: false
-    t.string "phoneNumber", null: false
-    t.string "classification", null: false
-    t.string "tShirtSize", null: false
-    t.boolean "optInEmail", null: false
-    t.integer "participationPoints", null: false
-    t.boolean "approved", null: false
+    t.string "email", default: "emailneeded", null: false
+    t.integer "role", default: 0, null: false
+    t.string "firstName", default: "FirstName", null: false
+    t.string "lastName", default: "LastName", null: false
+    t.string "phoneNumber", default: "1234567890", null: false
+    t.string "classification", default: "Freshmen", null: false
+    t.string "tShirtSize", default: "M", null: false
+    t.boolean "optInEmail", default: true, null: false
+    t.integer "participationPoints", default: 0, null: false
+    t.boolean "approved", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
