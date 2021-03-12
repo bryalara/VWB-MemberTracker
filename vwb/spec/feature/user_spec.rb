@@ -819,5 +819,39 @@ RSpec.describe 'Users', type: :feature do
 				expect(page).to have_content("Register first!")
 			end
 		end
+
+		describe 'The correct amount of points is displayed in the users dashboard.' do
+			setup do
+				user = User.create!(email: 'test@gmail.com',
+									role: 0,
+									firstName: 'Test',
+									lastName: 'Dummy',
+									phoneNumber: '5555555555',
+									tShirtSize: 'M',
+									participationPoints: 5,
+									classification: 'Senior',
+									optInEmail: true,
+									approved: true)
+			end
+
+			it 'A user with 5 points attends an event and point event for 5 points each has 15 points' do
+				visit attend_event_path(event)
+				click_on 'Click to attend!'
+				sleep(1)
+				visit attend_point_event_path(pointEvent)
+				click_on 'Click to attend!'
+
+				visit users_path(id: user.id)
+				expect(page).to have_content("15")
+			end
+
+			it 'A user with 5 points attends an event for 5 points and has 10 points' do
+				visit attend_event_path(event)
+				click_on 'Click to attend!'
+
+				visit users_path(id: user.id)
+				expect(page).to have_content("10")
+			end
+		end
 	end
 end
