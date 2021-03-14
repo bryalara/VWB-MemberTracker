@@ -1,5 +1,4 @@
 name: CI/CD
-
 jobs:
   build:
     runs-on: ubuntu-latest
