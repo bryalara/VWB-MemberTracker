@@ -77,6 +77,18 @@ class PointEventController < ApplicationController
 		end
 	end
 
+	def destroy_user
+		@pointEvent = PointEvent.find(params[:id])
+		@user = User.find(params[:user_id])
+
+		if @pointEvent.users.delete(@user)
+			flash[:notice] = "Successfully removed #{@user.firstName} #{@user.lastName} from #{@pointEvent.name}."
+		else
+			flash[:notice] = "#{@user.firstName} #{@user.lastName} has already been removed from #{@pointEvent.name}."
+		end
+		redirect_to edit_point_event_path(@pointEvent)
+	end
+
 	private
 		def pointEventParams
 			params.require(:point_event).permit(:points, :name, :description)

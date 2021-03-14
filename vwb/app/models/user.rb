@@ -15,12 +15,12 @@ class User < ApplicationRecord
     end
 
     def get_total_points(user)
-        totalPoints = user.participationPoints
+        totalPoints = user.participationPoints  # initial points user has
         user.events.each do |event|
-            totalPoints += event.points
+            totalPoints += event.points         # points from events attended
         end
         user.point_events.each do |pEvent|
-            totalPoints += pEvent.points
+            totalPoints += pEvent.points        # points from points attended
         end
         totalPoints
     end

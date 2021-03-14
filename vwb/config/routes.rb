@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get :qr
       get :attend
       post :attend
+      delete '/user/:user_id/destroy' => 'point_event#destroy_user', :as => 'delete_user'
   	end
   end
 
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
       get :qr
       get :attend
       post :attend
+      delete '/user/:user_id/destroy' => 'event#destroy_user', :as => 'delete_user'
   	end
   end
 end

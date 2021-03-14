@@ -77,6 +77,18 @@ class EventController < ApplicationController
 		end
 	end
 
+	def destroy_user
+		@event = Event.find(params[:id])
+		@user = User.find(params[:user_id])
+
+		if @event.users.delete(@user)
+			flash[:notice] = "Successfully removed #{@user.firstName} #{@user.lastName} from #{@event.name}."
+		else
+			flash[:notice] = "#{@user.firstName} #{@user.lastName} has already been removed from #{@event.name}."
+		end
+		redirect_to edit_event_path(@event)
+	end
+
 	private
 		def eventParams
 			params.require(:event).permit(:points, :name, :description, :startDate, :endDate)
