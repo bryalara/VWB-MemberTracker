@@ -33,6 +33,7 @@
       <ul class="nav navbar-nav" style=" text-align: center">
         <li class="<%= request.env['PATH_INFO']=='/' ? :'active' : :'' %>"><a href="/">Home</a></li>
         <li class="<%= request.env['PATH_INFO']=='/pages/member' ? :'active' : :'' %>"><a href="pages/member">Member Page</a></li>
+        <li class="<%= request.env['PATH_INFO']=='/pages/admin' ? :'active' : :'' %>"><a href="pages/admin">Admin Page</a></li>
         <li class="<%= request.env['PATH_INFO']=='/event' ? :'active' : :'' %>"><a href="<%= event_index_path %>">Events</a></li>
         <li class="<%= request.env['PATH_INFO']=='/users' ? :'active' : :'' %>"><a href="<%= users_path %>">Users</a></li>
       </ul>

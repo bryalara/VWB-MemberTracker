@@ -8321,3 +8321,738 @@ puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.7) lib/puma/server.rb:472:in `process_client'
 puma (4.3.7) lib/puma/server.rb:328:in `block in run'
 puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-03-11 20:15:16 -0600
+  
+PG::ConnectionBad (could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+):
+  
+pg (1.2.3) lib/pg.rb:58:in `initialize'
+pg (1.2.3) lib/pg.rb:58:in `new'
+pg (1.2.3) lib/pg.rb:58:in `connect'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/postgresql_adapter.rb:46:in `postgresql_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:1119:in `retrieve_connection'
+activerecord (6.0.3.5) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
+activerecord (6.0.3.5) lib/active_record/connection_handling.rb:189:in `connection'
+activerecord (6.0.3.5) lib/active_record/migration.rb:562:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-03-11 20:16:48 -0600
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 303)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Hash: 578d4d8dc2c2d9f4f1f9
+Version: webpack 4.46.0
+Time: 21150ms
+Built at: 03/11/2021 8:17:16 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-a7bea85c5253c0509ac2.js    1.8 MiB  application  [emitted] [immutable]  application
+js/application-a7bea85c5253c0509ac2.js.map   2.02 MiB  application  [emitted] [dev]        application
+           js/home-17e5bc1778d41e6820fd.js    316 KiB         home  [emitted] [immutable]  home
+       js/home-17e5bc1778d41e6820fd.js.map    373 KiB         home  [emitted] [dev]        home
+         js/member-29d875d4db036578a966.js    316 KiB       member  [emitted] [immutable]  member
+     js/member-29d875d4db036578a966.js.map    373 KiB       member  [emitted] [dev]        member
+                             manifest.json  958 bytes               [emitted]              
+Entrypoint application = js/application-a7bea85c5253c0509ac2.js js/application-a7bea85c5253c0509ac2.js.map
+Entrypoint home = js/home-17e5bc1778d41e6820fd.js js/home-17e5bc1778d41e6820fd.js.map
+Entrypoint member = js/member-29d875d4db036578a966.js js/member-29d875d4db036578a966.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/home/bootstrap/css/bootstrap.min.css] 627 bytes {application} [built]
+[./app/javascript/home/bootstrap/js/bootstrap.bundle.min.js] 111 KiB {application} [built]
+[./app/javascript/home/jquery-easing/jquery.easing.min.js] 4.19 KiB {application} [built]
+[./app/javascript/home/jquery/jquery.min.js] 133 KiB {application} [built]
+[./app/javascript/packs/application.js] 1.2 KiB {application} [built]
+[./app/javascript/packs/home.js] 1020 bytes {home} {application} [built]
+[./app/javascript/packs/member.js] 1.11 KiB {member} [built]
+[./app/javascript/stylesheets/application.scss] 664 bytes {application} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./app/javascript/home/bootstrap/css/bootstrap.min.css] ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./app/javascript/home/bootstrap/css/bootstrap.min.css 914 KiB {application} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/stylesheets/application.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/javascript/stylesheets/application.scss 1.26 KiB {application} [built] [failed] [1 error]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} {home} {member} [built]
+    + 8 hidden modules
+
+ERROR in ./app/javascript/stylesheets/application.scss (./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/javascript/stylesheets/application.scss)
+Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Error: Node Sass does not yet support your current environment: Linux 64-bit with Unsupported runtime (88)
+For more information on which environments are supported please see:
+https://github.com/sass/node-sass/releases/tag/v4.14.1
+    at module.exports (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/node-sass/lib/binding.js:13:13)
+    at Object.<anonymous> (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1121:10)
+    at Module.load (node:internal/modules/cjs/loader:972:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:813:14)
+    at Module.require (node:internal/modules/cjs/loader:996:19)
+    at require (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at getDefaultSassImpl (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/sass-loader/dist/index.js:198:10)
+    at Object.loader (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/sass-loader/dist/index.js:80:29)
+ @ ./app/javascript/stylesheets/application.scss 2:26-228
+ @ ./app/javascript/packs/application.js
+
+Completed 200 OK in 28147ms (Views: 28131.0ms | ActiveRecord: 0.0ms | Allocations: 12100)
+
+
+Started GET "/pages/member" for 127.0.0.1 at 2021-03-11 20:17:56 -0600
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 53.0ms | Allocations: 1974)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 143ms (Views: 141.0ms | ActiveRecord: 0.0ms | Allocations: 7345)
+
+
+Started GET "/event" for 127.0.0.1 at 2021-03-11 20:17:59 -0600
+Processing by EventController#index as HTML
+Completed 401 Unauthorized in 17ms (ActiveRecord: 0.0ms | Allocations: 1148)
+
+
+Started GET "/userlogins/sign_in" for 127.0.0.1 at 2021-03-11 20:18:00 -0600
+Processing by Userlogins::SessionsController#new as HTML
+  Rendering userlogins/sessions/new.html.erb within layouts/application
+  Rendered userlogins/sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 134)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 139ms (Views: 64.7ms | ActiveRecord: 26.6ms | Allocations: 10813)
+
+
+Started GET "/userlogins/auth/google_oauth2" for 127.0.0.1 at 2021-03-11 20:18:03 -0600
+Started GET "/userlogins/sign_out" for 127.0.0.1 at 2021-03-11 20:18:25 -0600
+Processing by Userlogins::SessionsController#destroy as HTML
+Redirected to http://127.0.0.1:3000/userlogins/sign_in
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 15ms (ActiveRecord: 0.0ms | Allocations: 520)
+
+
+Started GET "/userlogins/sign_in" for 127.0.0.1 at 2021-03-11 20:18:26 -0600
+Processing by Userlogins::SessionsController#new as HTML
+  Rendering userlogins/sessions/new.html.erb within layouts/application
+  Rendered userlogins/sessions/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 37)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 90ms (Views: 86.6ms | ActiveRecord: 0.0ms | Allocations: 5100)
+
+
+Started GET "/userlogins/auth/google_oauth2" for 127.0.0.1 at 2021-03-11 20:18:27 -0600
+Started GET "/users/sign_up" for ::1 at 2021-03-11 20:27:12 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"sign_up"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 245)
+
+
+Started GET "/userlogins/sign_in" for ::1 at 2021-03-11 20:27:12 -0600
+Processing by Userlogins::SessionsController#new as HTML
+  Rendering userlogins/sessions/new.html.erb within layouts/application
+  Rendered userlogins/sessions/new.html.erb within layouts/application (Duration: 0.2ms | Allocations: 36)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 50.2ms | ActiveRecord: 0.0ms | Allocations: 5079)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-11 20:27:17 -0600
+Started GET "/userlogins/auth/google_oauth2/callback?state=2e1d8aed7f28362a8a5a2c2b4e797dee4d1747e581ec8501&code=4%2F0AY0e-g5-S0YnBR0roWMsl6ljVCbQXKWGgCjJY4au4S_8F7x5upL56zDxmDhiGMD2o-xbmA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2021-03-11 20:27:29 -0600
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"2e1d8aed7f28362a8a5a2c2b4e797dee4d1747e581ec8501", "code"=>"4/0AY0e-g5-S0YnBR0roWMsl6ljVCbQXKWGgCjJY4au4S_8F7x5upL56zDxmDhiGMD2o-xbmA", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent"}
+  [1m[36mUserlogin Load (7.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "sainikhilnaru@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUserlogin Create (12.7ms)[0m  [1m[32mINSERT INTO "userlogins" ("email", "full_name", "uid", "avatar_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "sainikhilnaru@gmail.com"], ["full_name", "Sainikhil Naru"], ["uid", "110633225107755528943"], ["avatar_url", "https://lh4.googleusercontent.com/-oz73mGu095I/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckS9vQSBtBGIYyg0zW8cfrbn6XDtA/s96-c/photo.jpg"], ["created_at", "2021-03-12 02:27:30.348904"], ["updated_at", "2021-03-12 02:27:30.348904"]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/userlogin.rb:7:in `from_google'
+Redirected to http://localhost:3000/
+Completed 302 Found in 88ms (ActiveRecord: 25.4ms | Allocations: 4674)
+
+
+Started GET "/" for ::1 at 2021-03-11 20:27:30 -0600
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 79ms (Views: 76.1ms | ActiveRecord: 0.0ms | Allocations: 4807)
+
+
+Started GET "/users" for ::1 at 2021-03-11 20:28:50 -0600
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (2.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:33
+  Rendered users/index.html.erb within layouts/application (Duration: 18.8ms | Allocations: 1466)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 475ms (Views: 112.6ms | ActiveRecord: 30.9ms | Allocations: 24002)
+
+
+Started GET "/" for ::1 at 2021-03-15 03:52:11 -0500
+  
+PG::ConnectionBad (could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+):
+  
+pg (1.2.3) lib/pg.rb:58:in `initialize'
+pg (1.2.3) lib/pg.rb:58:in `new'
+pg (1.2.3) lib/pg.rb:58:in `connect'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/postgresql_adapter.rb:46:in `postgresql_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
+activerecord (6.0.3.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:1119:in `retrieve_connection'
+activerecord (6.0.3.5) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
+activerecord (6.0.3.5) lib/active_record/connection_handling.rb:189:in `connection'
+activerecord (6.0.3.5) lib/active_record/migration.rb:562:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-03-15 03:53:04 -0500
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 138ms (Views: 124.9ms | ActiveRecord: 0.0ms | Allocations: 10702)
+
+
+Started GET "/login" for ::1 at 2021-03-15 03:53:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/sign_up" for ::1 at 2021-03-15 03:54:14 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"sign_up"}
+  [1m[36mUserlogin Load (3.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `show'
+Completed 404 Not Found in 104ms (ActiveRecord: 23.7ms | Allocations: 15921)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=sign_up):
+  
+app/controllers/users_controller.rb:16:in `show'
+Started GET "/users/sign_up" for ::1 at 2021-03-15 03:54:22 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"sign_up"}
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `show'
+Completed 404 Not Found in 7ms (ActiveRecord: 1.0ms | Allocations: 2773)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=sign_up):
+  
+app/controllers/users_controller.rb:16:in `show'
+Started GET "/users/" for ::1 at 2021-03-15 03:54:32 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:33
+  Rendered users/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1366)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 65ms (Views: 58.8ms | ActiveRecord: 1.4ms | Allocations: 8482)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-15 03:54:36 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=f8cbbe58148c5574d151a98438364ccd222b906d8d2c2443&code=4%2F0AY0e-g52Y4vnvLFSM9-CllH-yYXbr5FLyEKAi__cnT2bJXZ5zGqThlbvmldL0YhFlqedtw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2021-03-15 03:54:40 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"f8cbbe58148c5574d151a98438364ccd222b906d8d2c2443", "code"=>"4/0AY0e-g52Y4vnvLFSM9-CllH-yYXbr5FLyEKAi__cnT2bJXZ5zGqThlbvmldL0YhFlqedtw", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent"}
+  [1m[36mUserlogin Load (0.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "sainikhilnaru@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUserlogin Load (0.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:6:in `google_oauth2'
+Redirected to http://localhost:3000/
+Completed 302 Found in 35ms (ActiveRecord: 1.7ms | Allocations: 3802)
+
+
+Started GET "/" for ::1 at 2021-03-15 03:54:41 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 69ms (Views: 67.6ms | ActiveRecord: 0.0ms | Allocations: 4830)
+
+
+Started GET "/users" for ::1 at 2021-03-15 03:55:28 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (1.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:33
+  Rendered users/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 902)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 101ms (Views: 76.0ms | ActiveRecord: 2.6ms | Allocations: 7208)
+
+
+Started GET "/event" for ::1 at 2021-03-15 03:55:30 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (1.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (3.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:27
+  Rendering point_event/index.html.erb
+  [1m[36mPointEvent Load (3.0ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:25
+  Rendered point_event/index.html.erb (Duration: 15.9ms | Allocations: 1319)
+  Rendered event/index.html.erb within layouts/application (Duration: 40.3ms | Allocations: 3028)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 143ms (Views: 94.4ms | ActiveRecord: 15.8ms | Allocations: 10910)
+
+
+Started GET "/pages/member" for ::1 at 2021-03-15 03:55:36 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 40.3ms | Allocations: 2021)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 106ms (Views: 103.7ms | ActiveRecord: 0.0ms | Allocations: 7347)
+
+
+Started GET "/" for ::1 at 2021-03-15 04:01:26 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 69ms (Views: 66.5ms | ActiveRecord: 0.0ms | Allocations: 4803)
+
+
+Started GET "/pages/member" for ::1 at 2021-03-15 04:17:38 -0500
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 47.9ms | Allocations: 2201)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 202ms (Views: 178.2ms | ActiveRecord: 0.0ms | Allocations: 12442)
+
+
+Started GET "/pages/admin" for ::1 at 2021-03-15 04:18:49 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"admin"}
+  Rendering pages/admin.html.erb within layouts/application
+  Rendered pages/admin.html.erb within layouts/application (Duration: 0.5ms | Allocations: 76)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 41.4ms | ActiveRecord: 0.0ms | Allocations: 4990)
+
+
+Started GET "/pages/admin" for ::1 at 2021-03-15 04:19:24 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"admin"}
+  Rendering pages/admin.html.erb within layouts/application
+  Rendered pages/admin.html.erb within layouts/application (Duration: 0.5ms | Allocations: 75)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 48ms (Views: 47.1ms | ActiveRecord: 0.0ms | Allocations: 6166)
+
+
+Started GET "/pages/admin" for ::1 at 2021-03-15 04:34:20 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"admin"}
+  Rendering pages/admin.html.erb within layouts/application
+  Rendered pages/admin.html.erb within layouts/application (Duration: 1.0ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 59.0ms | ActiveRecord: 0.0ms | Allocations: 6178)
+
+
+Started GET "/pages/admin" for ::1 at 2021-03-15 04:34:58 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"admin"}
+  Rendering pages/admin.html.erb within layouts/application
+  Rendered pages/admin.html.erb within layouts/application (Duration: 1.7ms | Allocations: 73)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 80ms (Views: 77.9ms | ActiveRecord: 0.0ms | Allocations: 6208)
+
+
+Started GET "/pages/pages/admin" for ::1 at 2021-03-15 04:34:59 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/pages/pages/admin"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-03-15 04:35:08 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 193)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 77ms (Views: 73.0ms | ActiveRecord: 0.0ms | Allocations: 5675)
+
+
+Started GET "/pages/admin" for ::1 at 2021-03-15 04:35:10 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"admin"}
+  Rendering pages/admin.html.erb within layouts/application
+  Rendered pages/admin.html.erb within layouts/application (Duration: 0.2ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 85ms (Views: 82.6ms | ActiveRecord: 0.0ms | Allocations: 4813)
+
+
+Started GET "/pages/pages/admin" for ::1 at 2021-03-15 04:35:16 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/pages/pages/admin"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/pages/pages/member" for ::1 at 2021-03-15 04:35:20 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/pages/pages/member"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-03-15 04:35:24 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 75ms (Views: 73.3ms | ActiveRecord: 0.0ms | Allocations: 4825)
+
+
+Started GET "/pages/member" for ::1 at 2021-03-15 04:35:25 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 47.2ms | Allocations: 2030)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 112ms (Views: 110.1ms | ActiveRecord: 0.0ms | Allocations: 6835)
+
+
+Started GET "/pages/pages/member" for ::1 at 2021-03-15 04:35:26 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/pages/pages/member"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/pages/pages/admin" for ::1 at 2021-03-15 04:35:54 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/pages/pages/admin"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-03-15 04:35:58 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 191)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 87ms (Views: 83.7ms | ActiveRecord: 0.0ms | Allocations: 6385)
+
+
+Started GET "/pages/member" for ::1 at 2021-03-15 04:36:00 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 42.4ms | Allocations: 2019)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 108ms (Views: 106.1ms | ActiveRecord: 0.0ms | Allocations: 7350)
+
+
+Started GET "/pages/member" for ::1 at 2021-03-15 04:36:25 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/member.html.erb within layouts/application (Duration: 34.0ms | Allocations: 2016)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 97ms (Views: 95.6ms | ActiveRecord: 0.0ms | Allocations: 7991)
+
+
+Started GET "/pages/pages/member" for ::1 at 2021-03-15 04:36:27 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/pages/pages/member"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-03-15 04:36:41 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 191)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 32.9ms | ActiveRecord: 0.0ms | Allocations: 6317)
+
+
+Started GET "/pages/admin" for ::1 at 2021-03-15 04:36:44 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"admin"}
+  Rendering pages/admin.html.erb within layouts/application
+  Rendered pages/admin.html.erb within layouts/application (Duration: 1.8ms | Allocations: 73)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 76ms (Views: 74.2ms | ActiveRecord: 0.0ms | Allocations: 5515)
+
+
