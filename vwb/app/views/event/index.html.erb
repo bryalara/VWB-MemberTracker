@@ -1,15 +1,33 @@
 <style>
-th, td, tr {
-	padding-right: 15px;
-}
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
 
-.alert {
-	border-radius: 5px;
-	padding: 15px;
-	background: #d8ecdb;
-	color: #295529;
-}
+	td, th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+
+	tr:nth-child(even) {
+		background-color: #ebebeb;
+	}
+
+	.alert {
+		border-radius: 5px;
+		padding: 15px;
+		background: #d8ecdb;
+		color: #295529;
+	}
 </style>
+
+<% flash.each do |type, msg| %>
+	<div class="alert">
+		<%= msg %>
+	</div>
+<% end %>
 
 <h1>Events</h1>
 <%= link_to "Add an Event", new_event_path(@events) %>
@@ -20,7 +38,6 @@ th, td, tr {
 		<th>Points</th>
 		<th>Start Time</th>
 		<th>End Time</th>
-		<th>Event Type</th>
 		<th>Actions</th>
 	</tr>
 
@@ -31,11 +48,11 @@ th, td, tr {
 		<td><%= event.points %></td>
 		<td><%= Event.dateTimeDisplay(event.startDate) %></td>
 		<td><%= Event.dateTimeDisplay(event.endDate) %></td>
-		<td><%= event.eventType %></td>
 
 		<td><%= link_to "Show", event_path(event) %></td>
 		<td><%= link_to "Edit", edit_event_path(event) %></td>
 		<td><%= link_to "Delete", delete_event_path(event) %></td>
+		<td><%= link_to "QR", qr_event_path(event) %></td>
 	</tr>
 	<% end %>
 </table>
