@@ -3,7 +3,7 @@
 <%= form_with model: @user do |form| %>
     <div>
         <%= form.label :email %><br>
-        <%= form.email_field :email %>
+        <%= form.email_field :email, value: current_userlogin.email, :readonly => true%>
     </div>
 
     <div>
@@ -41,12 +41,6 @@
         <%= form.label :tShirtSize %><br>
         <%= form.select :tShirtSize, options_for_select(["XXS","XS","S", "M", "L", "XL", "XXL"]), :prompt => 'Select Size' %>
     </div>
-
-    <div>
-        <%= form.label :participationPoints %><br>
-        <%= form.number_field  :participationPoints %>
-    </div>
-
 
     <div>
         <%# <%= form.label :optInEmail , :false<br> %> 

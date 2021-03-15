@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   protect_from_forgery with: :exception
-  before_action :authenticate_userlogin!
+  before_action :authenticate_userlogin! && :admin_verify, except: [:create, :registration]
   # http_basic_authenticate_with name: "vwb", password: "password"
-
   def index
     @user = User.find_by_email(current_userlogin.email)
     @users= User.where(approved: true)
@@ -18,11 +17,7 @@ class UsersController < ApplicationController
   end
   
   def new
-    if User.find_by_email(current_userlogin.email).role == 0
-      redirect_to users_path, notice: "You are not an Admin"
-    else
-      @user = User.new
-    end
+    @user = User.new
   end
 
   def create
