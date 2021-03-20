@@ -1,3 +1,4 @@
+<%= render "layouts/navbar2", user: @user %>
 <style>
 table {
   font-family: arial, sans-serif;
@@ -15,43 +16,47 @@ td, th {
   text-align: left;
   padding: 8px;
 }
-div{
+/* div{ renamed to center-col
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-}
+} */
 
 tr:nth-child(even) {
   background-color: #dddddd;
 }
 </style>
-
-<button><%= link_to "Return to all users", users_path %></button>
-<div>
+<section style="padding-top: 30px;">
+<div class="header">
+<button class="btn btn-decor"><%= link_to "Return to all users", users_path, class: "back-button" %></button>
+</div>
+<div class="center-col">
 <h1 ><%= @user.firstName %> <%= @user.lastName %></h1>
-<table  class="center"> 
+<table  class="center styled-table"> 
     <tr>    
-        <th>Attr</th>    
-        <th>Info</th>
-    
+        <th>Attribute</th>    
+        <th>Information</th>
     </tr>
-
-<tr> <td> email: </td> <td> <%= @user.email %> </td> </tr>
-<tr> <td> role: </td> <td> <%= @user.role %>  </td> </tr>
-<tr> <td> firstName: </td> <td> <%= @user.firstName %>  </td> </tr>
-<tr> <td> lastName: </td> <td> <%= @user.lastName %>  </td> </tr>
-<tr> <td> phoneNumber: </td> <td> <%= @user.phoneNumber %>  </td> </tr>
-<tr> <td> classification: </td> <td> <%= @user.classification %>  </td> </tr>
-<tr> <td> tShirtSize: </td> <td> <%= @user.tShirtSize %>  </td> </tr>
-<tr> <td> optInEmail: </td> <td> <%= @user.optInEmail %>  </td> </tr>
-<tr> <td> participationPoints: </td> <td> <%= @user.participationPoints %>  </td> </tr>
-<tr> <td> approved: </td> <td> <%= @user.approved%>  </td> </tr>
+<tr> <td> Email </td> <td> <%= @user.email %> </td> </tr>
+<tr> <td> Role </td> <td> <% if @user.role == 0 %> Member <%end%> <% if @user.role == 1 %> Admin <%end%>  </td> </tr>
+<tr> <td> First Name </td> <td> <%= @user.firstName %>  </td> </tr>
+<tr> <td> Last Name </td> <td> <%= @user.lastName %>  </td> </tr>
+<tr> <td> Phone Number </td> <td> <%= @user.phoneNumber %>  </td> </tr>
+<tr> <td> Classification </td> <td> <%= @user.classification %>  </td> </tr>
+<tr> <td> TShirt Size </td> <td> <%= @user.tShirtSize %>  </td> </tr>
+<tr> <td> Email Opt-In </td> <td> <%= @user.optInEmail %>  </td> </tr>
+<tr> <td> Participation Points </td> <td> <%= @user.participationPoints %>  </td> </tr>
+<tr> <td> Approved </td> <td> <%= @user.approved%>  </td> </tr>
 
 </table>
 
+<div  align="center" >
+<button class="btn"> <%= link_to "Edit User", edit_user_path(@user), class: "back-button" %> </button>
 
-<%= link_to "Edit User", edit_user_path(@user) %>
-
- <%= link_to "Destroy", user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
+<button class="btn"> <%= link_to "Destroy", user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, class: "back-button" %> </button>
 </div>
+</div>
+
+</section>
+<%= render "layouts/footer" %>

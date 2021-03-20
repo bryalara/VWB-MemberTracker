@@ -1,3 +1,80 @@
 <p id="notice"><%= flash[:notice] %></p>
 <h1>New Users</h1>
-<%= render "form", user:@user  %>
+
+<%= render "layouts/navbar2", user: @user %>
+<section style="padding-top: 10px;">
+<button class="btn btn-decor" style="border:0; text-decoration:none !important; outline:none">
+<%= link_to "View All Users", users_path, class: "back-button" %>
+</button>
+<div class="wrapper fadeInDown">
+<div id="formContent">
+<%= form_with model: @user do |form| %>
+    <div>
+    <h2 class="active"> New User </h2>
+        <%= form.email_field :email, placeholder: "Email", value: "" %>
+    </div>
+
+    <div>
+       <br>
+        <%= form.text_field :firstName, placeholder: "First Name", value: "" %>
+        <% @user.errors.full_messages_for(:firstName).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <br>
+        <%= form.text_field :lastName, placeholder: "Last Name", value: "" %>
+        <% @user.errors.full_messages_for(:lastName).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    
+    <div class="select">
+        <br>
+        <div >
+        <%= form.select :role, options_for_select([["Select a Role", ""], ["Member", 0], ["Admin", 1]]), id: "slct", prompt: "Select a Role", value: "" %>
+    </div>
+
+    <div>
+        <br>
+        <%= form.telephone_field :phoneNumber, placeholder: "Phone Number", value: "" %>
+    </div>
+
+    <div>
+       <br>
+        <%= form.select :classification, options_for_select([["Select a Classification", ""], ["Freshman", "Freshman"], ["Sophomore", "Sophomore"], ["Junior", "Junior"], ["Senior","Senior"]]), :prompt => 'Select Year', value: "" %>
+    </div>
+
+    <div>
+        <br>
+        <%= form.select :tShirtSize, options_for_select([["Select a TShirt Size", ""], ["XXS", "XXS"], ["XS", "XS"], ["S", "S"], ["M","M"], ["L","L"], ["XL","XL"], ["XXL","XXL"]]), :prompt => 'Select Size', value: ""%>
+    </div>
+
+    <div class="double" align="center">
+    <br>
+        <%= form.label :participationPoints, "Participation Points", class: "label"%>
+       <div style="width: 50%;"> <%= form.number_field  :participationPoints, placeholder: "0", class: "field" , value: ""%></div>
+    </div>
+
+
+    <div class="double" align="center">
+        <%= form.label :optInEmail , "Opt-In Email", class: "label" %>
+        <div style="width: 50%;"><%= form.check_box :optInEmail, class: "field" %></div>
+   </div>
+
+    <div class="double" align="center">
+        <%= form.label :approved, class: "label" %>
+        <div style="width: 50%;"><%= form.check_box :approved, class: "field" %></div>
+   </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
+
+
+</div>
+</div>
+</section>
+<%= render "layouts/footer" %>

@@ -1,6 +1,9 @@
+
+   <%= render "layouts/navbar2", user: @user %>
+
 <%= flash[:notice]%>
 <style>
-table {
+/* table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -14,11 +17,21 @@ td, th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+} */
+.section {
+    padding: 0px;
 }
 </style>
 
-<h1>Users</h1>
-<table>
+<section style="padding-top: 70px;">
+<h2 class="active h2-title">Users</h2>
+<div align="center">
+<button class="btn"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
+
+<button class="btn"> <%= link_to "Pending Users", pendingApproval_path, class: "back-button" %> </button>
+<button class="btn"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
+</div>
+<table class="styled-table">
     <tr>
         <th> First Name</th>
         <th> Last Name</th>
@@ -46,15 +59,17 @@ tr:nth-child(even) {
 
 </table>
 
+<br>
 
-<button> <%= link_to "Create New User", new_user_path %> </button>
-
-<button> <%= link_to "View Pending Users", pendingApproval_path %> </button>
-
+<div  align="center" >
 <div>
-    <h4> Import data from csv file </h4>
+    <h4> Import Data From CSV file </h4>
         <%= form_tag import_users_path, multipart: true do %>
             <%= file_field_tag :file %>
-            <%= submit_tag "Import CSV" %>
+            <%= submit_tag "Import CSV", class: "button" %>
         <% end %>
-</div>
+</div></div>
+
+</section>
+
+<%= render "layouts/footer" %>
