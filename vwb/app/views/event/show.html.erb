@@ -1,5 +1,9 @@
-<%= link_to "Back to Events", event_index_path %>
+<%= render "layouts/navbar2", user: @user %>
+<div class="header">
+<h2 class="active h2-title">Event Details</h2>
+</div>
 
-<h1>Event Details</h1>
-
+<button class="btn align-center" >
+<%= link_to "Back to Events", event_index_path, class: "back-button" %>
+</button>
 <%= render "form", event: @event %>

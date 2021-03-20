@@ -1,7 +1,8 @@
-<%= link_to "Back to Events", event_index_path %>
-
-<h1>Edit an Event</h1>
-
+<%= render "layouts/navbar2", user: @user %>
+<div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button></div>
+<div class="wrapper fadeInDown">
+<div id="formContent">
+<h2 class="active">Edit an Event</h2>
 <p>* denotes required fields.<p>
 
 <%= form_with :method => :PATCH, url:"/event/#{@event.id}", model: @event do |form| %>
@@ -35,3 +36,5 @@
 	<%= form.submit "Save Changes to Event" %>
 
 <% end %>
+</div>
+</div>
