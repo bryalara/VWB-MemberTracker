@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :edithomepages
+  
   # root "pages#show", page: "home"   # --- SNN
   get "/pages/:page" => "pages#show"
   resources :users do
