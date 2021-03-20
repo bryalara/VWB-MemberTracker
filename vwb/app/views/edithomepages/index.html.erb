@@ -1,0 +1,18 @@
+<ul>
+  <% @edithomepages.each do |edithomepage| %>
+    <li><%= link_to edithomepage.name, edithomepage_path(edithomepage)  %></li>
+  <% end %>
+</ul>
+
+<br>
+
+<table>
+  <% @edithomepages.each do |edithomepage| %>
+    <tr>
+      <td><%= link_to edithomepage.name, edithomepage_path(edithomepage) %></td>
+      <td><%= link_to edithomepage.description, edithomepage_path(edithomepage) %></td>
+      <td><%= button_to 'Edit', edit_edithomepage_path(edithomepage), method: 'get'%></td>
+      <td><%= button_to 'Remove', edithomepage_path(edithomepage), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
+</table>
+<%= link_to "Add a New Atrribute", new_edithomepage_path %>

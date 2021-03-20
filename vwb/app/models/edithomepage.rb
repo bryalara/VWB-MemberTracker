@@ -1,0 +1,2 @@
+class Edithomepage < ApplicationRecord
+end
