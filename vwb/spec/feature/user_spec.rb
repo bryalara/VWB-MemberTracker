@@ -6,6 +6,68 @@ RSpec.describe 'Users', type: :feature do
 		login_with_oauth
 	end
 
+	#registration modulke test:
+	describe 'member login with google oauth' do
+		it 'shows the right content first time login' do
+			login_with_oauth_member_registration
+			#sleep(2)
+			#visit registration_user_path
+			expect(page).to have_content('Registration')
+		end
+		it 'register a the new user' do
+			login_with_oauth_member_registration
+			#sleep(2)
+			#visit registration_user_path
+			#expect(page).to have_content('Registration')
+			fill_in 'user_firstName', with: 'John'
+			fill_in 'user_lastName', with: 'Doe'
+			fill_in 'user_phoneNumber', with: '1234567890'
+			select 'Sophomore', :from => 'user_classification'
+			select 'M', :from => 'user_tShirtSize'
+			check 'user_optInEmail'
+			sleep(1)
+			
+			click_on 'Create User'
+			login_with_oauth
+			visit pendingApproval_path
+			expect(page).to have_content('entao@tamu.edu')
+		end
+		it 'member cannot visit users pages' do
+			login_with_oauth_member_registration
+			#sleep(2)
+			#visit registration_user_path
+			#expect(page).to have_content('Registration')
+			fill_in 'user_firstName', with: 'John'
+			fill_in 'user_lastName', with: 'Doe'
+			fill_in 'user_phoneNumber', with: '1234567890'
+			select 'Sophomore', :from => 'user_classification'
+			select 'M', :from => 'user_tShirtSize'
+			check 'user_optInEmail'
+			sleep(1)
+			
+			click_on 'Create User'
+			visit users_path
+			expect(page).to have_content('You are not an Admin')
+		end
+		it 'member cannot visit events pages' do
+			login_with_oauth_member_registration
+			#sleep(2)
+			#visit registration_user_path
+			#expect(page).to have_content('Registration')
+			fill_in 'user_firstName', with: 'John'
+			fill_in 'user_lastName', with: 'Doe'
+			fill_in 'user_phoneNumber', with: '1234567890'
+			select 'Sophomore', :from => 'user_classification'
+			select 'M', :from => 'user_tShirtSize'
+			check 'user_optInEmail'
+			sleep(1)
+			
+			click_on 'Create User'
+			event_index_path
+			expect(page).to have_content('You are not an Admin')
+		end
+	end
+
 	describe 'index page' do
 		it 'shows the right content' do
 			visit users_path
@@ -54,8 +116,9 @@ RSpec.describe 'Users', type: :feature do
 			visit users_path
 			expect(page).to_not have_content('featuretesting@tamu.edu')
 		end
-
-		it 'is not valid without a role' do
+		
+		#default should be role=0
+		it 'is valid without a role' do
 			visit new_user_path
 			
 			fill_in 'user_email', with: 'featuretesting@tamu.edu'
@@ -70,9 +133,10 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
-
+		
+		#default value setup
 		it 'is not valid with out of range role' do
 			visit new_user_path
 			
@@ -89,7 +153,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
 
 		it 'is not valid with out first name' do
@@ -128,6 +192,7 @@ RSpec.describe 'Users', type: :feature do
 			expect(page).to_not have_content('Doe')
 		end
 
+		#have default
 		it 'is not valid with out phone number' do
 			visit new_user_path
 			
@@ -143,7 +208,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
 
 		it 'is not valid with out full 10 digit number' do
@@ -180,7 +245,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
 
 		it 'is not valid with out tshirt size' do
@@ -198,7 +263,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
 
 		it 'is valid with optInEmail unhecked' do
@@ -252,7 +317,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
 
 		it 'is not valid with negative points' do

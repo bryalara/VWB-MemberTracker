@@ -13567,3 +13567,758 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 42ms (Views: 29.6ms | ActiveRecord: 4.5ms | Allocations: 11442)
 
 
+Started GET "/" for ::1 at 2021-03-20 10:45:26 -0500
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 303)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 212ms (Views: 185.5ms | ActiveRecord: 0.0ms | Allocations: 15800)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 10:45:29 -0500
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 10:45:29 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=ea01861200b6a2b1aa499ad3d4f0df655b3d1be5baffea39&code=4/0AY0e-g6Dg1w0BbjYbiMWMzhmuImPUgkTvbfrb3L2XLHfXedzNUf8RcCmolCNXtyeR5xeMw&scope=email%20profile%20openid%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile&authuser=1&hd=tamu.edu&prompt=none" for ::1 at 2021-03-20 10:45:31 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"ea01861200b6a2b1aa499ad3d4f0df655b3d1be5baffea39", "code"=>"4/0AY0e-g6Dg1w0BbjYbiMWMzhmuImPUgkTvbfrb3L2XLHfXedzNUf8RcCmolCNXtyeR5xeMw", "scope"=>"email profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile", "authuser"=>"1", "hd"=>"tamu.edu", "prompt"=>"none"}
+  [1m[36mUserlogin Load (5.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUser Exists? (3.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:23:in `after_sign_in_path_for'
+Redirected to http://localhost:3000/
+Completed 302 Found in 180ms (ActiveRecord: 24.3ms | Allocations: 15953)
+
+
+Started GET "/" for ::1 at 2021-03-20 10:45:31 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.0ms | Allocations: 8264)
+
+
+Started GET "/users" for ::1 at 2021-03-20 10:45:33 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+Redirected to http://localhost:3000/
+Filter chain halted as :admin_verify rendered or redirected
+Completed 302 Found in 23ms (ActiveRecord: 2.5ms | Allocations: 8355)
+
+
+Started GET "/" for ::1 at 2021-03-20 10:45:33 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 39ms (Views: 38.4ms | ActiveRecord: 0.0ms | Allocations: 8042)
+
+
+Started GET "/users" for ::1 at 2021-03-20 10:45:34 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+Redirected to http://localhost:3000/
+Filter chain halted as :admin_verify rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 1.7ms | Allocations: 1784)
+
+
+Started GET "/" for ::1 at 2021-03-20 10:45:34 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 39ms (Views: 38.3ms | ActiveRecord: 0.0ms | Allocations: 8069)
+
+
+Started GET "/users" for ::1 at 2021-03-20 10:45:36 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+Redirected to http://localhost:3000/
+Filter chain halted as :admin_verify rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 1.3ms | Allocations: 1792)
+
+
+Started GET "/" for ::1 at 2021-03-20 10:45:36 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 40.5ms | ActiveRecord: 0.0ms | Allocations: 8037)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 10:45:45 -0500
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 10:45:45 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=c8bfad09ff090d57ce077cf86106c659dc0ea6c66f1933ca&code=4%2F0AY0e-g5yNt8bgGmjOBYwEWl6VEGzEMZcXRW9QsD3HSHYNsnu8k_OpVQEFoQ4h46NH7eg0w&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2021-03-20 10:45:47 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"c8bfad09ff090d57ce077cf86106c659dc0ea6c66f1933ca", "code"=>"4/0AY0e-g5yNt8bgGmjOBYwEWl6VEGzEMZcXRW9QsD3HSHYNsnu8k_OpVQEFoQ4h46NH7eg0w", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent"}
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:6:in `google_oauth2'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:23:in `after_sign_in_path_for'
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms (ActiveRecord: 1.8ms | Allocations: 2601)
+
+
+Started GET "/" for ::1 at 2021-03-20 10:45:47 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 57ms (Views: 55.7ms | ActiveRecord: 0.0ms | Allocations: 8023)
+
+
+Started GET "/users" for ::1 at 2021-03-20 10:45:50 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (1.1ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:38
+  Rendered users/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1636)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 56ms (Views: 42.2ms | ActiveRecord: 2.1ms | Allocations: 12284)
+
+
+Started GET "/users/new" for ::1 at 2021-03-20 10:45:52 -0500
+Processing by UsersController#new as HTML
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 82.2ms | Allocations: 4689)
+  Rendered users/new.html.erb within layouts/application (Duration: 84.1ms | Allocations: 4999)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 123ms (Views: 113.1ms | ActiveRecord: 1.4ms | Allocations: 14620)
+
+
+Started POST "/users" for ::1 at 2021-03-20 10:46:23 -0500
+Processing by UsersController#create as JS
+  Parameters: {"authenticity_token"=>"OtTeK/xIz/PoCT6HCiX7A6TvD97+f/9NG+LT6veIamo0BneT8A10zLwaStb9JB94lbc1h29Bvhaz5yux3ZTWhQ==", "user"=>{"email"=>"featuretesting@tamu.edu", "firstName"=>"John", "lastName"=>"", "role"=>"0", "phoneNumber"=>"1234567890", "classification"=>"Freshman", "tShirtSize"=>"XXS", "participationPoints"=>"0", "optInEmail"=>"1", "approved"=>"0"}, "commit"=>"Create User"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:26:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "featuretesting@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:26:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "featuretesting@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `create'
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 5.1ms | Allocations: 2642)
+  Rendered users/new.html.erb within layouts/application (Duration: 6.6ms | Allocations: 2857)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 78ms (Views: 62.9ms | ActiveRecord: 1.3ms | Allocations: 16594)
+
+
+Started GET "/users" for ::1 at 2021-03-20 10:46:28 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (2.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:38
+  Rendered users/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1054)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 69ms (Views: 56.1ms | ActiveRecord: 3.4ms | Allocations: 11087)
+
+
+Started GET "/pendingApproval" for ::1 at 2021-03-20 10:49:41 -0500
+Processing by UsersController#pendingApproval as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  Rendering users/pendingApproval.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", false]]
+  ↳ app/views/users/pendingApproval.html.erb:34
+  Rendered users/pendingApproval.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1180)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 54ms (Views: 43.2ms | ActiveRecord: 1.4ms | Allocations: 10810)
+
+
+Started GET "/users/7" for ::1 at 2021-03-20 10:49:43 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 500)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 48ms (Views: 35.5ms | ActiveRecord: 1.5ms | Allocations: 10796)
+
+
+Started DELETE "/users/7" for ::1 at 2021-03-20 10:49:47 -0500
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"LEg5gIkyj43R3ad1l3oK4E33/L4rSYZhkOvrlFUpLLxD9n8w7u0AEu93adIVq1b73/ks85jh7LIn5EpQaoD6dg==", "id"=>"7"}
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:55:in `destroy'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:57:in `destroy'
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/users_controller.rb:57:in `destroy'
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:57:in `destroy'
+Redirected to http://localhost:3000/users
+Completed 302 Found in 30ms (ActiveRecord: 5.3ms | Allocations: 4298)
+
+
+Started GET "/users" for ::1 at 2021-03-20 10:49:47 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:38
+  Rendered users/index.html.erb within layouts/application (Duration: 6.7ms | Allocations: 1054)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 81ms (Views: 56.0ms | ActiveRecord: 1.9ms | Allocations: 11514)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 10:49:48 -0500
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 10:49:48 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=c2c6d817daaf3cf0c0fbfd2fa7fb8ed7f4f45e2780ea3594&code=4/0AY0e-g5MzcbwJnCyoIoRytaMHJDoDKoQ4CzfiADVxX40M5iT3K31o3wrJeikxdfa1khdwg&scope=email%20profile%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile%20openid&authuser=1&hd=tamu.edu&prompt=none" for ::1 at 2021-03-20 10:49:50 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"c2c6d817daaf3cf0c0fbfd2fa7fb8ed7f4f45e2780ea3594", "code"=>"4/0AY0e-g5MzcbwJnCyoIoRytaMHJDoDKoQ4CzfiADVxX40M5iT3K31o3wrJeikxdfa1khdwg", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"1", "hd"=>"tamu.edu", "prompt"=>"none"}
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:6:in `google_oauth2'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:23:in `after_sign_in_path_for'
+Redirected to http://localhost:3000/user/registration
+Completed 302 Found in 9ms (ActiveRecord: 1.4ms | Allocations: 2535)
+
+
+Started GET "/user/registration" for ::1 at 2021-03-20 10:49:51 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 44.8ms | Allocations: 3580)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 80ms (Views: 78.1ms | ActiveRecord: 0.5ms | Allocations: 11761)
+
+
+Started GET "/users" for ::1 at 2021-03-20 10:54:19 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.9ms | Allocations: 2553)
+
+
+  
+NoMethodError (undefined method `role' for nil:NilClass):
+  
+app/controllers/application_controller.rb:4:in `admin_verify'
+Started GET "/user/registration" for ::1 at 2021-03-20 10:54:25 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 6.9ms | Allocations: 3054)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 40.0ms | ActiveRecord: 0.4ms | Allocations: 11135)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 10:59:24 -0500
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 10:59:24 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=3753bbfc3506941ecc831ac4d812ce97afbb483223e73c57&code=4/0AY0e-g7NcS-dg28z-szDcP__FR2VvyjohR4wHEUszYJfsrXBuF0fLYbvKWCRNiD7t7BFnA&scope=email%20profile%20https://www.googleapis.com/auth/userinfo.profile%20openid%20https://www.googleapis.com/auth/userinfo.email&authuser=1&hd=tamu.edu&prompt=none" for ::1 at 2021-03-20 10:59:26 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"3753bbfc3506941ecc831ac4d812ce97afbb483223e73c57", "code"=>"4/0AY0e-g7NcS-dg28z-szDcP__FR2VvyjohR4wHEUszYJfsrXBuF0fLYbvKWCRNiD7t7BFnA", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.profile openid https://www.googleapis.com/auth/userinfo.email", "authuser"=>"1", "hd"=>"tamu.edu", "prompt"=>"none"}
+  [1m[36mUserlogin Load (0.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:6:in `google_oauth2'
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:23:in `after_sign_in_path_for'
+Redirected to http://localhost:3000/user/registration
+Completed 302 Found in 22ms (ActiveRecord: 3.2ms | Allocations: 2544)
+
+
+Started GET "/user/registration" for ::1 at 2021-03-20 10:59:26 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 6.9ms | Allocations: 3006)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 35.1ms | ActiveRecord: 0.3ms | Allocations: 11027)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 11:01:00 -0500
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 11:01:00 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=d573da5f06bb4b199ab811b33578202ca51717d52c480931&code=4%2F0AY0e-g4LvcOviGVVlMhEjRz0O-nJcln4gkhDan8VZvkh0z1ZOtbujjUKdl5aPOiQkJu98Q&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2021-03-20 11:01:05 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"d573da5f06bb4b199ab811b33578202ca51717d52c480931", "code"=>"4/0AY0e-g4LvcOviGVVlMhEjRz0O-nJcln4gkhDan8VZvkh0z1ZOtbujjUKdl5aPOiQkJu98Q", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent"}
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:6:in `google_oauth2'
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:23:in `after_sign_in_path_for'
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 2.9ms | Allocations: 2540)
+
+
+Started GET "/" for ::1 at 2021-03-20 11:01:05 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 42.8ms | ActiveRecord: 0.0ms | Allocations: 8039)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 11:01:08 -0500
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 11:01:08 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=ae615d0f8af72c99568b37b42d5826af899f69d067b571e0&code=4/0AY0e-g4dndRD_aje4zEhQKgZ0KvNCT7Hu3BPPLI6_QUd_QvkjT64wv0rZUbxMlogmfU0Bg&scope=email%20profile%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile%20openid&authuser=1&hd=tamu.edu&prompt=none" for ::1 at 2021-03-20 11:01:10 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"ae615d0f8af72c99568b37b42d5826af899f69d067b571e0", "code"=>"4/0AY0e-g4dndRD_aje4zEhQKgZ0KvNCT7Hu3BPPLI6_QUd_QvkjT64wv0rZUbxMlogmfU0Bg", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"1", "hd"=>"tamu.edu", "prompt"=>"none"}
+  [1m[36mUserlogin Load (2.1ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:6:in `google_oauth2'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:23:in `after_sign_in_path_for'
+Redirected to http://localhost:3000/user/registration
+Completed 302 Found in 27ms (ActiveRecord: 3.5ms | Allocations: 2534)
+
+
+Started GET "/user/registration" for ::1 at 2021-03-20 11:01:10 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 6.5ms | Allocations: 3005)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 47.9ms | ActiveRecord: 0.4ms | Allocations: 11059)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 18:05:26 -0500
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 18:05:26 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=f58da9de4f4297255efa77ecb73377636b23e1e5fd339b46&code=4/0AY0e-g5dw62B5Cl4R_Roj0SRuYPPN0YC2u7GB3naSiNXB0qpW57_mNfzr9uAaYf9nwaV0A&scope=email%20profile%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile%20openid&authuser=1&hd=tamu.edu&prompt=none" for ::1 at 2021-03-20 18:05:28 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"f58da9de4f4297255efa77ecb73377636b23e1e5fd339b46", "code"=>"4/0AY0e-g5dw62B5Cl4R_Roj0SRuYPPN0YC2u7GB3naSiNXB0qpW57_mNfzr9uAaYf9nwaV0A", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"1", "hd"=>"tamu.edu", "prompt"=>"none"}
+  [1m[36mUserlogin Load (1.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUserlogin Load (0.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:6:in `google_oauth2'
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:23:in `after_sign_in_path_for'
+Redirected to http://localhost:3000/user/registration
+Completed 302 Found in 32ms (ActiveRecord: 5.4ms | Allocations: 9261)
+
+
+Started GET "/user/registration" for ::1 at 2021-03-20 18:05:28 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 9.8ms | Allocations: 3638)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 60ms (Views: 46.2ms | ActiveRecord: 0.9ms | Allocations: 18928)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:05:30 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `admin_verify'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.4ms | Allocations: 3401)
+
+
+  
+NoMethodError (undefined method `role' for nil:NilClass):
+  
+app/controllers/application_controller.rb:7:in `admin_verify'
+Started GET "/user/registration" for ::1 at 2021-03-20 18:06:11 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 8.9ms | Allocations: 3003)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.6ms | Allocations: 11017)
+
+
+Started GET "/" for ::1 at 2021-03-20 18:06:14 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 191)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 27.0ms | ActiveRecord: 0.0ms | Allocations: 8818)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:06:16 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `admin_verify'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.2ms | Allocations: 3280)
+
+
+  
+NoMethodError (undefined method `role' for nil:NilClass):
+  
+app/controllers/application_controller.rb:7:in `admin_verify'
+Started GET "/" for ::1 at 2021-03-20 18:06:19 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 32.8ms | ActiveRecord: 0.0ms | Allocations: 8014)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:06:24 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `admin_verify'
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.9ms | Allocations: 3214)
+
+
+  
+NoMethodError (undefined method `role' for nil:NilClass):
+  
+app/controllers/application_controller.rb:7:in `admin_verify'
+Started GET "/" for ::1 at 2021-03-20 18:06:25 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.0ms | Allocations: 8004)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 18:06:26 -0500
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 18:06:26 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=0bba8229c5619e362c6a4d9d202910e8ae39330f29b6681d&code=4%2F0AY0e-g7gVnCQ9yKY9xr6ARFCgKMgE7JZG95lKeFcaXgGERP7DWCGw_pvkQp9PQzokPCPIQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2021-03-20 18:06:29 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"0bba8229c5619e362c6a4d9d202910e8ae39330f29b6681d", "code"=>"4/0AY0e-g7gVnCQ9yKY9xr6ARFCgKMgE7JZG95lKeFcaXgGERP7DWCGw_pvkQp9PQzokPCPIQ", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent"}
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:6:in `google_oauth2'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:23:in `after_sign_in_path_for'
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 1.8ms | Allocations: 2540)
+
+
+Started GET "/" for ::1 at 2021-03-20 18:06:29 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 39ms (Views: 38.4ms | ActiveRecord: 0.0ms | Allocations: 8045)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:06:31 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `admin_verify'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:38
+  Rendered users/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1529)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 31.2ms | ActiveRecord: 2.0ms | Allocations: 12319)
+
+
+Started GET "/pendingApproval" for ::1 at 2021-03-20 18:06:34 -0500
+Processing by UsersController#pendingApproval as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `admin_verify'
+  Rendering users/pendingApproval.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", false]]
+  ↳ app/views/users/pendingApproval.html.erb:34
+  Rendered users/pendingApproval.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1094)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 30.0ms | ActiveRecord: 2.0ms | Allocations: 11388)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:06:36 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `admin_verify'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:38
+  Rendered users/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1051)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 51ms (Views: 35.6ms | ActiveRecord: 2.5ms | Allocations: 11696)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 18:07:23 -0500
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 18:07:23 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=ae41bf4e97267a111121e585a5441159a2eccb8154ca556d&code=4/0AY0e-g5UOQrd6DaXW_8K5kPYFtqOtmetjXwgkx756Idhkd0YPrLgQ0tWXGEL83Oqus91yQ&scope=email%20profile%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile%20openid&authuser=1&hd=tamu.edu&prompt=none" for ::1 at 2021-03-20 18:07:25 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"ae41bf4e97267a111121e585a5441159a2eccb8154ca556d", "code"=>"4/0AY0e-g5UOQrd6DaXW_8K5kPYFtqOtmetjXwgkx756Idhkd0YPrLgQ0tWXGEL83Oqus91yQ", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"1", "hd"=>"tamu.edu", "prompt"=>"none"}
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:6:in `google_oauth2'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:23:in `after_sign_in_path_for'
+Redirected to http://localhost:3000/user/registration
+Completed 302 Found in 38ms (ActiveRecord: 20.9ms | Allocations: 8062)
+
+
+Started GET "/user/registration" for ::1 at 2021-03-20 18:07:25 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 5.8ms | Allocations: 3075)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 53ms (Views: 37.3ms | ActiveRecord: 2.0ms | Allocations: 17244)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:07:27 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+Redirected to http://localhost:3000/user/registration
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `admin_verify'
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.7ms | Allocations: 3434)
+
+
+  
+NoMethodError (undefined method `role' for nil:NilClass):
+  
+app/controllers/application_controller.rb:7:in `admin_verify'
+Started GET "/user/registration" for ::1 at 2021-03-20 18:07:34 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 9.0ms | Allocations: 2999)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 47.1ms | ActiveRecord: 0.5ms | Allocations: 11052)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 18:08:52 -0500
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-20 18:08:52 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=ec061a42a2f8438366c7e698d868fd72ab5283f1ce8ed38b&code=4/0AY0e-g6td17NYGbGsLsQ8Ond65Cx7_G3g9heCyVdV38Gf2sH_5ydValzMFvD0iwYiE0Qiw&scope=email%20profile%20openid%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile&authuser=1&hd=tamu.edu&prompt=none" for ::1 at 2021-03-20 18:08:54 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"ec061a42a2f8438366c7e698d868fd72ab5283f1ce8ed38b", "code"=>"4/0AY0e-g6td17NYGbGsLsQ8Ond65Cx7_G3g9heCyVdV38Gf2sH_5ydValzMFvD0iwYiE0Qiw", "scope"=>"email profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile", "authuser"=>"1", "hd"=>"tamu.edu", "prompt"=>"none"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:7:in `from_google'
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:6:in `google_oauth2'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:23:in `after_sign_in_path_for'
+Redirected to http://localhost:3000/user/registration
+Completed 302 Found in 26ms (ActiveRecord: 6.5ms | Allocations: 8020)
+
+
+Started GET "/user/registration" for ::1 at 2021-03-20 18:08:55 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 13.2ms | Allocations: 3075)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 73ms (Views: 55.9ms | ActiveRecord: 2.2ms | Allocations: 17234)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:08:57 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+Redirected to http://localhost:3000/user/registration
+Filter chain halted as :admin_verify rendered or redirected
+Completed 302 Found in 12ms (ActiveRecord: 1.0ms | Allocations: 1818)
+
+
+Started GET "/user/registration" for ::1 at 2021-03-20 18:08:57 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 6.6ms | Allocations: 3001)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 46ms (Views: 44.4ms | ActiveRecord: 0.3ms | Allocations: 11032)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:08:58 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+Redirected to http://localhost:3000/user/registration
+Filter chain halted as :admin_verify rendered or redirected
+Completed 302 Found in 9ms (ActiveRecord: 1.2ms | Allocations: 1817)
+
+
+Started GET "/user/registration" for ::1 at 2021-03-20 18:08:58 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 7.0ms | Allocations: 3001)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 32.4ms | ActiveRecord: 0.7ms | Allocations: 11050)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:09:00 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+Redirected to http://localhost:3000/user/registration
+Filter chain halted as :admin_verify rendered or redirected
+Completed 302 Found in 7ms (ActiveRecord: 0.8ms | Allocations: 1866)
+
+
+Started GET "/user/registration" for ::1 at 2021-03-20 18:09:00 -0500
+Processing by UsersController#registration as HTML
+  Rendering users/registration.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/registration.html.erb:6
+  Rendered users/registration.html.erb within layouts/application (Duration: 4.9ms | Allocations: 3001)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 32.3ms | ActiveRecord: 0.3ms | Allocations: 11030)
+
+
+Started POST "/users" for ::1 at 2021-03-20 18:09:03 -0500
+Processing by UsersController#create as JS
+  Parameters: {"authenticity_token"=>"Uc+E2vNz2/j8iYCXLdbCb+PwenhTBra2Iohp6qrvJcNNJRIAutvxVFpdU/TlSdL9T+lh9J8EXTWaTJLd/3keyA==", "user"=>{"email"=>"entao@tamu.edu", "firstName"=>"FirstName", "lastName"=>"LastName", "role"=>"0", "phoneNumber"=>"1234567890", "classification"=>"Freshman", "tShirtSize"=>"XXS", "optInEmail"=>"1"}, "commit"=>"Create User"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:26:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `create'
+  [1m[36mUser Create (5.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "classification", "tShirtSize", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "entao@tamu.edu"], ["classification", "Freshman"], ["tShirtSize", "XXS"], ["created_at", "2021-03-20 23:09:03.915643"], ["updated_at", "2021-03-20 23:09:03.915643"]]
+  ↳ app/controllers/users_controller.rb:26:in `create'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:26:in `create'
+Redirected to http://localhost:3000/users/10
+Completed 200 OK in 19ms (ActiveRecord: 7.6ms | Allocations: 4502)
+
+
+Started GET "/users/10" for ::1 at 2021-03-20 18:09:03 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `admin_verify'
+Redirected to http://localhost:3000/
+Filter chain halted as :admin_verify rendered or redirected
+Completed 302 Found in 17ms (ActiveRecord: 1.5ms | Allocations: 2580)
+
+
+Started GET "/" for ::1 at 2021-03-20 18:09:03 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 32.7ms | ActiveRecord: 0.0ms | Allocations: 8203)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:09:05 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `admin_verify'
+Redirected to http://localhost:3000/
+Filter chain halted as :admin_verify rendered or redirected
+Completed 302 Found in 12ms (ActiveRecord: 1.8ms | Allocations: 2424)
+
+
+Started GET "/" for ::1 at 2021-03-20 18:09:05 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 30.5ms | ActiveRecord: 0.0ms | Allocations: 8046)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:09:07 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `admin_verify'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4:in `admin_verify'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `admin_verify'
+Redirected to http://localhost:3000/
+Filter chain halted as :admin_verify rendered or redirected
+Completed 302 Found in 14ms (ActiveRecord: 1.6ms | Allocations: 2425)
+
+
+Started GET "/" for ::1 at 2021-03-20 18:09:07 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 4)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 32ms (Views: 31.3ms | ActiveRecord: 0.0ms | Allocations: 8053)
+
+
