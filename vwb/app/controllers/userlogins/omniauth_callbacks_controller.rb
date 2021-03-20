@@ -21,7 +21,8 @@ class Userlogins::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
     def after_sign_in_path_for(resource_or_scope)
       #stored_location_for(resource_or_scope) || root_path
       if User.exists?(email: current_userlogin.email)
-        request.env['omniauth.origin'] || stored_location_for(resource) || root_url
+        # request.env['omniauth.origin'] || stored_location_for(resource) || root_url
+        root_url
       else
         registration_user_path
       end

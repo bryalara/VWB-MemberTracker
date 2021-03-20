@@ -32,6 +32,10 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
+  #seed/initializr database
+  config.before(:suite) do
+    Rails.application.load_seed # loading seeds
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
