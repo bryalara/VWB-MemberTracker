@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   protect_from_forgery with: :exception
-  before_action :authenticate_userlogin! && :admin_verify, except: [:create, :registration]
+  before_action :authenticate_userlogin! && :admin_verify, except: [:create, :registration, :edit]
   # http_basic_authenticate_with name: "vwb", password: "password"
   def index
     @user = User.find_by_email(current_userlogin.email)
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     User.my_import(params[:file])
     redirect_to users_path, notice: "Users' information imported from csv file"
   end
-
+ 
   def show
     @user = User.find(params[:id])
   end
