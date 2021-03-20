@@ -1,5 +1,7 @@
-<%= link_to "Back to Events", event_index_path %>
-
-<h1>Event Details</h1>
-
+<%= render "layouts/navbar2", user: @user %>
+<div class="header">
+<h2 class="active h2-title">Event Details</h2>
+<button class="btn btn-decor" style="float:right; margin-right: 70px;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
+</div>
 <%= render "form", pointEvent: @pointEvent %>
+<%= render "layouts/footer" %>

@@ -1,7 +1,8 @@
-<%= link_to "Back to Events", event_index_path %>
-
-<h1>Delete <%= @pointEvent.name %>?</h1>
-
+<%= render "layouts/navbar2", user: @user %>
+<div class="header">
+<h2 class="active h2-title">Delete <%= @pointEvent.name %>?</h2>
+<button class="btn btn-decor" style="float:right; margin-right: 70px;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
+</div>
 <%= render "form", pointEvent: @pointEvent %>
 
-<td><%= link_to "Delete", point_event_path(@pointEvent), method: :delete, data: {confirm: "Are you sure you want to delete \"#{@pointEvent.name}\"?\nOnce deleted, the data will be lost forever. Points that students received from this event will also dissappear!"} %></td>
+<button class="btn btn-decor" style="float:right; margin-right: 70px;"><td><%= link_to "Delete", point_event_path(@pointEvent), method: :delete, data: {confirm: "Are you sure you want to delete \"#{@pointEvent.name}\"?\nOnce deleted, the data will be lost forever. Points that students received from this event will also dissappear!"}, class:"back-button" %></td></button>
