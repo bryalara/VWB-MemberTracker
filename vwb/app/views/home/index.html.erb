@@ -17,13 +17,15 @@
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
     <!-- Third party plugin CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Homenaje&display=swap" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-dark bg dark fixed-top" id="mainNav" style="background-color: #222222;">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Vets Without Borders</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,17 +42,36 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="pages/member">Member</a>
+          </li> 
+           <%# <% if user.role == 0 %> 
+           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="<%= users_path %>">Admin</a>
+          </li> 
+          <%# <%end%>
+          <% if !userlogin_signed_in? %>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="<%= userlogin_google_oauth2_omniauth_authorize_path %>"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+              </li>
+          <%end%>
+          <% if userlogin_signed_in? %>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="/userlogins/sign_out"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+              </li>
+          <%end%>
         </ul>
       </div>
     </div>
   </nav>
-
-  <header class="bg-primary text-white">
-    <div class="container text-center ">
-      <h1>Veterinarians Without Borders</h1>
-      <p class="lead">Texas A&M University</p>
+<div class="title-bar" style="background-color: white;">
+  <header class="bg-primary text-white" style="padding-left:0px; padding-right: 0px;" style="background-color: white;">
+    <div class=" text-center title-bar">
+      <h1 class="title">Veterinarians Without Borders</h1>
+      <p class="lead title">Texas A&M University</p>
     </div>
   </header>
+  </div>
 
   <section id="about">
     <div class="container">
