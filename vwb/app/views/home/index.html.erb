@@ -47,7 +47,7 @@
 
   <header class="bg-primary text-white">
     <div class="container text-center ">
-      <h1>Veterinarians Without Borders</h1>
+      <h1>Veterinarians Without Borders</h1> 
       <p class="lead">Texas A&M University</p>
     </div>
   </header>
@@ -57,6 +57,17 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <h2 id="aboutH">About Us</h2>
+
+          <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+        
+            <% if edithomepage.name == "about_us" %>
+              <td><%= (edithomepage.description) %></td>
+            <% else %>
+              <%  "Wrong Spelling of website attribute" %>
+            <% end %>
+    
+          <% end %>
+
           <p class="lead"></p>
           <ul>
           </ul>
