@@ -1,5 +1,4 @@
 name: CI/CD
-on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,7 +29,7 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
-      - name: Build and run test
+      - name: Build
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/test
           REDIS_URL: redis://localhost:6379/0
@@ -44,4 +43,3 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rake db:create
           bundle exec rake db:migrate
-          bundle exec rspec .

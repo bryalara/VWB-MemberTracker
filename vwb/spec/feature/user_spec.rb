@@ -764,11 +764,159 @@ RSpec.describe 'Users', type: :feature do
 			expect(page).to_not have_content('featureRead2@tamu.edu')
 			expect(page).to_not have_content('featureRead3@tamu.edu')
 		end
-
-
-
-
 	end
 
+	describe "are trying to attend an event / point event." do
+		event = Event.new
+		pointEvent = PointEvent.new
+		user = User.new
 
+		setup do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
+
+			pointEvent = PointEvent.create!(name: 'Test Event',
+							description: 'Test Description',
+							points: 5)
+		end
+
+		describe 'The users that have registered and are approved' do
+			setup do
+				user = User.create!(email: 'test@gmail.com',
+									role: 0,
+									firstName: 'Test',
+									lastName: 'Dummy',
+									phoneNumber: '5555555555',
+									tShirtSize: 'M',
+									participationPoints: 5,
+									classification: 'Senior',
+									optInEmail: true,
+									approved: true)
+			end
+
+			it 'can attend an event' do
+				visit attend_event_path(event)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Successfully attended Test Event!")
+			end
+
+			it 'cannot attend an event twice' do
+				visit attend_event_path(event)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Successfully attended Test Event!")
+
+				click_on 'Click to attend!'
+				expect(page).to have_content('You have already attended Test Event!')
+			end
+
+			it 'can attend a point event' do
+				visit attend_point_event_path(pointEvent)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Successfully attended Test Event!")
+			end
+
+			it 'cannot attend a point event twice' do
+				visit attend_point_event_path(pointEvent)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Successfully attended Test Event!")
+
+				click_on 'Click to attend!'
+				expect(page).to have_content('You have already attended Test Event!')
+			end
+		end
+
+		describe 'The users that have registered but are not approved' do
+			setup do
+				user = User.create!(email: 'test@gmail.com',
+									role: 0,
+									firstName: 'Test',
+									lastName: 'Dummy',
+									phoneNumber: '5555555555',
+									tShirtSize: 'M',
+									participationPoints: 5,
+									classification: 'Senior',
+									optInEmail: true,
+									approved: false)
+			end
+
+			it 'cannot attend an event' do
+				visit attend_event_path(event)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Could not attend the event because test@gmail.com has not been approved by an administrator.")
+			end
+
+			it 'cannot attend a point event' do
+				visit attend_point_event_path(pointEvent)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Could not attend the points event because test@gmail.com has not been approved by an administrator.")
+			end
+		end
+
+		describe 'The users that are logged in devise but not in the user table' do
+			it 'are asked to register first when trying to attend an event' do
+				visit attend_event_path(event)
+				expect(page).to have_content("Register first!")
+			end
+
+			it 'are asked to register first when trying to attend a points event' do
+				visit attend_point_event_path(pointEvent)
+				expect(page).to have_content("Register first!")
+			end
+		end
+
+		describe 'The correct amount of points is displayed in the users dashboard.' do
+			setup do
+				user = User.create!(email: 'test@gmail.com',
+									role: 0,
+									firstName: 'Test',
+									lastName: 'Dummy',
+									phoneNumber: '5555555555',
+									tShirtSize: 'M',
+									participationPoints: 5,
+									classification: 'Senior',
+									optInEmail: true,
+									approved: true)
+			end
+
+			it 'A user with 5 points attends an event and point event for 5 points each has 15 points' do
+				visit attend_event_path(event)
+				click_on 'Click to attend!'
+				sleep(1)
+				visit attend_point_event_path(pointEvent)
+				click_on 'Click to attend!'
+
+				visit users_path(id: user.id)
+				expect(page).to have_content("15")
+			end
+
+			it 'A user with 5 points attends an event for 5 points and has 10 points' do
+				visit attend_event_path(event)
+				click_on 'Click to attend!'
+
+				visit users_path(id: user.id)
+				expect(page).to have_content("10")
+			end
+		end
+	end
 end

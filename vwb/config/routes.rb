@@ -24,12 +24,20 @@ Rails.application.routes.draw do
   resources :point_event do
   	member do
   		get :delete
+      get :qr
+      get :attend
+      post :attend
+      delete '/user/:user_id/destroy' => 'point_event#destroy_user', :as => 'delete_user'
   	end
   end
 
   resources :event do
   	member do
   		get :delete
+      get :qr
+      get :attend
+      post :attend
+      delete '/user/:user_id/destroy' => 'event#destroy_user', :as => 'delete_user'
   	end
   end
 end
