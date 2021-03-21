@@ -1,24 +1,10 @@
-<style>
-th, td, tr {
-	padding-right: 15px;
-}
-
-.alert {
-	border-radius: 5px;
-	padding: 15px;
-	background: #d8ecdb;
-	color: #295529;
-}
-</style>
-
 <h1>Points Events</h1>
 <%= link_to "Add a Points Event", new_point_event_path(@pointEvents) %>
-<table style="text-align: left">
+<table>
 	<tr>
 		<th>Event</th>
 		<th>Description</th>
 		<th>Points</th>
-		<th>Event Type</th>
 		<th>Actions</th>
 	</tr>
 
@@ -27,11 +13,11 @@ th, td, tr {
 		<td><%= pointEvent.name %></td>
 		<td><%= pointEvent.description %></td>
 		<td><%= pointEvent.points %></td>
-		<td><%= pointEvent.eventType %></td>
 
 		<td><%= link_to "Show", point_event_path(pointEvent) %></td>
 		<td><%= link_to "Edit", edit_point_event_path(pointEvent) %></td>
 		<td><%= link_to "Delete", delete_point_event_path(pointEvent) %></td>
+		<td><%= link_to "QR", qr_point_event_path(pointEvent) %></td>
 	</tr>
 	<% end %>
 </table>

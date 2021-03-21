@@ -1,3 +1,9 @@
+<% flash.each do |type, msg| %>
+	<div class="alert">
+		<%= msg %>
+	</div>
+<% end %>
+
 <%= link_to "Back to Events", event_index_path %>
 
 <h1>Edit an Event</h1>
@@ -5,10 +11,10 @@
 <p>* denotes required fields.<p>
 
 <%= form_with :method => :PATCH, url:"/event/#{@event.id}", model: @event do |form| %>
-	<table style="text-align: left">
+	<table>
 		<tr>
 			<th><%= form.label :name %>*</th>
-			<td><%= form.text_field :name %></td>
+			<td><%= form.text_field :name, required: true %></td>
 		</tr>
 		<tr>
 			<th><%= form.label :description %></th>
@@ -16,22 +22,36 @@
 		</tr>
 		<tr>
 			<th><%= form.label :points %>*</th>
-			<td><%= form.number_field :points %></td>
-		</tr>
-		<tr>
-			<th>Event Type*</th>
-			<td><%= form.text_field :eventType %></td>
+			<td><%= form.number_field :points, required: true %></td>
 		</tr>
 		<tr>
 			<th>Start Time*</th>
-			<td><%= form.datetime_select :startDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
+			<td><%= form.datetime_field :startDate, required: true %></td>
 		</tr>
 		<tr>
 			<th>End Time*</th>
-			<td><%= form.datetime_select :endDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
+			<td><%= form.datetime_field :endDate, required: true %></td>
 		</tr>
 	</table>
 
 	<%= form.submit "Save Changes to Event" %>
-
 <% end %>
+
+<h1>Users that have attended</h1>
+<table>
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
+		<th>Action</th>
+	</tr>
+
+	<% @event.users.each do |user| %>
+	<tr>
+		<td><%= user.firstName %></td>
+		<td><%= user.lastName %></td>
+		<td><%= user.email %></td>
+		<td><%= link_to "Remove", delete_user_event_path(id: @event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the event again. Points that student received from this event will also dissappear!"} %></td>
+	</tr>
+	<% end %>
+</table>
