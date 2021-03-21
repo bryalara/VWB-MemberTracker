@@ -30,6 +30,11 @@ tr:nth-child(even) {
         <th> Points</th>
     </tr>
 
+<% if userlogin_signed_in? %>
+  <div>Signed in as: <%= current_userlogin.email %></div>
+  <div><%=  @user.role == 0 ? :"Member" : :"Admin"  %> </div>
+<% end %>
+
 <% @users.each do |user| %>
     <tr>
         <td><%=  user.firstName %></td>
@@ -46,15 +51,16 @@ tr:nth-child(even) {
 
 </table>
 
+<% if @user.role == 1 %>
+  <button> <%= link_to "Create New User", new_user_path %> </button>
 
-<button> <%= link_to "Create New User", new_user_path %> </button>
+  <button> <%= link_to "View Pending Users", pendingApproval_path %> </button>
 
-<button> <%= link_to "View Pending Users", pendingApproval_path %> </button>
-
-<div>
-    <h4> Import data from csv file </h4>
-        <%= form_tag import_users_path, multipart: true do %>
-            <%= file_field_tag :file %>
-            <%= submit_tag "Import CSV" %>
-        <% end %>
-</div>
+  <div>
+      <h4> Import data from csv file </h4>
+          <%= form_tag import_users_path, multipart: true do %>
+              <%= file_field_tag :file %>
+              <%= submit_tag "Import CSV" %>
+          <% end %>
+  </div>
+<% end %>
