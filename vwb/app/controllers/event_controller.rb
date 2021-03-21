@@ -52,11 +52,13 @@ class EventController < ApplicationController
 		redirect_to event_index_path
 	end
 
+	# Creates @qrCode which can be used to display a qr code to attend the event.
 	def qr
 		@event = Event.find(params[:id])
 		@qrCode = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_event_path(@event))
 	end
 
+	# Page for user to attend an event. If the client does a POST command, it will try to add the user to the event.
 	def attend
 		@event = Event.find(params[:id])
 		@user = User.where(email: current_userlogin.email).first
@@ -77,6 +79,7 @@ class EventController < ApplicationController
 		end
 	end
 
+	# Removes the user from an event they attended.
 	def destroy_user
 		@event = Event.find(params[:id])
 		@user = User.find(params[:user_id])
@@ -87,6 +90,22 @@ class EventController < ApplicationController
 			flash[:notice] = "#{@user.firstName} #{@user.lastName} has already been removed from #{@event.name}."
 		end
 		redirect_to edit_event_path(@event)
+	end
+
+	def download_ics
+		@events = Event.all
+		cal = Icalendar::Calendar.new
+
+		@events.each do |e|
+			event = Icalendar::Event.new
+			event.dtstart = e.startDate
+			event.dtend = e.endDate
+			event.summary = e.name
+			event.description = e.description
+			cal.add_event(event)
+		end
+
+		send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: "VWB Calendar.ics"
 	end
 
 	private

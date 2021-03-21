@@ -1,4 +1,5 @@
 <%= render template: 'calendars/events' %>
+<%= link_to "Download .ics", event_download_ics_path, method: :post %>
 
 <% flash.each do |type, msg| %>
 	<div class="alert">
