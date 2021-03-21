@@ -22546,3 +22546,375 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 84ms (Views: 80.1ms | ActiveRecord: 1.5ms | Allocations: 5625)
 
 
+Started GET "/pages/admin" for ::1 at 2021-03-21 03:25:22 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"admin"}
+  Rendering pages/admin.html.erb within layouts/application
+  Rendered pages/admin.html.erb within layouts/application (Duration: 1.9ms | Allocations: 80)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 83ms (Views: 81.3ms | ActiveRecord: 0.0ms | Allocations: 5554)
+
+
+Started GET "/" for ::1 at 2021-03-21 03:28:07 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (0.8ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/home/index.html.erb:61:in `each_with_index'
+  Rendered home/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 739)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 56.9ms | ActiveRecord: 0.8ms | Allocations: 5598)
+
+
+Started GET "/" for ::1 at 2021-03-21 03:29:57 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (1.2ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/home/index.html.erb:61:in `each_with_index'
+  Rendered home/index.html.erb within layouts/application (Duration: 9.5ms | Allocations: 1042)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 85ms (Views: 79.7ms | ActiveRecord: 1.2ms | Allocations: 7228)
+
+
+Started GET "/edihomepages/index" for ::1 at 2021-03-21 03:29:58 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/edihomepages/index"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-03-21 03:30:39 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (1.4ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/home/index.html.erb:61:in `each_with_index'
+  Rendered home/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 1041)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 94ms (Views: 87.6ms | ActiveRecord: 1.4ms | Allocations: 7260)
+
+
+Started GET "/edithomepages/index" for ::1 at 2021-03-21 03:30:41 -0500
+Processing by EdithomepagesController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mUserlogin Load (1.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEdithomepage Load (1.1ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages" WHERE "edithomepages"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edithomepages_controller.rb:10:in `show'
+Completed 404 Not Found in 22ms (ActiveRecord: 2.3ms | Allocations: 2665)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Edithomepage with 'id'=index):
+  
+app/controllers/edithomepages_controller.rb:10:in `show'
+Started GET "/edithomepages/index" for ::1 at 2021-03-21 03:30:59 -0500
+Processing by EdithomepagesController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mUserlogin Load (0.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEdithomepage Load (1.2ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages" WHERE "edithomepages"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edithomepages_controller.rb:10:in `show'
+Completed 404 Not Found in 21ms (ActiveRecord: 2.1ms | Allocations: 2664)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Edithomepage with 'id'=index):
+  
+app/controllers/edithomepages_controller.rb:10:in `show'
+Started GET "/edithomepages/index" for ::1 at 2021-03-21 03:31:02 -0500
+Processing by EdithomepagesController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mUserlogin Load (1.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEdithomepage Load (1.1ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages" WHERE "edithomepages"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edithomepages_controller.rb:10:in `show'
+Completed 404 Not Found in 21ms (ActiveRecord: 2.1ms | Allocations: 2664)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Edithomepage with 'id'=index):
+  
+app/controllers/edithomepages_controller.rb:10:in `show'
+Started GET "/edithomepages/index" for ::1 at 2021-03-21 03:31:23 -0500
+Processing by EdithomepagesController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mUserlogin Load (1.1ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEdithomepage Load (1.0ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages" WHERE "edithomepages"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edithomepages_controller.rb:10:in `show'
+Completed 404 Not Found in 24ms (ActiveRecord: 2.1ms | Allocations: 2663)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Edithomepage with 'id'=index):
+  
+app/controllers/edithomepages_controller.rb:10:in `show'
+Started GET "/edithomepages/index" for ::1 at 2021-03-21 03:31:32 -0500
+Processing by EdithomepagesController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mUserlogin Load (1.1ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEdithomepage Load (1.1ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages" WHERE "edithomepages"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/edithomepages_controller.rb:10:in `show'
+Completed 404 Not Found in 22ms (ActiveRecord: 2.3ms | Allocations: 2663)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Edithomepage with 'id'=index):
+  
+app/controllers/edithomepages_controller.rb:10:in `show'
+Started GET "/edithomepages" for ::1 at 2021-03-21 03:31:37 -0500
+Processing by EdithomepagesController#index as HTML
+  [1m[36mUserlogin Load (0.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering edithomepages/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (1.5ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/edithomepages/index.html.erb:12
+  Rendered edithomepages/index.html.erb within layouts/application (Duration: 19.9ms | Allocations: 2709)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 121ms (Views: 105.8ms | ActiveRecord: 2.4ms | Allocations: 10385)
+
+
+Started GET "/edithomepage_path" for ::1 at 2021-03-21 03:31:41 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/edithomepage_path"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/edithomepage_path" for ::1 at 2021-03-21 03:32:01 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/edithomepage_path"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/edithomepage_path" for ::1 at 2021-03-21 03:32:07 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/edithomepage_path"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-03-21 03:32:19 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (0.5ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/home/index.html.erb:61:in `each_with_index'
+  Rendered home/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1042)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 47ms (Views: 45.4ms | ActiveRecord: 0.5ms | Allocations: 7254)
+
+
+Started GET "/edithomepages" for ::1 at 2021-03-21 03:32:25 -0500
+Processing by EdithomepagesController#index as HTML
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering edithomepages/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (0.7ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/edithomepages/index.html.erb:12
+  Rendered edithomepages/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 2709)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 79ms (Views: 72.3ms | ActiveRecord: 1.5ms | Allocations: 9665)
+
+
+Started GET "/edithomepages" for ::1 at 2021-03-21 03:32:37 -0500
+Processing by EdithomepagesController#index as HTML
+  [1m[36mUserlogin Load (1.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering edithomepages/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (1.6ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/edithomepages/index.html.erb:12
+  Rendered edithomepages/index.html.erb within layouts/application (Duration: 18.3ms | Allocations: 2494)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 115ms (Views: 98.8ms | ActiveRecord: 2.6ms | Allocations: 8803)
+
+
+Started GET "/edithomepage_path" for ::1 at 2021-03-21 03:32:39 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/edithomepage_path"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/edithomepage_path" for ::1 at 2021-03-21 03:32:44 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/edithomepage_path"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-03-21 03:32:58 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (0.6ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/home/index.html.erb:61:in `each_with_index'
+  Rendered home/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1041)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 40.4ms | ActiveRecord: 0.6ms | Allocations: 7246)
+
+
+Started GET "/edithomepages" for ::1 at 2021-03-21 03:33:01 -0500
+Processing by EdithomepagesController#index as HTML
+  [1m[36mUserlogin Load (1.1ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering edithomepages/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (1.2ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/edithomepages/index.html.erb:12
+  Rendered edithomepages/index.html.erb within layouts/application (Duration: 17.2ms | Allocations: 2709)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 101ms (Views: 84.4ms | ActiveRecord: 2.4ms | Allocations: 9657)
+
+
