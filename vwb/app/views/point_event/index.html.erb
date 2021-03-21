@@ -1,30 +1,6 @@
-<style>
-	table {
-		font-family: arial, sans-serif;
-		border-collapse: collapse;
-		width: 100%;
-	}
-
-	td, th {
-		border: 1px solid #dddddd;
-		text-align: left;
-		padding: 8px;
-	}
-
-	tr:nth-child(even) {
-		background-color: #ebebeb;
-	}
-
-	.alert {
-		border-radius: 5px;
-		padding: 15px;
-		background: #d8ecdb;
-		color: #295529;
-	}
-</style>
 <h1>Points Events</h1>
 <%= link_to "Add a Points Event", new_point_event_path(@pointEvents) %>
-<table style="text-align: left">
+<table>
 	<tr>
 		<th>Event</th>
 		<th>Description</th>

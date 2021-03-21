@@ -1,28 +1,3 @@
-<style>
-	table {
-		font-family: arial, sans-serif;
-		border-collapse: collapse;
-		width: 100%;
-	}
-
-	td, th {
-		border: 1px solid #dddddd;
-		text-align: left;
-		padding: 8px;
-	}
-
-	tr:nth-child(even) {
-		background-color: #ebebeb;
-	}
-
-	.alert {
-		border-radius: 5px;
-		padding: 15px;
-		background: #d8ecdb;
-		color: #295529;
-	}
-</style>
-
 <% flash.each do |type, msg| %>
 	<div class="alert">
 		<%= msg %>
@@ -36,7 +11,7 @@
 <%= render "form", pointEvent: @pointEvent %>
 
 <h1>Users that have attended</h1>
-<table style="text-align: left">
+<table>
 	<tr>
 		<th>First Name</th>
 		<th>Last Name</th>

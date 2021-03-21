@@ -6,37 +6,12 @@
 
 <%= link_to "Back to Events", event_index_path %>
 
-<style>
-	table {
-		font-family: arial, sans-serif;
-		border-collapse: collapse;
-		width: 100%;
-	}
-
-	td, th {
-		border: 1px solid #dddddd;
-		text-align: left;
-		padding: 8px;
-	}
-
-	tr:nth-child(even) {
-		background-color: #ebebeb;
-	}
-
-	.alert {
-		border-radius: 5px;
-		padding: 15px;
-		background: #d8ecdb;
-		color: #295529;
-	}
-</style>
-
 <h1>Edit an Event</h1>
 
 <p>* denotes required fields.<p>
 
 <%= form_with :method => :PATCH, url:"/event/#{@event.id}", model: @event do |form| %>
-	<table style="text-align: left">
+	<table>
 		<tr>
 			<th><%= form.label :name %>*</th>
 			<td><%= form.text_field :name, required: true %></td>
@@ -63,7 +38,7 @@
 <% end %>
 
 <h1>Users that have attended</h1>
-<table style="text-align: left">
+<table>
 	<tr>
 		<th>First Name</th>
 		<th>Last Name</th>
