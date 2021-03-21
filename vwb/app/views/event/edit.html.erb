@@ -6,7 +6,7 @@
 <p>* denotes required fields.<p>
 
 <%= form_with :method => :PATCH, url:"/event/#{@event.id}", model: @event do |form| %>
-	<table style="text-align: left">
+	<table >
 		<tr>
 			<th><%= form.label :name %>*</th>
 			<td><%= form.text_field :name %></td>
@@ -25,7 +25,7 @@
 		</tr>
 		<tr>
 			<th>Start Time*</th>
-			<td><%= form.datetime_select :startDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
+			<td><%= form.datetime_select :startDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"}, class:"select-edit", style: "width: auto !important;" %></td></div>
 		</tr>
 		<tr>
 			<th>End Time*</th>

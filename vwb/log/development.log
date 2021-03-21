@@ -23092,3 +23092,1961 @@ Processing by EventController#show as HTML
 Completed 200 OK in 83ms (Views: 70.9ms | ActiveRecord: 4.2ms | Allocations: 9519)
 
 
+Started GET "/event/1" for ::1 at 2021-03-20 17:59:46 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (1.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (4.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 4.1ms | Allocations: 102)
+  Rendered event/_form.html.erb (Duration: 2.2ms | Allocations: 47)
+  Rendered event/show.html.erb within layouts/application (Duration: 10.5ms | Allocations: 301)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 283ms (Views: 218.5ms | ActiveRecord: 7.1ms | Allocations: 8254)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:02:29 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (3.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 95)
+  Rendered event/_form.html.erb (Duration: 0.2ms | Allocations: 47)
+  Rendered event/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 293)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1596ms (Views: 1586.7ms | ActiveRecord: 4.2ms | Allocations: 26652)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:02:58 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (4.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 95)
+  Rendered event/_form.html.erb (Duration: 0.2ms | Allocations: 47)
+  Rendered event/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 293)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1742ms (Views: 1728.1ms | ActiveRecord: 4.5ms | Allocations: 26251)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:03:20 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (1.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (4.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.9ms | Allocations: 95)
+  Rendered event/_form.html.erb (Duration: 0.2ms | Allocations: 47)
+  Rendered event/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 293)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 74ms (Views: 62.6ms | ActiveRecord: 6.0ms | Allocations: 8093)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:04:31 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (7.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 95)
+  Rendered event/_form.html.erb (Duration: 0.2ms | Allocations: 47)
+  Rendered event/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 293)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1339ms (Views: 1326.9ms | ActiveRecord: 7.4ms | Allocations: 26653)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:05:08 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (4.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 2.1ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 2.1ms | Allocations: 224)
+  Rendered event/show.html.erb within layouts/application (Duration: 12.9ms | Allocations: 1135)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 202ms (Views: 187.6ms | ActiveRecord: 5.1ms | Allocations: 9995)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:06:03 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered event/_form.html.erb (Duration: 0.1ms | Allocations: 47)
+  Rendered event/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 301)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 48.0ms | ActiveRecord: 0.6ms | Allocations: 7615)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:06:15 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.9ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 3.5ms | Allocations: 224)
+  Rendered event/show.html.erb within layouts/application (Duration: 8.1ms | Allocations: 1132)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 27.4ms | ActiveRecord: 0.7ms | Allocations: 9513)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:06:37 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 2.7ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 6.9ms | Allocations: 224)
+  Rendered event/show.html.erb within layouts/application (Duration: 12.6ms | Allocations: 1127)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 191ms (Views: 184.6ms | ActiveRecord: 0.5ms | Allocations: 9501)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:07:25 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (10.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.9ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 1.5ms | Allocations: 225)
+  Rendered event/show.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1128)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 78ms (Views: 58.0ms | ActiveRecord: 11.1ms | Allocations: 9504)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:07:48 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (1.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.4ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 2.3ms | Allocations: 225)
+  Rendered event/show.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1128)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 19.3ms | ActiveRecord: 2.3ms | Allocations: 9512)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:07:59 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (4.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.8ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 1.4ms | Allocations: 225)
+  Rendered event/show.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1132)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 24.7ms | ActiveRecord: 4.3ms | Allocations: 9510)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:08:28 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 11.7ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 1.1ms | Allocations: 225)
+  Rendered event/show.html.erb within layouts/application (Duration: 21.6ms | Allocations: 1133)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 160ms (Views: 153.8ms | ActiveRecord: 0.7ms | Allocations: 9528)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:08:41 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 2.2ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 1.0ms | Allocations: 225)
+  Rendered event/show.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1131)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 29.3ms | ActiveRecord: 1.1ms | Allocations: 9511)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:09:01 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.8ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 2.2ms | Allocations: 225)
+  Rendered event/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1128)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 32ms (Views: 24.6ms | ActiveRecord: 1.0ms | Allocations: 9517)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:10:09 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (2.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  [1m[36mUser Load (41.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 1.3ms | Allocations: 78)
+  Rendered users/index.html.erb within layouts/application (Duration: 71.6ms | Allocations: 1850)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2397ms (Views: 2345.3ms | ActiveRecord: 43.4ms | Allocations: 28801)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:10:11 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (45.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  [1m[36mUser Load (8.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 13.6ms | Allocations: 1166)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 86ms (Views: 28.0ms | ActiveRecord: 54.6ms | Allocations: 7958)
+
+
+Started GET "/pendingApproval" for ::1 at 2021-03-20 18:10:18 -0500
+Processing by UsersController#pendingApproval as HTML
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/pendingApproval.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.9ms | Allocations: 102)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", false]]
+  ↳ app/views/users/pendingApproval.html.erb:40
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/pendingApproval.html.erb within layouts/application (Duration: 12.3ms | Allocations: 1410)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 25.3ms | ActiveRecord: 1.3ms | Allocations: 8353)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:10:34 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (1.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 95)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1158)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 19.3ms | ActiveRecord: 2.5ms | Allocations: 7950)
+
+
+Started GET "/pendingApproval" for ::1 at 2021-03-20 18:10:35 -0500
+Processing by UsersController#pendingApproval as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/pendingApproval.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.4ms | Allocations: 95)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", false]]
+  ↳ app/views/users/pendingApproval.html.erb:40
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/pendingApproval.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1023)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 19.2ms | ActiveRecord: 0.6ms | Allocations: 7807)
+
+
+Started GET "/users/1" for ::1 at 2021-03-20 18:10:37 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.4ms | Allocations: 102)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/show.html.erb within layouts/application (Duration: 24.6ms | Allocations: 806)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 45ms (Views: 37.2ms | ActiveRecord: 2.4ms | Allocations: 8350)
+
+
+Started GET "/users/1/edit" for ::1 at 2021-03-20 18:10:56 -0500
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `edit'
+  Rendering users/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 5)
+  Rendered users/edit.html.erb within layouts/application (Duration: 257.7ms | Allocations: 7705)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 325ms (Views: 318.7ms | ActiveRecord: 0.7ms | Allocations: 15076)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:11:04 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (2.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 95)
+  [1m[36mUser Load (14.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 16.6ms | Allocations: 1159)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 39ms (Views: 18.3ms | ActiveRecord: 16.8ms | Allocations: 7954)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:11:20 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 92)
+  [1m[36mPointEvent Load (15.2ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 24.6ms | Allocations: 1237)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 32.6ms | Allocations: 2673)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 87ms (Views: 63.1ms | ActiveRecord: 15.8ms | Allocations: 9560)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:12:45 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 85)
+  [1m[36mPointEvent Load (0.6ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 2.7ms | Allocations: 955)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 1940)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1368ms (Views: 1362.2ms | ActiveRecord: 2.0ms | Allocations: 27739)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:12:57 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (1.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 85)
+  [1m[36mPointEvent Load (5.0ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 7.8ms | Allocations: 955)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1936)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 819ms (Views: 808.0ms | ActiveRecord: 6.6ms | Allocations: 27742)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:15:17 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.1ms | Allocations: 85)
+  [1m[36mPointEvent Load (2.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 5.3ms | Allocations: 955)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 9.1ms | Allocations: 1936)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 71ms (Views: 63.4ms | ActiveRecord: 3.3ms | Allocations: 9187)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:15:21 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1168)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 12.8ms | ActiveRecord: 0.6ms | Allocations: 7965)
+
+
+Started GET "/pages/member" for ::1 at 2021-03-20 18:15:24 -0500
+Processing by PagesController#show as HTML
+  Parameters: {"page"=>"member"}
+  Rendering pages/member.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar2.html.erb:21
+  Rendered layouts/_navbar2.html.erb (Duration: 4.1ms | Allocations: 1011)
+  Rendered pages/member.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1254)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 25.8ms | ActiveRecord: 0.5ms | Allocations: 7184)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:15:26 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (10.1ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  [1m[36mUser Load (7.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 1168)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 45ms (Views: 24.8ms | ActiveRecord: 17.2ms | Allocations: 7944)
+
+
+Started GET "/pendingApproval" for ::1 at 2021-03-20 18:15:27 -0500
+Processing by UsersController#pendingApproval as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/pendingApproval.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 95)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", false]]
+  ↳ app/views/users/pendingApproval.html.erb:40
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/pendingApproval.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1025)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 13.6ms | ActiveRecord: 1.2ms | Allocations: 7798)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:15:34 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 95)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1155)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 19.6ms | ActiveRecord: 1.4ms | Allocations: 7940)
+
+
+Started GET "/users/new" for ::1 at 2021-03-20 18:15:35 -0500
+Processing by UsersController#new as HTML
+  [1m[36mUserlogin Load (1.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.4ms | Allocations: 102)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/new.html.erb within layouts/application (Duration: 10.1ms | Allocations: 2430)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 25.3ms | ActiveRecord: 1.4ms | Allocations: 9320)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:15:40 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (1.1ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 95)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1160)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 21.4ms | ActiveRecord: 1.5ms | Allocations: 7950)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:15:41 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (3.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 88)
+  [1m[36mPointEvent Load (0.7ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 14.6ms | Allocations: 962)
+  Rendered layouts/_footer.html.erb (Duration: 0.2ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 21.7ms | Allocations: 1951)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 32.5ms | ActiveRecord: 4.7ms | Allocations: 8727)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:15:46 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  Rendered event/edit.html.erb within layouts/application (Duration: 54.7ms | Allocations: 6243)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 73ms (Views: 66.6ms | ActiveRecord: 1.0ms | Allocations: 13688)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:15:48 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (10.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.1ms | Allocations: 85)
+  [1m[36mPointEvent Load (8.6ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 11.0ms | Allocations: 959)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 23.6ms | Allocations: 1944)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 77ms (Views: 54.4ms | ActiveRecord: 19.8ms | Allocations: 8716)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:15:49 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (4.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 95)
+  Rendered event/_form.html.erb (Duration: 0.2ms | Allocations: 47)
+  Rendered event/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 293)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 14.5ms | ActiveRecord: 5.2ms | Allocations: 7600)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:16:44 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.4ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 0.5ms | Allocations: 225)
+  Rendered event/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1131)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 38.9ms | ActiveRecord: 0.6ms | Allocations: 9531)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:16:51 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.6ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 0.5ms | Allocations: 224)
+  Rendered event/show.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1127)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 23.5ms | ActiveRecord: 1.3ms | Allocations: 9505)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:16:55 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 92)
+  [1m[36mPointEvent Load (1.1ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 12.7ms | Allocations: 1237)
+  Rendered layouts/_footer.html.erb (Duration: 0.7ms | Allocations: 78)
+  Rendered event/index.html.erb within layouts/application (Duration: 18.7ms | Allocations: 2882)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 46ms (Views: 36.4ms | ActiveRecord: 2.4ms | Allocations: 9785)
+
+
+Started GET "/event/1/delete" for ::1 at 2021-03-20 18:17:02 -0500
+Processing by EventController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:44:in `delete'
+  Rendering event/delete.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.5ms | Allocations: 102)
+  Rendered event/_form.html.erb (Duration: 0.2ms | Allocations: 45)
+  Rendered event/delete.html.erb within layouts/application (Duration: 6.7ms | Allocations: 528)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 17.6ms | ActiveRecord: 0.5ms | Allocations: 7972)
+
+
+Started GET "/event/1/delete" for ::1 at 2021-03-20 18:18:24 -0500
+Processing by EventController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:44:in `delete'
+  Rendering event/delete.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.1ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 0.9ms | Allocations: 222)
+  Rendered event/delete.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1228)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 53ms (Views: 49.8ms | ActiveRecord: 0.4ms | Allocations: 9636)
+
+
+Started GET "/event/1/delete" for ::1 at 2021-03-20 18:18:41 -0500
+Processing by EventController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:44:in `delete'
+  Rendering event/delete.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.2ms | Allocations: 357)
+  Rendered event/_form.html.erb (Duration: 1.0ms | Allocations: 222)
+  Rendered event/delete.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1225)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 118ms (Views: 114.0ms | ActiveRecord: 0.5ms | Allocations: 9613)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:18:50 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (1.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.1ms | Allocations: 92)
+  [1m[36mPointEvent Load (0.4ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 2.8ms | Allocations: 1237)
+  Rendered layouts/_footer.html.erb (Duration: 6.9ms | Allocations: 78)
+  Rendered event/index.html.erb within layouts/application (Duration: 13.8ms | Allocations: 2883)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 24.3ms | ActiveRecord: 2.2ms | Allocations: 9788)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 18:18:53 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered event/_form.html.erb (Duration: 0.1ms | Allocations: 47)
+  Rendered event/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 425)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 15.8ms | ActiveRecord: 0.5ms | Allocations: 7881)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:18:54 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (1.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (2.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.1ms | Allocations: 85)
+  [1m[36mPointEvent Load (1.2ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 3.1ms | Allocations: 959)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 1944)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 20.9ms | ActiveRecord: 5.4ms | Allocations: 8700)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:18:55 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered event/edit.html.erb within layouts/application (Duration: 8.2ms | Allocations: 5866)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 21.4ms | ActiveRecord: 0.5ms | Allocations: 13308)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:18:57 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.1ms | Allocations: 85)
+  [1m[36mPointEvent Load (0.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 2.4ms | Allocations: 959)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1944)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 25.9ms | ActiveRecord: 1.2ms | Allocations: 8711)
+
+
+Started GET "/event/1/delete" for ::1 at 2021-03-20 18:18:58 -0500
+Processing by EventController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (3.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:44:in `delete'
+  Rendering event/delete.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 95)
+  Rendered event/_form.html.erb (Duration: 0.2ms | Allocations: 45)
+  Rendered event/delete.html.erb within layouts/application (Duration: 1.2ms | Allocations: 352)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 18.7ms | ActiveRecord: 4.4ms | Allocations: 7656)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:18:59 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (6.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 85)
+  [1m[36mPointEvent Load (16.7ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 18.8ms | Allocations: 955)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 21.8ms | Allocations: 1936)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 57ms (Views: 30.5ms | ActiveRecord: 23.4ms | Allocations: 8697)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:19:01 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (1.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 95)
+  Rendered event/edit.html.erb within layouts/application (Duration: 6.8ms | Allocations: 5530)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 28.2ms | ActiveRecord: 2.1ms | Allocations: 12838)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:19:38 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 7.0ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 12.8ms | Allocations: 6263)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 51ms (Views: 42.2ms | ActiveRecord: 0.6ms | Allocations: 14644)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:25:06 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 8.1ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 23.5ms | Allocations: 6258)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 257ms (Views: 228.3ms | ActiveRecord: 1.4ms | Allocations: 14771)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:28:14 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 6.8ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 17.9ms | Allocations: 6260)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 124ms (Views: 118.2ms | ActiveRecord: 1.1ms | Allocations: 14647)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:32:09 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (1.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.2ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 10.2ms | Allocations: 6257)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 65ms (Views: 58.1ms | ActiveRecord: 1.4ms | Allocations: 14635)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:33:25 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 25.2ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 40.0ms | Allocations: 6259)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 927ms (Views: 914.0ms | ActiveRecord: 1.7ms | Allocations: 14634)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:33:48 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (6.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.7ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 13.8ms | Allocations: 6261)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 95ms (Views: 77.0ms | ActiveRecord: 6.8ms | Allocations: 14660)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:38:25 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 6.1ms | Allocations: 357)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.8ms | Allocations: 78)
+  Rendered users/index.html.erb within layouts/application (Duration: 13.3ms | Allocations: 2242)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1745ms (Views: 1740.9ms | ActiveRecord: 0.9ms | Allocations: 29639)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:38:27 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1166)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 30.8ms | ActiveRecord: 0.7ms | Allocations: 7955)
+
+
+Started GET "/users/new" for ::1 at 2021-03-20 18:38:35 -0500
+Processing by UsersController#new as HTML
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 6.7ms | Allocations: 102)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/new.html.erb within layouts/application (Duration: 42.4ms | Allocations: 2403)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 117ms (Views: 106.6ms | ActiveRecord: 0.9ms | Allocations: 9388)
+
+
+Started GET "/users/new" for ::1 at 2021-03-20 18:40:27 -0500
+Processing by UsersController#new as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.2ms | Allocations: 357)
+  Rendered layouts/_footer.html.erb (Duration: 0.6ms | Allocations: 78)
+  Rendered users/new.html.erb within layouts/application (Duration: 9.9ms | Allocations: 3008)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1422ms (Views: 1416.3ms | ActiveRecord: 0.4ms | Allocations: 29498)
+
+
+Started GET "/users/new" for ::1 at 2021-03-20 18:40:52 -0500
+Processing by UsersController#new as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.2ms | Allocations: 357)
+  Rendered layouts/_footer.html.erb (Duration: 0.4ms | Allocations: 78)
+  Rendered users/new.html.erb within layouts/application (Duration: 8.5ms | Allocations: 3007)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 25.7ms | ActiveRecord: 0.5ms | Allocations: 10852)
+
+
+Started GET "/users/new" for ::1 at 2021-03-20 18:41:40 -0500
+Processing by UsersController#new as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.0ms | Allocations: 357)
+  Rendered layouts/_footer.html.erb (Duration: 0.5ms | Allocations: 78)
+  Rendered users/new.html.erb within layouts/application (Duration: 9.2ms | Allocations: 3000)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1613ms (Views: 1607.9ms | ActiveRecord: 0.5ms | Allocations: 29949)
+
+
+Started GET "/users/new" for ::1 at 2021-03-20 18:42:01 -0500
+Processing by UsersController#new as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.5ms | Allocations: 102)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/new.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1749)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 33.6ms | ActiveRecord: 0.4ms | Allocations: 8983)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:43:22 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 23.2ms | Allocations: 1667)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1785ms (Views: 1778.0ms | ActiveRecord: 1.5ms | Allocations: 27631)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:43:24 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (20.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 2.1ms | Allocations: 95)
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 1155)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 95ms (Views: 51.1ms | ActiveRecord: 22.1ms | Allocations: 7952)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:43:26 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.4ms | Allocations: 92)
+  [1m[36mPointEvent Load (0.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 4.6ms | Allocations: 1237)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 2676)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 28.5ms | ActiveRecord: 1.5ms | Allocations: 10096)
+
+
+Started GET "/users" for ::1 at 2021-03-20 18:43:29 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.4ms | Allocations: 102)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1168)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 24.3ms | ActiveRecord: 1.0ms | Allocations: 7958)
+
+
+Started GET "/event" for ::1 at 2021-03-20 18:43:31 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (1.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (4.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 85)
+  [1m[36mPointEvent Load (0.9ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 3.0ms | Allocations: 955)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 9.9ms | Allocations: 1940)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 82ms (Views: 71.8ms | ActiveRecord: 6.1ms | Allocations: 8715)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:43:33 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  Rendered event/edit.html.erb within layouts/application (Duration: 7.8ms | Allocations: 5867)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 21.2ms | ActiveRecord: 2.0ms | Allocations: 13325)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:44:28 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.1ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 8.7ms | Allocations: 6275)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 136ms (Views: 129.7ms | ActiveRecord: 0.9ms | Allocations: 15142)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 18:45:00 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (1.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.4ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 13.8ms | Allocations: 6273)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 97ms (Views: 87.1ms | ActiveRecord: 1.9ms | Allocations: 14646)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:01:43 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (1.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 3.0ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 31.5ms | Allocations: 6279)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1774ms (Views: 1744.2ms | ActiveRecord: 2.2ms | Allocations: 33437)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:02:27 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (9.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (8.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 7.4ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 29.7ms | Allocations: 6274)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 254ms (Views: 218.4ms | ActiveRecord: 19.0ms | Allocations: 14806)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:02:49 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (1.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 12.1ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 78.9ms | Allocations: 6276)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 240ms (Views: 227.4ms | ActiveRecord: 1.7ms | Allocations: 14657)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:07:21 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (6.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 92)
+  [1m[36mPointEvent Load (50.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 57.0ms | Allocations: 1237)
+  Rendered layouts/_footer.html.erb (Duration: 4.2ms | Allocations: 78)
+  Rendered event/index.html.erb within layouts/application (Duration: 86.7ms | Allocations: 2884)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 260ms (Views: 171.3ms | ActiveRecord: 58.8ms | Allocations: 9787)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:07:26 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (3.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.4ms | Allocations: 102)
+  Rendered event/edit.html.erb within layouts/application (Duration: 17.7ms | Allocations: 5539)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 47.9ms | ActiveRecord: 4.1ms | Allocations: 12846)
+
+
+Started GET "/point_event/1/edit" for ::1 at 2021-03-20 19:07:28 -0500
+Processing by PointEventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.8ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:29:in `edit'
+  Rendering point_event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 103)
+  Rendered point_event/edit.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1465)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 29.3ms | ActiveRecord: 1.2ms | Allocations: 9547)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:07:32 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (12.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  Rendered event/edit.html.erb within layouts/application (Duration: 17.3ms | Allocations: 5541)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 63ms (Views: 36.8ms | ActiveRecord: 13.5ms | Allocations: 12857)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:08:29 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.4ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 11.1ms | Allocations: 6261)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 198ms (Views: 185.2ms | ActiveRecord: 0.8ms | Allocations: 14648)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:09:56 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.5ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 12.2ms | Allocations: 6266)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 80ms (Views: 71.8ms | ActiveRecord: 0.7ms | Allocations: 14653)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:10:47 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.4ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 15.8ms | Allocations: 6265)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 73ms (Views: 66.3ms | ActiveRecord: 1.1ms | Allocations: 14651)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:11:01 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.9ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 11.6ms | Allocations: 6263)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 51ms (Views: 41.6ms | ActiveRecord: 1.8ms | Allocations: 14783)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:13:06 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (1.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 7.3ms | Allocations: 357)
+  Rendered event/edit.html.erb within layouts/application (Duration: 14.3ms | Allocations: 6266)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1668ms (Views: 1645.4ms | ActiveRecord: 2.0ms | Allocations: 32414)
+
+
+Started GET "/users" for ::1 at 2021-03-20 19:13:23 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (1.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.4ms | Allocations: 102)
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 20.8ms | Allocations: 78)
+  Rendered users/index.html.erb within layouts/application (Duration: 33.5ms | Allocations: 1851)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1717ms (Views: 1708.1ms | ActiveRecord: 4.8ms | Allocations: 28801)
+
+
+Started GET "/users" for ::1 at 2021-03-20 19:13:25 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 3.2ms | Allocations: 102)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 1166)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 25.9ms | ActiveRecord: 0.9ms | Allocations: 7962)
+
+
+Started GET "/users/new" for ::1 at 2021-03-20 19:13:28 -0500
+Processing by UsersController#new as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/new.html.erb within layouts/application (Duration: 9.1ms | Allocations: 2425)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 20.6ms | ActiveRecord: 0.3ms | Allocations: 9317)
+
+
+Started GET "/users" for ::1 at 2021-03-20 19:13:38 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (9.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.5ms | Allocations: 95)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1159)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 23.6ms | ActiveRecord: 9.8ms | Allocations: 7943)
+
+
+Started GET "/pendingApproval" for ::1 at 2021-03-20 19:13:39 -0500
+Processing by UsersController#pendingApproval as HTML
+  [1m[36mUserlogin Load (5.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/pendingApproval.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.5ms | Allocations: 102)
+  [1m[36mUser Load (10.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", false]]
+  ↳ app/views/users/pendingApproval.html.erb:40
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/pendingApproval.html.erb within layouts/application (Duration: 21.3ms | Allocations: 1409)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 53ms (Views: 30.9ms | ActiveRecord: 16.3ms | Allocations: 8333)
+
+
+Started GET "/users/1" for ::1 at 2021-03-20 19:13:41 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 780)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 66ms (Views: 60.2ms | ActiveRecord: 0.6ms | Allocations: 8229)
+
+
+Started GET "/users/1/edit" for ::1 at 2021-03-20 19:13:43 -0500
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `edit'
+  Rendering users/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/edit.html.erb within layouts/application (Duration: 7.1ms | Allocations: 2335)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 82ms (Views: 75.9ms | ActiveRecord: 0.9ms | Allocations: 9777)
+
+
+Started GET "/users/1/edit" for ::1 at 2021-03-20 19:14:02 -0500
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `edit'
+  Rendering users/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 7.1ms | Allocations: 357)
+  Rendered layouts/_footer.html.erb (Duration: 0.5ms | Allocations: 78)
+  Rendered users/edit.html.erb within layouts/application (Duration: 13.3ms | Allocations: 2954)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 188ms (Views: 178.9ms | ActiveRecord: 1.1ms | Allocations: 11338)
+
+
+Started GET "/users" for ::1 at 2021-03-20 19:14:08 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1620)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 13.4ms | ActiveRecord: 0.6ms | Allocations: 8543)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:14:09 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (3.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (3.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 92)
+  [1m[36mPointEvent Load (1.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 6.3ms | Allocations: 1237)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 15.5ms | Allocations: 2673)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 28.9ms | ActiveRecord: 9.1ms | Allocations: 10087)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:14:12 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (1.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered event/edit.html.erb within layouts/application (Duration: 7.5ms | Allocations: 5873)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 40ms (Views: 31.5ms | ActiveRecord: 2.5ms | Allocations: 13318)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:14:21 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 85)
+  [1m[36mPointEvent Load (0.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 2.4ms | Allocations: 959)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 6.7ms | Allocations: 1944)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 24.6ms | ActiveRecord: 2.6ms | Allocations: 8703)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:14:28 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered point_event/_form.html.erb (Duration: 2.5ms | Allocations: 162)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 7.4ms | Allocations: 749)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 32ms (Views: 25.7ms | ActiveRecord: 0.7ms | Allocations: 8712)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:15:14 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.4ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.5ms | Allocations: 357)
+  Rendered point_event/_form.html.erb (Duration: 5.8ms | Allocations: 160)
+  Rendered layouts/_footer.html.erb (Duration: 7.0ms | Allocations: 78)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 16.8ms | Allocations: 1365)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 171ms (Views: 163.3ms | ActiveRecord: 1.2ms | Allocations: 9738)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:15:18 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.4ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered point_event/_form.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 24.9ms | ActiveRecord: 0.6ms | Allocations: 7643)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:15:35 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 2.1ms | Allocations: 347)
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 5.3ms | Allocations: 1628)
+  Rendered layouts/_footer.html.erb (Duration: 0.3ms | Allocations: 78)
+  Rendered event/index.html.erb within layouts/application (Duration: 11.4ms | Allocations: 3278)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 28.1ms | ActiveRecord: 1.9ms | Allocations: 11118)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:15:38 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered event/edit.html.erb within layouts/application (Duration: 7.1ms | Allocations: 5873)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 19.4ms | ActiveRecord: 0.6ms | Allocations: 13326)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:15:40 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (3.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (3.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 85)
+  [1m[36mPointEvent Load (4.9ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 7.5ms | Allocations: 959)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 13.2ms | Allocations: 1944)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 106ms (Views: 91.6ms | ActiveRecord: 11.8ms | Allocations: 8699)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:15:41 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  Rendered point_event/_form.html.erb (Duration: 0.5ms | Allocations: 160)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 750)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 21.3ms | ActiveRecord: 0.6ms | Allocations: 8712)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:15:43 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (2.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (68.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.1ms | Allocations: 88)
+  [1m[36mPointEvent Load (1.6ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 4.0ms | Allocations: 962)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 73.9ms | Allocations: 1951)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 121ms (Views: 45.5ms | ActiveRecord: 72.4ms | Allocations: 8721)
+
+
+Started GET "/users" for ::1 at 2021-03-20 19:15:50 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.5ms | Allocations: 102)
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.2ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 9.5ms | Allocations: 1617)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 32.9ms | ActiveRecord: 1.9ms | Allocations: 9052)
+
+
+Started GET "/users/new" for ::1 at 2021-03-20 19:15:53 -0500
+Processing by UsersController#new as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2422)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 16.8ms | ActiveRecord: 0.3ms | Allocations: 9313)
+
+
+Started GET "/users" for ::1 at 2021-03-20 19:15:55 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (6.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 95)
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:46
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered users/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1159)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 16.5ms | ActiveRecord: 8.6ms | Allocations: 7952)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:15:57 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 88)
+  [1m[36mPointEvent Load (6.0ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 8.3ms | Allocations: 962)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 1951)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 23.6ms | ActiveRecord: 8.0ms | Allocations: 8712)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:16:00 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (1.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 95)
+  Rendered event/edit.html.erb within layouts/application (Duration: 13.0ms | Allocations: 5533)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 140ms (Views: 132.7ms | ActiveRecord: 2.1ms | Allocations: 12840)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:16:03 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (2.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.1ms | Allocations: 85)
+  [1m[36mPointEvent Load (0.9ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 3.0ms | Allocations: 955)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 1936)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 22.2ms | ActiveRecord: 4.0ms | Allocations: 8702)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:16:05 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (22.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 95)
+  Rendered event/edit.html.erb within layouts/application (Duration: 9.1ms | Allocations: 5532)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 57ms (Views: 28.2ms | ActiveRecord: 23.4ms | Allocations: 12833)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:16:08 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (3.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (3.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.1ms | Allocations: 85)
+  [1m[36mPointEvent Load (2.1ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 4.6ms | Allocations: 955)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 1936)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 25.1ms | ActiveRecord: 9.3ms | Allocations: 8698)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 19:16:09 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (9.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (3.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered event/_form.html.erb (Duration: 1.6ms | Allocations: 224)
+  Rendered event/show.html.erb within layouts/application (Duration: 5.3ms | Allocations: 733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 23.5ms | ActiveRecord: 12.1ms | Allocations: 8184)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:16:11 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (12.1ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 88)
+  [1m[36mPointEvent Load (3.5ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 6.3ms | Allocations: 962)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 1951)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 67ms (Views: 45.8ms | ActiveRecord: 16.8ms | Allocations: 8711)
+
+
+Started GET "/point_event/1/edit" for ::1 at 2021-03-20 19:16:14 -0500
+Processing by PointEventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:29:in `edit'
+  Rendering point_event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  Rendered point_event/edit.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1309)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 13.8ms | ActiveRecord: 0.5ms | Allocations: 8739)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:16:16 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 88)
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 2.2ms | Allocations: 962)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1951)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 25.1ms | ActiveRecord: 1.0ms | Allocations: 8715)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 19:16:20 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (2.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (3.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.4ms | Allocations: 95)
+  Rendered event/_form.html.erb (Duration: 0.1ms | Allocations: 47)
+  Rendered event/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 294)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 18.7ms | ActiveRecord: 5.0ms | Allocations: 7606)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:16:21 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (1.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.1ms | Allocations: 85)
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 2.0ms | Allocations: 955)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1936)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 22.5ms | ActiveRecord: 1.7ms | Allocations: 8704)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:16:21 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (4.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (4.9ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 95)
+  Rendered point_event/_form.html.erb (Duration: 0.1ms | Allocations: 17)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 328)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 17.1ms | ActiveRecord: 9.8ms | Allocations: 7631)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:17:17 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.2ms | Allocations: 357)
+  Rendered point_event/_form.html.erb (Duration: 0.9ms | Allocations: 160)
+  Rendered layouts/_footer.html.erb (Duration: 0.7ms | Allocations: 78)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1350)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 23.4ms | ActiveRecord: 0.7ms | Allocations: 9731)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:17:46 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (2.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.1ms | Allocations: 357)
+  Rendered point_event/_form.html.erb (Duration: 0.7ms | Allocations: 160)
+  Rendered layouts/_footer.html.erb (Duration: 1.1ms | Allocations: 78)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 7.5ms | Allocations: 1355)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 32ms (Views: 24.0ms | ActiveRecord: 3.1ms | Allocations: 9757)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:18:32 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 92)
+  [1m[36mPointEvent Load (0.3ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 5.8ms | Allocations: 1237)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 12.6ms | Allocations: 2674)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 71ms (Views: 64.1ms | ActiveRecord: 2.3ms | Allocations: 10102)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 19:18:34 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered event/_form.html.erb (Duration: 0.8ms | Allocations: 224)
+  Rendered event/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 732)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 13.6ms | ActiveRecord: 0.6ms | Allocations: 8177)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:18:42 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (5.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (26.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 88)
+  [1m[36mPointEvent Load (2.1ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 5.8ms | Allocations: 962)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 35.6ms | Allocations: 1951)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 22.9ms | ActiveRecord: 34.0ms | Allocations: 8725)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:18:44 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (1.1ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.2ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered point_event/_form.html.erb (Duration: 0.1ms | Allocations: 17)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 336)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 15.1ms | ActiveRecord: 1.3ms | Allocations: 7646)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:20:00 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.2ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 7.1ms | Allocations: 357)
+  Rendered point_event/_form.html.erb (Duration: 0.8ms | Allocations: 160)
+  Rendered layouts/_footer.html.erb (Duration: 7.2ms | Allocations: 78)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 17.3ms | Allocations: 1360)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 202ms (Views: 196.6ms | ActiveRecord: 0.5ms | Allocations: 9738)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:20:46 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.6ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.3ms | Allocations: 357)
+  Rendered point_event/_form.html.erb (Duration: 0.6ms | Allocations: 161)
+  Rendered layouts/_footer.html.erb (Duration: 0.6ms | Allocations: 78)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1364)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 65ms (Views: 59.9ms | ActiveRecord: 1.0ms | Allocations: 9745)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:21:27 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (0.9ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.9ms | Allocations: 357)
+  Rendered point_event/_form.html.erb (Duration: 0.8ms | Allocations: 160)
+  Rendered layouts/_footer.html.erb (Duration: 0.8ms | Allocations: 78)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 7.2ms | Allocations: 1366)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 51.5ms | ActiveRecord: 1.4ms | Allocations: 9738)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:22:04 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (1.1ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.9ms | Allocations: 357)
+  Rendered point_event/_form.html.erb (Duration: 0.7ms | Allocations: 160)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1073)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 51ms (Views: 43.9ms | ActiveRecord: 1.5ms | Allocations: 9458)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:22:20 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 92)
+  [1m[36mPointEvent Load (0.6ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 4.1ms | Allocations: 1237)
+  Rendered layouts/_footer.html.erb (Duration: 0.6ms | Allocations: 78)
+  Rendered event/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 2882)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 28.2ms | ActiveRecord: 1.8ms | Allocations: 10307)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 19:22:22 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (13.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  Rendered event/_form.html.erb (Duration: 0.9ms | Allocations: 224)
+  Rendered event/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 735)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 55ms (Views: 18.0ms | ActiveRecord: 14.0ms | Allocations: 8176)
+
+
+Started GET "/point_event/1" for ::1 at 2021-03-20 19:22:25 -0500
+Processing by PointEventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (5.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPointEvent Load (2.2ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events" WHERE "point_events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/point_event_controller.rb:10:in `show'
+  Rendering point_event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 102)
+  Rendered point_event/_form.html.erb (Duration: 0.1ms | Allocations: 17)
+  Rendered point_event/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 271)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 17.8ms | ActiveRecord: 8.0ms | Allocations: 7573)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:22:36 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (30.6ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (16.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 88)
+  [1m[36mPointEvent Load (27.7ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 29.8ms | Allocations: 962)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 48.6ms | Allocations: 1951)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 132ms (Views: 52.1ms | ActiveRecord: 74.8ms | Allocations: 8716)
+
+
+Started GET "/event/1/edit" for ::1 at 2021-03-20 19:22:41 -0500
+Processing by EventController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.2ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:29:in `edit'
+  Rendering event/edit.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered event/edit.html.erb within layouts/application (Duration: 7.3ms | Allocations: 5873)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 16.9ms | ActiveRecord: 0.4ms | Allocations: 13318)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:23:04 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (1.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (8.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.1ms | Allocations: 85)
+  [1m[36mPointEvent Load (2.1ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 4.4ms | Allocations: 959)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 14.6ms | Allocations: 1944)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 224ms (Views: 209.4ms | ActiveRecord: 11.6ms | Allocations: 8703)
+
+
+Started GET "/event/1" for ::1 at 2021-03-20 19:23:06 -0500
+Processing by EventController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUserlogin Load (0.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/event_controller.rb:10:in `show'
+  Rendering event/show.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 95)
+  Rendered event/_form.html.erb (Duration: 0.2ms | Allocations: 47)
+  Rendered event/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 293)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 14.4ms | ActiveRecord: 0.7ms | Allocations: 7599)
+
+
+Started GET "/event" for ::1 at 2021-03-20 19:23:07 -0500
+Processing by EventController#index as HTML
+  [1m[36mUserlogin Load (3.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering event/index.html.erb within layouts/application
+  [1m[36mEvent Load (5.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/event/index.html.erb:29
+  Rendering point_event/index.html.erb
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 85)
+  [1m[36mPointEvent Load (0.9ms)[0m  [1m[34mSELECT "point_events".* FROM "point_events"[0m
+  ↳ app/views/point_event/index.html.erb:29
+  Rendered point_event/index.html.erb (Duration: 2.8ms | Allocations: 955)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+  Rendered event/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 1936)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 31.1ms | ActiveRecord: 9.9ms | Allocations: 8703)
+
+

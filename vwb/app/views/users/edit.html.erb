@@ -1,3 +1,20 @@
+<style>
+select{
+  -webkit-appearance: none;
+  padding: 15px 10px 15px 10px;
+  width: 85%;
+  border: 1px solid #E8EAED;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 1px 3px -2px #9098A9;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 150ms ease;
+  text-align-last: center;
+}
+</style>
+
 <h1> Editting <%= @user.firstName+" "+@user.lastName %> </h1>
 
  <%= render "layouts/navbar2", user: @user %>

@@ -391,7 +391,7 @@ text-align: center;
 select{
   -webkit-appearance: none;
   padding: 15px 10px 15px 10px;
-  width: 85%;
+  // width: 85%;
   border: 1px solid #E8EAED;
   border-radius: 5px;
   background: white;
@@ -401,7 +401,9 @@ select{
   font-size: 16px;
   transition: all 150ms ease;
   text-align-last: center;
-
+}
+.select-edit{
+  width: auto !important;
 }
 // select:required:invalid{
 //     color: #5A667F;
