@@ -5,13 +5,45 @@ class User < ApplicationRecord
     
     enum role_types: [:Member, :Admin]
 
-
     def self.my_import(file)
         users=[]
-        CSV.foreach(file.path, headers: true) do |row|
-            users << User.new(row.to_h)
+        wmsg=[]
+        begin
+            CSV.foreach(file.path, headers: true) do |row|
+                puts("READING FROM CSV..........................................")
+                puts(row.to_h[1])
+                users << User.new(row.to_h)
+            end
+        rescue StandardError => e
+            puts("Error reading specified csv file, maybe no csv selected")
+            wmsg.append("Error reading specified csv file")
         end
-        User.import users, recursive: true
+        users.each do |user|
+            begin
+                unless(wmsg.length>0)
+                    unless(user.save)
+                        if @user.valid?
+                            wmsg.append("New user: "+user.firstName+" "+user.lastName+" created")
+                        else
+                            wmsg = user.errors.full_messages[0]
+                            puts (user.errors.full_messages[0])
+                        end
+                    end
+                end
+            rescue StandardError => e
+                puts(e)
+            end
+        end
+        # begin
+        #     unless(wmsg.length>0)
+        #         puts("IMPORTING FROM CSV..........................................")
+        #         User.import users, recursive: true,validate: true, ignore: true
+        #     end
+        # rescue StandardError => e
+        #     puts(e)
+        # end
+        wmsg
+        
     end
 
     def get_total_points(user)
@@ -23,6 +55,20 @@ class User < ApplicationRecord
             totalPoints += pEvent.points
         end
         totalPoints
+    end
+
+    def self.to_csv
+        attributes = %w{email}
+    
+        CSV.generate(headers: true) do |csv|
+          csv << attributes
+    
+          all.each do |user|
+            if(user.optInEmail==true)
+                csv << attributes.map{ |attr| user.send(attr) }
+            end
+          end
+        end
     end
 
     validates :email, presence: true, uniqueness: true

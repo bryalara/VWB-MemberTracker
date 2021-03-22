@@ -38,7 +38,7 @@ tr:nth-child(even) {
     </tr>
 
 <tr> <td> email: </td> <td> <%= @user.email %> </td> </tr>
-<tr> <td> role: </td> <td> <%= @user.role %>  </td> </tr>
+<tr> <td> role: </td> <td> <%=  @user.role == 0 ? :"Member" : :"Admin"  %>   </td> </tr>
 <tr> <td> firstName: </td> <td> <%= @user.firstName %>  </td> </tr>
 <tr> <td> lastName: </td> <td> <%= @user.lastName %>  </td> </tr>
 <tr> <td> phoneNumber: </td> <td> <%= @user.phoneNumber %>  </td> </tr>

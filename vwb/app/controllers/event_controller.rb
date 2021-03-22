@@ -2,6 +2,10 @@ class EventController < ApplicationController
 	protect_from_forgery with: :exception
     before_action :authenticate_userlogin!
 	def index
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@events = Event.all
 		@pointEvents = PointEvent.all
 	end
@@ -11,10 +15,18 @@ class EventController < ApplicationController
 	end
 
 	def new
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@event = Event.new
 	end
 
 	def create
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@event = Event.new(eventParams)
 
 		if @event.save
@@ -26,10 +38,18 @@ class EventController < ApplicationController
 	end
 
 	def edit
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@event = Event.find(params[:id])
 	end
 
 	def update
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@event = Event.find(params[:id])
 
 		if @event.update(eventParams)
@@ -41,10 +61,18 @@ class EventController < ApplicationController
 	end
 
 	def delete
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@event = Event.find(params[:id])
 	end
 
 	def destroy
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@event = Event.find(params[:id])
 		@event.destroy
 
@@ -69,10 +97,12 @@ class EventController < ApplicationController
 				else
 					flash[:notice] = "Could not attend the event because #{@user.email} has not been approved by an administrator."
 					redirect_to attend_event_path(@event)
+					return
 				end
 			rescue ActiveRecord::RecordNotUnique
 				flash[:notice] = "You have already attended #{@event.name}!"
 				redirect_to attend_event_path(@event)
+				return
 			end
 		end
 	end

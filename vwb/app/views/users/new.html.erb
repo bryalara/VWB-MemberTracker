@@ -1,3 +1,9 @@
 <p id="notice"><%= flash[:notice] %></p>
-<h1>New Users</h1>
-<%= render "form", user:@user  %>
+<%unless (@user.role==1)%>
+    <%puts("1")%>
+    <%= render "userRegisterForm", user:@user  %>
+<%else%>
+    <%puts("2")%>
+    <h1>New Users</h1>
+    <%= render "form", user:@user  %>
+<%end%>

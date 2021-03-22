@@ -1,0 +1,32 @@
+<h1>Hello, <%= @user.firstName+" "+@user.lastName%> </h1>
+<a href="<%= edit_user_path(@user)  %>"> Edit Info</a>
+<%unless (@user.approved==true)%>
+    <h3>Your account is pending approval.</h3>
+<%else%>
+    <h3> Current points: <%= @user.get_total_points(@user)%> </h3>
+
+    <%if (@display==5)%>
+        <p>Displaying most recent events attended: </p>
+    <%else%>
+        <p>Displaying all events attended: <p>
+    <%end%>
+    <div> 
+        Events (<%=@numEvents%>):
+        <ul>
+            <% @userEvents.each do |event| %>
+                <li><%= event %> </li>
+            <% end %>
+        </ul>
+        Point Events (<%=@numPointEvents%>):
+        <ul>
+            <% @userPEvents.each do |event| %>                                                
+                <li><%= event %> </li>
+            <% end %>
+        </ul>
+    </div>
+    <%unless (@showAll)%>
+        <%= link_to 'Show All Events', memberDashboard_path(:showAll => true) %>
+    <%else%>
+        <%= link_to 'Only Show Recent Events', memberDashboard_path(:showAll => nil) %>
+    <%end%>
+<%end%>

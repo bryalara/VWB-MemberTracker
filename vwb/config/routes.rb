@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # root "pages#show", page: "home"   # --- SNN
-  get "/pages/:page" => "pages#show"
+  
   resources :users do
     collection {post :import} #used for csv importing
   end
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
 
   get '/pendingApproval', to: 'users#pendingApproval'
+  get '/memberDashboard', to: 'users#memberDashboard'
   get '/import', to: 'users#my_import'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

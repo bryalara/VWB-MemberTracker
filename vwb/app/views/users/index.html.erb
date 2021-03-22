@@ -1,4 +1,4 @@
-<%= flash[:notice]%>
+<%= flash[:notice] %>
 <style>
 table {
   font-family: arial, sans-serif;
@@ -20,14 +20,14 @@ tr:nth-child(even) {
 <h1>Users</h1>
 <table>
     <tr>
-        <th> First Name</th>
-        <th> Last Name</th>
-        <th> Email</th>
-        <th> Phone Number</th>
-        <th> Classification</th>
-        <th> Role</th>
-        <th> T-Shirt </th>
-        <th> Points</th>
+        <th> First Name <%= link_to '⬛️', users_path(:attr => 'first', :order => !@order) %></th>
+        <th> Last Name <%= link_to '⬛️', users_path(:attr => 'last', :order => !@order) %></th>
+        <th> Email </th>
+        <th> Phone Number </th>
+        <th> Classification <%= link_to '⬛️', users_path(:attr => 'class', :order => !@order) %></th>
+        <th> Role <%= link_to '⬛️', users_path(:attr => 'role', :order => !@order) %></th>
+        <th> T-Shirt <%= link_to '⬛️', users_path(:attr => 'size', :order => !@order) %></th>
+        <th> Points <%= link_to '⬛️', users_path(:attr => 'points', :order => !@order) %></th>
     </tr>
 
 <% @users.each do |user| %>
@@ -50,6 +50,9 @@ tr:nth-child(even) {
 <button> <%= link_to "Create New User", new_user_path %> </button>
 
 <button> <%= link_to "View Pending Users", pendingApproval_path %> </button>
+<p>Latest new user: <%= @latestNew.firstName+' '+ @latestNew.lastName+' created @ '+@latestNew.created_at.to_s%> </p>
+<p>Latest update user: <%= @latestUpdate.firstName+' '+ @latestUpdate.lastName+' updated @ '+@latestUpdate.updated_at.to_s%> </p>
+<button> <%= link_to "Download Member Email List", users_path+'.csv' %> </button>
 
 <div>
     <h4> Import data from csv file </h4>

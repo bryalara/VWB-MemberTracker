@@ -3,18 +3,34 @@ class PointEventController < ApplicationController
     before_action :authenticate_userlogin!
 	
 	def index
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@pointEvents = PointEvent.all
 	end
 
 	def show
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@pointEvent = PointEvent.find(params[:id])
 	end
 
 	def new
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@pointEvent = PointEvent.new
 	end
 
 	def create
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@pointEvent = PointEvent.new(pointEventParams)
 
 		if @pointEvent.save
@@ -27,10 +43,18 @@ class PointEventController < ApplicationController
 	end
 
 	def edit
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@pointEvent = PointEvent.find(params[:id])
 	end
 
 	def update
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@pointEvent = PointEvent.find(params[:id])
 
 		if @pointEvent.update(pointEventParams)
@@ -42,10 +66,18 @@ class PointEventController < ApplicationController
 	end
 
 	def delete
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@pointEvent = PointEvent.find(params[:id])
 	end
 
 	def destroy
+		@auth = User.find_by_email(current_userlogin.email)
+		if(!@auth || @auth.role==0 || @auth.approved==false)
+			redirect_to memberDashboard_path
+		end
 		@pointEvent = PointEvent.find(params[:id])
 		@pointEvent.destroy
 
