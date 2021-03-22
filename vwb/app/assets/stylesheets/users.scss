@@ -52,6 +52,8 @@
     // margin-left: auto;
     // margin-right: auto;
     margin-left: 325px;
+    margin-right: 325px;
+    width: 1300px;
 }
 
 .styled-table thead tr {
@@ -87,10 +89,16 @@
     width:100%;
     overflow:hidden;
 }
+.header2{
+  display: flex;
+  width:100%;
+  overflow:hidden;
+}
 .back-btn{
-    width:14%;
-    float: left;
-    font-size: 0.5rem;
+    // width:14%;
+    // float: left;
+    // font-size: 0.5rem;
+    margin-left: 35px;
 }
 .page-title{
     width:100%;
@@ -137,24 +145,31 @@ html {
     display: flex;
     align-items: center;
     flex-direction: column; 
-    justify-content: center;
+    // justify-content: center;
     width: 100%;
     min-height: 100%;
-    padding: 20px;
+    // padding: 20px;
+    // padding: 90px;
+    padding: 40px;
+
+
   }
   
   #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
     background: #fff;
-    padding: 30px;
-    width: 100%;
-    max-width: 1000px;
+    // padding: 30px;
+    // width: 100%;
+    // max-width: 1000px;
     position: relative;
-    padding: 0px;
+    padding: 50px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+
   }
 
   /* TABS */
@@ -500,10 +515,19 @@ a:-webkit-any-link {
  }
 
  .h2-title{
-   margin-left: 60px;;
+   margin-left: 200px;
+ }
+ .h2-center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
  }
 
  .text {
   font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+ }
+
+ .center-edit {
+  margin: auto;
  }
 

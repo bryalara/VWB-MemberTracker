@@ -15,17 +15,16 @@ select{
 }
 </style>
 
-<h1> Editting <%= @user.firstName+" "+@user.lastName %> </h1>
 
  <%= render "layouts/navbar2", user: @user %>
 <section style="padding-top: 10px;">
 <div class="header">
 <h2 class="active h2-title">Edit Users</h2>
-<button class="btn btn-decor " style="float:right; margin-right: 70px;">
-<%= link_to "View All Users", users_path, class: "back-button" %>
-</button>
 </div>
 <div class="wrapper fadeInDown">
+<button class="btn" >
+<%= link_to "View All Users", users_path, class: "back-button" %>
+</button>
 <div id="formContent">
 <%= form_with model: @user do |form| %>
     <div>

@@ -6,7 +6,7 @@
 
 <p>* denotes required fields.<p>
 <%= form_with :method => :PATCH, url:"/point_event/#{@pointEvent.id}", model: @pointEvent do |form| %>
-	<table>
+	<table class="center-edit">
 		<tr>
 			<th><%= form.label :name %>*</th>
 			<td><%= form.text_field :name %></td>

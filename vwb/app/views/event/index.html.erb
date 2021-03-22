@@ -11,11 +11,14 @@ th, td, tr {
 }
 </style>
 <div class="header">
+<button class="btn back-btn" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
+</div>
+<div class="header2">
 <h2 class="active h2-title">Events</h2>
 </div>
 <div class="align-table">
 <button class="btn btn-decor" style="padding-left: 0rem;"> <%= link_to "Add an Event", new_event_path(@events), class:"back-button" %></button>
-<table class="styled-table">
+<table class="styled-table" >
 	<tr>
 		<th>Event</th>
 		<th>Description</th>
@@ -23,7 +26,9 @@ th, td, tr {
 		<th>Start Time</th>
 		<th>End Time</th>
 		<th>Event Type</th>
+		<th></th>
 		<th>Actions</th>
+		<th></th>
 	</tr>
 
 	<% @events.each do |event| %>
@@ -44,4 +49,3 @@ th, td, tr {
 </div>
 
 <%= render template: 'point_event/index' %>
-<%= render "layouts/footer" %>

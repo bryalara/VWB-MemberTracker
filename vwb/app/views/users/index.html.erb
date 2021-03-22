@@ -22,15 +22,15 @@ tr:nth-child(even) {
     padding: 0px;
 }
 </style>
-
-<section style="padding-top: 70px;">
+<div class="header">
 <h2 class="active h2-title">Users</h2>
-<div align="center">
-<button class="btn"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
-
-<button class="btn"> <%= link_to "Pending Users", pendingApproval_path, class: "back-button" %> </button>
-<button class="btn"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
 </div>
+<div class="align-table">
+<button class="btn btn-decor" style="padding-left: 0rem;"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
+
+<button class="btn" style="padding-left: 0rem;"> <%= link_to "Pending Users", pendingApproval_path, class: "back-button" %> </button>
+<button class="btn" style="padding-left: 0rem;"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
+
 <table class="styled-table">
     <tr>
         <th> First Name</th>
@@ -41,6 +41,8 @@ tr:nth-child(even) {
         <th> Role</th>
         <th> T-Shirt </th>
         <th> Points</th>
+        <th>Actions</th>
+        
     </tr>
 
 <% @users.each do |user| %>
@@ -69,7 +71,4 @@ tr:nth-child(even) {
             <%= submit_tag "Import CSV", class: "button" %>
         <% end %>
 </div></div>
-
-</section>
-
-<%= render "layouts/footer" %>
+</div>

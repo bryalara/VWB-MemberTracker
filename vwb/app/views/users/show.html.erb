@@ -32,7 +32,7 @@ tr:nth-child(even) {
 <button class="btn btn-decor"><%= link_to "Return to all users", users_path, class: "back-button" %></button>
 </div>
 <div class="center-col">
-<h1 ><%= @user.firstName %> <%= @user.lastName %></h1>
+<h2 class="active" style="margin-right: auto; margin-left: auto;"><%= @user.firstName %> <%= @user.lastName %></h2>
 <table  class="center styled-table"> 
     <tr>    
         <th>Attribute</th>    

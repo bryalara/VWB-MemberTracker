@@ -11,11 +11,11 @@ th, td, tr {
 	color: #295529;
 }
 </style>
-<section>
+
 <div class="header">
 <h2 class="active h2-title">Points Events</h2>
 </div>
-<div class="align-table">
+<div class="align-table" >
 <button class="btn btn-decor" style="padding-left: 0rem;" > <%= link_to "Add a Points Event", new_point_event_path(@pointEvents), class:"back-button" %></button>
 <table class="styled-table" >
 	<tr>
@@ -23,7 +23,8 @@ th, td, tr {
 		<th>Description</th>
 		<th>Points</th>
 		<th>Event Type</th>
-		<th>Actions</th>
+		<th></th>
+		<th>Actions<th>
 	</tr>
 
 	<% @pointEvents.each do |pointEvent| %>
@@ -40,4 +41,3 @@ th, td, tr {
 	<% end %>
 </table>
 </div>
-</section>

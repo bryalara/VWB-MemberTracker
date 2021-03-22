@@ -9,17 +9,21 @@
 
 <p>* denotes required fields.<p>
 <%= form_with url:"/point_event", model: @pointEvent do |form| %>
-	<table style="text-align: center;">
+	<table style="text-align: center !important;">
 		<tr>
+			<th><%= form.label :name %>*</th>
 			<td><%= form.text_field :name, placeholder: "Name*" %></td>
 		</tr>
 		<tr>
+			<th><%= form.label :description %></th>
 			<td><%= form.text_field :description, placeholder: "Description" %></td>
 		</tr>
 		<tr>
+			<th><%= form.label :points %>*</th>
 			<td><%= form.number_field :points, placeholder: "Points" %></td>
 		</tr>
 		<tr>
+			<th>Event Type*</th>
 			<td><%= form.text_field :eventType, placeholder: "Event Type*" %></td>
 		</tr>
 	</table>

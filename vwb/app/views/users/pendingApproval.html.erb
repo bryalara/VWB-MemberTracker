@@ -18,11 +18,13 @@ tr:nth-child(even) {
   background-color: #dddddd;
 } */
 </style>
-<section style="padding-top: 40px;">
 <div class="header">
 <h2 class="active h2-title">Pending Users</h2>
 </div>
 <div>
+<div  class="align-table" >
+<button class="btn btn-decor" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
+<button class="btn"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
 <table class="styled-table">
 
     <tr>
@@ -54,10 +56,5 @@ tr:nth-child(even) {
 
 </table>
 </div>
-
-<div  align="center" >
-<button class="btn btn-decor" ><%= link_to "Return to All users", users_path, class: "back-button" %></button>
-<button class="btn"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
 </div>
-</section>
-<%= render "layouts/footer" %>
+
