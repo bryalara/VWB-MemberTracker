@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_03_20_101609) do
 
   # These are extensions that must be enabled in order to support this database
@@ -30,23 +31,43 @@ ActiveRecord::Schema.define(version: 2021_03_20_101609) do
   end
 
   create_table "events", force: :cascade do |t|
+    #below is original code, in case need to went back
+    #create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "startDate"
     t.datetime "endDate"
     t.integer "points"
-    t.string "eventType"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "point_events", force: :cascade do |t|
+  create_table "events_users", id: false, force: :cascade do |t|
+    t.uuid "user_id"
+    t.uuid "event_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_events_users_on_event_id"
+    t.index ["user_id", "event_id"], name: "index_events_users_on_user_id_and_event_id", unique: true
+    t.index ["user_id"], name: "index_events_users_on_user_id"
+  end
+
+  create_table "point_events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.integer "points"
-    t.string "eventType"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "point_events_users", id: false, force: :cascade do |t|
+    t.uuid "user_id"
+    t.uuid "point_event_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["point_event_id"], name: "index_point_events_users_on_point_event_id"
+    t.index ["user_id", "point_event_id"], name: "index_point_events_users_on_user_id_and_point_event_id", unique: true
+    t.index ["user_id"], name: "index_point_events_users_on_user_id"
   end
 
   create_table "userlogins", force: :cascade do |t|
@@ -60,6 +81,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_101609) do
   end
 
   create_table "users", force: :cascade do |t|
+    #create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "emailneeded", null: false
     t.integer "role", default: 0, null: false
     t.string "firstName", default: "FirstName", null: false
@@ -72,6 +94,11 @@ ActiveRecord::Schema.define(version: 2021_03_20_101609) do
     t.boolean "approved", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "events_users", "events"
+  add_foreign_key "events_users", "users"
+  add_foreign_key "point_events_users", "point_events"
+  add_foreign_key "point_events_users", "users"
 end
