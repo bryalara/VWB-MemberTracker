@@ -46895,3 +46895,363 @@ Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.3ms | Allocations: 2345)
   [1m[35m (4.2ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (121.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "vwb_test"[0m
+  [1m[35m (609.3ms)[0m  [1m[35mCREATE DATABASE "vwb_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "edit_home_pages" CASCADE[0m
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE TABLE "edit_home_pages" ("id" bigserial primary key, "Name" character varying, "Description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "edithomepages" CASCADE[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "edithomepages" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "name" character varying, "description" character varying, "startDate" timestamp, "endDate" timestamp, "points" integer, "eventType" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "point_events" CASCADE[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "point_events" ("id" bigserial primary key, "name" character varying, "description" character varying, "points" integer, "eventType" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "userlogins" CASCADE[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "userlogins" ("id" bigserial primary key, "email" character varying NOT NULL, "full_name" character varying, "uid" character varying, "avatar_url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_userlogins_on_email" ON "userlogins"  ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT 'emailneeded' NOT NULL, "role" integer DEFAULT 0 NOT NULL, "firstName" character varying DEFAULT 'FirstName' NOT NULL, "lastName" character varying DEFAULT 'LastName' NOT NULL, "phoneNumber" character varying DEFAULT '1234567890' NOT NULL, "classification" character varying DEFAULT 'Freshmen' NOT NULL, "tShirtSize" character varying DEFAULT 'M' NOT NULL, "optInEmail" boolean DEFAULT TRUE NOT NULL, "participationPoints" integer DEFAULT 0 NOT NULL, "approved" boolean DEFAULT FALSE NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210320101609)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210213203414),
+(20210213203432),
+(20210215210059),
+(20210225181553);
+
+[0m
+  [1m[35m (11.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-03-22 04:34:20.208267"], ["updated_at", "2021-03-22 04:34:20.208267"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "db5c8682bef5519a2fc302c323fb3dc241dd9a8d"], ["created_at", "2021-03-22 04:34:20.214085"], ["updated_at", "2021-03-22 04:34:20.214085"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/rspec/index" for 127.0.0.1 at 2021-03-21 23:36:01 -0500
+Processing by RspecController#index as HTML
+  Rendering rspec/index.html.erb within layouts/application
+  Rendered rspec/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 180)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Hash: d3c7fca84c3ccf8ba6a3
+Version: webpack 4.46.0
+Time: 3052ms
+Built at: 03/21/2021 11:36:10 PM
+                                     Asset        Size       Chunks                         Chunk Names
+    js/application-5edf3ad41f9f2681b3dd.js     1.8 MiB  application  [emitted] [immutable]  application
+js/application-5edf3ad41f9f2681b3dd.js.map    2.02 MiB  application  [emitted] [dev]        application
+           js/home-289a001974250d722c35.js     316 KiB         home  [emitted] [immutable]  home
+       js/home-289a001974250d722c35.js.map     373 KiB         home  [emitted] [dev]        home
+         js/member-dbed7dc5cfe658aecf86.js     316 KiB       member  [emitted] [immutable]  member
+     js/member-dbed7dc5cfe658aecf86.js.map     373 KiB       member  [emitted] [dev]        member
+                             manifest.json  1020 bytes               [emitted]              
+Entrypoint application = js/application-5edf3ad41f9f2681b3dd.js js/application-5edf3ad41f9f2681b3dd.js.map
+Entrypoint home = js/home-289a001974250d722c35.js js/home-289a001974250d722c35.js.map
+Entrypoint member = js/member-dbed7dc5cfe658aecf86.js js/member-dbed7dc5cfe658aecf86.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/home/bootstrap/css/bootstrap.min.css] 627 bytes {application} [built]
+[./app/javascript/home/bootstrap/js/bootstrap.bundle.min.js] 111 KiB {application} [built]
+[./app/javascript/home/jquery-easing/jquery.easing.min.js] 4.19 KiB {application} [built]
+[./app/javascript/home/jquery/jquery.min.js] 133 KiB {application} [built]
+[./app/javascript/packs/application.js] 1.2 KiB {application} [built]
+[./app/javascript/packs/home.js] 1020 bytes {home} {application} [built]
+[./app/javascript/packs/member.js] 1.11 KiB {member} [built]
+[./app/javascript/stylesheets/application.scss] 664 bytes {application} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./app/javascript/home/bootstrap/css/bootstrap.min.css] ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./app/javascript/home/bootstrap/css/bootstrap.min.css 914 KiB {application} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/stylesheets/application.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/javascript/stylesheets/application.scss 1.26 KiB {application} [built] [failed] [1 error]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} {home} {member} [built]
+    + 8 hidden modules
+
+ERROR in ./app/javascript/stylesheets/application.scss (./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/javascript/stylesheets/application.scss)
+Module build failed (from ./node_modules/sass-loader/dist/cjs.js):
+Error: Node Sass does not yet support your current environment: Linux 64-bit with Unsupported runtime (88)
+For more information on which environments are supported please see:
+https://github.com/sass/node-sass/releases/tag/v4.14.1
+    at module.exports (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/node-sass/lib/binding.js:13:13)
+    at Object.<anonymous> (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1121:10)
+    at Module.load (node:internal/modules/cjs/loader:972:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:813:14)
+    at Module.require (node:internal/modules/cjs/loader:996:19)
+    at require (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at getDefaultSassImpl (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/sass-loader/dist/index.js:198:10)
+    at Object.loader (/home/sainikhilnaru/VWB-MemberTracker/vwb/node_modules/sass-loader/dist/index.js:80:29)
+ @ ./app/javascript/stylesheets/application.scss 2:26-228
+ @ ./app/javascript/packs/application.js
+
+Completed 200 OK in 9193ms (Views: 9186.2ms | ActiveRecord: 0.0ms | Allocations: 54624)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/rspec/index" for 127.0.0.1 at 2021-03-21 23:36:51 -0500
+Processing by RspecController#index as HTML
+  Rendering rspec/index.html.erb within layouts/application
+  Rendered rspec/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 180)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3701ms (Views: 3695.0ms | ActiveRecord: 0.0ms | Allocations: 33676)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/rspec/index" for 127.0.0.1 at 2021-03-21 23:37:12 -0500
+Processing by RspecController#index as HTML
+  Rendering rspec/index.html.erb within layouts/application
+  Rendered rspec/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 180)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3863ms (Views: 3857.2ms | ActiveRecord: 0.0ms | Allocations: 33932)
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2021-03-21 23:39:51 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (1.8ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  Rendered home/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 1236)
+Started GET "/" for 127.0.0.1 at 2021-03-21 23:39:54 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mCACHE Edithomepage Load (0.0ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 102)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 39.6ms | ActiveRecord: 0.0ms | Allocations: 7191)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-03-21 23:39:54 -0500
+Started GET "/assets/vwb-group.jpg" for 127.0.0.1 at 2021-03-21 23:39:55 -0500
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 4175ms (Views: 4162.7ms | ActiveRecord: 3.7ms | Allocations: 50553)
+Started GET "/rspec/index" for 127.0.0.1 at 2021-03-21 23:39:58 -0500
+Processing by RspecController#index as HTML
+  Rendering rspec/index.html.erb within layouts/application
+  Rendered rspec/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 78)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 23.7ms | ActiveRecord: 0.0ms | Allocations: 3921)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-03-21 23:39:59 -0500
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/rspec/index" for 127.0.0.1 at 2021-03-21 23:41:12 -0500
+Processing by RspecController#index as HTML
+  Rendering rspec/index.html.erb within layouts/application
+  Rendered rspec/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 180)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 4728ms (Views: 4718.4ms | ActiveRecord: 0.0ms | Allocations: 34115)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-03-21 23:41:19 -0500
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/rspec/index" for 127.0.0.1 at 2021-03-21 23:42:36 -0500
+Processing by RspecController#index as HTML
+  Rendering rspec/index.html.erb within layouts/application
+  Rendered rspec/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 180)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 5284ms (Views: 5272.1ms | ActiveRecord: 0.0ms | Allocations: 34216)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-03-21 23:42:43 -0500
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/rspec/index" for 127.0.0.1 at 2021-03-21 23:45:30 -0500
+Processing by RspecController#index as HTML
+  Rendering rspec/index.html.erb within layouts/application
+  Rendered rspec/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 180)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 4716ms (Views: 4707.5ms | ActiveRecord: 0.0ms | Allocations: 34300)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-03-21 23:45:37 -0500
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/rspec/index" for 127.0.0.1 at 2021-03-21 23:46:38 -0500
+Processing by RspecController#index as HTML
+  Rendering rspec/index.html.erb within layouts/application
+  Rendered rspec/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 180)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 4937ms (Views: 4927.6ms | ActiveRecord: 0.0ms | Allocations: 34396)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-03-21 23:46:46 -0500
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/rspec/index" for 127.0.0.1 at 2021-03-22 00:12:59 -0500
+Processing by RspecController#index as HTML
+  Rendering rspec/index.html.erb within layouts/application
+  Rendered rspec/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 180)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 4573ms (Views: 4565.5ms | ActiveRecord: 0.0ms | Allocations: 34490)
+Started GET "/assets/application-976361a8db75e78cf3f0f870c261ff50ab50b99d18d57c273d95dbc9435921ec.css" for 127.0.0.1 at 2021-03-22 00:13:06 -0500
+Started GET "/coverage/index.html" for 127.0.0.1 at 2021-03-22 00:13:10 -0500
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/rspec/index" for 127.0.0.1 at 2021-03-22 00:14:43 -0500
+Processing by RspecController#index as HTML
+  Rendering rspec/index.html.erb within layouts/application
+  Rendered rspec/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 233)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3594ms (Views: 3587.9ms | ActiveRecord: 0.0ms | Allocations: 34841)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Started GET "/event" for 127.0.0.1 at 2021-03-22 00:44:18 -0500
+Processing by EventController#index as HTML
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.0ms | Allocations: 1160)
+Started GET "/userlogins/sign_in" for 127.0.0.1 at 2021-03-22 00:44:18 -0500
+Processing by Userlogins::SessionsController#new as HTML
+  Rendering userlogins/sessions/new.html.erb within layouts/application
+  Rendered userlogins/sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 294)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3640ms (Views: 3623.8ms | ActiveRecord: 7.3ms | Allocations: 40334)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/event" for 127.0.0.1 at 2021-03-22 00:45:07 -0500
+Processing by EventController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms | Allocations: 1160)
+Started GET "/userlogins/sign_in" for 127.0.0.1 at 2021-03-22 00:45:07 -0500
+Processing by Userlogins::SessionsController#new as HTML
+  Rendering userlogins/sessions/new.html.erb within layouts/application
+  Rendered userlogins/sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 294)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3664ms (Views: 3649.2ms | ActiveRecord: 5.1ms | Allocations: 40405)
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/edithomepages" for 127.0.0.1 at 2021-03-22 00:47:03 -0500
+Processing by EdithomepagesController#index as HTML
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms | Allocations: 1160)
+Started GET "/userlogins/sign_in" for 127.0.0.1 at 2021-03-22 00:47:03 -0500
+Processing by Userlogins::SessionsController#new as HTML
+  Rendering userlogins/sessions/new.html.erb within layouts/application
+  Rendered userlogins/sessions/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 294)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3670ms (Views: 3657.4ms | ActiveRecord: 4.5ms | Allocations: 40500)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/edithomepages" for 127.0.0.1 at 2021-03-22 00:55:53 -0500
+Processing by EdithomepagesController#index as HTML
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms | Allocations: 1160)
+Started GET "/userlogins/sign_in" for 127.0.0.1 at 2021-03-22 00:55:53 -0500
+Processing by Userlogins::SessionsController#new as HTML
+  Rendering userlogins/sessions/new.html.erb within layouts/application
+  Rendered userlogins/sessions/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 294)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3615ms (Views: 3601.1ms | ActiveRecord: 5.3ms | Allocations: 40603)
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/edithomepages" for 127.0.0.1 at 2021-03-22 01:00:09 -0500
+Processing by EdithomepagesController#index as HTML
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.0ms | Allocations: 1160)
+Started GET "/userlogins/sign_in" for 127.0.0.1 at 2021-03-22 01:00:09 -0500
+Processing by Userlogins::SessionsController#new as HTML
+  Rendering userlogins/sessions/new.html.erb within layouts/application
+  Rendered userlogins/sessions/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 294)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 3715ms (Views: 3699.1ms | ActiveRecord: 4.9ms | Allocations: 40682)
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m

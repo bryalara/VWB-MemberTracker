@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rspec/index'
   resources :edithomepages
   
   # root "pages#show", page: "home"   # --- SNN

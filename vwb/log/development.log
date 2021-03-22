@@ -22918,3 +22918,213 @@ Processing by EdithomepagesController#index as HTML
 Completed 200 OK in 101ms (Views: 84.4ms | ActiveRecord: 2.4ms | Allocations: 9657)
 
 
+Started GET "/edithomepages" for ::1 at 2021-03-21 03:36:30 -0500
+Processing by EdithomepagesController#index as HTML
+  [1m[36mUserlogin Load (0.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering edithomepages/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (1.3ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/edithomepages/index.html.erb:12
+  Rendered edithomepages/index.html.erb within layouts/application (Duration: 40.0ms | Allocations: 5204)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 193ms (Views: 112.4ms | ActiveRecord: 26.9ms | Allocations: 17477)
+
+
+Started GET "/edithomepages" for ::1 at 2021-03-21 03:36:32 -0500
+Processing by EdithomepagesController#index as HTML
+  [1m[36mUserlogin Load (1.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering edithomepages/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (1.6ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/edithomepages/index.html.erb:12
+  Rendered edithomepages/index.html.erb within layouts/application (Duration: 16.7ms | Allocations: 2498)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 100ms (Views: 83.4ms | ActiveRecord: 2.5ms | Allocations: 8823)
+
+
+Started GET "/rspec/index" for ::1 at 2021-03-21 23:24:15 -0500
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/sainikhilnaru/VWB-MemberTracker/vwb/app/controllers/rspec_controller.rb:3: syntax error, unexpected '<'
+    <h2>
+    ^
+/home/sainikhilnaru/VWB-MemberTracker/vwb/app/controllers/rspec_controller.rb:4: syntax error, unexpected ',', expecting `end'
+      Hello, world!
+           ^
+/home/sainikhilnaru/VWB-MemberTracker/vwb/app/controllers/rspec_controller.rb:8: unterminated regexp meets end of file
+/home/sainikhilnaru/VWB-MemberTracker/vwb/app/controllers/rspec_controller.rb:8: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/rspec_controller.rb:3: syntax error, unexpected '<'
+app/controllers/rspec_controller.rb:4: syntax error, unexpected ',', expecting `end'
+app/controllers/rspec_controller.rb:8: unterminated regexp meets end of file
+app/controllers/rspec_controller.rb:8: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/rspec_controller.rb:3: syntax error, unexpected '<'
+app/controllers/rspec_controller.rb:4: syntax error, unexpected ',', expecting `end'
+app/controllers/rspec_controller.rb:8: unterminated regexp meets end of file
+app/controllers/rspec_controller.rb:8: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/rspec_controller.rb:3: syntax error, unexpected '<'
+app/controllers/rspec_controller.rb:4: syntax error, unexpected ',', expecting `end'
+app/controllers/rspec_controller.rb:8: unterminated regexp meets end of file
+app/controllers/rspec_controller.rb:8: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/rspec/index" for ::1 at 2021-03-21 23:24:54 -0500
+  
+SyntaxError (/home/sainikhilnaru/VWB-MemberTracker/vwb/app/controllers/rspec_controller.rb:3: syntax error, unexpected '<'
+    <h2> Hello, world!</h2>
+    ^
+/home/sainikhilnaru/VWB-MemberTracker/vwb/app/controllers/rspec_controller.rb:3: syntax error, unexpected ',', expecting `end'
+    <h2> Hello, world!</h2>
+              ^
+/home/sainikhilnaru/VWB-MemberTracker/vwb/app/controllers/rspec_controller.rb:6: unterminated regexp meets end of file
+/home/sainikhilnaru/VWB-MemberTracker/vwb/app/controllers/rspec_controller.rb:6: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/rspec_controller.rb:3: syntax error, unexpected '<'
+app/controllers/rspec_controller.rb:3: syntax error, unexpected ',', expecting `end'
+app/controllers/rspec_controller.rb:6: unterminated regexp meets end of file
+app/controllers/rspec_controller.rb:6: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/rspec_controller.rb:3: syntax error, unexpected '<'
+app/controllers/rspec_controller.rb:3: syntax error, unexpected ',', expecting `end'
+app/controllers/rspec_controller.rb:6: unterminated regexp meets end of file
+app/controllers/rspec_controller.rb:6: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/rspec_controller.rb:3: syntax error, unexpected '<'
+app/controllers/rspec_controller.rb:3: syntax error, unexpected ',', expecting `end'
+app/controllers/rspec_controller.rb:6: unterminated regexp meets end of file
+app/controllers/rspec_controller.rb:6: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/rspec/index" for ::1 at 2021-03-21 23:25:19 -0500
+Processing by RspecController#index as HTML
+  Rendering rspec/index.html.erb within layouts/application
+  Rendered rspec/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 72)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1354ms (Views: 1353.0ms | ActiveRecord: 0.0ms | Allocations: 34441)
+
+
+Started GET "/" for ::1 at 2021-03-22 00:12:45 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (4.6ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/home/index.html.erb:61:in `each_with_index'
+  Rendered home/index.html.erb within layouts/application (Duration: 29.9ms | Allocations: 4348)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 56ms (Views: 35.1ms | ActiveRecord: 19.5ms | Allocations: 10556)
+
+
+Started GET "/coverage/index.html" for ::1 at 2021-03-22 00:12:49 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/coverage/index.html"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/coverage/index.html" for ::1 at 2021-03-22 00:15:14 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/coverage/index.html"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/coverage/index.html" for ::1 at 2021-03-22 00:20:33 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/coverage/index.html"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-03-22 00:39:58 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (1.1ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/home/index.html.erb:61:in `each_with_index'
+  Rendered home/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 822)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 22.9ms | ActiveRecord: 1.1ms | Allocations: 5744)
+
+
+Started GET "/edithomepages" for ::1 at 2021-03-22 00:40:55 -0500
+Processing by EdithomepagesController#index as HTML
+  [1m[36mUserlogin Load (3.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering edithomepages/index.html.erb within layouts/application
+  [1m[36mEdithomepage Load (0.5ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/edithomepages/index.html.erb:12
+  Rendered edithomepages/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2732)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 26.8ms | ActiveRecord: 12.7ms | Allocations: 14755)
+
+
