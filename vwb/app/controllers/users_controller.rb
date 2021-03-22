@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       flash[:notice]=""
       wmsg.each do |msg|
         puts(msg)
-        flash[:notice] << msg
+        flash[:notice]+= '|'+msg
       end
       redirect_to users_path
     else  
@@ -73,6 +73,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @msg= params[:notice]
     @auth = User.find_by_email(current_userlogin.email)
     if(@auth)
       if(@auth.role==0)
@@ -85,18 +86,21 @@ class UsersController < ApplicationController
   end
   
   def new
+    @auth = User.find_by_email(current_userlogin.email)
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
-
     if @user.save
-      redirect_to @user
+      puts("user saved")
+      redirect_to users_path(@user), notice:"Successfully created new user: #{@user.firstName+' '+@user.lastName}."
     else
-      if @user.valid?
-        @msg="New user: "+@user.firstName+" "+@user.lastName+" created"
+      if @user.valid
+        puts("Valid")
+        flash[:notice] = "Successfully created new user: #{@user.firstName+' '+@user.lastName}."
       else
+        puts("Not valid")
         @msg = @user.errors.full_messages[0]
         puts @msg
         flash.now[:notice] = @msg

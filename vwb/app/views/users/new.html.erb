@@ -1,9 +1,11 @@
 <p id="notice"><%= flash[:notice] %></p>
-<%unless (@user.role==1)%>
-    <%puts("1")%>
+
+
+<%if (!@auth)%>
     <%= render "userRegisterForm", user:@user  %>
-<%else%>
-    <%puts("2")%>
+<%elsif (@auth.role==1 && @auth.approved==true)%>
     <h1>New Users</h1>
     <%= render "form", user:@user  %>
+<%else%>
+    <%= render "userRegisterForm", user:@user  %>
 <%end%>

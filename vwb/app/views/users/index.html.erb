@@ -1,4 +1,7 @@
-<%= flash[:notice] %>
+<% msgs= flash[:notice].to_s.split('|', -1) %>
+<% msgs.each do |msg|%>
+  <p> <%=msg%> </p>
+<%end%>
 <style>
 table {
   font-family: arial, sans-serif;

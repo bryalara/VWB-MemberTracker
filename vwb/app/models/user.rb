@@ -19,13 +19,19 @@ class User < ApplicationRecord
             wmsg.append("Error reading specified csv file")
         end
         users.each do |user|
+            puts(user.firstName+' '+user.lastName)
             begin
-                unless(wmsg.length>0)
-                    unless(user.save)
+                unless(wmsg.first=="Error reading specified csv file")
+                    if(user.save)
+                        wmsg.append("New user: "+user.firstName+" "+user.lastName+" created")
+                        puts("New user: "+user.firstName+" "+user.lastName+" created")
+                    else
+                        puts("Error with user: "+user.firstName+" "+user.lastName+", might already exist")
+                        wmsg.append("Error with user: "+user.firstName+" "+user.lastName+", might already exist")
                         if @user.valid?
                             wmsg.append("New user: "+user.firstName+" "+user.lastName+" created")
                         else
-                            wmsg = user.errors.full_messages[0]
+                            wmsg.append(user.errors.full_messages[0])
                             puts (user.errors.full_messages[0])
                         end
                     end
