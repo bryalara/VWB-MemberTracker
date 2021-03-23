@@ -1,11 +1,28 @@
-<h1>Points Events</h1>
-<%= link_to "Add a Points Event", new_point_event_path(@pointEvents) %>
-<table>
+<%= render "layouts/navbar2", user: @user %>
+<style>
+th, td, tr {
+	padding-right: 15px;
+}
+
+.alert {
+	border-radius: 5px;
+	padding: 15px;
+	background: #d8ecdb;
+	color: #295529;
+}
+</style>
+
+<div class="header">
+<h2 class="active h2-title">Points Events</h2>
+</div>
+<div class="align-table" >
+<button class="btn btn-decor" style="padding-left: 0rem;" > <%= link_to "Add a Points Event", new_point_event_path(@pointEvents), class:"back-button" %></button>
+<table class="styled-table" >
 	<tr>
 		<th>Event</th>
 		<th>Description</th>
 		<th>Points</th>
-		<th>Actions</th>
+		<th colspan="4">Actions<th>
 	</tr>
 
 	<% @pointEvents.each do |pointEvent| %>
@@ -21,3 +38,4 @@
 	</tr>
 	<% end %>
 </table>
+</div>

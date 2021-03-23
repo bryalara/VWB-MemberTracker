@@ -17,7 +17,12 @@
 require 'simplecov'
 SimpleCov.start
 
+require 'omniauth'
+require_relative 'support/integration_spec_helper.rb'
+
 RSpec.configure do |config|
+  config.include IntegrationSpecHelper, :type => :feature
+
   #seed/initializr database
   config.before(:suite) do
     load Rails.root.join('db', 'seeds.rb') # loading seeds

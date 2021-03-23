@@ -1,14 +1,16 @@
-<%= link_to "Back to Events", event_index_path %>
-
-<h1>Add an Event</h1>
-
+<%= render "layouts/navbar2", user: @user %>
+<div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
+</div>
+<div class="wrapper fadeInDown">
+<div id="formContent">
+<h2 class="active">Add an Event</h2>
 <p>* denotes required fields.<p>
 
 <%= form_with url:"/event", model: @event do |form| %>
-	<table>
+	<table style="text-align: center !important;">
 		<tr>
 			<th><%= form.label :name %>*</th>
-			<td><%= form.text_field :name, required: true %></td>
+			<td><%= form.text_field :name %></td>
 		</tr>
 		<tr>
 			<th><%= form.label :description %></th>
@@ -16,18 +18,21 @@
 		</tr>
 		<tr>
 			<th><%= form.label :points %>*</th>
-			<td><%= form.number_field :points, required: true %></td>
+			<td><%= form.number_field :points %></td>
 		</tr>
 		<tr>
 			<th>Start Time*</th>
-			<td><%= form.datetime_field :startDate, required: true %></td>
+			<td><%= form.datetime_select :startDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
 		</tr>
 		<tr>
 			<th>End Time*</th>
-			<td><%= form.datetime_field :endDate, required: true %></td>
+			<td><%= form.datetime_select :endDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
 		</tr>
 	</table>
 
 	<%= form.submit "Add Event" %>
 
 <% end %>
+
+</div>
+</div>

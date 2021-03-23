@@ -1,24 +1,33 @@
-<%= link_to "Back to Events", event_index_path %>
+<%= render "layouts/navbar2", user: @user %>
+<div class="header">
+<button class="btn btn-decor"><%= link_to "Back to Events", event_index_path, class: "back-button" %></button>
+</div>
+<div class="wrapper fadeInDown">
+<div id="formContent">
 
-<h1>Add a Points Event</h1>
+<h2 class="active">Add a Points Event</h2>
 
 <p>* denotes required fields.<p>
-
 <%= form_with url:"/point_event", model: @pointEvent do |form| %>
-	<table>
+	<table style="text-align: center !important;">
 		<tr>
 			<th><%= form.label :name %>*</th>
-			<td><%= form.text_field :name, required: true %></td>
+			<td><%= form.text_field :name, placeholder: "Name*" %></td>
 		</tr>
 		<tr>
 			<th><%= form.label :description %></th>
-			<td><%= form.text_field :description %></td>
+			<td><%= form.text_field :description, placeholder: "Description" %></td>
 		</tr>
 		<tr>
 			<th><%= form.label :points %>*</th>
-			<td><%= form.number_field :points, required: true %></td>
+			<td><%= form.number_field :points, placeholder: "Points" %></td>
 		</tr>
 	</table>
 
 	<%= form.submit "Add Points Event" %>
+
 <% end %>
+
+</div>
+</div>
+<%= render "layouts/footer" %>

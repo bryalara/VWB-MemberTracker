@@ -20,7 +20,7 @@
 
   
   section {
-    padding: 350px 0;
+    padding: 370px 90px;
   }
   
 
@@ -6169,7 +6169,9 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  // background-color: #343a40 !important;
+  background-color: rgba(34,34,34,255) !important;
+
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -10165,7 +10167,41 @@ header.masthead h1 {
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
-.text-white-75 {
-  color: rgba(255, 255, 255, 0.75);
+.text-white-75 { 
+  // color: rgba(255, 255, 255, 0.75);
+  color: rgba(42,70,77,255);
+
 }
+
+#mainNav .navbar-brand { //color of lefts nav
+  color: rgba(169,169,169,255);
+}
+
+#mainNav .navbar-nav .nav-item .nav-link { //color of right nav
+  color: rgba(169,169,169,255);
+      // background-color: rgba(42,70,77,255);
+
+  padding: 0 1rem;
+}
+
+.title {
+  color: rgba(80,0,0,255);
+  font-weight: bold;
+  font-family: 'Homenaje', sans-serif;
+  font-size: 100px;
+}
+
+.title-bar
+{
+  background-color: white;
+  background-image: url("herringbone/herringbone.png");
+}
+
+// .bg-dark{
+//   background-color: rgba(34,34,34,255);
+// }
+// .maroon {
+//   background-color: maroon !important;
+// }

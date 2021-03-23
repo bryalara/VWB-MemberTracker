@@ -69,3 +69,8 @@ yarn-debug.log*
 !/storage/.keep
 
 **/.DS_Store
+
+**/log/*
+**/tmp/
+**/public/packs/*
+

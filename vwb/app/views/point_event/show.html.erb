@@ -1,14 +1,11 @@
+<%= render "layouts/navbar2", user: @user %>
+<div class="header">
+<h2 class="active h2-title">Event Details</h2>
+</div>
 
-<%= link_to "Back to Events", event_index_path %>
-
-<% flash.each do |type, msg| %>
-	<div class="alert">
-		<%= msg %>
-	</div>
-<% end %>
-
-<h1>Point Event Details</h1>
-
+<button class="btn align-center" style="margin-right: 20px;"> 
+<%= link_to "Back to Events", event_index_path, class:"back-button" %> 
+</button>
 <%= render "form", pointEvent: @pointEvent %>
 
 <h1>Users that have attended</h1>

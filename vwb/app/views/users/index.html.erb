@@ -1,28 +1,37 @@
 
+<%= render "layouts/navbar2", user: @user %>
+
 <% msgs= flash[:notice].to_s.split('|', -1) %>
 <% msgs.each do |msg|%>
   <p> <%=msg%> </p>
 <%end%>
+
+<%= flash[:notice]%>
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
+.section {
+    padding: 0px;
 }
 </style>
+<div class="header">
+<h2 class="active h2-title">Users</h2>
+</div>
 
-<h1>Users</h1>
-<table>
+<% if userlogin_signed_in? %>
+  <div>Signed in as: <%= current_userlogin.email %></div>
+  <div><%=  @user.role == 0 ? :"Member" : :"Admin"  %> </div>
+<% end %>
+
+
+<div class="align-table">
+
+<% if @user.role == 1 %>
+    <button class="btn btn-decor" style="padding-left: 0rem;"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "Pending Users", pendingApproval_path, class: "back-button" %> </button>
+<% end %>
+
+<button class="btn" style="padding-left: 0rem;"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
+
+<table class="styled-table">
     <tr>
         <th> First Name <%= link_to '⬛️', users_path(:attr => 'first', :order => !@order) %></th>
         <th> Last Name <%= link_to '⬛️', users_path(:attr => 'last', :order => !@order) %></th>
@@ -32,17 +41,23 @@ tr:nth-child(even) {
         <th> Role <%= link_to '⬛️', users_path(:attr => 'role', :order => !@order) %></th>
         <th> T-Shirt <%= link_to '⬛️', users_path(:attr => 'size', :order => !@order) %></th>
         <th> Points <%= link_to '⬛️', users_path(:attr => 'points', :order => !@order) %></th>
+        
     </tr>
+
+<% if userlogin_signed_in? %>
+  <div>Signed in as: <%= current_userlogin.email %></div>
+  <div><%=  @user.role == 0 ? :"Member" : :"Admin"  %> </div>
+<% end %>
 
 <% @users.each do |user| %>
     <tr>
-        <td><%=  user.firstName %></td>
-        <td><%=  user.lastName  %></td>
-        <td><%=  user.email  %> </td>
-        <td><%=  user.phoneNumber  %> </td>
-        <td><%=  user.classification %> </td>
-        <td><%=  user.role == 0 ? :"Member" : :"Admin"  %> </td>
-        <td><%=  user.tShirtSize  %> </td>
+        <td><%= user.firstName %></td>
+        <td><%= user.lastName  %></td>
+        <td><%= user.email  %> </td>
+        <td><%= user.phoneNumber  %> </td>
+        <td><%= user.classification %> </td>
+        <td><%= user.role == 0 ? :"Member" : :"Admin"  %> </td>
+        <td><%= user.tShirtSize  %> </td>
         <td><%=  user.get_total_points(user) %> </td>
         <td><%= link_to "View Details", user %> </td>
     </tr>
@@ -50,18 +65,17 @@ tr:nth-child(even) {
 
 </table>
 
+<br>
 
-<button> <%= link_to "Create New User", new_user_path %> </button>
-
-<button> <%= link_to "View Pending Users", pendingApproval_path %> </button>
-<p>Latest new user: <%= @latestNew.firstName+' '+ @latestNew.lastName+' created @ '+@latestNew.created_at.to_s%> </p>
-<p>Latest update user: <%= @latestUpdate.firstName+' '+ @latestUpdate.lastName+' updated @ '+@latestUpdate.updated_at.to_s%> </p>
-<button> <%= link_to "Download Member Email List", users_path+'.csv' %> </button>
-
-<div>
-    <h4> Import data from csv file </h4>
+<% if @user.role == 1 %>
+<div align="center" >
+    <div>
+        <h4> Import Data From CSV file </h4>
         <%= form_tag import_users_path, multipart: true do %>
             <%= file_field_tag :file %>
-            <%= submit_tag "Import CSV" %>
+            <%= submit_tag "Import CSV", class: "button" %>
         <% end %>
+    </div>
+</div>
+<% end %>
 </div>

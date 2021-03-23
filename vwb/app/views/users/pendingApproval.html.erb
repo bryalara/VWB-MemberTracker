@@ -1,24 +1,15 @@
+  <%= render "layouts/navbar2", user: @user %>
+
 <%= flash[:notice]%>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+<div class="header">
+<h2 class="active h2-title">Pending Users</h2>
+</div>
+<div>
+<div  class="align-table" >
+<button class="btn btn-decor" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
+<button class="btn"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
+<table class="styled-table">
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-<button><%= link_to "Return to all users", users_path %></button>
-<h1>Users</h1>
-<table>
     <tr>
         <th> First Name</th>
         <th> Last Name</th>
@@ -47,9 +38,6 @@ tr:nth-child(even) {
 <% end %>
 
 </table>
-
-
-<button> <%= link_to "Create New User", new_user_path %> </button>
-
-<button> <%= link_to "View Pending Users", pendingApproval_path %> </button>
+</div>
+</div>
 

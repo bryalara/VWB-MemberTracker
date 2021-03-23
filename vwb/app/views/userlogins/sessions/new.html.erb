@@ -1,2 +1,10 @@
-<h2>You're Logged out! Log in to the Userlogin Dashboard</h2>
-<%= link_to "Sign in with Google", userlogin_google_oauth2_omniauth_authorize_path %>
+
+<%= render "layouts/navbar1", user: @user %>
+
+<section>
+<h2 class="active h2-center">You are logged out!</h2>
+<h2 class="h2-center" style="font-size: 14px; padding-top: 10px;" >Please <%= link_to "click here", userlogin_google_oauth2_omniauth_authorize_path %> to log back in.</h2>
+
+</section>
+
+<%= render "layouts/footer"%>

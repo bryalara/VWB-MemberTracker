@@ -1,19 +1,34 @@
-<% flash.each do |type, msg| %>
-	<div class="alert">
-		<%= msg %>
-	</div>
-<% end %>
+<style>
+th, td, tr {
+	padding-right: 15px;
+}
 
-<h1>Events</h1>
-<%= link_to "Add an Event", new_event_path(@events) %>
-<table>
+.alert {
+	border-radius: 5px;
+	padding: 15px;
+	background: #d8ecdb;
+	color: #295529;
+}
+</style>
+<div class="header">
+<button class="btn back-btn" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
+</div>
+<div class="header2">
+<h2 class="active h2-title">Events</h2>
+</div>
+<div class="align-table">
+<button class="btn btn-decor" style="padding-left: 0rem;"> <%= link_to "Add an Event", new_event_path(@events), class:"back-button" %></button>
+<table class="styled-table" >
 	<tr>
 		<th>Event</th>
 		<th>Description</th>
 		<th>Points</th>
 		<th>Start Time</th>
 		<th>End Time</th>
+		<th>Event Type</th>
+		<th></th>
 		<th>Actions</th>
+		<th></th>
 	</tr>
 
 	<% @events.each do |event| %>
@@ -23,13 +38,12 @@
 		<td><%= event.points %></td>
 		<td><%= Event.dateTimeDisplay(event.startDate) %></td>
 		<td><%= Event.dateTimeDisplay(event.endDate) %></td>
-
 		<td><%= link_to "Show", event_path(event) %></td>
 		<td><%= link_to "Edit", edit_event_path(event) %></td>
 		<td><%= link_to "Delete", delete_event_path(event) %></td>
-		<td><%= link_to "QR", qr_event_path(event) %></td>
 	</tr>
 	<% end %>
 </table>
+</div>
 
 <%= render template: 'point_event/index' %>
