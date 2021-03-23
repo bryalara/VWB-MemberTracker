@@ -19,8 +19,9 @@
 
 <div class="align-table">
 
+<button class="btn" style="padding-left: 0rem;"> <%= link_to "Create New User", new_users_path, class: "back-button" %> </button>
 <button class="btn" style="padding-left: 0rem;"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
-
+<button class="btn" style="padding-left: 0rem;"> <%= link_to "Pending Users", pendingApproval_path, class: "back-button" %> </button>
 <table class="styled-table">
     <tr>
         <th> First Name <%= link_to '⬛️', users_path(:attr => 'first', :order => !@order) %></th>
