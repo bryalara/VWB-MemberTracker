@@ -10,6 +10,13 @@ th, td, tr {
 	color: #295529;
 }
 </style>
+
+<% flash.each do |type, msg| %>
+	<div class="alert">
+		<%= msg %>
+	</div>
+<% end %>
+
 <div class="header">
 <button class="btn back-btn" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
 </div>

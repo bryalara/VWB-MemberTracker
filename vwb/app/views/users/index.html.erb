@@ -18,13 +18,13 @@
 
 <% if userlogin_signed_in? %>
   <div>Signed in as: <%= current_userlogin.email %></div>
-  <div><%=  @user.role == 0 ? :"Member" : :"Admin"  %> </div>
+  <div><%=  @auth.role == 0 ? :"Member" : :"Admin"  %> </div>
 <% end %>
 
 
 <div class="align-table">
 
-<% if @user.role == 1 %>
+<% if @auth.role == 1 %>
     <button class="btn btn-decor" style="padding-left: 0rem;"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
     <button class="btn" style="padding-left: 0rem;"> <%= link_to "Pending Users", pendingApproval_path, class: "back-button" %> </button>
 <% end %>
@@ -46,7 +46,7 @@
 
 <% if userlogin_signed_in? %>
   <div>Signed in as: <%= current_userlogin.email %></div>
-  <div><%=  @user.role == 0 ? :"Member" : :"Admin"  %> </div>
+  <div><%=  @auth.role == 0 ? :"Member" : :"Admin"  %> </div>
 <% end %>
 
 <% @users.each do |user| %>
@@ -67,7 +67,7 @@
 
 <br>
 
-<% if @user.role == 1 %>
+<% if @auth.role == 1 %>
 <div align="center" >
     <div>
         <h4> Import Data From CSV file </h4>

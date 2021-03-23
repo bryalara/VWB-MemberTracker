@@ -159,7 +159,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content('Test Event')
 
 			visit delete_point_event_path(id: event.id)
-			first("#delete-btn").click
+			click_on 'delete-btn'
 			sleep(1)
 			a = page.driver.browser.switch_to.alert
 			a.accept
@@ -186,7 +186,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content('Test Event 3')
 
 			visit delete_point_event_path(id: event2.id)
-			first("#delete-btn").click
+			click_on 'delete-btn'
 			sleep(1)
 			a = page.driver.browser.switch_to.alert
 			a.accept
@@ -198,7 +198,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content('Test Event 3')
 
 			visit delete_point_event_path(id: event1.id)
-			first("#delete-btn").click
+			click_on 'delete-btn'
 			sleep(1)
 			a2 = page.driver.browser.switch_to.alert
 			a2.accept
@@ -210,7 +210,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content('Test Event 3')
 
 			visit delete_point_event_path(id: event3.id)
-			first("#delete-btn").click
+			click_on 'delete-btn'
 			sleep(1)
 			a3 = page.driver.browser.switch_to.alert
 			a3.accept
