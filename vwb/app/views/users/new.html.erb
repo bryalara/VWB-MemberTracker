@@ -16,16 +16,16 @@ select{
 </style>
 <p id="notice"><%= flash[:notice] %></p>
 
-<%#  ----- Need to Take a look (TO DO)-------------------------------------------------------------
+
 <%if (!@auth)%>
-    <%= render "userRegisterForm", user:@user  %>
+    <%#= render "userRegisterForm", user:@user  %>
 <%elsif (@auth.role==1 && @auth.approved==true)%>
     <h1>New Users</h1>
-    <%= render "form", user:@user  %>
+    <%#= render "form", user:@user  %>
 <%else%>
-    <%= render "userRegisterForm", user:@user  %>
+    <%#= render "userRegisterForm", user:@user  %>
 <%end%>
------ Need to Take a look (TO DO)-----------------------------------------------------  #>
+
 
 <h1>New Users</h1>
 
