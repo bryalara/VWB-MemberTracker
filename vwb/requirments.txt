@@ -1,0 +1,3 @@
+heroku create --buildpacks https://github.com/heroku-buildpack-ruby.github
+
+git push heroku master
