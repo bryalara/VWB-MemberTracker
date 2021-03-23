@@ -1,5 +1,5 @@
 
-<%= render "layouts/navbar2", user: @user %>
+<%= render "layouts/navbar2", user: @auth %>
 
 <% msgs= flash[:notice].to_s.split('|', -1) %>
 <% msgs.each do |msg|%>
@@ -16,18 +16,8 @@
 <h2 class="active h2-title">Users</h2>
 </div>
 
-<% if userlogin_signed_in? %>
-  <div>Signed in as: <%= current_userlogin.email %></div>
-  <div><%=  @auth.role == 0 ? :"Member" : :"Admin"  %> </div>
-<% end %>
-
 
 <div class="align-table">
-
-<% if @auth.role == 1 %>
-    <button class="btn btn-decor" style="padding-left: 0rem;"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
-    <button class="btn" style="padding-left: 0rem;"> <%= link_to "Pending Users", pendingApproval_path, class: "back-button" %> </button>
-<% end %>
 
 <button class="btn" style="padding-left: 0rem;"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
 
@@ -44,10 +34,6 @@
         
     </tr>
 
-<% if userlogin_signed_in? %>
-  <div>Signed in as: <%= current_userlogin.email %></div>
-  <div><%=  @auth.role == 0 ? :"Member" : :"Admin"  %> </div>
-<% end %>
 
 <% @users.each do |user| %>
     <tr>
@@ -65,6 +51,12 @@
 
 </table>
 
+<% if userlogin_signed_in? %>
+  <div>Signed in as: <%= current_userlogin.email %></div>
+  <div><%=  @auth.role == 0 ? :"Member" : :"Admin"  %> </div>
+<% end %>
+
+
 <br>
 
 <% if @auth.role == 1 %>
@@ -75,6 +67,7 @@
             <%= file_field_tag :file %>
             <%= submit_tag "Import CSV", class: "button" %>
         <% end %>
+        <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Email List", users_path+'.csv', class: "back-button" %> </button>
     </div>
 </div>
 <% end %>
