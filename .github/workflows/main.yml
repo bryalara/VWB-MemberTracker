@@ -1,4 +1,5 @@
 name: CI/CD
+on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,7 +27,7 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.x
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install
       - name: Build
@@ -43,3 +44,5 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rake db:create
           bundle exec rake db:migrate
+          bundle exec rake db:seed
+          bundle exec rspec .

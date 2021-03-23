@@ -18,6 +18,12 @@ require 'simplecov'
 SimpleCov.start
 
 RSpec.configure do |config|
+  #seed/initializr database
+  config.before(:suite) do
+    load Rails.root.join('db', 'seeds.rb') # loading seeds
+  end
+  config.include IntegrationSpecHelper, :type => :feature
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -98,3 +104,5 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+OmniAuth.config.test_mode = true

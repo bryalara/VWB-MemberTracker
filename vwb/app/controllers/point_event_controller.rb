@@ -1,6 +1,6 @@
 class PointEventController < ApplicationController
 	protect_from_forgery with: :exception
-    before_action :authenticate_userlogin!
+    before_action :authenticate_userlogin! && :admin_verify, except: [:create, :registration]
 	
 	def index
 		@pointEvents = PointEvent.all

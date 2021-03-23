@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Events', type: :feature do
 	setup do
+		visit event_index_path
 		login_with_oauth
 	end
 
