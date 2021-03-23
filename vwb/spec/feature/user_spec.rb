@@ -10,7 +10,7 @@ RSpec.describe 'Users', type: :feature do
 		it 'shows the right content' do
 			visit users_path
 			sleep(1)
-			expect(page).to have_content('Users')
+			expect(page).to have_content('USERS')
 		end
 	end
 
@@ -77,7 +77,7 @@ RSpec.describe 'Users', type: :feature do
 			visit new_user_path
 			
 			fill_in 'user_email', with: 'featuretesting@tamu.edu'
-			select 'Select Role', :from => 'user_role'
+			select 'Select a Role', :from => 'user_role'
 			fill_in 'user_firstName', with: 'John'
 			fill_in 'user_lastName', with: 'Doe'
 			fill_in 'user_phoneNumber', with: '1234567890'
@@ -413,6 +413,7 @@ RSpec.describe 'Users', type: :feature do
 			fill_in 'user_lastName', with: 'UpdatingTestLast'
 			click_on 'Update User'
 			visit users_path
+			sleep(1)
 			expect(page).to have_content('UpdatingTestLast')
 		end
 
@@ -604,6 +605,7 @@ RSpec.describe 'Users', type: :feature do
 			uncheck 'user_approved'
 			click_on 'Update User'
 			visit pendingApproval_path
+			sleep(1)
 			expect(page).to have_content('false')
 		end
 	end
@@ -626,7 +628,7 @@ RSpec.describe 'Users', type: :feature do
 			visit user_path(id: user.id)
 			
 			puts user_path(id: user.id)
-			click_on 'Destroy'
+			first("#delete-btn").click
 			sleep(1)
 			page.driver.browser.switch_to.alert.accept
 			sleep(1)
@@ -676,20 +678,20 @@ RSpec.describe 'Users', type: :feature do
 			expect(page).to have_content('featureRead3@tamu.edu')
 
 			visit user_path(id: user1.id)
-			click_on 'Destroy'
+			first("#delete-btn").click
 			sleep(1)
 			page.driver.browser.switch_to.alert.accept
 			sleep(1)
 			
 
 			visit user_path(id: user2.id)
-			click_on 'Destroy'
+			first("#delete-btn").click
 			sleep(1)
 			page.driver.browser.switch_to.alert.accept
 			sleep(1)
 
 			visit user_path(id: user3.id)
-			click_on 'Destroy'
+			first("#delete-btn").click
 			sleep(1)
 			page.driver.browser.switch_to.alert.accept
 			sleep(1)

@@ -2,15 +2,9 @@
 <%= render "layouts/navbar1", user: @user %>
 
 <section>
-<h2 class="active h2-center">You have been logged out!</h2>
+<h2 class="active h2-center">You are logged out!</h2>
 <h2 class="h2-center" style="font-size: 14px; padding-top: 10px;" >Please <%= link_to "click here", userlogin_google_oauth2_omniauth_authorize_path %> to log back in.</h2>
 
 </section>
 
- <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Texas A&M University &copy; 2021</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+<%= render "layouts/footer"%>

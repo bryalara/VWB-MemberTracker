@@ -16,13 +16,6 @@ td, th {
   text-align: left;
   padding: 8px;
 }
-/* div{ renamed to center-col
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-} */
-
 tr:nth-child(even) {
   background-color: #dddddd;
 }
@@ -54,7 +47,7 @@ tr:nth-child(even) {
 <div  align="center" >
 <button class="btn"> <%= link_to "Edit User", edit_user_path(@user), class: "back-button" %> </button>
 
-<button class="btn"> <%= link_to "Destroy", user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, class: "back-button" %> </button>
+<button class="btn"> <%= link_to "Destroy", user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, class: "back-button", id: "delete-btn" %> </button>
 </div>
 </div>
 

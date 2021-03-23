@@ -49,7 +49,7 @@ select{
     <div class="select">
         <br>
         <div >
-        <%= form.select :role, options_for_select([["Select a Role", ""], ["Member", 0], ["Admin", 1]]), id: "slct", prompt: "Select a Role", value: "" %>
+        <%= form.select :role, options_for_select([["Select a Role", ""], ["Member", 0], ["Admin", 1]]), id: "slct", value: "" %>
     </div>
 
     <div>
@@ -88,8 +88,6 @@ select{
         <%= form.submit %>
     </div>
 <% end %>
-
-
 </div>
 </div>
 </section>

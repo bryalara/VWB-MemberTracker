@@ -9,7 +9,7 @@ RSpec.describe 'Events', type: :feature do
 	describe 'index page' do
 		it 'shows the right content' do
 			visit event_index_path
-			expect(page).to have_content('Events')
+			expect(page).to have_content('EVENTS')
 		end
 	end
 
@@ -370,7 +370,7 @@ RSpec.describe 'Events', type: :feature do
 			visit edit_event_path(id: event.id)
 			select futureDate.strftime("%Y"), :from => 'event_startDate_1i'
 			select futureDate.strftime("%B"), :from => 'event_startDate_2i'
-			select futureDate.strftime("%d"), :from => 'event_startDate_3i'
+			select futureDate.strftime("%-d"), :from => 'event_startDate_3i'
 			select futureDate.strftime("%I %p"), :from => 'event_startDate_4i'
 			select futureDate.strftime("%M"), :from => 'event_startDate_5i'
 			fill_in 'event_description', with: "Edited Test Description"
@@ -407,7 +407,7 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('Test Event')
 
 			visit delete_event_path(id: event.id)
-			click_on 'Delete'
+			first("#delete-btn").click
 			sleep(1)
 
 			a = page.driver.browser.switch_to.alert
@@ -444,7 +444,7 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('Test Event 3')
 
 			visit delete_event_path(id: event2.id)
-			click_on 'Delete'
+			first("#delete-btn").click
 			sleep(1)
 			a = page.driver.browser.switch_to.alert
 			a.accept
@@ -456,7 +456,7 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('Test Event 3')
 
 			visit delete_event_path(id: event1.id)
-			click_on 'Delete'
+			first("#delete-btn").click
 			sleep(1)
 			a2 = page.driver.browser.switch_to.alert
 			a2.accept
@@ -468,7 +468,7 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('Test Event 3')
 
 			visit delete_event_path(id: event3.id)
-			click_on 'Delete'
+			first("#delete-btn").click
 			sleep(1)
 			a3 = page.driver.browser.switch_to.alert
 			a3.accept
