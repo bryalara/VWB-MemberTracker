@@ -1,0 +1,22 @@
+
+
+<br>
+
+<table style="text-align: left">
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+	
+	</tr>
+
+	<% @edithomepages.each do |edithomepage| %>
+    <tr>
+    <td><%= link_to edithomepage.name, edithomepage_path(edithomepage) %></td>
+    <td><%= link_to edithomepage.description, edithomepage_path(edithomepage) %></td>
+    <td><%= button_to 'Edit', edit_edithomepage_path(edithomepage), method: 'get'%></td>
+    <td><%= button_to 'Remove', edithomepage_path(edithomepage), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
+	<% end %>
+</table>
+<%= link_to "Add a New Attribute ", new_edithomepage_path %>
+
+

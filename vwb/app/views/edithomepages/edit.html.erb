@@ -1,0 +1,8 @@
+<%= link_to "Back to Home page", edithomepages_path %>
+
+<h3>Edit home page Details</h3>
+<%= form_with model: @edithomepage do |form| %>
+  <%= form.text_field :name, placeholder: "name" %>
+  <%= form.text_field :description, placeholder: "description" %>
+  <%= form.submit "save changes to Home page"%>
+<% end %>

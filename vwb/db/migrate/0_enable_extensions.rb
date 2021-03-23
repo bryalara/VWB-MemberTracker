@@ -4,3 +4,4 @@ class EnableExtensions < ActiveRecord::Migration[6.0]
     enable_extension 'pgcrypto'
   end
 end
+

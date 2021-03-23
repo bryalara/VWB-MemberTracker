@@ -1,3 +1,4 @@
+
 class EventController < ApplicationController
 	protect_from_forgery with: :exception
     before_action :authenticate_userlogin! && :admin_verify, except: [:create, :registration]

@@ -17,6 +17,19 @@ ActiveRecord::Schema.define(version: 2021_03_06_231736) do
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
+  create_table "edit_home_pages", force: :cascade do |t|
+    t.string "Name"
+    t.string "Description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "edithomepages", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
   create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "description"

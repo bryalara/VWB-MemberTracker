@@ -5,7 +5,7 @@
 <p>* denotes required fields.<p>
 
 <%= form_with url:"/event", model: @event do |form| %>
-	<table style="text-align: left">
+	<table>
 		<tr>
 			<th><%= form.label :name %>*</th>
 			<td><%= form.text_field :name, required: true %></td>
