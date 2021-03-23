@@ -1,7 +1,7 @@
 class PointEventController < ApplicationController
 	protect_from_forgery with: :exception
-    before_action :authenticate_userlogin!
-	
+	before_action :authenticate_userlogin! && :admin_verify, except: [:create, :registration]
+
 	def index
 		@auth = User.find_by_email(current_userlogin.email)
 		if(!@auth || @auth.role==0 || @auth.approved==false)
@@ -107,6 +107,18 @@ class PointEventController < ApplicationController
 				redirect_to attend_point_event_path(@pointEvent)
 			end
 		end
+	end
+
+	def destroy_user
+		@pointEvent = PointEvent.find(params[:id])
+		@user = User.find(params[:user_id])
+
+		if @pointEvent.users.delete(@user)
+			flash[:notice] = "Successfully removed #{@user.firstName} #{@user.lastName} from #{@pointEvent.name}."
+		else
+			flash[:notice] = "#{@user.firstName} #{@user.lastName} has already been removed from #{@pointEvent.name}."
+		end
+		redirect_to edit_point_event_path(@pointEvent)
 	end
 
 	private

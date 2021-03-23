@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get '/pendingApproval', to: 'users#pendingApproval'
   get '/memberDashboard', to: 'users#memberDashboard'
+  get 'user/registration', to: 'users#registration', as: :registration_user
   get '/import', to: 'users#my_import'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
       get :qr
       get :attend
       post :attend
+      delete '/user/:user_id/destroy' => 'point_event#destroy_user', :as => 'delete_user'
   	end
   end
 
@@ -36,6 +38,7 @@ Rails.application.routes.draw do
       get :qr
       get :attend
       post :attend
+      delete '/user/:user_id/destroy' => 'event#destroy_user', :as => 'delete_user'
   	end
   end
 end

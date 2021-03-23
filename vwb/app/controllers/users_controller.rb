@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   protect_from_forgery with: :exception
-  before_action :authenticate_userlogin!
+  before_action :authenticate_userlogin! && :admin_verify, except: [:create, :registration, :edit]
   # http_basic_authenticate_with name: "vwb", password: "password"
 
   def index
@@ -185,6 +185,10 @@ class UsersController < ApplicationController
       end
     end
     @numPointEvents= i
+  end
+
+  def registration
+    @user = User.new
   end
 
   private

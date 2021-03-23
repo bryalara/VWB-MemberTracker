@@ -1,6 +1,6 @@
 class EventController < ApplicationController
 	protect_from_forgery with: :exception
-    before_action :authenticate_userlogin!
+    before_action :authenticate_userlogin! && :admin_verify, except: [:create, :registration]
 	def index
 		@auth = User.find_by_email(current_userlogin.email)
 		if(!@auth || @auth.role==0 || @auth.approved==false)
@@ -105,6 +105,19 @@ class EventController < ApplicationController
 				return
 			end
 		end
+	end
+
+	#removes user from an event attended
+	def destroy_user
+		@event = Event.find(params[:id])
+		@user = User.find(params[:user_id])
+
+		if @event.users.delete(@user)
+			flash[:notice] = "Successfully removed #{@user.firstName} #{@user.lastName} from #{@event.name}."
+		else
+			flash[:notice] = "#{@user.firstName} #{@user.lastName} has already been removed from #{@event.name}."
+		end
+		redirect_to edit_event_path(@event)
 	end
 
 	private
