@@ -32,7 +32,7 @@
       </div>  
       <ul class="nav navbar-nav" style=" text-align: center">
         <li class="<%= request.env['PATH_INFO']=='/' ? :'active' : :'' %>"><a href="/">Home</a></li>
-        <li class="<%= request.env['PATH_INFO']=='/pages/member' ? :'active' : :'' %>"><a href="pages/member">Member Page</a></li>
+        <li class="<%= request.env['PATH_INFO']=='/pages/member' ? :'active' : :'' %>"><a href="<%= memberDashboard_path%>">Member Page</a></li>
         <li class="<%= request.env['PATH_INFO']=='/edithomepages' ? :'active' : :'' %>"><a href="edithomepages">Admin Page</a></li>
         <li class="<%= request.env['PATH_INFO']=='/event' ? :'active' : :'' %>"><a href="<%= event_index_path %>">Events</a></li>
         <li class="<%= request.env['PATH_INFO']=='/users' ? :'active' : :'' %>"><a href="<%= users_path %>">Users</a></li>
@@ -48,7 +48,7 @@
         <%= yield %>
         <% if flash.any? %>
         <% flash.each do |key, value| -%>
-        <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
+        <section class="flash flash__<%= key %>"><%= value.to_s.html_safe %></section>
       <% end -%>
     <% end %>
       </body>

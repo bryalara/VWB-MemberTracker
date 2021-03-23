@@ -1,4 +1,3 @@
-
 <%= form_with model: @user do |form| %>
     <div>
         <%= form.label :email %><br>
@@ -20,11 +19,6 @@
             <div><%= message %></div>
         <% end %>
     </div>
-    
-    <div>
-        <%= form.label :role %><br>
-        <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]]), :prompt => 'Select Role' %>
-    </div>
 
     <div>
         <%= form.label :phoneNumber %><br>
@@ -42,19 +36,8 @@
     </div>
 
     <div>
-        <%= form.label :participationPoints %><br>
-        <%= form.number_field  :participationPoints %>
-    </div>
-
-
-    <div>
         <%= form.label :optInEmail  %><br>
         <%= form.check_box :optInEmail %>
-   </div>
-
-    <div>
-        <%= form.label :approved %><br>
-        <%= form.check_box :approved %>
    </div>
 
     <div>
@@ -62,3 +45,4 @@
     </div>
 <% end %>
 
+<%= link_to "Return to dashboard", memberDashboard_path %>

@@ -1,2 +1,7 @@
 <h1> Editting <%= @user.firstName+" "+@user.lastName %> </h1>
-<%= render "form", user:@user %>
+
+<% unless (@auth.role==1)%>
+    <%= render "memberForm", user:@user %>
+<% else %>
+    <%= render "form", user:@user %>
+<% end%>
