@@ -100,7 +100,7 @@ class UsersController < ApplicationController
       puts("user saved")
       redirect_to users_path(@user), notice:"Successfully created new user: #{@user.firstName+' '+@user.lastName}."
     else
-      if @user.valid
+      if @user.valid?
         puts("Valid")
         flash[:notice] = "Successfully created new user: #{@user.firstName+' '+@user.lastName}."
       else
