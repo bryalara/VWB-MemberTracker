@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EdithomepagesController < ApplicationController
   protect_from_forgery with: :exception
   before_action :authenticate_userlogin!
@@ -29,10 +31,10 @@ class EdithomepagesController < ApplicationController
 
   def update
     @edithomepage = Edithomepage.find(params[:id])
-    
+
     if @edithomepage.update(edithomepage_params)
       redirect_to edithomepages_path
-    else 
+    else
       render :edit
     end
   end

@@ -1,5 +1,5 @@
-class RspecController < ApplicationController
-  def index
+# frozen_string_literal: true
 
-  end
+class RspecController < ApplicationController
+  def index; end
 end

@@ -15,12 +15,22 @@ AllCops:
     - 'tmp/**/*'
     - 'vendor/**/*'
     - '.git/**/*'
+    - 'spec/**/*'
 Metrics/LineLength:
-  Max: 100
+  Max: 120
 Metrics/BlockLength:
   Exclude:
     - config/**/*
     - spec/**/*
+  Max: 20
+Metrics/MethodLength:
+  Max: 50
+Metrics/ClassLength:
+  Max: 200
+Metrics/AbcSize:
+  Max: 50
+Metrics/PerceivedComplexity:
+  Max: 20
 Style/Documentation:
   Enabled: false
 Layout/IndentationWidth:
