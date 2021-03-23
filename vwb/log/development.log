@@ -48369,3 +48369,330 @@ Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.3ms | Allocations: 630
 
 
 >>>>>>> ui-design
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (467.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "vwb_development"[0m
+  [1m[35m (124.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "vwb_test"[0m
+  [1m[35m (1785.2ms)[0m  [1m[35mCREATE DATABASE "vwb_development" ENCODING = 'unicode'[0m
+  [1m[35m (1835.3ms)[0m  [1m[35mCREATE DATABASE "vwb_test" ENCODING = 'unicode'[0m
+  [1m[35m (58.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (20.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8536163733643263690)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to EnableExtensions (0)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (17.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "uuid-ossp"[0m
+  [1m[35mSQL (15.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[36mprimary::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "0"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20210213203414)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "events" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "name" character varying, "description" character varying, "startDate" timestamp, "endDate" timestamp, "points" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210213203414"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePointEvents (20210213203432)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "point_events" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "name" character varying, "description" character varying, "points" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210213203432"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUsers (20210215210059)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying NOT NULL, "role" integer DEFAULT 0 NOT NULL, "firstName" character varying NOT NULL, "lastName" character varying NOT NULL, "phoneNumber" character varying NOT NULL, "classification" character varying NOT NULL, "tShirtSize" character varying NOT NULL, "optInEmail" boolean DEFAULT TRUE NOT NULL, "participationPoints" integer DEFAULT 0 NOT NULL, "approved" boolean DEFAULT FALSE NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210215210059"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeviseToUserlogins (20210225181553)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (24.7ms)[0m  [1m[35mCREATE TABLE "userlogins" ("id" bigserial primary key, "email" character varying NOT NULL, "full_name" character varying, "uid" character varying, "avatar_url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_userlogins_on_email" ON "userlogins"  ("email")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210225181553"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to PointEventsUsers (20210306231730)
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "point_events_users" ("user_id" uuid, "point_event_id" uuid, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_9445d628dd"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_acdbbb47ac"
+FOREIGN KEY ("point_event_id")
+  REFERENCES "point_events" ("id")
+)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE  INDEX  "index_point_events_users_on_user_id" ON "point_events_users"  ("user_id")[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE  INDEX  "index_point_events_users_on_point_event_id" ON "point_events_users"  ("point_event_id")[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_point_events_users_on_user_id_and_point_event_id" ON "point_events_users"  ("user_id", "point_event_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210306231730"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to EventsUsers (20210306231736)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "events_users" ("user_id" uuid, "event_id" uuid, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c32bae0acf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_0ea30c0a1c"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+)[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE  INDEX  "index_events_users_on_user_id" ON "events_users"  ("user_id")[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE  INDEX  "index_events_users_on_event_id" ON "events_users"  ("event_id")[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_events_users_on_user_id_and_event_id" ON "events_users"  ("user_id", "event_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210306231736"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEdithomepages (20210320101609)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "edithomepages" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210320101609"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-23 05:17:52.938591"], ["updated_at", "2021-03-23 05:17:52.938591"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8536163733643263690)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bryalara@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (3.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "role", "firstName", "lastName", "phoneNumber", "classification", "tShirtSize", "approved", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "bryalara@tamu.edu"], ["role", 1], ["firstName", "Bryan"], ["lastName", "Lara"], ["phoneNumber", "7138847570"], ["classification", "Senior"], ["tShirtSize", "XXL"], ["approved", true], ["created_at", "2021-03-23 05:17:53.339527"], ["updated_at", "2021-03-23 05:17:53.339527"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "role", "firstName", "lastName", "phoneNumber", "classification", "tShirtSize", "approved", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "entao2000@gmail.com"], ["role", 1], ["firstName", "Yingtao"], ["lastName", "Jiang"], ["phoneNumber", "9797399011"], ["classification", "Senior"], ["tShirtSize", "XXL"], ["approved", true], ["created_at", "2021-03-23 05:17:53.349056"], ["updated_at", "2021-03-23 05:17:53.349056"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "phand972@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "role", "firstName", "lastName", "phoneNumber", "classification", "tShirtSize", "approved", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "phand972@gmail.com"], ["role", 1], ["firstName", "Daniel"], ["lastName", "Phan"], ["phoneNumber", "7133631944"], ["classification", "Junior"], ["tShirtSize", "XXL"], ["approved", true], ["created_at", "2021-03-23 05:17:53.360416"], ["updated_at", "2021-03-23 05:17:53.360416"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEdithomepage Create (1.3ms)[0m  [1m[32mINSERT INTO "edithomepages" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "home"], ["description", "This is the home description"], ["created_at", "2021-03-23 05:17:53.379300"], ["updated_at", "2021-03-23 05:17:53.379300"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEdithomepage Create (0.3ms)[0m  [1m[32mINSERT INTO "edithomepages" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "about_us"], ["description", "This is the about us description"], ["created_at", "2021-03-23 05:17:53.384123"], ["updated_at", "2021-03-23 05:17:53.384123"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEdithomepage Create (0.4ms)[0m  [1m[32mINSERT INTO "edithomepages" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "contact_us"], ["description", "This is the contact us description"], ["created_at", "2021-03-23 05:17:53.388039"], ["updated_at", "2021-03-23 05:17:53.388039"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEdithomepage Create (0.3ms)[0m  [1m[32mINSERT INTO "edithomepages" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "officers"], ["description", "This is the officers description"], ["created_at", "2021-03-23 05:17:53.392368"], ["updated_at", "2021-03-23 05:17:53.392368"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEdithomepage Create (0.3ms)[0m  [1m[32mINSERT INTO "edithomepages" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "officer_image_url"], ["description", "This is the the officer image URL description"], ["created_at", "2021-03-23 05:17:53.396393"], ["updated_at", "2021-03-23 05:17:53.396393"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEdithomepage Create (0.4ms)[0m  [1m[32mINSERT INTO "edithomepages" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "landing_page_image_url"], ["description", "This is the landing page image url description"], ["created_at", "2021-03-23 05:17:53.399944"], ["updated_at", "2021-03-23 05:17:53.399944"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEdithomepage Create (0.4ms)[0m  [1m[32mINSERT INTO "edithomepages" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "events_info"], ["description", "This is the events info description"], ["created_at", "2021-03-23 05:17:53.404011"], ["updated_at", "2021-03-23 05:17:53.404011"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2021-03-23 00:45:44 -0500
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUserlogin Load (2.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:54
+  [1m[36mEdithomepage Load (3.3ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/home/index.html.erb:83:in `each_with_index'
+  Rendered layouts/_footer.html.erb (Duration: 0.4ms | Allocations: 81)
+  Rendered home/index.html.erb within layouts/application (Duration: 41.5ms | Allocations: 6611)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 545ms (Views: 516.7ms | ActiveRecord: 15.9ms | Allocations: 29856)
+
+
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-23 00:45:49 -0500
+Started GET "/userlogins/auth/google_oauth2" for ::1 at 2021-03-23 00:45:49 -0500
+Started GET "/userlogins/auth/google_oauth2/callback?state=b0a278eb5b74fe730613a3e6035d989aee0046c6693553a4&code=4%2F0AY0e-g4CgIjllcl4iQXqvQqmOwaQPAUT9gJP_INHzjmo-vJpawgd2njw4EYQwaAHnI5maQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2021-03-23 00:45:52 -0500
+Processing by Userlogins::OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"b0a278eb5b74fe730613a3e6035d989aee0046c6693553a4", "code"=>"4/0AY0e-g4CgIjllcl4iQXqvQqmOwaQPAUT9gJP_INHzjmo-vJpawgd2njw4EYQwaAHnI5maQ", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent"}
+  [1m[36mUserlogin Load (4.3ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/userlogin.rb:10:in `from_google'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/userlogin.rb:10:in `from_google'
+  [1m[36mUserlogin Create (1.3ms)[0m  [1m[32mINSERT INTO "userlogins" ("email", "full_name", "uid", "avatar_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "entao2000@gmail.com"], ["full_name", "Yingtao Jiang"], ["uid", "105983559787040298850"], ["avatar_url", "https://lh6.googleusercontent.com/-6MxvpxVlEKA/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucndOcUqAIOUpAbf7JY-KOwmjPMuQw/s96-c/photo.jpg"], ["created_at", "2021-03-23 05:45:53.210827"], ["updated_at", "2021-03-23 05:45:53.210827"]]
+  ↳ app/models/userlogin.rb:10:in `from_google'
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/userlogin.rb:10:in `from_google'
+  [1m[36mUser Exists? (6.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/userlogins/omniauth_callbacks_controller.rb:27:in `after_sign_in_path_for'
+Redirected to http://localhost:3000/
+Completed 302 Found in 97ms (ActiveRecord: 28.5ms | Allocations: 15406)
+
+
+Started GET "/" for ::1 at 2021-03-23 00:45:53 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUserlogin Load (0.5ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:54
+  [1m[36mEdithomepage Load (1.9ms)[0m  [1m[34mSELECT "edithomepages".* FROM "edithomepages"[0m
+  ↳ app/views/home/index.html.erb:83:in `each_with_index'
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered home/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1764)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 74ms (Views: 70.5ms | ActiveRecord: 2.4ms | Allocations: 9250)
+
+
+Started GET "/users" for ::1 at 2021-03-23 00:45:56 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `admin_verify'
+  [1m[36mUser Exists? (4.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `admin_verify'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `index'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `index'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY updated_at DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `index'
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 2.2ms | Allocations: 396)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1 ORDER BY "users"."firstName" DESC[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:38
+  [1m[36mEvent Load (3.5ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "bba0a5b4-de75-4695-9d47-aec2de9e435c"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (4.4ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "bba0a5b4-de75-4695-9d47-aec2de9e435c"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "16cc7db8-7613-4aad-b1db-e062d4484d68"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "16cc7db8-7613-4aad-b1db-e062d4484d68"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  [1m[36mEvent Load (1.7ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "cb1ad11b-356e-4037-abf3-bbc51145e12d"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "cb1ad11b-356e-4037-abf3-bbc51145e12d"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  Rendered users/index.html.erb within layouts/application (Duration: 130.2ms | Allocations: 19071)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 302ms (Views: 165.0ms | ActiveRecord: 53.7ms | Allocations: 37583)
+
+
+Started GET "/users" for ::1 at 2021-03-23 00:46:06 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (0.7ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `admin_verify'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `admin_verify'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `index'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `index'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY updated_at DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `index'
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 0.4ms | Allocations: 96)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1 ORDER BY "users"."firstName" DESC[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:38
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "bba0a5b4-de75-4695-9d47-aec2de9e435c"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "bba0a5b4-de75-4695-9d47-aec2de9e435c"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "16cc7db8-7613-4aad-b1db-e062d4484d68"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (1.0ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "16cc7db8-7613-4aad-b1db-e062d4484d68"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "cb1ad11b-356e-4037-abf3-bbc51145e12d"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "cb1ad11b-356e-4037-abf3-bbc51145e12d"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  Rendered users/index.html.erb within layouts/application (Duration: 48.3ms | Allocations: 8401)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 119ms (Views: 89.8ms | ActiveRecord: 10.1ms | Allocations: 19538)
+
+
+Started GET "/users/new" for ::1 at 2021-03-23 00:46:09 -0500
+Processing by UsersController#new as HTML
+  [1m[36mUserlogin Load (0.8ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `admin_verify'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `admin_verify'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85:in `new'
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.0ms | Allocations: 104)
+  Rendered users/_form.html.erb (Duration: 51.8ms | Allocations: 5889)
+  Rendered layouts/_navbar2.html.erb (Duration: 0.3ms | Allocations: 85)
+  Rendered layouts/_footer.html.erb (Duration: 0.2ms | Allocations: 5)
+  Rendered users/new.html.erb within layouts/application (Duration: 65.3ms | Allocations: 8647)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 200ms (Views: 178.5ms | ActiveRecord: 3.0ms | Allocations: 19704)
+
+
+Started GET "/users/new" for ::1 at 2021-03-23 00:55:11 -0500
+Processing by UsersController#new as HTML
+  [1m[36mUserlogin Load (2.4ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `admin_verify'
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `admin_verify'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85:in `new'
+  Rendering users/new.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 2.6ms | Allocations: 380)
+  Rendered layouts/_footer.html.erb (Duration: 1.3ms | Allocations: 79)
+  Rendered users/new.html.erb within layouts/application (Duration: 178.8ms | Allocations: 3155)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 264ms (Views: 240.0ms | ActiveRecord: 6.8ms | Allocations: 13918)
+
+
+Started GET "/users" for ::1 at 2021-03-23 01:15:11 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (4.9ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `admin_verify'
+  [1m[36mUser Exists? (3.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `admin_verify'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `index'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `index'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY updated_at DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `index'
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.6ms | Allocations: 382)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1 ORDER BY "users"."firstName" DESC[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:38
+  [1m[36mEvent Load (3.7ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "bba0a5b4-de75-4695-9d47-aec2de9e435c"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (3.4ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "bba0a5b4-de75-4695-9d47-aec2de9e435c"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "16cc7db8-7613-4aad-b1db-e062d4484d68"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "16cc7db8-7613-4aad-b1db-e062d4484d68"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "cb1ad11b-356e-4037-abf3-bbc51145e12d"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "cb1ad11b-356e-4037-abf3-bbc51145e12d"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  Rendered users/index.html.erb within layouts/application (Duration: 62.9ms | Allocations: 16570)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 185ms (Views: 101.9ms | ActiveRecord: 21.7ms | Allocations: 44220)
+
+
+Started GET "/users" for ::1 at 2021-03-23 01:16:19 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUserlogin Load (1.0ms)[0m  [1m[34mSELECT "userlogins".* FROM "userlogins" WHERE "userlogins"."id" = $1 ORDER BY "userlogins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `admin_verify'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `admin_verify'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "entao2000@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `index'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `index'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY updated_at DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `index'
+  Rendering users/index.html.erb within layouts/application
+  Rendered layouts/_navbar2.html.erb (Duration: 1.6ms | Allocations: 380)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."approved" = $1 ORDER BY "users"."firstName" DESC[0m  [["approved", true]]
+  ↳ app/views/users/index.html.erb:38
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "bba0a5b4-de75-4695-9d47-aec2de9e435c"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "bba0a5b4-de75-4695-9d47-aec2de9e435c"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "16cc7db8-7613-4aad-b1db-e062d4484d68"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (2.0ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "16cc7db8-7613-4aad-b1db-e062d4484d68"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  [1m[36mEvent Load (1.5ms)[0m  [1m[34mSELECT DISTINCT "events".* FROM "events" INNER JOIN "events_users" ON "events"."id" = "events_users"."event_id" WHERE "events_users"."user_id" = $1[0m  [["user_id", "cb1ad11b-356e-4037-abf3-bbc51145e12d"]]
+  ↳ app/models/user.rb:58:in `get_total_points'
+  [1m[36mPointEvent Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "point_events".* FROM "point_events" INNER JOIN "point_events_users" ON "point_events"."id" = "point_events_users"."point_event_id" WHERE "point_events_users"."user_id" = $1[0m  [["user_id", "cb1ad11b-356e-4037-abf3-bbc51145e12d"]]
+  ↳ app/models/user.rb:61:in `get_total_points'
+  Rendered users/index.html.erb within layouts/application (Duration: 41.5ms | Allocations: 9503)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 118ms (Views: 81.7ms | ActiveRecord: 11.0ms | Allocations: 21635)
+
+
