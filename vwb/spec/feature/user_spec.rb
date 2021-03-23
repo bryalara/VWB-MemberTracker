@@ -477,24 +477,24 @@ RSpec.describe 'Users', type: :feature do
 				expect(page).to have_content('Feature')
 			end
 	
-			it 'is valid with valid lastName change' do
-				user = User.create!(email: 'featureRead5@tamu.edu',
-					role: 0,
-					firstName: 'Feature',
-					lastName: 'Testing',
-					phoneNumber: '1231231234',
-					tShirtSize: 'M',
-					participationPoints: 5,
-					classification: 'Senior',
-					optInEmail: true,
-					approved: true,
-				)
-				visit edit_user_path(id: user.id)
-				fill_in 'user_lastName', with: 'UpdatingTestLast'
-				click_on 'Update User'
-				visit users_path
-				expect(page).to have_content('UpdatingTestLast')
-			end
+			# it 'is valid with valid lastName change' do
+			# 	user = User.create!(email: 'featureRead5@tamu.edu',
+			# 		role: 0,
+			# 		firstName: 'Feature',
+			# 		lastName: 'Testing',
+			# 		phoneNumber: '1231231234',
+			# 		tShirtSize: 'M',
+			# 		participationPoints: 5,
+			# 		classification: 'Senior',
+			# 		optInEmail: true,
+			# 		approved: true,
+			# 	)
+			# 	visit edit_user_path(id: user.id)
+			# 	fill_in 'user_lastName', with: 'UpdatingTestLast'
+			# 	click_on 'Update User'
+			# 	visit users_path
+			# 	expect(page).to have_content('UpdatingTestLast')
+			# end
 	
 			it 'is not valid with valid lastName change to nil' do
 				user = User.create!(email: 'featureRead6@tamu.edu',
