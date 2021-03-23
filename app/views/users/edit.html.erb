@@ -80,11 +80,12 @@ select{
         <%= form.label :optInEmail , "Opt-In Email", class: "label" %>
         <div style="width: 50%;"><%= form.check_box :optInEmail, class: "field" %></div>
    </div>
-
-    <div class="double" align="center">
-        <%= form.label :approved, class: "label" %>
-        <div style="width: 50%;"><%= form.check_box :approved, class: "field" %></div>
-   </div>
+    <%if @user.role==1%>
+        <div class="double" align="center">
+            <%= form.label :approved, class: "label" %>
+            <div style="width: 50%;"><%= form.check_box :approved, class: "field" %></div>
+        </div>
+    <%end%>
 
     <div>
         <%= form.submit %>
