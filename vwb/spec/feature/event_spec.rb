@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Events', type: :feature do
 	setup do
-		visit event_index_path
 		login_with_oauth
 	end
 
@@ -298,26 +297,16 @@ RSpec.describe 'Events', type: :feature do
 						points: 5,
 						startDate: DateTime.now,
 						endDate: DateTime.now + 1.week)
-			user = User.create!(email: 'test@gmail.com',
-						role: 0,
-						firstName: 'Test',
-						lastName: 'Dummy',
-						phoneNumber: '5555555555',
-						tShirtSize: 'M',
-						participationPoints: 5,
-						classification: 'Senior',
-						optInEmail: true,
-						approved: true)
 
 			visit attend_event_path(event)
 			expect(page).to have_content('Test Event')
-			expect(page).to have_content('Hello test@gmail.com')
+			expect(page).to have_content('Hello bryalara@tamu.edu')
 
 			click_on 'Click to attend!'
 			expect(page).to have_content("Successfully attended Test Event!")
 
 			visit edit_event_path(event)
-			expect(page).to have_content('test@gmail.com')
+			expect(page).to have_content('bryalara@tamu.edu')
 
 			click_on 'Remove'
 			sleep(1)
@@ -325,7 +314,7 @@ RSpec.describe 'Events', type: :feature do
 			a.accept
 			sleep(1)
 
-			expect(page).to_not have_content('test@gmail.com')
+			expect(page).to_not have_content('bryalara@tamu.edu')
 		end
 	end
 end

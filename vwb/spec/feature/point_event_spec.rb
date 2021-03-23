@@ -227,26 +227,16 @@ RSpec.describe 'PointEvents', type: :feature do
 			event = PointEvent.create!(name: 'Test Event',
 						description: 'Test Description',
 						points: 5)
-			user = User.create!(email: 'test@gmail.com',
-						role: 0,
-						firstName: 'Test',
-						lastName: 'Dummy',
-						phoneNumber: '5555555555',
-						tShirtSize: 'M',
-						participationPoints: 5,
-						classification: 'Senior',
-						optInEmail: true,
-						approved: true)
 
 			visit attend_point_event_path(event)
 			expect(page).to have_content('Test Event')
-			expect(page).to have_content('Hello test@gmail.com')
+			expect(page).to have_content('Hello bryalara@tamu.edu')
 
 			click_on 'Click to attend!'
 			expect(page).to have_content("Successfully attended Test Event!")
 
 			visit edit_point_event_path(event)
-			expect(page).to have_content('test@gmail.com')
+			expect(page).to have_content('bryalara@tamu.edu')
 
 			click_on 'Remove'
 			sleep(1)
@@ -254,7 +244,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			a.accept
 			sleep(1)
 
-			expect(page).to_not have_content('test@gmail.com')
+			expect(page).to_not have_content('bryalara@tamu.edu')
 		end
 	end
 end

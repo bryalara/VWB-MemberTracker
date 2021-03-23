@@ -10,20 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2021_03_20_101609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
-
-  create_table "edit_home_pages", force: :cascade do |t|
-    t.string "Name"
-    t.string "Description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "edithomepages", force: :cascade do |t|
     t.string "name"
@@ -32,9 +24,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_101609) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "events", force: :cascade do |t|
-    #below is original code, in case need to went back
-    #create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "startDate"
@@ -82,8 +72,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_101609) do
     t.index ["email"], name: "index_userlogins_on_email", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
-    #create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "emailneeded", null: false
     t.integer "role", default: 0, null: false
     t.string "firstName", default: "FirstName", null: false
