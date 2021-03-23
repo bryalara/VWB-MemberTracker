@@ -21,10 +21,6 @@
 			<td><%= form.number_field :points %></td>
 		</tr>
 		<tr>
-			<th>Event Type*</th>
-			<td><%= form.text_field :eventType %></td>
-		</tr>
-		<tr>
 			<th>Start Time*</th>
 			<td><%= form.datetime_select :startDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
 		</tr>

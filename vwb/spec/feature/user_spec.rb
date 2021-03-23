@@ -6,11 +6,73 @@ RSpec.describe 'Users', type: :feature do
 		login_with_oauth
 	end
 
+	#registration modulke test:
+	describe 'member login with google oauth' do
+		it 'shows the right content first time login' do
+			login_with_oauth_member_registration
+			#sleep(2)
+			#visit registration_user_path
+			expect(page).to have_content('Registration')
+		end
+		it 'register a the new user' do
+			login_with_oauth_member_registration
+			#sleep(2)
+			#visit registration_user_path
+			#expect(page).to have_content('Registration')
+			fill_in 'user_firstName', with: 'John'
+			fill_in 'user_lastName', with: 'Doe'
+			fill_in 'user_phoneNumber', with: '1234567890'
+			select 'Sophomore', :from => 'user_classification'
+			select 'M', :from => 'user_tShirtSize'
+			check 'user_optInEmail'
+			sleep(1)
+			
+			click_on 'Create User'
+			login_with_oauth
+			visit pendingApproval_path
+			expect(page).to have_content('entao@tamu.edu')
+		end
+		it 'member cannot visit users pages' do
+			login_with_oauth_member_registration
+			#sleep(2)
+			#visit registration_user_path
+			#expect(page).to have_content('Registration')
+			fill_in 'user_firstName', with: 'John'
+			fill_in 'user_lastName', with: 'Doe'
+			fill_in 'user_phoneNumber', with: '1234567890'
+			select 'Sophomore', :from => 'user_classification'
+			select 'M', :from => 'user_tShirtSize'
+			check 'user_optInEmail'
+			sleep(1)
+			
+			click_on 'Create User'
+			visit users_path
+			expect(page).to have_content('You are not an Admin')
+		end
+		it 'member cannot visit events pages' do
+			login_with_oauth_member_registration
+			#sleep(2)
+			#visit registration_user_path
+			#expect(page).to have_content('Registration')
+			fill_in 'user_firstName', with: 'John'
+			fill_in 'user_lastName', with: 'Doe'
+			fill_in 'user_phoneNumber', with: '1234567890'
+			select 'Sophomore', :from => 'user_classification'
+			select 'M', :from => 'user_tShirtSize'
+			check 'user_optInEmail'
+			sleep(1)
+			
+			click_on 'Create User'
+			event_index_path
+			expect(page).to have_content('You are not an Admin')
+		end
+	end
+
 	describe 'index page' do
 		it 'shows the right content' do
 			visit users_path
 			sleep(1)
-			expect(page).to have_content('USERS')
+			expect(page).to have_content('Users')
 		end
 	end
 
@@ -54,8 +116,9 @@ RSpec.describe 'Users', type: :feature do
 			visit users_path
 			expect(page).to_not have_content('featuretesting@tamu.edu')
 		end
-
-		it 'is not valid without a role' do
+		
+		#default should be role=0
+		it 'is valid without a role' do
 			visit new_user_path
 			
 			fill_in 'user_email', with: 'featuretesting@tamu.edu'
@@ -70,14 +133,15 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
-
+		
+		#default value setup
 		it 'is not valid with out of range role' do
 			visit new_user_path
 			
 			fill_in 'user_email', with: 'featuretesting@tamu.edu'
-			select 'Select a Role', :from => 'user_role'
+			select 'Select Role', :from => 'user_role'
 			fill_in 'user_firstName', with: 'John'
 			fill_in 'user_lastName', with: 'Doe'
 			fill_in 'user_phoneNumber', with: '1234567890'
@@ -89,7 +153,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
 
 		it 'is not valid with out first name' do
@@ -128,6 +192,7 @@ RSpec.describe 'Users', type: :feature do
 			expect(page).to_not have_content('Doe')
 		end
 
+		#have default
 		it 'is not valid with out phone number' do
 			visit new_user_path
 			
@@ -143,7 +208,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
 
 		it 'is not valid with out full 10 digit number' do
@@ -180,7 +245,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
 
 		it 'is not valid with out tshirt size' do
@@ -198,7 +263,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
 
 		it 'is valid with optInEmail unhecked' do
@@ -252,7 +317,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			visit users_path
-			expect(page).to_not have_content('John')
+			expect(page).to have_content('John')
 		end
 
 		it 'is not valid with negative points' do
@@ -413,7 +478,6 @@ RSpec.describe 'Users', type: :feature do
 			fill_in 'user_lastName', with: 'UpdatingTestLast'
 			click_on 'Update User'
 			visit users_path
-			sleep(1)
 			expect(page).to have_content('UpdatingTestLast')
 		end
 
@@ -605,7 +669,6 @@ RSpec.describe 'Users', type: :feature do
 			uncheck 'user_approved'
 			click_on 'Update User'
 			visit pendingApproval_path
-			sleep(1)
 			expect(page).to have_content('false')
 		end
 	end
@@ -628,7 +691,7 @@ RSpec.describe 'Users', type: :feature do
 			visit user_path(id: user.id)
 			
 			puts user_path(id: user.id)
-			first("#delete-btn").click
+			click_on 'Destroy'
 			sleep(1)
 			page.driver.browser.switch_to.alert.accept
 			sleep(1)
@@ -678,20 +741,20 @@ RSpec.describe 'Users', type: :feature do
 			expect(page).to have_content('featureRead3@tamu.edu')
 
 			visit user_path(id: user1.id)
-			first("#delete-btn").click
+			click_on 'Destroy'
 			sleep(1)
 			page.driver.browser.switch_to.alert.accept
 			sleep(1)
 			
 
 			visit user_path(id: user2.id)
-			first("#delete-btn").click
+			click_on 'Destroy'
 			sleep(1)
 			page.driver.browser.switch_to.alert.accept
 			sleep(1)
 
 			visit user_path(id: user3.id)
-			first("#delete-btn").click
+			click_on 'Destroy'
 			sleep(1)
 			page.driver.browser.switch_to.alert.accept
 			sleep(1)
@@ -701,11 +764,159 @@ RSpec.describe 'Users', type: :feature do
 			expect(page).to_not have_content('featureRead2@tamu.edu')
 			expect(page).to_not have_content('featureRead3@tamu.edu')
 		end
-
-
-
-
 	end
 
+	describe "are trying to attend an event / point event." do
+		event = Event.new
+		pointEvent = PointEvent.new
+		user = User.new
 
+		setup do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
+
+			pointEvent = PointEvent.create!(name: 'Test Event',
+							description: 'Test Description',
+							points: 5)
+		end
+
+		describe 'The users that have registered and are approved' do
+			setup do
+				user = User.create!(email: 'test@gmail.com',
+									role: 0,
+									firstName: 'Test',
+									lastName: 'Dummy',
+									phoneNumber: '5555555555',
+									tShirtSize: 'M',
+									participationPoints: 5,
+									classification: 'Senior',
+									optInEmail: true,
+									approved: true)
+			end
+
+			it 'can attend an event' do
+				visit attend_event_path(event)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Successfully attended Test Event!")
+			end
+
+			it 'cannot attend an event twice' do
+				visit attend_event_path(event)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Successfully attended Test Event!")
+
+				click_on 'Click to attend!'
+				expect(page).to have_content('You have already attended Test Event!')
+			end
+
+			it 'can attend a point event' do
+				visit attend_point_event_path(pointEvent)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Successfully attended Test Event!")
+			end
+
+			it 'cannot attend a point event twice' do
+				visit attend_point_event_path(pointEvent)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Successfully attended Test Event!")
+
+				click_on 'Click to attend!'
+				expect(page).to have_content('You have already attended Test Event!')
+			end
+		end
+
+		describe 'The users that have registered but are not approved' do
+			setup do
+				user = User.create!(email: 'test@gmail.com',
+									role: 0,
+									firstName: 'Test',
+									lastName: 'Dummy',
+									phoneNumber: '5555555555',
+									tShirtSize: 'M',
+									participationPoints: 5,
+									classification: 'Senior',
+									optInEmail: true,
+									approved: false)
+			end
+
+			it 'cannot attend an event' do
+				visit attend_event_path(event)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Could not attend the event because test@gmail.com has not been approved by an administrator.")
+			end
+
+			it 'cannot attend a point event' do
+				visit attend_point_event_path(pointEvent)
+				expect(page).to have_content('Test Event')
+				expect(page).to have_content('Hello test@gmail.com')
+
+				click_on 'Click to attend!'
+				expect(page).to have_content("Could not attend the points event because test@gmail.com has not been approved by an administrator.")
+			end
+		end
+
+		describe 'The users that are logged in devise but not in the user table' do
+			it 'are asked to register first when trying to attend an event' do
+				visit attend_event_path(event)
+				expect(page).to have_content("Register first!")
+			end
+
+			it 'are asked to register first when trying to attend a points event' do
+				visit attend_point_event_path(pointEvent)
+				expect(page).to have_content("Register first!")
+			end
+		end
+
+		describe 'The correct amount of points is displayed in the users dashboard.' do
+			setup do
+				user = User.create!(email: 'test@gmail.com',
+									role: 0,
+									firstName: 'Test',
+									lastName: 'Dummy',
+									phoneNumber: '5555555555',
+									tShirtSize: 'M',
+									participationPoints: 5,
+									classification: 'Senior',
+									optInEmail: true,
+									approved: true)
+			end
+
+			it 'A user with 5 points attends an event and point event for 5 points each has 15 points' do
+				visit attend_event_path(event)
+				click_on 'Click to attend!'
+				sleep(1)
+				visit attend_point_event_path(pointEvent)
+				click_on 'Click to attend!'
+
+				visit users_path(id: user.id)
+				expect(page).to have_content("15")
+			end
+
+			it 'A user with 5 points attends an event for 5 points and has 10 points' do
+				visit attend_event_path(event)
+				click_on 'Click to attend!'
+
+				visit users_path(id: user.id)
+				expect(page).to have_content("10")
+			end
+		end
+	end
 end

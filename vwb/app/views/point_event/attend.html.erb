@@ -1,0 +1,9 @@
+<h1>Point Event: <%= @pointEvent.name %></h1>
+<h1>User: <%= @user.nil? ? "Register first!" : "Hello " + @user.email %></h1>
+
+<%= if !@user.nil?
+        link_to "Click to attend!", attend_point_event_path(@pointEvent), method: :post
+    else
+        "insert link to register here"
+    end
+%>

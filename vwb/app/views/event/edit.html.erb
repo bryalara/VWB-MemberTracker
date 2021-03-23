@@ -1,40 +1,54 @@
 <%= render "layouts/navbar2", user: @user %>
 <div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button></div>
 <div class="wrapper fadeInDown">
-<div id="formContent">
-<h2 class="active">Edit an Event</h2>
-<p>* denotes required fields.<p>
+	<div id="formContent">
+		<h2 class="active">Edit an Event</h2>
+		<p>* denotes required fields.<p>
 
-<%= form_with :method => :PATCH, url:"/event/#{@event.id}", model: @event do |form| %>
-	<table >
+		<%= form_with :method => :PATCH, url:"/event/#{@event.id}", model: @event do |form| %>
+			<table>
+				<tr>
+					<th><%= form.label :name %>*</th>
+					<td><%= form.text_field :name %></td>
+				</tr>
+				<tr>
+					<th><%= form.label :description %></th>
+					<td><%= form.text_field :description %></td>
+				</tr>
+				<tr>
+					<th><%= form.label :points %>*</th>
+					<td><%= form.number_field :points %></td>
+				</tr>
+				<tr>
+					<th>Start Time*</th>
+					<td><%= form.datetime_select :startDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"}, class:"select-edit"%></td></div>
+				</tr>
+				<tr>
+					<th>End Time*</th>
+					<td><%= form.datetime_select :endDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
+				</tr>
+			</table>
+
+			<%= form.submit "Save Changes to Event" %>
+		<% end %>
+	</div>
+
+	<h1>Users that have attended</h1>
+	<table>
 		<tr>
-			<th><%= form.label :name %>*</th>
-			<td><%= form.text_field :name %></td>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Action</th>
 		</tr>
+
+		<% @event.users.each do |user| %>
 		<tr>
-			<th><%= form.label :description %></th>
-			<td><%= form.text_field :description %></td>
+			<td><%= user.firstName %></td>
+			<td><%= user.lastName %></td>
+			<td><%= user.email %></td>
+			<td><%= link_to "Remove", delete_user_event_path(id: @event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the event again. Points that student received from this event will also dissappear!"} %></td>
 		</tr>
-		<tr>
-			<th><%= form.label :points %>*</th>
-			<td><%= form.number_field :points %></td>
-		</tr>
-		<tr>
-			<th>Event Type*</th>
-			<td><%= form.text_field :eventType %></td>
-		</tr>
-		<tr>
-			<th>Start Time*</th>
-			<td><%= form.datetime_select :startDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"}, class:"select-edit"%></td></div>
-		</tr>
-		<tr>
-			<th>End Time*</th>
-			<td><%= form.datetime_select :endDate, ampm: true, prompt: {year: "Year", month: "Month", day: "Day", hour: "Hour", minute: "Min"} %></td>
-		</tr>
+		<% end %>
 	</table>
-
-	<%= form.submit "Save Changes to Event" %>
-
-<% end %>
-</div>
 </div>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'rspec/index'
+  resources :edithomepages
+  
   # root "pages#show", page: "home"   # --- SNN
   get "/pages/:page" => "pages#show"
   resources :users do
@@ -17,18 +20,27 @@ Rails.application.routes.draw do
 
 
   get '/pendingApproval', to: 'users#pendingApproval'
+  get 'user/registration', to: 'users#registration', as: :registration_user
   get '/import', to: 'users#my_import'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :point_event do
   	member do
   		get :delete
+      get :qr
+      get :attend
+      post :attend
+      delete '/user/:user_id/destroy' => 'point_event#destroy_user', :as => 'delete_user'
   	end
   end
 
   resources :event do
   	member do
   		get :delete
+      get :qr
+      get :attend
+      post :attend
+      delete '/user/:user_id/destroy' => 'event#destroy_user', :as => 'delete_user'
   	end
   end
 end

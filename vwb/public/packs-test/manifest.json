@@ -12,10 +12,18 @@
     },
     "home": {
       "js": [
-        "/packs-test/js/home-07294b67face083e06e8.js"
+        "/packs-test/js/home-289a001974250d722c35.js"
       ],
       "js.map": [
-        "/packs-test/js/home-07294b67face083e06e8.js.map"
+        "/packs-test/js/home-289a001974250d722c35.js.map"
+      ]
+    },
+    "member": {
+      "js": [
+        "/packs-test/js/member-dbed7dc5cfe658aecf86.js"
+      ],
+      "js.map": [
+        "/packs-test/js/member-dbed7dc5cfe658aecf86.js.map"
       ]
     },
     "member": {

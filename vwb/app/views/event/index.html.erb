@@ -38,8 +38,6 @@ th, td, tr {
 		<td><%= event.points %></td>
 		<td><%= Event.dateTimeDisplay(event.startDate) %></td>
 		<td><%= Event.dateTimeDisplay(event.endDate) %></td>
-		<td><%= event.eventType %></td>
-
 		<td><%= link_to "Show", event_path(event) %></td>
 		<td><%= link_to "Edit", edit_event_path(event) %></td>
 		<td><%= link_to "Delete", delete_event_path(event) %></td>

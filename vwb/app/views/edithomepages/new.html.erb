@@ -1,0 +1,14 @@
+<%= link_to "Back to Edit home page", edithomepages_path %>
+
+<h3>Create a attribute to page</h3>
+<%= form_with model: @edithomepage do |form| %>
+  <%= form.text_field :name, placeholder: "name" %>
+  <%= form.text_field :description, placeholder: "description" %>
+  <%= form.submit "Add attribute " %>
+<% end %>
+
+<!-- <%= form_for @edithomepage do |form| %>
+  <%= form.text_field :name, placeholder: 'name' %>
+  <%= form.text_field :description, placeholder: 'description' %>
+  <%= form.submit %>
+<% end %> -->
