@@ -43,14 +43,18 @@ class UsersController < ApplicationController
     end
     @latestNew = User.order("created_at").last
     @latestUpdate = User.order("updated_at").last
+
+
     if(@auth)
-      unless(@auth.role=0)
+      if(@auth.role==1)
         respond_to do |format|
           format.html
           format.csv { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
         end
       end
     end
+
+
   end
 
   def import
