@@ -4,6 +4,22 @@ RSpec.describe 'Users', type: :feature do
 
 	setup do
 		login_with_oauth
+		visit new_user_path
+		fill_in 'user_email', with: OmniAuth.config.mock_auth[:google_oauth2][:info][:email]
+		fill_in 'user_firstName', with: 'John'
+		fill_in 'user_lastName', with: 'Doe'
+		fill_in 'user_phoneNumber', with: '1234567890'
+		select 'Sophomore', :from => 'user_classification'
+		select 'M', :from => 'user_tShirtSize'
+		check 'user_optInEmail'
+		sleep(1)
+		click_on 'Create User'
+		sleep(1)
+		user=User.last
+		user.approved=true
+		user.role=1
+		user.save!
+		sleep(1)
 	end
 
 	describe 'index page' do

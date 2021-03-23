@@ -66,13 +66,13 @@ ActiveRecord::Schema.define(version: 2021_03_06_231736) do
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "email", default: "emailneeded", null: false
+    t.string "email",  null: false
     t.integer "role", default: 0, null: false
-    t.string "firstName", default: "FirstName", null: false
-    t.string "lastName", default: "LastName", null: false
-    t.string "phoneNumber", default: "1234567890", null: false
-    t.string "classification", default: "Freshmen", null: false
-    t.string "tShirtSize", default: "M", null: false
+    t.string "firstName",  null: false
+    t.string "lastName",  null: false
+    t.string "phoneNumber",  null: false
+    t.string "classification",  null: false
+    t.string "tShirtSize", null: false
     t.boolean "optInEmail", default: true, null: false
     t.integer "participationPoints", default: 0, null: false
     t.boolean "approved", default: false, null: false

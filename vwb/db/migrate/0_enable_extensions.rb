@@ -3,4 +3,4 @@ class EnableExtensions < ActiveRecord::Migration[6.0]
       enable_extension 'uuid-ossp'
       enable_extension 'pgcrypto'
     end
-  end
+end
