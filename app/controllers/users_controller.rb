@@ -133,11 +133,40 @@ class UsersController < ApplicationController
 
   def pendingApproval
     @auth = User.find_by(email: current_userlogin.email)
-    if !@auth || @auth.role.zero? || @auth.approved == false
+    if !@auth
+      redirect_to new_user_path
+      return
+    elsif @auth.role.zero? || @auth.approved == false
       redirect_to memberDashboard_path
       return
     end
-    @users = User.where(approved: false)
+
+    @order = params[:order] == 'true'
+    @attr = params[:attr]
+    @attr ||= 'first'
+    ord = 'ASC'
+    ord = if @order == true
+            'ASC'
+          else
+            'DESC'
+          end
+    @users = case @attr
+             when 'first'
+               User.where(approved: false).order("\"users\".\"firstName\" #{ord}")
+             when 'last'
+               User.where(approved: false).order("\"users\".\"lastName\" #{ord}")
+             when 'role'
+               User.where(approved: false).order("\"users\".\"role\" #{ord}")
+             when 'class'
+               User.where(approved: false).order("\"users\".\"classification\" #{ord}")
+             when 'size'
+               User.where(approved: false).order("\"users\".\"tShirtSize\" #{ord}")
+             when 'points'
+               User.where(approved: false).order("\"users\".\"participationPoints\" #{ord}")
+             else
+               User.where(approved: false).order('"users"."lastName" ASC')
+             end
+
   end
 
   def memberDashboard
