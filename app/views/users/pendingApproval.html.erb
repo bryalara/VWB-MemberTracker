@@ -41,7 +41,7 @@
         <td><%= user.firstName %></td>
         <td><%= user.lastName  %></td>
         <td><%= user.email  %> </td>
-        <td><%= user.phoneNumber  %> </td>
+        <td><%= '('+user.phoneNumber[0..2]+')'+'-'+user.phoneNumber[3..5]+'-'+user.phoneNumber[6..]   %> </td>
         <td><%= user.classification %> </td>
         <td><%= user.role == 0 ? :"Member" : :"Admin"  %> </td>
         <td><%= user.tShirtSize  %> </td>

@@ -92,10 +92,8 @@ class UsersController < ApplicationController
       puts('user saved')
       redirect_to @user, notice: "Successfully created new user: #{"#{@user.firstName} #{@user.lastName}"}."
     elsif @user.valid?
-      puts('Valid')
       flash[:notice] = "Successfully created new user: #{"#{@user.firstName} #{@user.lastName}"}."
     else
-      puts('Not valid')
       @msg = @user.errors.full_messages[0]
       puts @msg
       flash.now[:notice] = @msg
