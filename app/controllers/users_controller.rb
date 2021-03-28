@@ -71,14 +71,14 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
     @msg = params[:notice]
     @auth = User.find_by(email: current_userlogin.email)
     if @auth
       redirect_to users_path(@auth) if @auth.role.zero?
     else
-      redirect_to new_user_path
+      redirect_to registration_user_path
     end
-    @user = User.find(params[:id])
   end
 
   def new

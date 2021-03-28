@@ -47,12 +47,14 @@ select{
             <div><%= message %></div>
         <% end %>
     </div>
-    <%if @auth.role==1%>
-        <div class="select">
-            <br>
-            <div >
-            <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]]), id: "slct", prompt: "Select a Role" %>
-        </div>
+    <%if @auth%>
+        <%if @auth.role==1%>
+            <div class="select">
+                <br>
+                <div >
+                <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]]), id: "slct", prompt: "Select a Role" %>
+            </div>
+        <%end%>
     <%end%>
 
     <div>
@@ -81,13 +83,14 @@ select{
         <%= form.label :optInEmail , "Opt-In Email", class: "label" %>
         <div style="width: 50%;"><%= form.check_box :optInEmail, class: "field" %></div>
    </div>
-    <%if @auth.role==1%>
-        <div class="double" align="center">
-            <%= form.label :approved, class: "label" %>
-            <div style="width: 50%;"><%= form.check_box :approved, class: "field" %></div>
-        </div>
+    <%if @auth%>
+        <%if @auth.role==1%>
+            <div class="double" align="center">
+                <%= form.label :approved, class: "label" %>
+                <div style="width: 50%;"><%= form.check_box :approved, class: "field" %></div>
+            </div>
+        <%end%>
     <%end%>
-
     <div>
         <%= form.submit %>
     </div>
