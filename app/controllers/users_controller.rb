@@ -7,13 +7,7 @@ class UsersController < ApplicationController
 
   def index
     @auth = User.find_by(email: current_userlogin.email)
-    if !@auth
-      redirect_to new_user_path
-      return
-    elsif @auth.role.zero? || @auth.approved == false
-      redirect_to memberDashboard_path
-      return
-    end
+    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
 
     @order = params[:order] == 'true'
     @attr = params[:attr]
@@ -43,7 +37,7 @@ class UsersController < ApplicationController
     @latestNew = User.order('created_at').last
     @latestUpdate = User.order('updated_at').last
 
-    if @auth && (@auth.role == 1)
+    if @auth && (@auth.role == 1) && @auth.approved==true
       respond_to do |format|
         format.html
         format.csv { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
@@ -53,10 +47,7 @@ class UsersController < ApplicationController
 
   def import
     @auth = User.find_by(email: current_userlogin.email)
-    if !@auth || @auth.role.zero? || @auth.approved == false
-      redirect_to memberDashboard_path
-      return
-    end
+    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     wmsg = User.my_import(params[:file])
     if wmsg.length.positive?
       flash[:notice] = ''
@@ -168,6 +159,7 @@ class UsersController < ApplicationController
   end
 
   def memberDashboard
+    @auth = User.find_by(email: current_userlogin.email)
     @user = User.find_by(email: current_userlogin.email)
     @display = 0
     unless @user
@@ -201,6 +193,7 @@ class UsersController < ApplicationController
   end
 
   def registration
+    @auth = User.find_by(email: current_userlogin.email)
     @user = User.new
   end
 

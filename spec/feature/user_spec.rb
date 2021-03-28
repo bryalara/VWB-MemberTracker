@@ -807,21 +807,23 @@ RSpec.describe 'Users', type: :feature do
 			describe 'The users that have registered and are approved' do	
 				it 'can attend an event' do
 					visit attend_event_path(event)
+					sleep(1)
 					expect(page).to have_content('Test Event')
 					expect(page).to have_content('Hello '+OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-					click_on 'Click to attend!'
+					click_link 'Click to attend!'
 					expect(page).to have_content("Successfully attended Test Event!")
 				end
 	
 				it 'cannot attend an event twice' do
 					visit attend_event_path(event)
+					sleep(1)
 					expect(page).to have_content('Test Event')
 					expect(page).to have_content('Hello '+OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
 	
-					click_on 'Click to attend!'
+					click_link 'Click to attend!'
 					expect(page).to have_content("Successfully attended Test Event!")
 	
-					click_on 'Click to attend!'
+					click_link 'Click to attend!'
 					expect(page).to have_content('You have already attended Test Event!')
 				end
 	
@@ -838,6 +840,7 @@ RSpec.describe 'Users', type: :feature do
 	
 				it 'cannot attend a point event twice' do
 					visit attend_point_event_path(pointEvent)
+					sleep(1)
 					expect(page).to have_content('Test Event')
 					expect(page).to have_content('Hello '+ OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
 	
@@ -910,11 +913,11 @@ RSpec.describe 'Users', type: :feature do
 					sleep(1)
 					visit attend_event_path(event)
 					sleep(1)
-					click_on 'Click to attend!'
+					click_link 'Click to attend!'
 					sleep(1)
 					visit attend_point_event_path(pointEvent)
 					sleep(1)
-					click_on 'Click to attend!'
+					click_link 'Click to attend!'
 					sleep(1)
 					visit users_path+'/'+User.find_by(email:OmniAuth.config.mock_auth[:google_oauth2][:info][:email]).id
 					sleep(1)
@@ -924,7 +927,7 @@ RSpec.describe 'Users', type: :feature do
 				it 'A user with 5 points attends an event for 5 points and has 10 points' do
 					visit attend_event_path(event)
 					sleep(1)
-					click_on 'Click to attend!'
+					click_link 'Click to attend!'
 					sleep(1)
 					visit users_path+'/'+User.find_by(email:OmniAuth.config.mock_auth[:google_oauth2][:info][:email]).id
 					sleep(1)

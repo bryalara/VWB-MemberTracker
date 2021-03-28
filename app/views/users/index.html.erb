@@ -1,6 +1,5 @@
 
-<%= render "layouts/navbar2", user: @auth %>
-
+<%= render "layouts/navbar2" %>
 <% msgs= flash[:notice].to_s.split('|', -1) %>
 <% msgs.each do |msg|%>
   <p> <%=msg%> </p>

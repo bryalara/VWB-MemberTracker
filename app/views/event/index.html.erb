@@ -32,10 +32,7 @@ th, td, tr {
 		<th>Points</th>
 		<th>Start Time</th>
 		<th>End Time</th>
-		<th>Event Type</th>
-		<th></th>
-		<th>Actions</th>
-		<th></th>
+		<th colspan="4">Actions</th>
 	</tr>
 
 	<% @events.each do |event| %>
@@ -48,6 +45,7 @@ th, td, tr {
 		<td><%= link_to "Show", event_path(event) %></td>
 		<td><%= link_to "Edit", edit_event_path(event) %></td>
 		<td><%= link_to "Delete", delete_event_path(event) %></td>
+		<td><%= link_to "QR", qr_event_path(event) %></td>
 	</tr>
 	<% end %>
 </table>
