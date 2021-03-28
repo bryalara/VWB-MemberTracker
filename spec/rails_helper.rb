@@ -81,7 +81,6 @@ end
 require "selenium/webdriver"
 require "webdrivers/chromedriver"
 
-Webdrivers::Chromedriver.required_version = "74.0.3729.6"
 
 Capybara.server = :puma, { Silent: true }
 
@@ -92,7 +91,7 @@ end
 Capybara.register_driver :headless_chrome do |app|
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
     chromeOptions: {
-      args: %w(no-sandbox headless disable-gpu window-size=1280,800),
+      args:['no-sandbox', 'headless', 'disable-gpu', 'window-size=1280,800']
     },
   )
 
@@ -103,4 +102,4 @@ end
 
 Capybara.javascript_driver = :headless_chrome
 
-Capybara.current_driver = :selenium_chrome_headless
+Capybara.default_driver = :selenium_chrome_headless
