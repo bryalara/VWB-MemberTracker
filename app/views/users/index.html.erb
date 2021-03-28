@@ -1,13 +1,39 @@
 
-<%= render "layouts/navbar2" %>
+
 
 <style>
 .section {
-    padding: 0px;
+    margin: 80px;
 }
-<div id="section">
-<%= flash[:notice]%>
+.notice {
+	border-radius: 5px;
+	padding: 15px;
+	background: #d8ecdb;
+	color: #295529;
+}
+.alert {
+	border-radius: 5px;
+	padding: 15px;
+	color: red;
+}
 </style>
+
+<div id="section">
+
+<% flash.each do |type, msgs| %>
+  <div class="notice">
+  <% if Array === msgs %>
+    <ul>
+    <% msgs.each do |msg| %>
+      <li class=<%=msg[0..4].to_s.chomp == 'Error'.to_s.chomp ? :"alert" : :"notice"  %> ><%= msg %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <%= msgs %>
+  <% end %>
+  </div>
+<% end %>
+
 <div class="header">
 <h2 class="active h2-title">Users</h2>
 </div>

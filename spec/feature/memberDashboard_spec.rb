@@ -111,7 +111,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 						sleep(4)
 						visit attend_event_path(:id => eventId)
 						sleep(5)
-						click_on 'attend'
+						click_link 'attend'
 						sleep(5)
 						visit memberDashboard_path
 						sleep(5)

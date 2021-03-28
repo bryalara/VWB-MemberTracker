@@ -50,10 +50,12 @@ class UsersController < ApplicationController
     redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     wmsg = User.my_import(params[:file])
     if wmsg.length.positive?
-      flash[:notice] = ''
+      # flash[:notice] ||= []
+      
       wmsg.each do |msg|
+        flash[:notice] ||=[]
         puts(msg)
-        flash[:notice] += "|#{msg}"
+        flash[:notice] <<  msg.to_s
       end
       redirect_to users_path
     else
