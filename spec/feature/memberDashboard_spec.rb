@@ -103,18 +103,18 @@ RSpec.describe 'MemberDashboard', type: :feature do
 					user.role=0
 					user.approved=true
 					user.save!
-					sleep(5)
+					sleep(4)
 				end
 				describe "attending events" do
 					it "member attend 1 event" do
 						eventId= Event.first.id
 						sleep(4)
 						visit attend_event_path(:id => eventId)
-						sleep(5)
+						sleep(4)
 						click_link 'attend'
-						sleep(5)
+						sleep(4)
 						visit memberDashboard_path
-						sleep(5)
+						sleep(4)
 						expect(page).to have_content('Hello, John Doe')
 						expect(page).to have_content('Current points: 5')
 					end
@@ -124,13 +124,13 @@ RSpec.describe 'MemberDashboard', type: :feature do
 						events.each do |event|
 							eventId= event.id
 							visit attend_event_path(:id => eventId)
-							sleep(5)
+							sleep(4)
 							click_on 'attend'
-							sleep(5)
+							sleep(4)
 							expectedPoints+= event.points
 						end
 						visit memberDashboard_path
-						sleep(5)
+						sleep(4)
 						expect(page).to have_content('Hello, John Doe')
 						expect(page).to have_content('Events (5):')
 						expect(page).to have_content('Current points: '+expectedPoints.to_s)

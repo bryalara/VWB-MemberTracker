@@ -505,6 +505,7 @@ RSpec.describe 'Users', type: :feature do
 					approved: true,
 				)
 				visit edit_user_path(id: user.id)
+				sleep(2)
 				select 'Admin', :from => 'user_role'
 				sleep(1)
 				click_on 'Update User'
@@ -709,16 +710,16 @@ RSpec.describe 'Users', type: :feature do
 					optInEmail: true,
 					approved: true,
 				)
-				sleep(5)
+				sleep(4)
 				visit users_path 
 				sleep(3)
 				expect(page).to have_content('featureRead16@tamu.edu')
 				visit user_path(id: user.id)
-				sleep(5)
+				sleep(4)
 				click_button 'Destroy'
-				sleep(5)
+				sleep(4)
 				page.driver.browser.switch_to.alert.accept
-				sleep(5)
+				sleep(4)
 	
 				visit users_path
 				expect(page).to_not have_content('featureRead16@tamu.edu')
@@ -758,7 +759,7 @@ RSpec.describe 'Users', type: :feature do
 					optInEmail: true,
 					approved: true,
 				)
-				sleep(5)
+				sleep(4)
 				visit users_path 
 				sleep(3)
 				expect(page).to have_content('featureRead11@tamu.edu')
@@ -767,25 +768,25 @@ RSpec.describe 'Users', type: :feature do
 	
 				visit user_path(id: user1.id)
 				click_button 'Destroy'
-				sleep(5)
+				sleep(4)
 				page.driver.browser.switch_to.alert.accept
 				sleep(3)
 				
 	
 				visit user_path(id: user2.id)
 				click_button 'Destroy'
-				sleep(5)
+				sleep(4)
 				page.driver.browser.switch_to.alert.accept
 				sleep(3)
 	
 				visit user_path(id: user3.id)
 				click_button 'Destroy'
-				sleep(5)
+				sleep(4)
 				page.driver.browser.switch_to.alert.accept
 				sleep(3)
 	
 				visit users_path
-				sleep(5)
+				sleep(4)
 				expect(page).to_not have_content('featureRead11@tamu.edu')
 				expect(page).to_not have_content('featureRead21@tamu.edu')
 				expect(page).to_not have_content('featureRead31@tamu.edu')
@@ -815,7 +816,7 @@ RSpec.describe 'Users', type: :feature do
 					expect(page).to have_content('Test Event')
 					expect(page).to have_content('Hello '+OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
 					click_link 'Click to attend!'
-					sleep(5)
+					sleep(4)
 					expect(page).to have_content("Successfully attended Test Event!")
 				end
 	
@@ -827,12 +828,12 @@ RSpec.describe 'Users', type: :feature do
 	
 					click_link 'Click to attend!'
 					
-					sleep(5)
+					sleep(4)
 					expect(page).to have_content("Successfully attended Test Event!")
 	
 					click_link 'Click to attend!'
 					
-					sleep(5)
+					sleep(4)
 					expect(page).to have_content('You have already attended Test Event!')
 				end
 	
@@ -843,7 +844,7 @@ RSpec.describe 'Users', type: :feature do
 					expect(page).to have_content('Hello '+OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
 	
 					click_on 'Click to attend!'
-					sleep(5)
+					sleep(4)
 					expect(page).to have_content("Successfully attended Test Event!")
 				end
 	
@@ -854,11 +855,11 @@ RSpec.describe 'Users', type: :feature do
 					expect(page).to have_content('Hello '+ OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
 	
 					click_on 'Click to attend!'
-					sleep(5)
+					sleep(4)
 					expect(page).to have_content("Successfully attended Test Event!")
 	
 					click_on 'Click to attend!'
-					sleep(5)
+					sleep(4)
 					expect(page).to have_content('You have already attended Test Event!')
 				end
 			end
@@ -867,9 +868,9 @@ RSpec.describe 'Users', type: :feature do
 				setup do
 					visit edit_user_path(id: User.find_by(email:OmniAuth.config.mock_auth[:google_oauth2][:info][:email]).id)
 					uncheck 'user_approved'
-					sleep(1)
-					click_on 'Update User'
 					sleep(2)
+					click_on 'Update User'
+					sleep(4)
 				end
 	
 				it 'cannot attend an event' do
@@ -880,7 +881,7 @@ RSpec.describe 'Users', type: :feature do
 					expect(page).to have_content('Hello '+OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
 					
 					click_on 'Click to attend!'
-					sleep(5)
+					sleep(4)
 					expect(page).to have_content("Could not attend the event because "+OmniAuth.config.mock_auth[:google_oauth2][:info][:email]+" has not been approved by an administrator.")
 				end
 	
@@ -891,7 +892,7 @@ RSpec.describe 'Users', type: :feature do
 					expect(page).to have_content('Hello '+OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
 					sleep(1)
 					click_on 'Click to attend!'
-					sleep(5)
+					sleep(4)
 					expect(page).to have_content("Could not attend the points event because "+OmniAuth.config.mock_auth[:google_oauth2][:info][:email]+" has not been approved by an administrator.")
 				end
 			end
@@ -928,23 +929,23 @@ RSpec.describe 'Users', type: :feature do
 					visit attend_event_path(event)
 					sleep(3)
 					click_link 'Click to attend!'
-					sleep(5)
+					sleep(4)
 					visit attend_point_event_path(pointEvent)
 					sleep(3)
 					click_link 'Click to attend!'
-					sleep(5)
+					sleep(4)
 					visit users_path+'/'+User.find_by(email:OmniAuth.config.mock_auth[:google_oauth2][:info][:email]).id
-					sleep(5)
+					sleep(4)
 					expect(page).to have_content("15")
 				end
 	
 				it 'A user with 5 points attends an event for 5 points and has 10 points' do
 					visit attend_event_path(event)
-					sleep(3)
+					sleep(4)
 					click_link 'Click to attend!'
-					sleep(5)
+					sleep(4)
 					visit users_path+'/'+User.find_by(email:OmniAuth.config.mock_auth[:google_oauth2][:info][:email]).id
-					sleep(5)
+					sleep(4)
 					expect(page).to have_content("10")
 				end
 			end
