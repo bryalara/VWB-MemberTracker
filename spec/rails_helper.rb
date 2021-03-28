@@ -78,6 +78,12 @@ RSpec.configure do |config|
 end
 
 
+require "selenium/webdriver"
+require "webdrivers/chromedriver"
+
+Webdrivers::Chromedriver.required_version = "74.0.3729.6"
+
+Capybara.server = :puma, { Silent: true }
 
 Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
@@ -86,24 +92,15 @@ end
 Capybara.register_driver :headless_chrome do |app|
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
     chromeOptions: {
-      args: %w[
-        headless disable-gpu no-sandbox
-        --window-size=1980,1080 --enable-features=NetworkService,NetworkServiceInProcess
-      ]
-    }
+      args: %w(no-sandbox headless disable-gpu window-size=1280,800),
+    },
   )
 
-
-Capybara::Selenium::Driver.new app,
+  Capybara::Selenium::Driver.new app,
     browser: :chrome,
     desired_capabilities: capabilities
 end
 
-Capybara.default_max_wait_time = 5
-Capybara.javascript_driver = :headless_chrome # :chrome simulates behavior in browser
-Capybara.server_port = 31337 + ENV['TEST_ENV_NUMBER'].to_i
-Capybara.configure do |config|
-  config.always_include_port = true
-end
+Capybara.javascript_driver = :headless_chrome
 
-Capybara.default_driver = :selenium_chrome_headless
+Capybara.default_driver = :headless_chrome

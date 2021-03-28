@@ -86,7 +86,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 					user.role=1
 					user.approved=true
 					user.save!
-					sleep(1)
+					sleep(2)
 					#creating 10 test events
 					for i in 1..10 do
 						visit new_event_path
@@ -95,6 +95,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 						fill_in 'event_points', with: 5
 						fill_in 'event_startDate', with: DateTime.now
 						fill_in 'event_endDate', with: DateTime.now + 1.week
+						sleep(2)
 						click_on 'Add Event'
 						sleep(2)
 					end
