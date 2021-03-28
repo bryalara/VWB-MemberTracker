@@ -9,7 +9,8 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'index shows the right content' do
 			visit event_index_path
 			#sleep(10)
-			expect(page).to have_content('POINTS EVENTS')
+			# expect(page).to have_content('POINTS EVENTS')
+			expect(page).to have_selector(:xpath, "//div/h2['Point Events']")
 		end
 
 		it 'qr shows the right content' do

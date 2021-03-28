@@ -8,14 +8,19 @@ RSpec.describe 'Events', type: :feature do
 	describe 'Routes for' do
 		it 'index shows the right content' do
 			visit event_index_path
-			expect(page).to have_content('EVENTS')
+			sleep(3)
+			# page.should have_xpath('//div.header2/h2')
+			# expect(page).to have_content('Events').first
+			expect(page).to have_selector(:xpath, "//div/h2['Events']")
+			# expect(page).to have_xpath('/html/body/div[2]/h2')
+			
 		end
 
 		it 'qr shows the right content' do
 			event = Event.create!(name: 'Test Event',
 						description: 'Test Description',
 						points: 5,
-						startDate: DateTime.now,
+						startDate: DateTime.now, 	
 						endDate: DateTime.now + 1.week)
 			visit qr_event_path(id: event.id)
 			expect(page).to have_content('Test Event')
