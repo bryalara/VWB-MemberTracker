@@ -96,7 +96,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 						fill_in 'event_startDate', with: DateTime.now
 						fill_in 'event_endDate', with: DateTime.now + 1.week
 						click_on 'Add Event'
-						sleep(1)
+						sleep(2)
 					end
 					#reverting user to member role
 					user=User.find_by(email: OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
@@ -110,11 +110,11 @@ RSpec.describe 'MemberDashboard', type: :feature do
 						eventId= Event.first.id
 						sleep(1)
 						visit attend_event_path(:id => eventId)
-						sleep(1)
+						sleep(2)
 						click_on 'attend'
-						sleep(1)
+						sleep(3)
 						visit memberDashboard_path
-						sleep(1)
+						sleep(2)
 						expect(page).to have_content('Hello, John Doe')
 						expect(page).to have_content('Current points: 5')
 					end
@@ -123,16 +123,15 @@ RSpec.describe 'MemberDashboard', type: :feature do
 						events= Event.order( :created_at )
 						events.each do |event|
 							eventId= event.id
-							sleep(1)
 							visit attend_event_path(:id => eventId)
 							sleep(1)
 							click_on 'attend'
+							sleep(2)
 							expectedPoints+= event.points
-							sleep(1)
 						end
-						sleep(1)
+						sleep(2)
 						visit memberDashboard_path
-						sleep(1)
+						sleep(2)
 						expect(page).to have_content('Hello, John Doe')
 						expect(page).to have_content('Events (5):')
 						expect(page).to have_content('Current points: '+expectedPoints.to_s)

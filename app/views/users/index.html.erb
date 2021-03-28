@@ -1,15 +1,12 @@
 
 <%= render "layouts/navbar2" %>
-<% msgs= flash[:notice].to_s.split('|', -1) %>
-<% msgs.each do |msg|%>
-  <p> <%=msg%> </p>
-<%end%>
 
-<%= flash[:notice]%>
 <style>
 .section {
     padding: 0px;
 }
+<div id="section">
+<%= flash[:notice]%>
 </style>
 <div class="header">
 <h2 class="active h2-title">Users</h2>
@@ -71,4 +68,5 @@
     </div>
 </div>
 <% end %>
+</div>
 </div>
