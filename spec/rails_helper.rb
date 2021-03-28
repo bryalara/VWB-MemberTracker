@@ -81,6 +81,7 @@ end
 require "selenium/webdriver"
 require "webdrivers/chromedriver"
 
+Webdrivers::Chromedriver.required_version = "89.0.4389.90"
 
 Capybara.server = :puma, { Silent: true }
 
@@ -102,4 +103,4 @@ end
 
 Capybara.javascript_driver = :headless_chrome
 
-Capybara.default_driver = :selenium_chrome_headless
+# Capybara.default_driver = :selenium_chrome_headless

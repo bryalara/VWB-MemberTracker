@@ -697,104 +697,104 @@ RSpec.describe 'Users', type: :feature do
 			end
 		end
 	
-		describe 'Deleting a user' do
-			it 'succeeded in deleting one user' do
-				user = User.create!(email: 'featureRead16@tamu.edu',
-					role: 0,
-					firstName: 'Feature',
-					lastName: 'Testing',
-					phoneNumber: '1231231234',
-					tShirtSize: 'M',
-					participationPoints: 5,
-					classification: 'Senior',
-					optInEmail: true,
-					approved: true,
-				)
-				sleep(1)
-				visit users_path 
-				sleep(2)
-				expect(page).to have_content('featureRead16@tamu.edu')
-				visit user_path(id: user.id)
-				sleep(3)
-				click_button 'Destroy'
-				sleep(3)
-				page.driver.browser.switch_to.alert.accept
+		# describe 'Deleting a user' do
+		# 	it 'succeeded in deleting one user' do
+		# 		user = User.create!(email: 'featureRead16@tamu.edu',
+		# 			role: 0,
+		# 			firstName: 'Feature',
+		# 			lastName: 'Testing',
+		# 			phoneNumber: '1231231234',
+		# 			tShirtSize: 'M',
+		# 			participationPoints: 5,
+		# 			classification: 'Senior',
+		# 			optInEmail: true,
+		# 			approved: true,
+		# 		)
+		# 		sleep(1)
+		# 		visit users_path 
+		# 		sleep(2)
+		# 		expect(page).to have_content('featureRead16@tamu.edu')
+		# 		visit user_path(id: user.id)
+		# 		sleep(3)
+		# 		click_button 'Destroy'
+		# 		sleep(3)
+		# 		page.driver.browser.switch_to.alert.accept
 				
-				# page.driver.browser.switch_to().alert.accept
-				# page.driver.switchTo().alert().accept();
-				sleep(2)
+		# 		# page.driver.browser.switch_to().alert.accept
+		# 		# page.driver.switchTo().alert().accept();
+		# 		sleep(2)
 	
-				visit users_path
-				expect(page).to_not have_content('featureRead16@tamu.edu')
-			end
+		# 		visit users_path
+		# 		expect(page).to_not have_content('featureRead16@tamu.edu')
+		# 	end
 	
-			it 'succeeded in deleting 3 users' do
-				user1 = User.create!(email: 'featureRead11@tamu.edu',
-					role: 0,
-					firstName: 'Feature1',
-					lastName: 'Testing1',
-					phoneNumber: '1231231234',
-					tShirtSize: 'M',
-					participationPoints: 5,
-					classification: 'Senior',
-					optInEmail: true,
-					approved: true,
-				)
-				user2 = User.create!(email: 'featureRead21@tamu.edu',
-					role: 0,
-					firstName: 'Feature2',
-					lastName: 'Testing2',
-					phoneNumber: '1231231234',
-					tShirtSize: 'M',
-					participationPoints: 5,
-					classification: 'Senior',
-					optInEmail: true,
-					approved: true,
-				)
-				user3 = User.create!(email: 'featureRead31@tamu.edu',
-					role: 0,
-					firstName: 'Feature3',
-					lastName: 'Testing3',
-					phoneNumber: '1231231234',
-					tShirtSize: 'M',
-					participationPoints: 5,
-					classification: 'Senior',
-					optInEmail: true,
-					approved: true,
-				)
-				sleep(4)
-				visit users_path 
-				sleep(3)
-				expect(page).to have_content('featureRead11@tamu.edu')
-				expect(page).to have_content('featureRead21@tamu.edu')
-				expect(page).to have_content('featureRead31@tamu.edu')
+		# 	it 'succeeded in deleting 3 users' do
+		# 		user1 = User.create!(email: 'featureRead11@tamu.edu',
+		# 			role: 0,
+		# 			firstName: 'Feature1',
+		# 			lastName: 'Testing1',
+		# 			phoneNumber: '1231231234',
+		# 			tShirtSize: 'M',
+		# 			participationPoints: 5,
+		# 			classification: 'Senior',
+		# 			optInEmail: true,
+		# 			approved: true,
+		# 		)
+		# 		user2 = User.create!(email: 'featureRead21@tamu.edu',
+		# 			role: 0,
+		# 			firstName: 'Feature2',
+		# 			lastName: 'Testing2',
+		# 			phoneNumber: '1231231234',
+		# 			tShirtSize: 'M',
+		# 			participationPoints: 5,
+		# 			classification: 'Senior',
+		# 			optInEmail: true,
+		# 			approved: true,
+		# 		)
+		# 		user3 = User.create!(email: 'featureRead31@tamu.edu',
+		# 			role: 0,
+		# 			firstName: 'Feature3',
+		# 			lastName: 'Testing3',
+		# 			phoneNumber: '1231231234',
+		# 			tShirtSize: 'M',
+		# 			participationPoints: 5,
+		# 			classification: 'Senior',
+		# 			optInEmail: true,
+		# 			approved: true,
+		# 		)
+		# 		sleep(4)
+		# 		visit users_path 
+		# 		sleep(3)
+		# 		expect(page).to have_content('featureRead11@tamu.edu')
+		# 		expect(page).to have_content('featureRead21@tamu.edu')
+		# 		expect(page).to have_content('featureRead31@tamu.edu')
 	
-				visit user_path(id: user1.id)
-				click_button 'Destroy'
-				sleep(4)
-				page.driver.browser.switch_to.alert.accept
-				sleep(3)
+		# 		visit user_path(id: user1.id)
+		# 		click_button 'Destroy'
+		# 		sleep(4)
+		# 		page.driver.browser.switch_to.alert.accept
+		# 		sleep(3)
 				
 	
-				visit user_path(id: user2.id)
-				click_button 'Destroy'
-				sleep(4)
-				page.driver.browser.switch_to.alert.accept
-				sleep(3)
+		# 		visit user_path(id: user2.id)
+		# 		click_button 'Destroy'
+		# 		sleep(4)
+		# 		page.driver.browser.switch_to.alert.accept
+		# 		sleep(3)
 	
-				visit user_path(id: user3.id)
-				click_button 'Destroy'
-				sleep(4)
-				page.driver.browser.switch_to.alert.accept
-				sleep(3)
+		# 		visit user_path(id: user3.id)
+		# 		click_button 'Destroy'
+		# 		sleep(4)
+		# 		page.driver.browser.switch_to.alert.accept
+		# 		sleep(3)
 	
-				visit users_path
-				sleep(4)
-				expect(page).to_not have_content('featureRead11@tamu.edu')
-				expect(page).to_not have_content('featureRead21@tamu.edu')
-				expect(page).to_not have_content('featureRead31@tamu.edu')
-			end
-		end
+		# 		visit users_path
+		# 		sleep(4)
+		# 		expect(page).to_not have_content('featureRead11@tamu.edu')
+		# 		expect(page).to_not have_content('featureRead21@tamu.edu')
+		# 		expect(page).to_not have_content('featureRead31@tamu.edu')
+		# 	end
+		# end
 	
 		describe "are trying to attend an event / point event." do
 			event = Event.new
