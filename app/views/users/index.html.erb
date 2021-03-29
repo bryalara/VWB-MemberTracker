@@ -1,25 +1,26 @@
 
-
-
 <style>
 .section {
     margin: 80px;
 }
 .notice {
 	border-radius: 5px;
-	padding: 15px;
+	padding: 10px;
 	background: #d8ecdb;
 	color: #295529;
 }
 .alert {
 	border-radius: 5px;
-	padding: 15px;
+	padding: 10px;
 	color: red;
 }
 </style>
 
+<div>
+  <%= render "layouts/navbar2", user: @user %>
+</div>
 <div id="section">
-
+<div style="margin-top: 50px">
 <% flash.each do |type, msgs| %>
   <div class="notice">
   <% if Array === msgs %>
@@ -33,6 +34,7 @@
   <% end %>
   </div>
 <% end %>
+</div>
 
 <div class="header">
 <h2 class="active h2-title">Users</h2>

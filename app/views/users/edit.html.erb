@@ -51,7 +51,7 @@ select{
         <%if @auth.role==1%>
             <div class="select">
                 <br>
-                <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]] ),  id: "slct", prompt: "Select a Role"   %>
+                <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1] ]), id: "slct", prompt: "Select a Role"   %>
             </div>
         <%end%>
     <%end%>
@@ -63,7 +63,7 @@ select{
 
     <div>
        <br>
-        <%= form.select :classification, options_for_select(["Freshman", "Sophomore", "Junior", "Senior"], @user.classification), :prompt => 'Select Year' %>
+        <%= form.select :classification, options_for_select(["Freshman", "Sophomore", "Junior", "Senior"]), :prompt => 'Select Year' %>
     </div>
 
     <div>
