@@ -1,5 +1,5 @@
 <%= render "layouts/navbar2", user: @user %>
-<h1>Registration</h1>
+<h1 style="margin: 70px">Registration</h1>
 
 <%= form_with model: @user do |form| %>
     <div>
@@ -21,11 +21,6 @@
         <% @user.errors.full_messages_for(:lastName).each do |message| %>
             <div><%= message %></div>
         <% end %>
-    </div>
-    
-    <div>
-        <%= form.label :role %><br>
-        <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]]), :prompt => 'Select Role' %>
     </div>
 
     <div>

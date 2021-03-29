@@ -29,12 +29,12 @@ select{
 <%= form_with model: @user do |form| %>
     <div>
     <h2 class="active"><%= @user.firstName+" "+@user.lastName %> </h2>
-        <%= form.email_field :email, placeholder: "Email", prompt: "Email" %>
+        <%= form.email_field :email, placeholder: "Email", prompt: "Email", value: @user.email %>
     </div>
 
     <div>
        <br>
-        <%= form.text_field :firstName, placeholder: "First Name" %>
+        <%= form.text_field :firstName, placeholder: "First Name", value: @user.firstName %>
         <% @user.errors.full_messages_for(:firstName).each do |message| %>
             <div><%= message %></div>
         <% end %>
@@ -42,17 +42,19 @@ select{
 
     <div>
         <br>
-        <%= form.text_field :lastName, placeholder: "Last Name" %>
+        <%= form.text_field :lastName, placeholder: "Last Name" , value: @user.lastName%>
         <% @user.errors.full_messages_for(:lastName).each do |message| %>
             <div><%= message %></div>
         <% end %>
     </div>
-    
-    <div class="select">
-        <br>
-        <div >
-        <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]]), id: "slct", prompt: "Select a Role" %>
-    </div>
+    <%if @auth%>
+        <%if @auth.role==1%>
+            <div class="select">
+                <br>
+                <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1] ]), id: "slct", prompt: "Select a Role"   %>
+            </div>
+        <%end%>
+    <%end%>
 
     <div>
         <br>
@@ -69,24 +71,28 @@ select{
         <%= form.select :tShirtSize, options_for_select(["XXS", "XS", "S", "M", "L", "XL", "XXL"]), :prompt => 'Select Size'%>
     </div>
 
-    <div class="double" align="center">
-    <br>
-        <%= form.label :participationPoints, "Participation Points", class: "label"%>
-       <div style="width: 50%;"> <%= form.number_field  :participationPoints, placeholder: "0", class: "field" %></div>
-    </div>
-
+    <%if @auth%>
+        <%if @auth.role==1%>
+            <div class="double" align="center">
+            <br>
+                <%= form.label :participationPoints, "Participation Points", class: "label"%>
+            <div style="width: 50%;"> <%= form.number_field  :participationPoints, placeholder: "0", class: "field" %></div>
+            </div>
+        <%end%>
+    <%end%>
 
     <div class="double" align="center">
         <%= form.label :optInEmail , "Opt-In Email", class: "label" %>
         <div style="width: 50%;"><%= form.check_box :optInEmail, class: "field" %></div>
    </div>
-    <%if @user.role==1%>
-        <div class="double" align="center">
-            <%= form.label :approved, class: "label" %>
-            <div style="width: 50%;"><%= form.check_box :approved, class: "field" %></div>
-        </div>
+    <%if @auth%>
+        <%if @auth.role==1%>
+            <div class="double" align="center">
+                <%= form.label :approved, class: "label" %>
+                <div style="width: 50%;"><%= form.check_box :approved, class: "field" %></div>
+            </div>
+        <%end%>
     <%end%>
-
     <div>
         <%= form.submit %>
     </div>

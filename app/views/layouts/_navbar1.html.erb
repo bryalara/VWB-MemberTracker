@@ -16,14 +16,18 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="<%= memberDashboard_path%>">Member</a>
           </li> 
-          <%# <% if user.role == 0 %> 
-           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="<%= users_path %>">Admin</a>
-          </li> 
-          <%# <%end%>
+          
+          <%if params[:user]%>
+            <%if check_user.role == 1 %> 
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="<%= users_path %>">Admin</a>
+              </li> 
+            <%end%>
+          <%end%>
           <% if !userlogin_signed_in? %>
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="<%= userlogin_google_oauth2_omniauth_authorize_path %>"><i class="fas fa-sign-in-alt"></i> Sign In</a>

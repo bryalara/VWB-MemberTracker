@@ -1,17 +1,41 @@
 
-<%= render "layouts/navbar2", user: @auth %>
-
-<% msgs= flash[:notice].to_s.split('|', -1) %>
-<% msgs.each do |msg|%>
-  <p> <%=msg%> </p>
-<%end%>
-
-<%= flash[:notice]%>
 <style>
 .section {
-    padding: 0px;
+    margin: 80px;
+}
+.notice {
+	border-radius: 5px;
+	padding: 10px;
+	background: #d8ecdb;
+	color: #295529;
+}
+.alert {
+	border-radius: 5px;
+	padding: 10px;
+	color: red;
 }
 </style>
+
+<div>
+  <%= render "layouts/navbar2", user: @user %>
+</div>
+<div id="section">
+<div style="margin-top: 50px">
+<% flash.each do |type, msgs| %>
+  <div class="notice">
+  <% if Array === msgs %>
+    <ul>
+    <% msgs.each do |msg| %>
+      <li class=<%=msg[0..4].to_s.chomp == 'Error'.to_s.chomp ? :"alert" : :"notice"  %> ><%= msg %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <%= msgs %>
+  <% end %>
+  </div>
+<% end %>
+</div>
+
 <div class="header">
 <h2 class="active h2-title">Users</h2>
 </div>
@@ -41,7 +65,7 @@
         <td><%= user.firstName %></td>
         <td><%= user.lastName  %></td>
         <td><%= user.email  %> </td>
-        <td><%= user.phoneNumber  %> </td>
+        <td><%= '('+user.phoneNumber[0..2]+')'+'-'+user.phoneNumber[3..5]+'-'+user.phoneNumber[6..]   %> </td>
         <td><%= user.classification %> </td>
         <td><%= user.role == 0 ? :"Member" : :"Admin"  %> </td>
         <td><%= user.tShirtSize  %> </td>
@@ -72,4 +96,5 @@
     </div>
 </div>
 <% end %>
+</div>
 </div>

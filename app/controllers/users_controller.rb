@@ -7,13 +7,7 @@ class UsersController < ApplicationController
 
   def index
     @auth = User.find_by(email: current_userlogin.email)
-    if !@auth
-      redirect_to new_user_path
-      return
-    elsif @auth.role.zero? || @auth.approved == false
-      redirect_to memberDashboard_path
-      return
-    end
+    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
 
     @order = params[:order] == 'true'
     @attr = params[:attr]
@@ -43,7 +37,7 @@ class UsersController < ApplicationController
     @latestNew = User.order('created_at').last
     @latestUpdate = User.order('updated_at').last
 
-    if @auth && (@auth.role == 1)
+    if @auth && (@auth.role == 1) && @auth.approved==true
       respond_to do |format|
         format.html
         format.csv { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
@@ -53,16 +47,15 @@ class UsersController < ApplicationController
 
   def import
     @auth = User.find_by(email: current_userlogin.email)
-    if !@auth || @auth.role.zero? || @auth.approved == false
-      redirect_to memberDashboard_path
-      return
-    end
+    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     wmsg = User.my_import(params[:file])
     if wmsg.length.positive?
-      flash[:notice] = ''
+      # flash[:notice] ||= []
+      
       wmsg.each do |msg|
+        flash[:notice] ||=[]
         puts(msg)
-        flash[:notice] += "|#{msg}"
+        flash[:notice] <<  msg.to_s
       end
       redirect_to users_path
     else
@@ -71,14 +64,14 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
     @msg = params[:notice]
     @auth = User.find_by(email: current_userlogin.email)
     if @auth
       redirect_to users_path(@auth) if @auth.role.zero?
     else
-      redirect_to new_user_path
+      redirect_to registration_user_path
     end
-    @user = User.find(params[:id])
   end
 
   def new
@@ -92,10 +85,8 @@ class UsersController < ApplicationController
       puts('user saved')
       redirect_to @user, notice: "Successfully created new user: #{"#{@user.firstName} #{@user.lastName}"}."
     elsif @user.valid?
-      puts('Valid')
       flash[:notice] = "Successfully created new user: #{"#{@user.firstName} #{@user.lastName}"}."
     else
-      puts('Not valid')
       @msg = @user.errors.full_messages[0]
       puts @msg
       flash.now[:notice] = @msg
@@ -133,14 +124,44 @@ class UsersController < ApplicationController
 
   def pendingApproval
     @auth = User.find_by(email: current_userlogin.email)
-    if !@auth || @auth.role.zero? || @auth.approved == false
+    if !@auth
+      redirect_to new_user_path
+      return
+    elsif @auth.role.zero? || @auth.approved == false
       redirect_to memberDashboard_path
       return
     end
-    @users = User.where(approved: false)
+
+    @order = params[:order] == 'true'
+    @attr = params[:attr]
+    @attr ||= 'first'
+    ord = 'ASC'
+    ord = if @order == true
+            'ASC'
+          else
+            'DESC'
+          end
+    @users = case @attr
+             when 'first'
+               User.where(approved: false).order("\"users\".\"firstName\" #{ord}")
+             when 'last'
+               User.where(approved: false).order("\"users\".\"lastName\" #{ord}")
+             when 'role'
+               User.where(approved: false).order("\"users\".\"role\" #{ord}")
+             when 'class'
+               User.where(approved: false).order("\"users\".\"classification\" #{ord}")
+             when 'size'
+               User.where(approved: false).order("\"users\".\"tShirtSize\" #{ord}")
+             when 'points'
+               User.where(approved: false).order("\"users\".\"participationPoints\" #{ord}")
+             else
+               User.where(approved: false).order('"users"."lastName" ASC')
+             end
+
   end
 
   def memberDashboard
+    @auth = User.find_by(email: current_userlogin.email)
     @user = User.find_by(email: current_userlogin.email)
     @display = 0
     unless @user
@@ -174,6 +195,7 @@ class UsersController < ApplicationController
   end
 
   def registration
+    @auth = User.find_by(email: current_userlogin.email)
     @user = User.new
   end
 

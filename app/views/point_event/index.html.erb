@@ -22,7 +22,8 @@ th, td, tr {
 		<th>Event</th>
 		<th>Description</th>
 		<th>Points</th>
-		<th colspan="4">Actions<th>
+		
+		<th colspan="4">Actions</th>
 	</tr>
 
 	<% @pointEvents.each do |pointEvent| %>
@@ -30,7 +31,7 @@ th, td, tr {
 		<td><%= pointEvent.name %></td>
 		<td><%= pointEvent.description %></td>
 		<td><%= pointEvent.points %></td>
-
+		
 		<td><%= link_to "Show", point_event_path(pointEvent) %></td>
 		<td><%= link_to "Edit", edit_point_event_path(pointEvent) %></td>
 		<td><%= link_to "Delete", delete_point_event_path(pointEvent) %></td>
