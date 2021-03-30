@@ -257,9 +257,9 @@ RSpec.describe 'Events', type: :feature do
 			visit delete_event_path(id: event2.id)
 			expect(page).to have_content('Test Event 2')
 			click_on 'delete-btn'
-			# wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
-			# alert1 = wait.until { page.driver.browser.switch_to.alert }
-			# alert1.accept
+			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
+			alert1 = wait.until { page.driver.browser.switch_to.alert }
+			alert1.accept
 
 			expect(page).to have_content('Test Event 1')
 			expect(page).to have_content('Successfully deleted Test Event 2')
@@ -268,8 +268,8 @@ RSpec.describe 'Events', type: :feature do
 			visit delete_event_path(id: event1.id)
 			expect(page).to have_content('Test Event 1')
 			click_on 'delete-btn'
-			# alert2 = wait.until { page.driver.browser.switch_to.alert }
-			# alert2.accept
+			alert2 = wait.until { page.driver.browser.switch_to.alert }
+			alert2.accept
 
 			expect(page).to have_content('Successfully deleted Test Event 1')
 			expect(page).to_not have_content('Test Event 2')
@@ -278,8 +278,8 @@ RSpec.describe 'Events', type: :feature do
 			visit delete_event_path(id: event3.id)
 			expect(page).to have_content('Test Event 3')
 			click_on 'delete-btn'
-			# alert3 = wait.until { page.driver.browser.switch_to.alert }
-			# alert3.accept
+			alert3 = wait.until { page.driver.browser.switch_to.alert }
+			alert3.accept
 
 			expect(page).to_not have_content('Test Event 1')
 			expect(page).to_not have_content('Test Event 2')
@@ -306,9 +306,9 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('bryalara@tamu.edu')
 
 			click_on 'Remove'
-			# wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
-			# alert = wait.until { page.driver.browser.switch_to.alert }
-			# alert.accept
+			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
+			alert = wait.until { page.driver.browser.switch_to.alert }
+			alert.accept
 
 			expect(page).to_not have_content('bryalara@tamu.edu')
 		end
