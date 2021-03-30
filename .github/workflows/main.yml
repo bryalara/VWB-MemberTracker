@@ -27,10 +27,11 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.x
+          bundler-cache: true
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install
-      - name: Build
+      - name: Build then test
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/test
           REDIS_URL: redis://localhost:6379/0
@@ -44,6 +45,4 @@ jobs:
           bundle exec rake db:create
           bundle exec rake db:migrate
           bundle exec rake db:seed
-      - name: Test
-        run: |
           bundle exec rspec spec/feature/event_spec.rb -fd
