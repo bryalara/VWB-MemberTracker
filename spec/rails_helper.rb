@@ -101,6 +101,6 @@ Capybara.server = :puma, { Silent: true }
 #     desired_capabilities: capabilities
 # end
 
-#Capybara.javascript_driver = :headless_chrome
+# Capybara.javascript_driver = :chrome
 
-Capybara.default_driver = :selenium_chrome
+Capybara.default_driver = :selenium_chrome_headless

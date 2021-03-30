@@ -1,4 +1,4 @@
-name: CI/CD
+name: CI
 on: [push, pull_request]
 jobs:
   build:
@@ -44,4 +44,6 @@ jobs:
           bundle exec rake db:create
           bundle exec rake db:migrate
           bundle exec rake db:seed
+      - name: Test
+        run: |
           bundle exec rspec spec/feature/event_spec.rb -fd
