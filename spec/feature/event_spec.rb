@@ -226,6 +226,7 @@ RSpec.describe 'Events', type: :feature do
 			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 			alert = wait.until { page.driver.browser.switch_to.alert }
 			alert.accept
+
 			expect(page).to have_content('Successfully deleted')
 		end
 

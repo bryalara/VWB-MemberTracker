@@ -101,6 +101,6 @@ Capybara.register_driver :headless_chrome do |app|
     desired_capabilities: capabilities
 end
 
-# Capybara.javascript_driver = :chrome
+#Capybara.javascript_driver = :chrome
 
-Capybara.default_driver = :selenium_chrome_headless
+Capybara.default_driver = :selenium_chrome
