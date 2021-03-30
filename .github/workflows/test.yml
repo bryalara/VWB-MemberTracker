@@ -23,21 +23,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Node js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14
-    - run: npm ci
-    - run: npm run build --if-present
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
         ruby-version: 2.7.2
-    - uses: borales/actions-yarn@v2.3.0
-      with:
-        cmd: install
-    - name: Build
+    - name: Build and Test
       env:
         DATABASE_URL: postgres://postgres:@localhost:5432/test
         REDIS_URL: redis://localhost:6379/0
@@ -45,8 +36,6 @@ jobs:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: password
       run: | 
-        sudo apt-get -yqq install libpq-dev
-        bundle install --jobs 4 --retry 3
         bundle exec rake db:create
         bundle exec rake db:migrate
         bundle exec rake db:seed
