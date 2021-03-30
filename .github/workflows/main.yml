@@ -63,7 +63,7 @@ jobs:
         bundle exec rake db:migrate
         bundle exec rake db:seed
 
-  tests:
+  test:
     runs-on: ubuntu-latest
     
     services:
@@ -112,7 +112,7 @@ jobs:
       run: |
         yarn install --pure-lockfile
 
-    - name: Build
+    - name: Build and Test
       env:
         DATABASE_URL: postgres://postgres:@localhost:5432/test
         REDIS_URL: redis://localhost:6379/0
