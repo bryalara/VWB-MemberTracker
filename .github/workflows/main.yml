@@ -27,8 +27,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-        uses: actions/setup-ruby@v1
-        with:
           ruby-version: 2.7.x
       - uses: borales/actions-yarn@v2.3.0
         with:
