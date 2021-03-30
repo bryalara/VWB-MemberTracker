@@ -67,6 +67,7 @@ class PointEventController < ApplicationController
     @pointEvent = PointEvent.find(params[:id])
     @pointEvent.destroy
 
+    flash[:notice] = "Successfully deleted #{@pointEvent.name}."
     redirect_to event_index_path
   end
 

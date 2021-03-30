@@ -8,9 +8,7 @@ RSpec.describe 'PointEvents', type: :feature do
 	describe 'Route for' do
 		it 'index shows the right content' do
 			visit event_index_path
-			#sleep(10)
-			# expect(page).to have_content('POINTS EVENTS')
-			expect(page).to have_selector(:xpath, "//div/h2['Point Events']")
+			expect(page).to have_content('POINTS EVENTS')
 		end
 
 		it 'qr shows the right content' do
@@ -161,10 +159,10 @@ RSpec.describe 'PointEvents', type: :feature do
 
 			visit delete_point_event_path(id: event.id)
 			click_on 'delete-btn'
-			sleep(1)
-			a = page.driver.browser.switch_to.alert
-			a.accept
-			sleep(1)
+
+			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
+			alert = wait.until { page.driver.browser.switch_to.alert }
+			alert.accept
 
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
@@ -188,39 +186,31 @@ RSpec.describe 'PointEvents', type: :feature do
 
 			visit delete_point_event_path(id: event2.id)
 			click_on 'delete-btn'
-			sleep(1)
-			a = page.driver.browser.switch_to.alert
-			a.accept
-			sleep(1)
+			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
+			alert1 = wait.until { page.driver.browser.switch_to.alert }
+			alert1.accept
 
-			visit event_index_path
 			expect(page).to have_content('Test Event 1')
-			expect(page).to_not have_content('Test Event 2')
+			expect(page).to have_content('Successfully deleted Test Event 2')
 			expect(page).to have_content('Test Event 3')
 
 			visit delete_point_event_path(id: event1.id)
 			click_on 'delete-btn'
-			sleep(1)
-			a2 = page.driver.browser.switch_to.alert
-			a2.accept
-			sleep(1)
+			alert2 = wait.until { page.driver.browser.switch_to.alert }
+			alert2.accept
 
-			visit event_index_path
-			expect(page).to_not have_content('Test Event 1')
+			expect(page).to have_content('Successfully deleted Test Event 1')
 			expect(page).to_not have_content('Test Event 2')
 			expect(page).to have_content('Test Event 3')
 
 			visit delete_point_event_path(id: event3.id)
 			click_on 'delete-btn'
-			sleep(1)
-			a3 = page.driver.browser.switch_to.alert
-			a3.accept
-			sleep(1)
+			alert3 = wait.until { page.driver.browser.switch_to.alert }
+			alert3.accept
 
-			visit event_index_path
 			expect(page).to_not have_content('Test Event 1')
 			expect(page).to_not have_content('Test Event 2')
-			expect(page).to_not have_content('Test Event 3')
+			expect(page).to have_content('Successfully deleted Test Event 3')
 		end
 	end
 
@@ -241,10 +231,9 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content('bryalara@tamu.edu')
 
 			click_on 'Remove'
-			sleep(1)
-			a = page.driver.browser.switch_to.alert
-			a.accept
-			sleep(1)
+			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
+			alert = wait.until { page.driver.browser.switch_to.alert }
+			alert.accept
 
 			expect(page).to_not have_content('bryalara@tamu.edu')
 		end

@@ -124,4 +124,4 @@ jobs:
         bundle exec rake db:create
         bundle exec rake db:migrate
         bundle exec rake db:seed
-        bundle exec rspec spec/feature/event_spec.rb -fd
+        bundle exec rspec spec/ -fd
