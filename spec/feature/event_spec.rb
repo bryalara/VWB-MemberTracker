@@ -210,95 +210,95 @@ RSpec.describe 'Events', type: :feature do
 	# end
 
 	describe 'Deleting an event' do
-		# it 'succeeded in deleting event' do
-		# 	event = Event.create!(name: 'Test Event',
-		# 				description: 'Test Description',
-		# 				points: 5,
-		# 				startDate: DateTime.now,
-		# 				endDate: DateTime.now + 1.week)
-		# 	visit event_index_path
-		# 	expect(page).to have_content('Test Event')
+		it 'succeeded in deleting event' do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
+			visit event_index_path
+			expect(page).to have_content('Test Event')
 
-		# 	visit delete_event_path(id: event.id)
-		# 	expect(page).to have_content('Test Event')
-		# 	click_on 'delete-btn'
-		# 	page.driver.browser.switch_to.alert.accept
-		# 	expect(page).to have_content('Successfully deleted')
-		# end
+			visit delete_event_path(id: event.id)
+			expect(page).to have_content('Test Event')
+			click_on 'delete-btn'
+			page.driver.browser.switch_to.alert.accept
+			expect(page).to have_content('Successfully deleted')
+		end
 
-		# it 'succeeded in deleting three events' do
-		# 	event1 = Event.create!(name: 'Test Event 1',
-		# 				description: 'Test Description 1',
-		# 				points: 5,
-		# 				startDate: DateTime.now,
-		# 				endDate: DateTime.now + 1.week)
-		# 	event2 = Event.create!(name: 'Test Event 2',
-		# 				description: 'Test Description 2',
-		# 				points: 5,
-		# 				startDate: DateTime.now,
-		# 				endDate: DateTime.now + 1.week)
-		# 	event3 = Event.create!(name: 'Test Event 3',
-		# 				description: 'Test Description 3',
-		# 				points: 5,
-		# 				startDate: DateTime.now,
-		# 				endDate: DateTime.now + 1.week)
+		it 'succeeded in deleting three events' do
+			event1 = Event.create!(name: 'Test Event 1',
+						description: 'Test Description 1',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
+			event2 = Event.create!(name: 'Test Event 2',
+						description: 'Test Description 2',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
+			event3 = Event.create!(name: 'Test Event 3',
+						description: 'Test Description 3',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
 
-		# 	visit event_index_path
-		# 	expect(page).to have_content('Test Event 1')
-		# 	expect(page).to have_content('Test Event 2')
-		# 	expect(page).to have_content('Test Event 3')
+			visit event_index_path
+			expect(page).to have_content('Test Event 1')
+			expect(page).to have_content('Test Event 2')
+			expect(page).to have_content('Test Event 3')
 
-		# 	visit delete_event_path(id: event2.id)
-		# 	expect(page).to have_content('Test Event 2')
-		# 	click_on 'delete-btn'
-		# 	page.driver.browser.switch_to.alert.accept
+			visit delete_event_path(id: event2.id)
+			expect(page).to have_content('Test Event 2')
+			click_on 'delete-btn'
+			page.driver.browser.switch_to.alert.accept
 
-		# 	expect(page).to have_content('Test Event 1')
-		# 	expect(page).to have_content('Successfully deleted Test Event 2')
-		# 	expect(page).to have_content('Test Event 3')
+			expect(page).to have_content('Test Event 1')
+			expect(page).to have_content('Successfully deleted Test Event 2')
+			expect(page).to have_content('Test Event 3')
 
-		# 	visit delete_event_path(id: event1.id)
-		# 	expect(page).to have_content('Test Event 1')
-		# 	click_on 'delete-btn'
-		# 	page.driver.browser.switch_to.alert.accept
+			visit delete_event_path(id: event1.id)
+			expect(page).to have_content('Test Event 1')
+			click_on 'delete-btn'
+			page.driver.browser.switch_to.alert.accept
 
-		# 	expect(page).to have_content('Successfully deleted Test Event 1')
-		# 	expect(page).to_not have_content('Test Event 2')
-		# 	expect(page).to have_content('Test Event 3')
+			expect(page).to have_content('Successfully deleted Test Event 1')
+			expect(page).to_not have_content('Test Event 2')
+			expect(page).to have_content('Test Event 3')
 
-		# 	visit delete_event_path(id: event3.id)
-		# 	expect(page).to have_content('Test Event 3')
-		# 	click_on 'delete-btn'
-		# 	page.driver.browser.switch_to.alert.accept
+			visit delete_event_path(id: event3.id)
+			expect(page).to have_content('Test Event 3')
+			click_on 'delete-btn'
+			page.driver.browser.switch_to.alert.accept
 
-		# 	expect(page).to_not have_content('Test Event 1')
-		# 	expect(page).to_not have_content('Test Event 2')
-		# 	expect(page).to have_content('Successfully deleted Test Event 3')
-		# end
+			expect(page).to_not have_content('Test Event 1')
+			expect(page).to_not have_content('Test Event 2')
+			expect(page).to have_content('Successfully deleted Test Event 3')
+		end
 	end
 
 	describe "Removing a user from an event" do
-		# it "succeeded in removing a user from an event" do
-		# 	event = Event.create!(name: 'Test Event',
-		# 				description: 'Test Description',
-		# 				points: 5,
-		# 				startDate: DateTime.now,
-		# 				endDate: DateTime.now + 1.week)
+		it "succeeded in removing a user from an event" do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
 
-		# 	visit attend_event_path(event)
-		# 	expect(page).to have_content('Test Event')
-		# 	expect(page).to have_content('Hello bryalara@tamu.edu')
+			visit attend_event_path(event)
+			expect(page).to have_content('Test Event')
+			expect(page).to have_content('Hello bryalara@tamu.edu')
 
-		# 	click_on 'Click to attend!'
-		# 	expect(page).to have_content("Successfully attended Test Event!")
+			click_on 'Click to attend!'
+			expect(page).to have_content("Successfully attended Test Event!")
 
-		# 	visit edit_event_path(event)
-		# 	expect(page).to have_content('bryalara@tamu.edu')
+			visit edit_event_path(event)
+			expect(page).to have_content('bryalara@tamu.edu')
 
-		# 	click_on 'Remove'
-		# 	page.driver.browser.switch_to.alert.accept
+			click_on 'Remove'
+			page.driver.browser.switch_to.alert.accept
 
-		# 	expect(page).to_not have_content('bryalara@tamu.edu')
-		# end
+			expect(page).to_not have_content('bryalara@tamu.edu')
+		end
 	end
 end
