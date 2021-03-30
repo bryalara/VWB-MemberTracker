@@ -8,12 +8,7 @@ RSpec.describe 'Events', type: :feature do
 	describe 'Routes for' do
 		it 'index shows the right content' do
 			visit event_index_path
-			sleep(3)
-			# page.should have_xpath('//div.header2/h2')
-			# expect(page).to have_content('Events').first
-			expect(page).to have_selector(:xpath, "//div/h2['Events']")
-			# expect(page).to have_xpath('/html/body/div[2]/h2')
-			
+			expect(page).to have_content('EVENTS')
 		end
 
 		it 'qr shows the right content' do
@@ -90,7 +85,6 @@ RSpec.describe 'Events', type: :feature do
 
 		it 'is not valid without a start date' do
 			fill_in 'event_startDate', with: ''
-			sleep(1)
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
@@ -98,7 +92,6 @@ RSpec.describe 'Events', type: :feature do
 
 		it 'is not valid without an end date' do
 			fill_in 'event_endDate', with: ''
-			sleep(1)
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
@@ -106,7 +99,6 @@ RSpec.describe 'Events', type: :feature do
 
 		it 'is not valid if the end date is before the start date' do
 			fill_in 'event_endDate', with: DateTime.now - 1.week
-			sleep(1)
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
@@ -213,112 +205,107 @@ RSpec.describe 'Events', type: :feature do
 	end
 
 	describe 'Deleting an event' do
-		# it 'succeeded in deleting event' do
-		# 	event = Event.create!(name: 'Test Event',
-		# 				description: 'Test Description',
-		# 				points: 5,
-		# 				startDate: DateTime.now,
-		# 				endDate: DateTime.now + 1.week)
-		# 	visit event_index_path
-		# 	expect(page).to have_content('Test Event')
+		it 'succeeded in deleting event' do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
+			visit event_index_path
+			expect(page).to have_content('Test Event')
 
-		# 	visit delete_event_path(id: event.id)
-		# 	click_on 'delete-btn'
-		# 	sleep(1)
+			visit delete_event_path(id: event.id)
+			expect(page).to have_content('Test Event')
+			click_on 'delete-btn'
 
-		# 	a = page.driver.browser.switch_to.alert
-		# 	a.accept
-		# 	sleep(1)
+			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
+			alert = wait.until { page.driver.browser.switch_to.alert }
+			alert.accept
 
-		# 	visit event_index_path
-		# 	expect(page).to_not have_content('Test Event')
-		# end
+			expect(page).to have_content('Successfully deleted')
+		end
 
-		# it 'succeeded in deleting three events' do
-		# 	event1 = Event.create!(name: 'Test Event 1',
-		# 				description: 'Test Description 1',
-		# 				points: 5,
-		# 				startDate: DateTime.now,
-		# 				endDate: DateTime.now + 1.week)
-		# 	event2 = Event.create!(name: 'Test Event 2',
-		# 				description: 'Test Description 2',
-		# 				points: 5,
-		# 				startDate: DateTime.now,
-		# 				endDate: DateTime.now + 1.week)
-		# 	event3 = Event.create!(name: 'Test Event 3',
-		# 				description: 'Test Description 3',
-		# 				points: 5,
-		# 				startDate: DateTime.now,
-		# 				endDate: DateTime.now + 1.week)
+		it 'succeeded in deleting three events' do
+			event1 = Event.create!(name: 'Test Event 1',
+						description: 'Test Description 1',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
+			event2 = Event.create!(name: 'Test Event 2',
+						description: 'Test Description 2',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
+			event3 = Event.create!(name: 'Test Event 3',
+						description: 'Test Description 3',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
 
-		# 	visit event_index_path
-		# 	expect(page).to have_content('Test Event 1')
-		# 	expect(page).to have_content('Test Event 2')
-		# 	expect(page).to have_content('Test Event 3')
+			visit event_index_path
+			expect(page).to have_content('Test Event 1')
+			expect(page).to have_content('Test Event 2')
+			expect(page).to have_content('Test Event 3')
 
-		# 	visit delete_event_path(id: event2.id)
-		# 	click_on 'delete-btn'
-		# 	sleep(1)
-		# 	a = page.driver.browser.switch_to.alert
-		# 	a.accept
-		# 	sleep(1)
+			visit delete_event_path(id: event2.id)
+			expect(page).to have_content('Test Event 2')
+			click_on 'delete-btn'
 
-		# 	visit event_index_path
-		# 	expect(page).to have_content('Test Event 1')
-		# 	expect(page).to_not have_content('Test Event 2')
-		# 	expect(page).to have_content('Test Event 3')
+			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
+			alert1 = wait.until { page.driver.browser.switch_to.alert }
+			alert1.accept
 
-		# 	visit delete_event_path(id: event1.id)
-		# 	click_on 'delete-btn'
-		# 	sleep(1)
-		# 	a2 = page.driver.browser.switch_to.alert
-		# 	a2.accept
-		# 	sleep(1)
+			expect(page).to have_content('Test Event 1')
+			expect(page).to have_content('Successfully deleted Test Event 2')
+			expect(page).to have_content('Test Event 3')
 
-		# 	visit event_index_path
-		# 	expect(page).to_not have_content('Test Event 1')
-		# 	expect(page).to_not have_content('Test Event 2')
-		# 	expect(page).to have_content('Test Event 3')
+			visit delete_event_path(id: event1.id)
+			expect(page).to have_content('Test Event 1')
+			click_on 'delete-btn'
+			alert2 = wait.until { page.driver.browser.switch_to.alert }
+			alert2.accept
 
-		# 	visit delete_event_path(id: event3.id)
-		# 	click_on 'delete-btn'
-		# 	sleep(1)
-		# 	a3 = page.driver.browser.switch_to.alert
-		# 	a3.accept
-		# 	sleep(1)
+			expect(page).to have_content('Successfully deleted Test Event 1')
+			expect(page).to_not have_content('Test Event 2')
+			expect(page).to have_content('Test Event 3')
 
-		# 	visit event_index_path
-		# 	expect(page).to_not have_content('Test Event 1')
-		# 	expect(page).to_not have_content('Test Event 2')
-		# 	expect(page).to_not have_content('Test Event 3')
-		# end
+			visit delete_event_path(id: event3.id)
+			expect(page).to have_content('Test Event 3')
+			click_on 'delete-btn'
+			alert3 = wait.until { page.driver.browser.switch_to.alert }
+			alert3.accept
+
+			expect(page).to_not have_content('Test Event 1')
+			expect(page).to_not have_content('Test Event 2')
+			expect(page).to have_content('Successfully deleted Test Event 3')
+		end
 	end
 
 	describe "Removing a user from an event" do
-		# it "succeeded in removing a user from an event" do
-		# 	event = Event.create!(name: 'Test Event',
-		# 				description: 'Test Description',
-		# 				points: 5,
-		# 				startDate: DateTime.now,
-		# 				endDate: DateTime.now + 1.week)
+		it "succeeded in removing a user from an event" do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week)
 
-		# 	visit attend_event_path(event)
-		# 	expect(page).to have_content('Test Event')
-		# 	expect(page).to have_content('Hello bryalara@tamu.edu')
+			visit attend_event_path(event)
+			expect(page).to have_content('Test Event')
+			expect(page).to have_content('Hello bryalara@tamu.edu')
 
-		# 	click_on 'Click to attend!'
-		# 	expect(page).to have_content("Successfully attended Test Event!")
+			click_on 'Click to attend!'
+			expect(page).to have_content("Successfully attended Test Event!")
 
-		# 	visit edit_event_path(event)
-		# 	expect(page).to have_content('bryalara@tamu.edu')
+			visit edit_event_path(event)
+			expect(page).to have_content('bryalara@tamu.edu')
 
-		# 	click_on 'Remove'
-		# 	sleep(1)
-		# 	a = page.driver.browser.switch_to.alert
-		# 	a.accept
-		# 	sleep(1)
+			click_on 'Remove'
 
-		# 	expect(page).to_not have_content('bryalara@tamu.edu')
-		# end
+			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
+			alert = wait.until { page.driver.browser.switch_to.alert }
+			alert.accept
+
+			expect(page).to_not have_content('bryalara@tamu.edu')
+		end
 	end
 end
