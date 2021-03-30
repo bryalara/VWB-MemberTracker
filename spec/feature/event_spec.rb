@@ -223,9 +223,11 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('Test Event')
 			click_on 'delete-btn'
 
-			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
-			alert = wait.until { page.driver.browser.switch_to.alert }
-			alert.accept
+			# wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
+			# alert = wait.until { page.driver.browser.switch_to.alert }
+			# alert.accept
+			sleep(5)
+			page.driver.browser.switch_to.alert.accept
 
 			expect(page).to have_content('Successfully deleted')
 		end
