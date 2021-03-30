@@ -83,6 +83,7 @@ jobs:
         ports: ["6379:6379"]
         options: --entrypoint redis-server
 
+    steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
