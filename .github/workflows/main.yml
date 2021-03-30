@@ -37,8 +37,8 @@ jobs:
         node-version: 10.19.0
 
     - name: Find yarn cache location
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      id: yarn-cache
+      run: echo "::set-output name=dir::$(yarn cache dir)"
     - name: JS package cache
       uses: actions/cache@v1
       with:
@@ -98,8 +98,8 @@ jobs:
         node-version: 10.19.0
 
     - name: Find yarn cache location
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      id: yarn-cache
+      run: echo "::set-output name=dir::$(yarn cache dir)"
     - name: JS package cache
       uses: actions/cache@v1
       with:
