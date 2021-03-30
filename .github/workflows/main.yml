@@ -27,8 +27,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 10.19.0
-          os: linux
-          architecture: x64
+          architecture: 'x64'
         - run: npm install
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
