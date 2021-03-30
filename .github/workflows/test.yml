@@ -22,34 +22,32 @@ jobs:
         options: --entrypoint redis-server
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 10.19.0
-          os: linux
-          architecture: 'x64'
-      - run: npm install
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          ruby-version: 2.7.2
-      - uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: install
-      - name: Test
-        env:
-          DATABASE_URL: postgres://postgres:@localhost:5432/test
-          REDIS_URL: redis://localhost:6379/0
-          RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-        run: | 
-          sudo apt-get -yqq install libpq-dev
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          bundle exec rake db:create
-          bundle exec rake db:migrate
-          bundle exec rake db:seed
-          bundle exec rspec spec/feature/event_spec.rb -fd
+    - uses: actions/checkout@v2
+    - name: Setup Node js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - run: npm ci
+    - run: npm run build --if-present
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+        ruby-version: 2.7.2
+    - uses: borales/actions-yarn@v2.3.0
+      with:
+        cmd: install
+    - name: Build
+      env:
+        DATABASE_URL: postgres://postgres:@localhost:5432/test
+        REDIS_URL: redis://localhost:6379/0
+        RAILS_ENV: test
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: password
+      run: | 
+        sudo apt-get -yqq install libpq-dev
+        bundle install --jobs 4 --retry 3
+        bundle exec rake db:create
+        bundle exec rake db:migrate
+        bundle exec rake db:seed
+        bundle exec rspec spec/feature/event_spec.rb -fd
