@@ -22,6 +22,12 @@ jobs:
         options: --entrypoint redis-server
 
     steps:
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
       - uses: actions/checkout@v1
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
@@ -31,7 +37,7 @@ jobs:
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install
-      - name: Build then test
+      - name: Build
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/test
           REDIS_URL: redis://localhost:6379/0
@@ -45,4 +51,3 @@ jobs:
           bundle exec rake db:create
           bundle exec rake db:migrate
           bundle exec rake db:seed
-          bundle exec rspec spec/feature/event_spec.rb -fd
