@@ -105,10 +105,19 @@ class UsersController < ApplicationController
 
   def edit
     @auth = User.find_by(email: current_userlogin.email)
+    if !@auth
+      redirect_to memberDashboard_path
+      return
+    end
     @user = User.find(params[:id])
   end
 
   def update
+    @auth = User.find_by(email: current_userlogin.email)
+    if !@auth
+      redirect_to memberDashboard_path
+      return
+    end
     @user = User.find(params[:id])
 
     if @user.update(user_params)
