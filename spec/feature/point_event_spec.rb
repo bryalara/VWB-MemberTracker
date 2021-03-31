@@ -164,8 +164,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			alert = wait.until { page.driver.browser.switch_to.alert }
 			alert.accept
 
-			visit event_index_path
-			expect(page).to_not have_content('Test Event')
+			expect(page).to have_content('Successfully deleted Test Event')
 		end
 
 		it 'succeeded in deleting three events' do
