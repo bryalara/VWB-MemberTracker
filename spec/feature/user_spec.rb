@@ -399,7 +399,9 @@ RSpec.describe 'Users', type: :feature do
 					approved: true
 				)
 				visit edit_user_path(id: user.id)
+				sleep(1)
 				fill_in 'user_email', with: 'UpdatingTest@tamu.edu'
+				sleep(1)
 				
 				click_on 'Update User'
 				sleep(1)
@@ -425,6 +427,7 @@ RSpec.describe 'Users', type: :feature do
 				visit edit_user_path(id: user.id)
 				fill_in 'user_email', with: ''
 				
+				sleep(1)
 				click_on 'Update User'
 				sleep(1)
 				
@@ -692,11 +695,14 @@ RSpec.describe 'Users', type: :feature do
 				visit edit_user_path(id: user.id)
 				
 				fill_in 'user_participationPoints', with: 15
+				sleep(1)
 				
 				click_on 'Update User'
+				sleep(1)
 				
 				visit users_path+'/'+user.id
 				
+				sleep(1)
 				expect(page).to have_content('15')
 			end
 	
