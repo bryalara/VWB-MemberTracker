@@ -1,17 +1,39 @@
 
 <%= render "layouts/navbar2", user: @auth %>
 
-<% msgs= flash[:notice].to_s.split('|', -1) %>
-<% msgs.each do |msg|%>
-  <p> <%=msg%> </p>
-<%end%>
-
-<%= flash[:notice]%>
 <style>
 .section {
     padding: 0px;
 }
+.notice {
+	border-radius: 5px;
+	padding: 10px;
+	background: #d8ecdb;
+	color: #295529;
+}
+.alert {
+	border-radius: 5px;
+	padding: 10px;
+	color: red;
+}
 </style>
+
+<div style="margin-top: 50px">
+<% flash.each do |type, msgs| %>
+  <div class="notice">
+  <% if Array === msgs %>
+    <ul>
+    <% msgs.each do |msg| %>
+      <li class=<%=msg[0..4].to_s.chomp == 'Error'.to_s.chomp ? :"alert" : :"notice"  %> ><%= msg %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <%= msgs %>
+  <% end %>
+  </div>
+<% end %>
+</div>
+
 <div class="header">
 <h2 class="active h2-title">Users</h2>
 </div>
@@ -22,17 +44,21 @@
 <button class="btn" style="padding-left: 0rem;"> <%= link_to "Create New User", new_user_path, class: "back-button" %> </button>
 <button class="btn" style="padding-left: 0rem;"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
 <button class="btn" style="padding-left: 0rem;"> <%= link_to "Approved Users", users_path, class: "back-button" %> </button>
+
+<%= form_with do |form| %>
+
 <table class="styled-table">
     <tr>
-        <th> First Name <%= link_to '⬛️', pendingApproval_path(:attr => 'first', :order => !@order) %></th>
-        <th> Last Name <%= link_to '⬛️', pendingApproval_path(:attr => 'last', :order => !@order) %></th>
+        <th> First Name <%= link_to (@attr == 'first' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pendingApproval_path(:attr => 'first', :order => @attr=='first' ? !@order : :false) %></th>
+        <th> Last Name <%= link_to (@attr == 'last' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pendingApproval_path(:attr => 'last', :order => @attr=='last' ? !@order : :false) %></th>
         <th> Email </th>
         <th> Phone Number </th>
-        <th> Classification <%= link_to '⬛️', pendingApproval_path(:attr => 'class', :order => !@order) %></th>
-        <th> Role <%= link_to '⬛️', pendingApproval_path(:attr => 'role', :order => !@order) %></th>
-        <th> T-Shirt <%= link_to '⬛️', pendingApproval_path(:attr => 'size', :order => !@order) %></th>
-        <th> Points <%= link_to '⬛️', pendingApproval_path(:attr => 'points', :order => !@order) %></th>
-        
+        <th> Classification <%= link_to (@attr == 'class' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pendingApproval_path(:attr => 'class', :order => @attr=='class' ? !@order : :false) %></th>
+        <th> Role <%= link_to (@attr == 'role' ? (@order== true ? :'🔽' : :'🔼') : :'⬜'), pendingApproval_path(:attr => 'role', :order => @attr=='role' ? !@order : :true) %></th>
+        <th> T-Shirt <%= link_to (@attr == 'size' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pendingApproval_path(:attr => 'size', :order => @attr=='size' ? !@order : :false) %></th>
+        <th> Points <%= link_to (@attr == 'points' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pendingApproval_path(:attr => 'points', :order => @attr=='points' ? !@order : :false) %></th>
+        <th> Action </th>
+        <th> Selection <%= link_to @selectAll ? :'☑️' : :'⬜', pendingApproval_path(:selectAll => !@selectAll, :attr => @attr, :order => @order) %></th>
     </tr>
 
 
@@ -47,11 +73,24 @@
         <td><%= user.tShirtSize  %> </td>
         <td><%=  user.get_total_points(user) %> </td>
         <td><%= link_to "View Details", user %> </td>
+        <td>
+            <%= form.check_box :users_ids, {multiple: true, checked: @selectAll}, user.id, nil  %>
+        </td>
     </tr>
 <% end %>
+    <%if @users.length == 0 %>
+        <tr >
+            <td colspan="10"> No users need approving </td>
+        <tr>
+    <%end%>
 
 </table>
-
+<div>
+    <%= form.submit "Approve Selected"%>
+    
+    <%= form.submit "Destroy Selected", name: 'delete', data: { confirm: "Are you sure?" }%>
+</div>
+<% end %>
 <% if userlogin_signed_in? %>
   <div>Signed in as: <%= current_userlogin.email %></div>
   <div><%=  @auth.role == 0 ? :"Member" : :"Admin"  %> </div>

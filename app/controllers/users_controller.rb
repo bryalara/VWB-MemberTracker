@@ -11,28 +11,39 @@ class UsersController < ApplicationController
 
     @order = params[:order] == 'true'
     @attr = params[:attr]
-    @attr ||= 'first'
-    ord = 'ASC'
-    ord = if @order == true
-            'ASC'
-          else
-            'DESC'
-          end
+    @attr ||= 'last'
+    ord = @order == true ? :'DESC' : :'ASC'
     @users = case @attr
              when 'first'
-               User.where(approved: true).order("\"users\".\"firstName\" #{ord}")
+               User.where(approved: true).order("UPPER(\"users\".\"firstName\") #{ord}")
              when 'last'
-               User.where(approved: true).order("\"users\".\"lastName\" #{ord}")
+               User.where(approved: true).order("UPPER(\"users\".\"lastName\") #{ord}")
              when 'role'
                User.where(approved: true).order("\"users\".\"role\" #{ord}")
              when 'class'
-               User.where(approved: true).order("\"users\".\"classification\" #{ord}")
+              #  User.where(approved: true).order("\"users\".\"classification\" #{ord}")
+              User.where(approved: true).order("CASE \"users\".\"classification\" 
+                                            WHEN 'Freshman'  THEN '0'
+                                            WHEN 'Sophomore' THEN '1'
+                                            WHEN 'Junior'    THEN '2'
+                                            WHEN 'Senior'    THEN '3'
+                                              END #{ord}")
              when 'size'
-               User.where(approved: true).order("\"users\".\"tShirtSize\" #{ord}")
+              User.where(approved: true).order("CASE \"users\".\"tShirtSize\" 
+                                            WHEN 'XXXS' THEN '0'
+                                            WHEN 'XXS'  THEN '1'
+                                            WHEN 'XS'   THEN '2'
+                                            WHEN 'S'    THEN '3'
+                                            WHEN 'M'    THEN '4'
+                                            WHEN 'L'    THEN '5'
+                                            WHEN 'XL'   THEN '6'
+                                            WHEN 'XXL'  THEN '7'
+                                            WHEN 'XXXL' THEN '8'
+                                              END #{ord}")
              when 'points'
                User.where(approved: true).order("\"users\".\"participationPoints\" #{ord}")
              else
-               User.where(approved: true).order('"users"."lastName" ASC')
+               User.where(approved: true).order('UPPER("users"."lastName") ASC')
              end
     @latestNew = User.order('created_at').last
     @latestUpdate = User.order('updated_at').last
@@ -51,10 +62,8 @@ class UsersController < ApplicationController
     wmsg = User.my_import(params[:file])
     if wmsg.length.positive?
       # flash[:notice] ||= []
-      
       wmsg.each do |msg|
         flash[:notice] ||=[]
-        puts(msg)
         flash[:notice] <<  msg.to_s
       end
       redirect_to users_path
@@ -124,6 +133,9 @@ class UsersController < ApplicationController
 
   def pendingApproval
     @auth = User.find_by(email: current_userlogin.email)
+    user_ids = params[:users_ids]
+    @selectAll = params[:selectAll] == 'true'
+  
     if !@auth
       redirect_to new_user_path
       return
@@ -132,32 +144,71 @@ class UsersController < ApplicationController
       return
     end
 
+    if request.post?
+      begin
+        if user_ids
+          actionUsers=User.where(:id => user_ids)
+
+          if params[:commit]
+            actionUsers.each do |user|
+              flash[:notice] ||=[]
+              if user.update(approved: true)
+                flash[:notice] << (user.firstName+' '+user.lastName+' has been approved')
+              else
+                flash[:alert] << (user.firstName+' '+user.lastName+' could not be approved')
+              end
+            end 
+
+          elsif params[:delete]
+            actionUsers.each do |user|
+              flash[:notice] ||=[]
+              if user.destroy
+                flash[:notice] << (user.firstName+' '+user.lastName+' has been removed')
+              else
+                flash[:alert] << (user.firstName+' '+user.lastName+' had an error while trying to be removed')
+              end
+            end
+          end
+        end
+        redirect_back(fallback_location: users_path)
+      end
+    end
+
     @order = params[:order] == 'true'
     @attr = params[:attr]
-    @attr ||= 'first'
-    ord = 'ASC'
-    ord = if @order == true
-            'ASC'
-          else
-            'DESC'
-          end
-    @users = case @attr
-             when 'first'
-               User.where(approved: false).order("\"users\".\"firstName\" #{ord}")
-             when 'last'
-               User.where(approved: false).order("\"users\".\"lastName\" #{ord}")
-             when 'role'
-               User.where(approved: false).order("\"users\".\"role\" #{ord}")
-             when 'class'
-               User.where(approved: false).order("\"users\".\"classification\" #{ord}")
-             when 'size'
-               User.where(approved: false).order("\"users\".\"tShirtSize\" #{ord}")
-             when 'points'
-               User.where(approved: false).order("\"users\".\"participationPoints\" #{ord}")
-             else
-               User.where(approved: false).order('"users"."lastName" ASC')
-             end
-
+    @attr ||= 'last'
+    ord = @order == true ? :'DESC' : :'ASC'
+    @users =case @attr
+            when 'first'
+              User.where(approved: false).order("UPPER(\"users\".\"firstName\") #{ord}")
+            when 'last'
+              User.where(approved: false).order("UPPER(\"users\".\"lastName\") #{ord}")
+            when 'role'
+              User.where(approved: false).order("\"users\".\"role\" #{ord}")
+            when 'class'
+            User.where(approved: false).order("CASE \"users\".\"classification\" 
+                                          WHEN 'Freshman'  THEN '0'
+                                          WHEN 'Sophomore' THEN '1'
+                                          WHEN 'Junior'    THEN '2'
+                                          WHEN 'Senior'    THEN '3'
+                                            END #{ord}")
+            when 'size'
+            User.where(approved: false).order("CASE \"users\".\"tShirtSize\" 
+                                          WHEN 'XXXS' THEN '0'
+                                          WHEN 'XXS'  THEN '1'
+                                          WHEN 'XS'   THEN '2'
+                                          WHEN 'S'    THEN '3'
+                                          WHEN 'M'    THEN '4'
+                                          WHEN 'L'    THEN '5'
+                                          WHEN 'XL'   THEN '6'
+                                          WHEN 'XXL'  THEN '7'
+                                          WHEN 'XXXL' THEN '8'
+                                            END #{ord}")
+            when 'points'
+              User.where(approved: false).order("\"users\".\"participationPoints\" #{ord}")
+            else
+              User.where(approved: false).order('UPPER("users"."lastName") ASC')
+            end
   end
 
   def memberDashboard

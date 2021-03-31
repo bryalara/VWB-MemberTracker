@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :home                   
 
 
-  get '/pendingApproval', to: 'users#pendingApproval'
+  match '/pendingApproval', to: 'users#pendingApproval', via: [:get, :post]
   get '/memberDashboard', to: 'users#memberDashboard'
   get 'user/registration', to: 'users#registration', as: :registration_user
   get '/import', to: 'users#my_import'
