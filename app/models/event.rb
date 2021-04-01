@@ -20,4 +20,16 @@ class Event < ApplicationRecord
 
     datetime.strftime('%Y/%m/%e %I:%M %p')
   end
+
+  def self.to_csv
+    attributes = %w{name description startDate endDate points}
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |event|
+        csv << attributes.map{ |attr| event.send(attr) }
+      end
+    end
+  end
 end

@@ -40,7 +40,17 @@ class UsersController < ApplicationController
     if @auth && (@auth.role == 1) && @auth.approved==true
       respond_to do |format|
         format.html
-        format.csv { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
+        format.csv do
+          #make it available to output 2 csv files
+          #{ send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
+          if (params[:format_data] == 'email')
+            #to_csv is to only output users' emails
+            send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv"
+          elsif (params[:format_data] == 'all')
+            #to_csv_backup is to output users' all
+            send_data @users.to_csv_backup, filename: "member-info-#{Date.today}.csv" 
+          end
+        end
       end
     end
   end

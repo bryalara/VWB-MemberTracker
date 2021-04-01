@@ -92,7 +92,9 @@
             <%= file_field_tag :file %>
             <%= submit_tag "Import CSV", class: "button" %>
         <% end %>
-        <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Email List", users_path+'.csv', class: "back-button" %> </button>
+        <%# make teo button to output 2 different kinds of CSV %>
+        <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Email List", users_path(request.parameters.merge({:format => :csv, format_data: "email"})), class: "back-button" %> </button>
+        <button class="btn " style="padding-left: 0rem;"> <%= link_to "backup all users\' information", users_path(request.parameters.merge({:format => :csv, format_data: "all"})), class: "back-button" %> </button>
     </div>
 </div>
 <% end %>

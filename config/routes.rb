@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/memberDashboard', to: 'users#memberDashboard'
   get 'user/registration', to: 'users#registration', as: :registration_user
   get '/import', to: 'users#my_import'
+  get 'event/csv', to: 'event#export_csv', as: :event_csv
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :point_event do
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
       delete '/user/:user_id/destroy' => 'point_event#destroy_user', :as => 'delete_user'
   	end
   end
+
 
   resources :event do
   	member do

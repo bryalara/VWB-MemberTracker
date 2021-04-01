@@ -64,6 +64,7 @@ class User < ApplicationRecord
     totalPoints
   end
 
+  #this is to output users' email lists
   def self.to_csv
     attributes = %w[email]
 
@@ -72,6 +73,20 @@ class User < ApplicationRecord
 
       all.find_each do |user|
         csv << attributes.map { |attr| user.send(attr) } if user.optInEmail == true
+      end
+    end
+  end
+
+  #this is to backup the users information
+  def self.to_csv_backup
+    #includes all the information a user had
+    attributes = %w[email role firstName lastName phoneNumber classification tShirtSize optInEmail approved participationPoints]
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.find_each do |user|
+        csv << attributes.map { |attr| user.send(attr) }
       end
     end
   end
