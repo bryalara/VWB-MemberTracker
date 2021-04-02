@@ -26,7 +26,7 @@ class EventController < ApplicationController
             send_data @events.to_csv, filename: "member-emails-#{Date.today}.csv"
           else
             #to_csv_backup is to output users' all info
-            send_data @events.to_csv, filename: "member-emails-#{Date.today}.csv"
+            send_data @events.to_csv_users, filename: "member-emails-#{Date.today}.csv"
           end
         end
       end
