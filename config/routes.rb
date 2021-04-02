@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'home/index'
   root to: 'home#index'            
   resources :home                   
+  resources :edithomepages                   
 
 
   get '/pendingApproval', to: 'users#pendingApproval'
