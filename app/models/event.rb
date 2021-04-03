@@ -5,9 +5,9 @@ class Event < ApplicationRecord
   validates :endDate, presence: true, unless: :endDateIsBigger?
   validates :points, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :name, presence: true
-  # validates :description, presence:true
 
-  has_and_belongs_to_many :users, -> { distinct }
+  has_many :event_attendees
+  has_many :users, :through => :event_attendees
 
   def endDateIsBigger?
     return if [endDate.blank?, startDate.blank?].any?

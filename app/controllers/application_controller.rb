@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  
 
   def admin_verify
     authenticate_userlogin!
@@ -19,7 +18,5 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
-      
 
 end

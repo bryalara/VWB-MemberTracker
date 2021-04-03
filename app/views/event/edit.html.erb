@@ -38,6 +38,7 @@
 			<th>First Name</th>
 			<th>Last Name</th>
 			<th>Email</th>
+			<th>Time Attended</th>
 			<th>Action</th>
 		</tr>
 
@@ -46,6 +47,7 @@
 			<td><%= user.firstName %></td>
 			<td><%= user.lastName %></td>
 			<td><%= user.email %></td>
+			<td><%= EventAttendee.find_by(user_id: user.id, event_id: @event.id).created_at %>
 			<td><%= link_to "Remove", delete_user_event_path(id: @event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the event again. Points that student received from this event will also dissappear!"} %></td>
 		</tr>
 		<% end %>

@@ -7,9 +7,14 @@ RSpec.describe PointEvent, :type => :model do
 							points: 2)
 	}
 	
-	it "has and belongs to many users" do
+	it "has many users" do
 		a = PointEvent.reflect_on_association(:users)
-		expect(a.macro).to eq(:has_and_belongs_to_many)
+		expect(a.macro).to eq(:has_many)
+	end
+
+	it "has many event_attendees" do
+		a = PointEvent.reflect_on_association(:point_event_attendees)
+		expect(a.macro).to eq(:has_many)
 	end
 
 	it "is valid with valid attributes" do
