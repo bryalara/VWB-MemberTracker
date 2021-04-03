@@ -41,4 +41,5 @@ Rails.application.routes.draw do
       delete '/user/:user_id/destroy' => 'event#destroy_user', :as => 'delete_user'
   	end
   end
+  post 'event/download_ics', to: "event#download_ics"
 end

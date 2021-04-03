@@ -217,6 +217,7 @@ RSpec.describe 'Events', type: :feature do
 			visit delete_event_path(id: event.id)
 			expect(page).to have_content('Test Event')
 			click_on 'delete-btn'
+			sleep(1)
 
 			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 			alert = wait.until { page.driver.browser.switch_to.alert }
@@ -250,6 +251,7 @@ RSpec.describe 'Events', type: :feature do
 			visit delete_event_path(id: event2.id)
 			expect(page).to have_content('Test Event 2')
 			click_on 'delete-btn'
+			sleep(1)
 
 			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 			alert1 = wait.until { page.driver.browser.switch_to.alert }
@@ -262,6 +264,8 @@ RSpec.describe 'Events', type: :feature do
 			visit delete_event_path(id: event1.id)
 			expect(page).to have_content('Test Event 1')
 			click_on 'delete-btn'
+			sleep(1)
+
 			alert2 = wait.until { page.driver.browser.switch_to.alert }
 			alert2.accept
 
@@ -272,6 +276,8 @@ RSpec.describe 'Events', type: :feature do
 			visit delete_event_path(id: event3.id)
 			expect(page).to have_content('Test Event 3')
 			click_on 'delete-btn'
+			sleep(1)
+
 			alert3 = wait.until { page.driver.browser.switch_to.alert }
 			alert3.accept
 
@@ -298,14 +304,61 @@ RSpec.describe 'Events', type: :feature do
 
 			visit edit_event_path(event)
 			expect(page).to have_content('bryalara@tamu.edu')
+			expect(page).to have_content('Remove')
 
 			click_on 'Remove'
+			sleep(1)
 
 			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 			alert = wait.until { page.driver.browser.switch_to.alert }
 			alert.accept
 
+			expect(page).to have_content("Users that have attended")
 			expect(page).to_not have_content('bryalara@tamu.edu')
+		end
+	end
+
+	describe "When viewing events on the calendar" do
+		it "an event from this month is visible" do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.hour)
+
+			visit event_index_path
+			expect(page).to have_content(event.startDate.strftime("%B %Y"))
+			expect(page).to have_content(event.startDate.strftime("%Y-%m-%d"))
+
+			within first(".simple-calendar") do
+				click_on 'Test Event'
+			end
+
+			expect(page).to have_content("Test Event")
+		end
+
+		it "an event from the next month is visible" do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now + 1.month,
+						endDate: DateTime.now + 1.month + 1.hour)
+
+			visit event_index_path
+
+			lastMonthDate = DateTime.now
+			expect(page).to have_content(lastMonthDate.strftime("%B %Y"))
+
+			click_on 'Next'
+
+			expect(page).to have_content(event.startDate.strftime("%B %Y"))
+			expect(page).to have_content(event.startDate.strftime("%Y-%m-%d"))
+
+			within first(".simple-calendar") do
+				click_on 'Test Event'
+			end
+
+			expect(page).to have_content("Test Event")
 		end
 	end
 end

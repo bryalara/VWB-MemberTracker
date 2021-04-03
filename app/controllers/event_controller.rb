@@ -70,6 +70,7 @@ class EventController < ApplicationController
     redirect_to event_index_path
   end
 
+  # Creates @qrCode which can be used to display a qr code to attend an event.
   def qr
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to memberDashboard_path if !@auth 
@@ -77,6 +78,7 @@ class EventController < ApplicationController
     @qrCode = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_event_path(@event))
   end
 
+  # Page for user to attend an event. If the client does a POST, it will try to add the user to the event.
   def attend
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to memberDashboard_path if !@auth
@@ -102,7 +104,7 @@ class EventController < ApplicationController
     end
   end
 
-  # removes user from an event attended
+  # Removes the user from an event they attended.
   def destroy_user
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
@@ -117,8 +119,24 @@ class EventController < ApplicationController
     redirect_to edit_event_path(@event)
   end
 
-  private
+  # Creates an ics file from events created.
+  def download_ics
+		@events = Event.all
+		cal = Icalendar::Calendar.new
 
+		@events.each do |e|
+			event = Icalendar::Event.new
+			event.dtstart = e.startDate
+			event.dtend = e.endDate
+			event.summary = e.name
+			event.description = e.description
+			cal.add_event(event)
+		end
+
+		send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: "VWB Calendar.ics"
+	end
+
+  private
   def eventParams
     params.require(:event).permit(:points, :name, :description, :startDate, :endDate)
   end

@@ -228,12 +228,16 @@ RSpec.describe 'PointEvents', type: :feature do
 
 			visit edit_point_event_path(event)
 			expect(page).to have_content('bryalara@tamu.edu')
+			expect(page).to have_content('Remove')
 
 			click_on 'Remove'
+			sleep(1)
+			
 			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 			alert = wait.until { page.driver.browser.switch_to.alert }
 			alert.accept
 
+			expect(page).to have_content("Users that have attended")
 			expect(page).to_not have_content('bryalara@tamu.edu')
 		end
 	end

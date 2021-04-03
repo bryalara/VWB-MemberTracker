@@ -52,3 +52,6 @@ th, td, tr {
 </div>
 
 <%= render template: 'point_event/index' %>
+
+<%= render template: 'layouts/events' %>
+<%= link_to "Download .ics", event_download_ics_path, method: :post %>
