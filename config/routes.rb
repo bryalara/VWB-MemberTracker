@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'officers/index'
+  get 'officers/show'
+  get 'officers/new'
+  get 'officers/edit'
   # root "pages#show", page: "home"   # --- SNN
   
   resources :users do
@@ -14,7 +18,7 @@ Rails.application.routes.draw do
   get 'home/index'
   root to: 'home#index'            
   resources :home                   
-
+  resources :officers
 
   get '/pendingApproval', to: 'users#pendingApproval'
   get '/memberDashboard', to: 'users#memberDashboard'

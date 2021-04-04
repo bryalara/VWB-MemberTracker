@@ -18,3 +18,9 @@ Edithomepage.create(name: 'officer_image_url', description: 'This is the the off
 Edithomepage.create(name: 'landing_page_image_url', description: 'This is the landing page image url description')
 Edithomepage.create(name: 'events_info', description: 'This is the events info description')
 
+Officer.create( name: "name1 ",email: "name1@gmail.com ", photoUrl: "photoUrl1.com "  , description: "description 1 ")
+Officer.create( name: "name2 ",email: "name2@gmail.com ", photoUrl: "photoUrl2.com "  , description: "description 2 ")
+Officer.create( name: "name3 ",email: "name3@gmail.com ", photoUrl: "photoUrl3.com "  , description: "description 3 ")
+Officer.create( name: "name4 ",email: "name4@gmail.com ", photoUrl: "photoUrl4.com "  , description: "description 4 ")
+
+

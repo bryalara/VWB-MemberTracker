@@ -1,0 +1,15 @@
+<h3>Create a Dog</h3>
+<%= form_with model: @officer do |form| %>
+  <%= form.text_field :name, placeholder: "name" %>
+  <%= form.text_field :email , placeholder: "email " %>
+  <%= form.text_field :photoUrl  , placeholder: "photoUrl  " %>
+  <%= form.text_field :description  , placeholder: "description  " %>
+
+  <%= form.submit %>
+<% end %>
+
+<!-- <%= form_for @dog do |form| %>
+  <%= form.text_field :name, placeholder: 'name' %>
+  <%= form.text_field :motto, placeholder: 'motto' %>
+  <%= form.submit %>
+<% end %> -->
