@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   
   get 'home/index'
-  root to: 'home#index'            
+  root to: 'home#index'      
   resources :home
   resources :edithomepages
+
 
   match '/pendingApproval', to: 'users#pending_approval', via: [:get, :post], as: :pending_approval
   get '/memberDashboard', to: 'users#member_dashboard', as: :member_dashboard
