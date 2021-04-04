@@ -17,39 +17,77 @@ th, td, tr {
 	</div>
 <% end %>
 
-<div class="header">
-<button class="btn back-btn" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
-</div>
-<div class="header2">
-<h2 class="active h2-title">Events</h2>
-</div>
-<div class="align-table">
-<button class="btn btn-decor" style="padding-left: 0rem;"> <%= link_to "Add an Event", new_event_path(@events), class:"back-button" %></button>
-<table class="styled-table" >
-	<tr>
-		<th>Event</th>
-		<th>Description</th>
-		<th>Points</th>
-		<th>Start Time</th>
-		<th>End Time</th>
-		<th colspan="4">Actions</th>
-	</tr>
+<% if admin? %>
+<%# Admin's View %>
+	<div class="header">
+		<button class="btn back-btn" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
+	</div>
+	<div class="header2">
+		<h2 class="active h2-title">Events</h2>
+	</div>
+	<div class="align-table">
+		<button class="btn btn-decor" style="padding-left: 0rem;"> <%= link_to "Add an Event", new_event_path(@events), class:"back-button" %></button>
+		<table class="styled-table" >
+			<tr>
+				<th>Event</th>
+				<th>Description</th>
+				<th>Points</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+				<th>Capacity</th>
+				<th colspan="5">Actions</th>
+			</tr>
 
-	<% @events.each do |event| %>
-	<tr>
-		<td><%= event.name %></td>
-		<td><%= event.description %></td>
-		<td><%= event.points %></td>
-		<td><%= Event.date_time_display(event.startDate) %></td>
-		<td><%= Event.date_time_display(event.endDate) %></td>
-		<td><%= link_to "Show", event_path(event) %></td>
-		<td><%= link_to "Edit", edit_event_path(event) %></td>
-		<td><%= link_to "Delete", delete_event_path(event) %></td>
-		<td><%= link_to "QR", qr_event_path(event) %></td>
-	</tr>
-	<% end %>
-</table>
-</div>
+			<% @events.each do |event| %>
+			<tr>
+				<td><%= event.name %></td>
+				<td><%= event.description %></td>
+				<td><%= event.points %></td>
+				<td><%= Event.display_date_time(event.startDate) %></td>
+				<td><%= Event.display_date_time(event.endDate) %></td>
+				<td><%= Event.display_capacity(event) %></td>
+				<td><%= link_to "Show", event_path(event) %></td>
+				<td><%= link_to "Edit", edit_event_path(event) %></td>
+				<td><%= link_to "Delete", delete_event_path(event) %></td>
+				<td><%= link_to "QR", qr_event_path(event) %></td>
+				<td><%= link_to "Sign up", sign_up_event_path(event) %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+<% else %>
+<%# Member's View %>
+	<div class="header2">
+		<h2 class="active h2-title">Events</h2>
+	</div>
+	<div class="align-table">
+		<button class="btn btn-decor" style="padding-left: 0rem;"> <%= link_to "Add an Event", new_event_path(@events), class:"back-button" %></button>
+		<table class="styled-table">
+			<tr>
+				<th>Event</th>
+				<th>Description</th>
+				<th>Points</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+				<th>Capacity</th>
+				<th colspan="2">Actions</th>
+			</tr>
+
+			<% @events.each do |event| %>
+			<tr>
+				<td><%= event.name %></td>
+				<td><%= event.description %></td>
+				<td><%= event.points %></td>
+				<td><%= Event.display_date_time(event.startDate) %></td>
+				<td><%= Event.display_date_time(event.endDate) %></td>
+				<td><%= Event.display_capacity(event) %></td>
+				<td><%= link_to "Show", event_path(event) %></td>
+				<td><%= link_to "Sign up", sign_up_event_path(event) %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+<% end %>
 
 <%= render template: 'point_event/index' %>
 

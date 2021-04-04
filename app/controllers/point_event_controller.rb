@@ -77,23 +77,22 @@ class PointEventController < ApplicationController
   end
 
   def attend
+    @auth = User.find_by(email: current_userlogin.email)
+    redirect_to memberDashboard_path unless @auth
     @point_event = PointEvent.find(params[:id])
     @user = User.where(email: current_userlogin.email).first
 
     return unless request.post?
 
-    begin
-      if @user.approved == true
-        @point_event.users << @user
-        flash[:notice] = "Successfully attended #{@point_event.name}!"
-      else
-        flash[:notice] =
-          "Could not attend the points event because #{@user.email} has not been approved by an administrator."
-        redirect_to attend_point_event_path(@point_event)
-      end
-    rescue ActiveRecord::RecordNotUnique
-      flash[:notice] = "You have already attended #{@point_event.name}!"
+    attendance = PointEventAttendee.find_by(user_id: @user.id, event_id: @point_event.id)
+    if attendance
+      attendance.attended = true
+      attendance.save
+      flash[:notice] = "Successfully attended #{@point_event.name}!"
+    else
+      flash[:notice] = "Could not attend #{@point_event.name} because you did not sign up for the engagement."
       redirect_to attend_point_event_path(@point_event)
+      nil
     end
   end
 
@@ -109,9 +108,32 @@ class PointEventController < ApplicationController
     redirect_to edit_point_event_path(@point_event)
   end
 
+  def sign_up
+    @auth = User.find_by(email: current_userlogin.email)
+    redirect_to memberDashboard_path unless @auth
+    @point_event = PointEvent.find(params[:id])
+    @user = User.where(email: current_userlogin.email).first
+
+    return unless request.post?
+
+    begin
+      if @user
+        @point_event.users << @user
+        flash[:notice] = "Successfully signed up for #{@point_event.name}!"
+      end
+    rescue ActiveRecord::RecordNotUnique
+      flash[:notice] = "You have already signed up for #{@point_event.name}!"
+      redirect_to sign_up_point_event_path(@point_event)
+      nil
+    rescue NoMethodError
+      flash[:alert] = "Cannot signup for #{@point_event.name}! The engagement has reached its capacity."
+      redirect_to sign_up_point_event_path(@point_event)
+    end
+  end
+
   private
 
   def point_event_params
-    params.require(:point_event).permit(:points, :name, :description)
+    params.require(:point_event).permit(:points, :name, :description, :capacity)
   end
 end

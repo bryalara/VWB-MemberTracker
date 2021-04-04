@@ -2,17 +2,15 @@
 
 class EventController < ApplicationController
   protect_from_forgery with: :exception
-  before_action :authenticate_userlogin! && :admin_verify, except: %i[create registration]
+  before_action :authenticate_userlogin!
   def index
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @events = Event.all
     @point_events = PointEvent.all
   end
 
   def show
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
   end
 
@@ -78,7 +76,8 @@ class EventController < ApplicationController
     @qr_code = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_event_path(@event))
   end
 
-  # Page for user to attend an event. If the client does a POST, it will try to add the user to the event.
+  # Page for user to attend an event if they have already signed up for it. If the client does a POST, it will set the
+  # user attended attribute in the event_attendee to true.
   def attend
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to memberDashboard_path unless @auth
@@ -87,18 +86,13 @@ class EventController < ApplicationController
 
     return unless request.post?
 
-    begin
-      if @user.approved == true
-        @event.users << @user
-        flash[:notice] = "Successfully attended #{@event.name}!"
-      else
-        flash[:notice] =
-          "Could not attend the event because #{@user.email} has not been approved by an administrator."
-        redirect_to attend_event_path(@event)
-        nil
-      end
-    rescue ActiveRecord::RecordNotUnique
-      flash[:notice] = "You have already attended #{@event.name}!"
+    attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
+    if attendance
+      attendance.attended = true
+      attendance.save
+      flash[:notice] = "Successfully attended #{@event.name}!"
+    else
+      flash[:notice] = "Could not attend #{@event.name} because you did not sign up for the event."
       redirect_to attend_event_path(@event)
       nil
     end
@@ -136,9 +130,32 @@ class EventController < ApplicationController
     send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: 'VWB Calendar.ics'
   end
 
-  private
+  # Allows users to sign up by putting them in the event_attendee join table.
+  def sign_up
+    @auth = User.find_by(email: current_userlogin.email)
+    redirect_to memberDashboard_path unless @auth
+    @event = Event.find(params[:id])
+    @user = User.where(email: current_userlogin.email).first
 
+    return unless request.post?
+
+    begin
+      if @user
+        @event.users << @user
+        flash[:notice] = "Successfully signed up for #{@event.name}!"
+      end
+    rescue ActiveRecord::RecordNotUnique
+      flash[:notice] = "You have already signed up for #{@event.name}!"
+      redirect_to sign_up_event_path(@event)
+      nil
+    rescue NoMethodError
+      flash[:alert] = "Cannot signup for #{@event.name}! The event has reached its capacity."
+      redirect_to sign_up_event_path(@event)
+    end
+  end
+
+  private
   def event_params
-    params.require(:event).permit(:points, :name, :description, :startDate, :endDate)
+    params.require(:event).permit(:points, :name, :description, :startDate, :endDate, :capacity)
   end
 end

@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+
+  helper_method :admin?
+
   def admin_verify
     authenticate_userlogin!
     unless User.exists?(email: current_userlogin.email)
@@ -12,5 +15,10 @@ class ApplicationController < ActionController::Base
 
   def check_user
     User.find_by(email: current_userlogin.email) if userlogin_signed_in? && User.exists?(email: current_userlogin.email)
+  end
+
+  def admin?
+    user = User.find_by(email: current_userlogin.email) if userlogin_signed_in? && User.exists?(email: current_userlogin.email)
+    return user.role == User::role_types["Admin"]
   end
 end

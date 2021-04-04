@@ -1,8 +1,8 @@
 <%= render "layouts/navbar2", user: @user %>
-<div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button></div>
+<div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events / Engagements", event_index_path, class:"back-button" %> </button></div>
 <div class="wrapper fadeInDown">
 	<div id="formContent">
-		<h2 class="active">Edit a Points Event</h2>
+		<h2 class="active">Edit an Engagement</h2>
 
 		<p>* denotes required fields.<p>
 		<%= form_with :method => :PATCH, url:"/point_event/#{@point_event.id}", model: @point_event do |form| %>
@@ -19,19 +19,24 @@
 					<th><%= form.label :points %>*</th>
 					<td><%= form.number_field :points %></td>
 				</tr>
+				<tr>
+					<th>Capacity*</th>
+					<td><%= form.number_field :capacity %></td>
+				</tr>
 			</table>
 
-			<%= form.submit "Save Changes to Points Event" %>
-
+			<%= form.submit "Save Changes to Engagement" %>
 		<% end %>
 	</div>
 
-	<h1>Users that have attended</h1>
+	<h1>Users that planned to attend</h1>
 	<table>
 		<tr>
 			<th>First Name</th>
 			<th>Last Name</th>
 			<th>Email</th>
+			<th>Time Signed Up</th>
+			<th>Time Attended</th>
 			<th>Action</th>
 		</tr>
 
@@ -40,6 +45,11 @@
 			<td><%= user.firstName %></td>
 			<td><%= user.lastName %></td>
 			<td><%= user.email %></td>
+
+			<% attendance = PointEventAttendee.find_by(user_id: user.id, point_event_id: @point_event.id) %>
+			<td><%= attendance.created_at %>
+			<td><%= attendance.created_at != attendance.updated_at ? attendance.updated_at : "N/A" %>
+
 			<td><%= link_to "Remove", delete_user_point_event_path(id: @point_event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the points event again. Points that student received from this points event will also dissappear!"} %></td>
 		</tr>
 		<% end %>

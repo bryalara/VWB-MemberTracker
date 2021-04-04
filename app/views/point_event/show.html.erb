@@ -1,19 +1,21 @@
 <%= render "layouts/navbar2", user: @user %>
 <div class="header">
-<h2 class="active h2-title">Event Details</h2>
+<h2 class="active h2-title">Engagement Details</h2>
 </div>
 
 <button class="btn align-center" style="margin-right: 20px;"> 
-<%= link_to "Back to Events", event_index_path, class:"back-button" %> 
+<%= link_to "Back to Events / Engagements", event_index_path, class:"back-button" %> 
 </button>
 <%= render "form", pointEvent: @point_event %>
 
-<h1>Users that have attended</h1>
+<h1>Users that planned to attend</h1>
 <table>
 	<tr>
 		<th>First Name</th>
 		<th>Last Name</th>
 		<th>Email</th>
+		<th>Time Signed Up</th>
+		<th>Time Attended</th>
 	</tr>
 
 	<% @point_event.users.each do |user| %>
@@ -21,7 +23,10 @@
 		<td><%= user.firstName %></td>
 		<td><%= user.lastName %></td>
 		<td><%= user.email %></td>
-		<td><%= PointEventAttendee.find_by(user_id: user.id, point_event_id: @point_event.id) %>
+
+		<% attendance = PointEventAttendee.find_by(user_id: user.id, point_event_id: @point_event.id) %>
+		<td><%= attendance.created_at %>
+		<td><%= attendance.created_at != attendance.updated_at ? attendance.updated_at : "N/A" %>
 	</tr>
 	<% end %>
 </table>

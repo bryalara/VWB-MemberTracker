@@ -1,6 +1,6 @@
 <table style="margin-left: auto; margin-right: auto; width: 60%; height: 50%;" class="styled-table" >
 	<tr>
-		<th>Event</th>
+		<th>Engagement</th>
 		<td><%= @point_event.name %></td>
 	</tr>
 	<tr>
@@ -10,5 +10,9 @@
 	<tr>
 		<th>Points awarding</th>
 		<td><%= @point_event.points %></td>
+	</tr>
+	<tr>
+		<th>Capacity</th>
+		<td><%= PointEvent.display_capacity(@point_event) %></td>
 	</tr>
 </table>

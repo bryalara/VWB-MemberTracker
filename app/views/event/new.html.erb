@@ -1,5 +1,5 @@
 <%= render "layouts/navbar2", user: @user %>
-<div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
+<div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events / Engagements", event_index_path, class:"back-button" %> </button>
 </div>
 <div class="wrapper fadeInDown">
 <div id="formContent">
@@ -28,10 +28,12 @@
 			<th>End Time*</th>
 			<td><%= form.datetime_field :endDate, required: true %></td>
 		</tr>
+		<tr>
+			<th>Capacity*</th>
+			<td><%= form.number_field :capacity, required: true %></td>
+		</tr>
 	</table>
-
 	<%= form.submit "Add Event" %>
-
 <% end %>
 
 </div>
