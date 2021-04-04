@@ -451,12 +451,12 @@ RSpec.describe 'Users', type: :feature do
 				)
 				visit edit_user_path(id: user.id)
 				fill_in 'user_firstName', with: 'UpdatingTestFirst'
-				
-				click_on 'Update User'
 				sleep(1)
+				click_on 'Update User'
+				sleep(2)
 				
 				visit users_path
-				sleep(1)
+				sleep(2)
 				expect(page).to have_content('UpdatingTestFirst')
 			end
 	
