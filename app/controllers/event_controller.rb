@@ -5,26 +5,26 @@ class EventController < ApplicationController
   before_action :authenticate_userlogin! && :admin_verify, except: %i[create registration]
   def index
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @events = Event.all
     @pointEvents = PointEvent.all
   end
 
   def show
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
   end
 
   def new
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.new
   end
 
   def create
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.new(eventParams)
 
     if @event.save
@@ -37,13 +37,13 @@ class EventController < ApplicationController
 
   def edit
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth
+    redirect_to member_dashboard_path if !@auth
     @event = Event.find(params[:id])
   end
 
   def update
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth
+    redirect_to member_dashboard_path if !@auth
     @event = Event.find(params[:id])
 
     if @event.update(eventParams)
@@ -56,13 +56,13 @@ class EventController < ApplicationController
 
   def delete
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
   end
 
   def destroy
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
     @event.destroy
 
@@ -72,14 +72,14 @@ class EventController < ApplicationController
 
   def qr
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth 
+    redirect_to member_dashboard_path if !@auth 
     @event = Event.find(params[:id])
     @qrCode = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_event_path(@event))
   end
 
   def attend
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth
+    redirect_to member_dashboard_path if !@auth
     @event = Event.find(params[:id])
     @user = User.where(email: current_userlogin.email).first
 
@@ -105,7 +105,7 @@ class EventController < ApplicationController
   # removes user from an event attended
   def destroy_user
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
     @user = User.find(params[:user_id])
 
