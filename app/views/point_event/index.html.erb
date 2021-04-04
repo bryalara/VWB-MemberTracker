@@ -16,7 +16,7 @@ th, td, tr {
 <h2 class="active h2-title">Points Events</h2>
 </div>
 <div class="align-table" >
-<button class="btn btn-decor" style="padding-left: 0rem;" > <%= link_to "Add a Points Event", new_point_event_path(@pointEvents), class:"back-button" %></button>
+<button class="btn btn-decor" style="padding-left: 0rem;" > <%= link_to "Add a Points Event", new_point_event_path(@point_events), class:"back-button" %></button>
 <table class="styled-table" >
 	<tr>
 		<th>Event</th>
@@ -26,7 +26,7 @@ th, td, tr {
 		<th colspan="4">Actions</th>
 	</tr>
 
-	<% @pointEvents.each do |pointEvent| %>
+	<% @point_events.each do |pointEvent| %>
 	<tr>
 		<td><%= pointEvent.name %></td>
 		<td><%= pointEvent.description %></td>

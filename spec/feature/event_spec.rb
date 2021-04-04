@@ -116,8 +116,8 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('Test Event')
 			expect(page).to have_content('Test Description')
 			expect(page).to have_content('5')
-			expect(page).to have_content(Event.dateTimeDisplay(event.startDate))
-			expect(page).to have_content(Event.dateTimeDisplay(event.endDate))
+			expect(page).to have_content(Event.date_time_display(event.startDate))
+			expect(page).to have_content(Event.date_time_display(event.endDate))
 		end
 	end
 
@@ -216,6 +216,7 @@ RSpec.describe 'Events', type: :feature do
 
 			visit delete_event_path(id: event.id)
 			expect(page).to have_content('Test Event')
+			sleep(1)
 			click_on 'delete-btn'
 			sleep(1)
 
@@ -250,6 +251,7 @@ RSpec.describe 'Events', type: :feature do
 
 			visit delete_event_path(id: event2.id)
 			expect(page).to have_content('Test Event 2')
+			sleep(1)
 			click_on 'delete-btn'
 			sleep(1)
 
@@ -263,6 +265,7 @@ RSpec.describe 'Events', type: :feature do
 
 			visit delete_event_path(id: event1.id)
 			expect(page).to have_content('Test Event 1')
+			sleep(1)
 			click_on 'delete-btn'
 			sleep(1)
 
@@ -275,6 +278,7 @@ RSpec.describe 'Events', type: :feature do
 
 			visit delete_event_path(id: event3.id)
 			expect(page).to have_content('Test Event 3')
+			sleep(1)
 			click_on 'delete-btn'
 			sleep(1)
 
@@ -306,6 +310,7 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('bryalara@tamu.edu')
 			expect(page).to have_content('Remove')
 
+			sleep(1)
 			click_on 'Remove'
 			sleep(1)
 

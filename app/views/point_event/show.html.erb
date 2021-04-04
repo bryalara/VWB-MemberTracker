@@ -6,7 +6,7 @@
 <button class="btn align-center" style="margin-right: 20px;"> 
 <%= link_to "Back to Events", event_index_path, class:"back-button" %> 
 </button>
-<%= render "form", pointEvent: @pointEvent %>
+<%= render "form", pointEvent: @point_event %>
 
 <h1>Users that have attended</h1>
 <table>
@@ -16,12 +16,12 @@
 		<th>Email</th>
 	</tr>
 
-	<% @pointEvent.users.each do |user| %>
+	<% @point_event.users.each do |user| %>
 	<tr>
 		<td><%= user.firstName %></td>
 		<td><%= user.lastName %></td>
 		<td><%= user.email %></td>
-		<td><%= PointEventAttendee.find_by(user_id: user.id, point_event_id: @pointEvent.id) %>
+		<td><%= PointEventAttendee.find_by(user_id: user.id, point_event_id: @point_event.id) %>
 	</tr>
 	<% end %>
 </table>

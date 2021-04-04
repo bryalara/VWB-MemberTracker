@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @latestNew = User.order('created_at').last
     @latestUpdate = User.order('updated_at').last
 
-    if @auth && (@auth.role == 1) && @auth.approved==true
+    if @auth && (@auth.role == 1) && @auth.approved == true
       respond_to do |format|
         format.html
         format.csv { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
@@ -51,11 +51,11 @@ class UsersController < ApplicationController
     wmsg = User.my_import(params[:file])
     if wmsg.length.positive?
       # flash[:notice] ||= []
-      
+
       wmsg.each do |msg|
-        flash[:notice] ||=[]
+        flash[:notice] ||= []
         puts(msg)
-        flash[:notice] <<  msg.to_s
+        flash[:notice] << msg.to_s
       end
       redirect_to users_path
     else
@@ -157,7 +157,6 @@ class UsersController < ApplicationController
              else
                User.where(approved: false).order('"users"."lastName" ASC')
              end
-
   end
 
   def memberDashboard

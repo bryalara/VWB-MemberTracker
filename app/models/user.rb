@@ -54,14 +54,14 @@ class User < ApplicationRecord
   end
 
   def get_total_points(user)
-    totalPoints = user.participationPoints # initial points user has
+    total_points = user.participationPoints # initial points user has
     user.events.each do |event|
-      totalPoints += event.points         # points from events attended
+      total_points += event.points # points from events attended
     end
-    user.point_events.each do |pEvent|
-      totalPoints += pEvent.points        # points from points attended
+    user.point_events.each do |p_event|
+      total_points += p_event.points        # points from points attended
     end
-    totalPoints
+    total_points
   end
 
   def self.to_csv
@@ -80,17 +80,17 @@ class User < ApplicationRecord
   validates :role, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 2 }
   validates :firstName, presence: true
   validates :lastName, presence: true
-  validates :phoneNumber, presence: true, length: { is: 10 }, numericality: { only_integer: true, greater_than_or_equal_to: 0  }
+  validates :phoneNumber, presence: true, length: { is: 10 },
+                          numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :classification, presence: true
   validates :tShirtSize, presence: true
   validates :optInEmail, inclusion: { in: [true, false] }
   validates :approved, inclusion: { in: [true, false] }
   validates :participationPoints, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  
 
-  has_many :event_attendees
-  has_many :events, :through => :event_attendees
-  
-  has_many :point_event_attendees
-  has_many :point_events, :through => :point_event_attendees
+  has_many :event_attendees, dependent: :destroy
+  has_many :events, through: :event_attendees
+
+  has_many :point_event_attendees, dependent: :destroy
+  has_many :point_events, through: :point_event_attendees
 end

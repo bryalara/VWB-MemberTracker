@@ -49,10 +49,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rqrcode'
 
 # Used to generate a styled calendar view
-gem "simple_calendar", "~> 2.4"
+gem 'simple_calendar', '~> 2.4'
 
 # Used to generate and download .ics files
-gem "icalendar"
+gem 'icalendar'
 
 group :development, :test do
   # The RSpec testing framework

@@ -7,7 +7,7 @@ class EventController < ApplicationController
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @events = Event.all
-    @pointEvents = PointEvent.all
+    @point_events = PointEvent.all
   end
 
   def show
@@ -25,7 +25,7 @@ class EventController < ApplicationController
   def create
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
-    @event = Event.new(eventParams)
+    @event = Event.new(event_params)
 
     if @event.save
       flash[:notice] = "Successfully created #{@event.name}."
@@ -37,16 +37,16 @@ class EventController < ApplicationController
 
   def edit
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth
+    redirect_to memberDashboard_path unless @auth
     @event = Event.find(params[:id])
   end
 
   def update
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth
+    redirect_to memberDashboard_path unless @auth
     @event = Event.find(params[:id])
 
-    if @event.update(eventParams)
+    if @event.update(event_params)
       flash[:notice] = "Successfully edited #{@event.name}."
       redirect_to @event
     else
@@ -70,37 +70,37 @@ class EventController < ApplicationController
     redirect_to event_index_path
   end
 
-  # Creates @qrCode which can be used to display a qr code to attend an event.
+  # Creates @qr_code which can be used to display a qr code to attend an event.
   def qr
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth 
+    redirect_to memberDashboard_path unless @auth
     @event = Event.find(params[:id])
-    @qrCode = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_event_path(@event))
+    @qr_code = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_event_path(@event))
   end
 
   # Page for user to attend an event. If the client does a POST, it will try to add the user to the event.
   def attend
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth
+    redirect_to memberDashboard_path unless @auth
     @event = Event.find(params[:id])
     @user = User.where(email: current_userlogin.email).first
 
-    if request.post?
-      begin
-        if @user.approved == true
-          @event.users << @user
-          flash[:notice] = "Successfully attended #{@event.name}!"
-        else
-          flash[:notice] =
-            "Could not attend the event because #{@user.email} has not been approved by an administrator."
-          redirect_to attend_event_path(@event)
-          nil
-        end
-      rescue ActiveRecord::RecordNotUnique
-        flash[:notice] = "You have already attended #{@event.name}!"
+    return unless request.post?
+
+    begin
+      if @user.approved == true
+        @event.users << @user
+        flash[:notice] = "Successfully attended #{@event.name}!"
+      else
+        flash[:notice] =
+          "Could not attend the event because #{@user.email} has not been approved by an administrator."
         redirect_to attend_event_path(@event)
         nil
       end
+    rescue ActiveRecord::RecordNotUnique
+      flash[:notice] = "You have already attended #{@event.name}!"
+      redirect_to attend_event_path(@event)
+      nil
     end
   end
 
@@ -121,23 +121,24 @@ class EventController < ApplicationController
 
   # Creates an ics file from events created.
   def download_ics
-		@events = Event.all
-		cal = Icalendar::Calendar.new
+    @events = Event.all
+    cal = Icalendar::Calendar.new
 
-		@events.each do |e|
-			event = Icalendar::Event.new
-			event.dtstart = e.startDate
-			event.dtend = e.endDate
-			event.summary = e.name
-			event.description = e.description
-			cal.add_event(event)
-		end
+    @events.each do |e|
+      event = Icalendar::Event.new
+      event.dtstart = e.startDate
+      event.dtend = e.endDate
+      event.summary = e.name
+      event.description = e.description
+      cal.add_event(event)
+    end
 
-		send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: "VWB Calendar.ics"
-	end
+    send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: 'VWB Calendar.ics'
+  end
 
   private
-  def eventParams
+
+  def event_params
     params.require(:event).permit(:points, :name, :description, :startDate, :endDate)
   end
 end
