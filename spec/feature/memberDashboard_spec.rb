@@ -115,9 +115,9 @@ RSpec.describe 'MemberDashboard', type: :feature do
 						visit attend_event_path(:id => eventId)
 						
 						click_link 'attend'
-						
+						sleep(1)
 						visit member_dashboard_path
-						
+						sleep(1)
 						expect(page).to have_content('Hello, John Doe')
 						expect(page).to have_content('Current points: 5')
 					end
@@ -133,16 +133,16 @@ RSpec.describe 'MemberDashboard', type: :feature do
 							expectedPoints+= event.points
 						end
 						visit member_dashboard_path
-						
+						sleep(1)
 						expect(page).to have_content('Hello, John Doe')
 						expect(page).to have_content('Events (5):')
 						expect(page).to have_content('Current points: '+expectedPoints.to_s)
 						
-						click_link 'Show All Events'
+						click_on 'Show All Events'
 						sleep(2)
 						expect(page).to have_content("Events (#{events.length.to_s}):")
 
-						click_link 'Only Show Recent Events'
+						click_on 'Only Show Recent Events'
 						sleep(2)
 						expect(page).to have_content('Events (5):')
 						

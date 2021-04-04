@@ -29,9 +29,9 @@
             </ul>
         </div>
         <%unless (@show_all)%>
-            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Show All Events", member_dashboard_path(:showAll => true) , class: "back-button" %> </button>
+            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Show All Events", member_dashboard_path(:show_all => true) , class: "back-button" %> </button>
         <%else%>
-            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Only Show Recent Events", member_dashboard_path(:showAll => nil) , class: "back-button" %> </button>
+            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Only Show Recent Events", member_dashboard_path(:show_all => nil) , class: "back-button" %> </button>
         <%end%>
     <%end%>
 </div>
