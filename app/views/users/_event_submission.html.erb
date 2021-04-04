@@ -1,0 +1,31 @@
+<%= render "layouts/navbar2", user: @user %>
+<section style="padding-top: 10px;">
+<button class="btn back-button " style="border:0; text-decoration:none !important; outline:none">
+<%= link_to "View All Users", users_path, class: "btn-decor" %>
+</button>
+<div class="wrapper fadeInDown">
+<div id="formContent">
+
+
+<%= form_with method: :post,  url:"/userEventUpdate/", model: @user.event_users do |form| %>
+    <div>
+    <%@event_user = params[:event_user][:id] unless @event_user%>
+		<h1><%= @user.event_users.find(@event_user).event.name %></h1>
+    </div>
+    <div>
+    </div>
+    <div class="field">
+        <%= form.label :uploads %>
+        <%= form.file_field :uploads, multiple: true %>
+    </div>
+    
+    <%= form.hidden_field :id, value: @event_user %>
+
+	<%= form.submit "Upload File" %>
+
+<% end %>
+
+
+</div>
+</div>
+</section>

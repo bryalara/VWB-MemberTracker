@@ -5,5 +5,7 @@ class PointEvent < ApplicationRecord
   validates :name, presence: true
   # validates :description, presence:true
 
-  has_and_belongs_to_many :users, -> { distinct }
+
+  has_many :point_event_users
+  has_many :users, through: :point_event_users
 end

@@ -1,6 +1,16 @@
 <%= render "layouts/navbar2", user: @user %>
 
 <div style="margin-top: 100px" >
+    <p>
+        <strong>Uploads:</strong> <br/>
+        <% if @user.uploads.attached? %>
+            <% @user.uploads.each do |upload| %>
+            <%= link_to upload.filename, upload, target: '_blank' %> <br/>
+            <% end %>
+        <% else %>
+            <p>no uploads</p>
+        <% end %>
+    </p>
     <h1>Hello, <%= @user.firstName+" "+@user.lastName%> </h1>
     
     <button class="btn " style="padding-left: 0rem;"> <%= link_to "Edit info", edit_user_path(@user) , class: "back-button" %> </button>
@@ -18,8 +28,16 @@
             Events (<%=@num_events%>):
             <ul>
                 <% @user_events.each do |event| %>
-                    <li><%= event %> </li>
+                    <li><%= event[0] %> <%= link_to "Upload form", user_event_update_path(:id => event[1].id)  %></li>
+                    <% if @user.event_users.find(event[1].id).form.attached? %>
+                        <% @user.event_users.find(event[1].id).form do |upload| %>
+                        <%= link_to upload.filename, upload, target: '_blank' %> <br/>
+                        <% end %>
+                    <% else %>
+                        <p>no uploads</p>
+                    <% end %>
                 <% end %>
+                
             </ul>
             Point Events (<%=@num_point_events%>):
             <ul>

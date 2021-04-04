@@ -9,6 +9,8 @@ class Event < ApplicationRecord
 
   has_and_belongs_to_many :users, -> { distinct }
 
+  has_many :event_users
+  has_many :events, -> { distinct }, :through => :event_users
   def endDateIsBigger?
     return if [endDate.blank?, startDate.blank?].any?
 

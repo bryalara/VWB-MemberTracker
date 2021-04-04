@@ -140,6 +140,10 @@ select{
             </div>
         <%end%>
     <%end%>
+    <div class="field">
+        <%= form.label :uploads %>
+        <%= form.file_field :uploads, multiple: true %>
+    </div>
     <div>
         <%= form.submit %>
     </div>

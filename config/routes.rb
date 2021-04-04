@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :edithomepages
 
   match '/pendingApproval', to: 'users#pending_approval', via: [:get, :post], as: :pending_approval
+  match '/userEventUpdate', to: 'users#user_event_update', via: [:get, :post], as: :user_event_update
   get '/memberDashboard', to: 'users#member_dashboard', as: :member_dashboard
   get 'user/registration', to: 'users#registration', as: :registration_user
   get '/import', to: 'users#my_import'

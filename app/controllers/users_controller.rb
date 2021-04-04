@@ -171,8 +171,11 @@ class UsersController < ApplicationController
     @display = params[:show_all] ? @user.events.length : 5
 
     i = 0
-    @user.events.order(:created_at).each do |e|
-      @user_events.append("[#{e.points} pts] - #{e.name} @ #{e.startDate}")
+    logger.debug @user.event_users.first.form.attached?
+    logger.debug "++++++++++++++++++++"
+    @user.event_users.order(:created_at).each do |e|
+      logger.debug e
+      @user_events.append(["[#{e.event.points} pts] - #{e.event.name} @ #{e.event.startDate}", e])
       i += 1
       break if i >= @display
     end
@@ -195,10 +198,43 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+
+  def user_event_update
+    @auth = User.find_by(email: current_userlogin.email)
+    if !@auth || @auth.approved == false
+      redirect_to member_dashboard_path
+      return
+    end
+    @user = User.find_by(email: current_userlogin.email)
+    
+    @event_user= params[:id]
+    
+    file = params[:event_user][:uploads]
+    
+    redirect_to member_dashboard_path unless @event_user || file
+
+    if request.post? && file
+      logger.debug "_________________________"
+      event_user_id= params[:event_user][:id]
+      logger.debug params[:event_user][:id]
+      logger.debug "_________________________"
+      logger.debug file
+      @user.event_users.find(event_user_id).form.attach(File.new(file[Tempfile]))
+
+      logger.debug @user.event_users.find(event_user_id).form.attached?
+    end
+
+
+
+    
+    
+  end
+
+
   private
 
   def user_params
     params.require(:user).permit(:email, :role, :firstName, :lastName, :phoneNumber, :classification, :tShirtSize,
-                                 :optInEmail, :participationPoints, :approved)
+                                 :optInEmail, :participationPoints, :approved, uploads:[])
   end
 end

@@ -88,6 +88,7 @@ class EventController < ApplicationController
         if @user.approved == true
           @event.users << @user
           flash[:notice] = "Successfully attended #{@event.name}!"
+          @event.event_users.create(user: @user, event: @event)
         else
           flash[:notice] =
             "Could not attend the event because #{@user.email} has not been approved by an administrator."
