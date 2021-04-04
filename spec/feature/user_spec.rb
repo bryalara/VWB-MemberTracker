@@ -572,7 +572,7 @@ RSpec.describe 'Users', type: :feature do
 				)
 				visit edit_user_path(id: user.id)
 				fill_in 'user_phoneNumber', with: '1231231235'
-				
+				sleep(1)
 				click_on 'Update User'
 				sleep(1)
 				
