@@ -58,7 +58,7 @@
         <th> T-Shirt <%= link_to (@attr == 'size' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pending_approval_path(:attr => 'size', :order => @attr=='size' ? !@order : :false) %></th>
         <th> Points <%= link_to (@attr == 'points' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pending_approval_path(:attr => 'points', :order => @attr=='points' ? !@order : :false) %></th>
         <th> Action </th>
-        <th> Selection <%= link_to @selectAll ? :'☑️' : :'⬜', pending_approval_path(:selectAll => !@selectAll, :attr => @attr, :order => @order) %></th>
+        <th> Selection <%= link_to @select_all ? :'☑️' : :'⬜', pending_approval_path(:select_all => !@select_all, :attr => @attr, :order => @order) %></th>
     </tr>
 
 
