@@ -9,7 +9,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 
 	describe 'member dashboard' do
 		it 'logged in user prompted to make account' do
-			visit memberDashboard_path	
+			visit member_dashboard_path	
 			
 			expect(page).to have_content('Registration')
 		end
@@ -18,7 +18,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 	describe 'Registering as a new member' do
 		setup do
 			#Creating member user
-			visit memberDashboard_path
+			visit member_dashboard_path
 			
 			fill_in 'user_email', with: OmniAuth.config.mock_auth[:google_oauth2][:info][:email]
 			fill_in 'user_firstName', with: 'John'
@@ -33,7 +33,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 		end
 
 		it 'new member is shown pending approval' do
-			visit memberDashboard_path
+			visit member_dashboard_path
 			
 			expect(page).to have_content('Hello, John Doe')
 			expect(page).to have_content('Your account is pending approval.')
@@ -48,7 +48,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 				
 			end
 			it 'new member is approved and shown member dashboard' do
-				visit memberDashboard_path
+				visit member_dashboard_path
 				
 				expect(page).to have_content('Hello, John Doe')
 				expect(page).to have_content('Current points: 0')
@@ -66,7 +66,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 				expect(page).to have_content('Current points: 0')
 			end
 			it 'member able to edit their info' do
-				visit memberDashboard_path
+				visit member_dashboard_path
 				
 				click_link 'Edit info'
 				
@@ -114,7 +114,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 						
 						click_link 'attend'
 						
-						visit memberDashboard_path
+						visit member_dashboard_path
 						
 						expect(page).to have_content('Hello, John Doe')
 						expect(page).to have_content('Current points: 5')
@@ -130,7 +130,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 							
 							expectedPoints+= event.points
 						end
-						visit memberDashboard_path
+						visit member_dashboard_path
 						
 						expect(page).to have_content('Hello, John Doe')
 						expect(page).to have_content('Events (5):')

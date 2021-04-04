@@ -49,16 +49,16 @@
 
 <table class="styled-table">
     <tr>
-        <th> First Name <%= link_to (@attr == 'first' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pendingApproval_path(:attr => 'first', :order => @attr=='first' ? !@order : :false) %></th>
-        <th> Last Name <%= link_to (@attr == 'last' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pendingApproval_path(:attr => 'last', :order => @attr=='last' ? !@order : :false) %></th>
+        <th> First Name <%= link_to (@attr == 'first' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pending_approval_path(:attr => 'first', :order => @attr=='first' ? !@order : :false) %></th>
+        <th> Last Name <%= link_to (@attr == 'last' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pending_approval_path(:attr => 'last', :order => @attr=='last' ? !@order : :false) %></th>
         <th> Email </th>
         <th> Phone Number </th>
-        <th> Classification <%= link_to (@attr == 'class' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pendingApproval_path(:attr => 'class', :order => @attr=='class' ? !@order : :false) %></th>
-        <th> Role <%= link_to (@attr == 'role' ? (@order== true ? :'🔽' : :'🔼') : :'⬜'), pendingApproval_path(:attr => 'role', :order => @attr=='role' ? !@order : :true) %></th>
-        <th> T-Shirt <%= link_to (@attr == 'size' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pendingApproval_path(:attr => 'size', :order => @attr=='size' ? !@order : :false) %></th>
-        <th> Points <%= link_to (@attr == 'points' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pendingApproval_path(:attr => 'points', :order => @attr=='points' ? !@order : :false) %></th>
+        <th> Classification <%= link_to (@attr == 'class' ? (@order== true ? :'🔽' : :'🔼') : :'⬜'), pending_approval_path(:attr => 'class', :order => @attr=='class' ? !@order : :true) %></th>
+        <th> Role <%= link_to (@attr == 'role' ? (@order== true ? :'🔽' : :'🔼') : :'⬜'), pending_approval_path(:attr => 'role', :order => @attr=='role' ? !@order : :true) %></th>
+        <th> T-Shirt <%= link_to (@attr == 'size' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pending_approval_path(:attr => 'size', :order => @attr=='size' ? !@order : :false) %></th>
+        <th> Points <%= link_to (@attr == 'points' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pending_approval_path(:attr => 'points', :order => @attr=='points' ? !@order : :false) %></th>
         <th> Action </th>
-        <th> Selection <%= link_to @selectAll ? :'☑️' : :'⬜', pendingApproval_path(:selectAll => !@selectAll, :attr => @attr, :order => @order) %></th>
+        <th> Selection <%= link_to @selectAll ? :'☑️' : :'⬜', pending_approval_path(:selectAll => !@selectAll, :attr => @attr, :order => @order) %></th>
     </tr>
 
 
@@ -74,7 +74,7 @@
         <td><%=  user.get_total_points(user) %> </td>
         <td><%= link_to "View Details", user %> </td>
         <td>
-            <%= form.check_box :users_ids, {multiple: true, checked: @selectAll}, user.id, nil  %>
+            <%= form.check_box :users_ids, {multiple: true, checked: @select_all}, user.id, nil  %>
         </td>
     </tr>
 <% end %>

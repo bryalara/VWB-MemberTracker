@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   
   get 'home/index'
   root to: 'home#index'            
-  resources :home                   
+  resources :home
+  resources :edithomepages
 
-
-  match '/pendingApproval', to: 'users#pendingApproval', via: [:get, :post]
-  get '/memberDashboard', to: 'users#memberDashboard'
+  match '/pendingApproval', to: 'users#pending_approval', via: [:get, :post], as: :pending_approval
+  get '/memberDashboard', to: 'users#member_dashboard', as: :member_dashboard
   get 'user/registration', to: 'users#registration', as: :registration_user
   get '/import', to: 'users#my_import'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

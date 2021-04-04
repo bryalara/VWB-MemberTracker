@@ -7,6 +7,40 @@ class User < ApplicationRecord
 
   enum role_types: { Member: 0, Admin: 1 }
 
+  def self.get_users(appr, attr, ord)
+    case attr
+    when 'first'
+      User.where(approved: appr).order("UPPER(\"users\".\"firstName\") #{ord}")
+    when 'last'
+      User.where(approved: appr).order("UPPER(\"users\".\"lastName\") #{ord}")
+    when 'role'
+      User.where(approved: appr).order("\"users\".\"role\" #{ord}")
+    when 'class'
+      User.where(approved: appr).order("CASE \"users\".\"classification\"
+                                  WHEN 'Freshman'  THEN '0'
+                                  WHEN 'Sophomore' THEN '1'
+                                  WHEN 'Junior'    THEN '2'
+                                  WHEN 'Senior'    THEN '3'
+                                    END #{ord}")
+    when 'size'
+      User.where(approved: appr).order("CASE \"users\".\"tShirtSize\"
+                                  WHEN 'XXXS' THEN '0'
+                                  WHEN 'XXS'  THEN '1'
+                                  WHEN 'XS'   THEN '2'
+                                  WHEN 'S'    THEN '3'
+                                  WHEN 'M'    THEN '4'
+                                  WHEN 'L'    THEN '5'
+                                  WHEN 'XL'   THEN '6'
+                                  WHEN 'XXL'  THEN '7'
+                                  WHEN 'XXXL' THEN '8'
+                                    END #{ord}")
+    when 'points'
+      User.where(approved: appr).order("\"users\".\"participationPoints\" #{ord}")
+    else
+      User.where(approved: appr).order('UPPER("users"."lastName") ASC')
+    end
+  end
+
   def self.my_import(file)
     users = []
     wmsg = []
@@ -32,21 +66,21 @@ class User < ApplicationRecord
           end
         end
       rescue StandardError => e
-        puts(e)
+        logger.warn e
       end
     end
     wmsg
   end
 
   def get_total_points(user)
-    totalPoints = user.participationPoints # initial points user has
+    total_points = user.participationPoints # initial points user has
     user.events.each do |event|
-      totalPoints += event.points         # points from events attended
+      total_points += event.points # points from events attended
     end
-    user.point_events.each do |pEvent|
-      totalPoints += pEvent.points        # points from points attended
+    user.point_events.each do |p_event|
+      total_points += p_event.points # points from points attended
     end
-    totalPoints
+    total_points
   end
 
   def self.to_csv
@@ -65,13 +99,12 @@ class User < ApplicationRecord
   validates :role, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 2 }
   validates :firstName, presence: true
   validates :lastName, presence: true
-  validates :phoneNumber, presence: true, length: { is: 10 }, numericality: { only_integer: true, greater_than_or_equal_to: 0  }
+  validates :phoneNumber, presence: true, length: { is: 10 }, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :classification, presence: true
   validates :tShirtSize, presence: true
   validates :optInEmail, inclusion: { in: [true, false] }
   validates :approved, inclusion: { in: [true, false] }
   validates :participationPoints, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  
 
   has_and_belongs_to_many :events, -> { distinct }
   has_and_belongs_to_many :point_events, -> { distinct }

@@ -13,7 +13,7 @@ RSpec.describe 'Users', type: :feature do
 			#visit registration_user_path
 			expect(page).to have_content('Registration')
 		end
-		it 'register a the new user' do
+		it 'register a new user' do
 			login_with_oauth_member_registration
 			#visit registration_user_path
 			#expect(page).to have_content('Registration')
@@ -27,7 +27,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Create User'
 			login_with_oauth
-			visit pendingApproval_path
+			visit pending_approval_path
 			#expect(page).to have_content('entao@tamu.edu')
 		end
 		it 'member cannot visit users pages' do
@@ -293,7 +293,7 @@ RSpec.describe 'Users', type: :feature do
 				
 				click_on 'Create User'
 				sleep(1)
-				visit pendingApproval_path
+				visit pending_approval_path
 				sleep(1)
 				expect(page).to have_content('John')
 			end
@@ -750,7 +750,7 @@ RSpec.describe 'Users', type: :feature do
 				
 				click_on 'Update User'
 				sleep(1)
-				visit pendingApproval_path
+				visit pending_approval_path
 				
 				sleep(1)
 				expect(page).to have_content('featureRead15@tamu.edu')
