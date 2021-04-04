@@ -6,56 +6,35 @@ class UsersController < ApplicationController
   # http_basic_authenticate_with name: "vwb", password: "password"
 
   def index
+    Rails.logger.info 'whatever'
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
 
     @order = params[:order] == 'true'
     @attr = params[:attr]
-    @attr ||= 'first'
-    ord = 'ASC'
-    ord = if @order == true
-            'ASC'
-          else
-            'DESC'
-          end
-    @users = case @attr
-             when 'first'
-               User.where(approved: true).order("\"users\".\"firstName\" #{ord}")
-             when 'last'
-               User.where(approved: true).order("\"users\".\"lastName\" #{ord}")
-             when 'role'
-               User.where(approved: true).order("\"users\".\"role\" #{ord}")
-             when 'class'
-               User.where(approved: true).order("\"users\".\"classification\" #{ord}")
-             when 'size'
-               User.where(approved: true).order("\"users\".\"tShirtSize\" #{ord}")
-             when 'points'
-               User.where(approved: true).order("\"users\".\"participationPoints\" #{ord}")
-             else
-               User.where(approved: true).order('"users"."lastName" ASC')
-             end
-    @latestNew = User.order('created_at').last
-    @latestUpdate = User.order('updated_at').last
+    @attr ||= 'last'
+    ord = @order == true ? :DESC : :ASC
+    @users = User.get_users(true, @attr, ord)
+    @latest_new = User.order('created_at').last
+    @latest_update = User.order('updated_at').last
 
-    if @auth && (@auth.role == 1) && @auth.approved==true
-      respond_to do |format|
-        format.html
-        format.csv { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
-      end
+    return unless @auth && (@auth.role == 1) && @auth.approved == true
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.to_csv, filename: "member-emails-#{Time.zone.today}.csv" }
     end
   end
 
   def import
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     wmsg = User.my_import(params[:file])
     if wmsg.length.positive?
       # flash[:notice] ||= []
-      
       wmsg.each do |msg|
-        flash[:notice] ||=[]
-        puts(msg)
-        flash[:notice] <<  msg.to_s
+        flash[:notice] ||= []
+        flash[:notice] << msg.to_s
       end
       redirect_to users_path
     else
@@ -82,13 +61,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      puts('user saved')
+      logger.debug "User: (#{@user.firstName} #{@user.lastName}) created @ #{Time.zone.now}"
+      logger.debug @user.inspect
       redirect_to @user, notice: "Successfully created new user: #{"#{@user.firstName} #{@user.lastName}"}."
     elsif @user.valid?
       flash[:notice] = "Successfully created new user: #{"#{@user.firstName} #{@user.lastName}"}."
     else
       @msg = @user.errors.full_messages[0]
-      puts @msg
+      logger.warn "Creating user input field error: #{@msg}"
       flash.now[:notice] = @msg
       render :new
     end
@@ -96,10 +76,19 @@ class UsersController < ApplicationController
 
   def edit
     @auth = User.find_by(email: current_userlogin.email)
+    unless @auth
+      redirect_to member_dashboard_path
+      return
+    end
     @user = User.find(params[:id])
   end
 
   def update
+    @auth = User.find_by(email: current_userlogin.email)
+    unless @auth
+      redirect_to member_dashboard_path
+      return
+    end
     @user = User.find(params[:id])
 
     if @user.update(user_params)
@@ -112,55 +101,62 @@ class UsersController < ApplicationController
   def destroy
     @auth = User.find_by(email: current_userlogin.email)
     if !@auth || @auth.role.zero? || @auth.approved == false
-      redirect_to memberDashboard_path
+      redirect_to member_dashboard_path
       return
     end
     @user = User.find(params[:id])
-    tmp = @user
     @user.destroy
-
     redirect_to users_path, notice: "Succesfully deleted user: #{@user.firstName} #{@user.lastName}."
   end
 
-  def pendingApproval
+  def pending_approval
     @auth = User.find_by(email: current_userlogin.email)
-    if !@auth
+    user_ids = params[:users_ids]
+    @select_all = params[:select_all] == 'true'
+    unless @auth
       redirect_to new_user_path
       return
-    elsif @auth.role.zero? || @auth.approved == false
-      redirect_to memberDashboard_path
+    end
+    if @auth.role.zero? || @auth.approved == false
+      redirect_to member_dashboard_path
       return
+    end
+
+    if request.post? && user_ids
+      action_users = User.where(id: user_ids)
+
+      if params[:commit]
+        action_users.each do |user|
+          flash[:notice] ||= []
+          if user.update(approved: true)
+            flash[:notice] << ("#{user.firstName} #{user.lastName} has been approved")
+          else
+            flash[:alert] << ("#{user.firstName} #{user.lastName} could not be approved")
+          end
+        end
+
+      elsif params[:delete]
+        action_users.each do |user|
+          flash[:notice] ||= []
+          if user.destroy
+            flash[:notice] << ("#{user.firstName} #{user.lastName} has been removed")
+          else
+            flash[:alert] << ("#{user.firstName} #{user.lastName} had an error while trying to be removed")
+          end
+        end
+      end
+
+      redirect_back(fallback_location: users_path)
     end
 
     @order = params[:order] == 'true'
     @attr = params[:attr]
-    @attr ||= 'first'
-    ord = 'ASC'
-    ord = if @order == true
-            'ASC'
-          else
-            'DESC'
-          end
-    @users = case @attr
-             when 'first'
-               User.where(approved: false).order("\"users\".\"firstName\" #{ord}")
-             when 'last'
-               User.where(approved: false).order("\"users\".\"lastName\" #{ord}")
-             when 'role'
-               User.where(approved: false).order("\"users\".\"role\" #{ord}")
-             when 'class'
-               User.where(approved: false).order("\"users\".\"classification\" #{ord}")
-             when 'size'
-               User.where(approved: false).order("\"users\".\"tShirtSize\" #{ord}")
-             when 'points'
-               User.where(approved: false).order("\"users\".\"participationPoints\" #{ord}")
-             else
-               User.where(approved: false).order('"users"."lastName" ASC')
-             end
-
+    @attr ||= 'last'
+    ord = @order == true ? :DESC : :ASC
+    @users = User.get_users(false, @attr, ord)
   end
 
-  def memberDashboard
+  def member_dashboard
     @auth = User.find_by(email: current_userlogin.email)
     @user = User.find_by(email: current_userlogin.email)
     @display = 0
@@ -168,34 +164,34 @@ class UsersController < ApplicationController
       redirect_to new_user_path
       return
     end
-    @showAll = (params[:showAll] == 'true')
-    @userEvents = []
-    @userPEvents = []
+    @show_all = (params[:show_all] == 'true')
+    @user_events = []
+    @user_pevents = []
 
-    @display = if params[:showAll]
-                 @user.events.length
-               else
-                 5
-               end
+    @display = params[:show_all] ? @user.events.length : 5
 
     i = 0
     @user.events.order(:created_at).each do |e|
-      @userEvents.append("[#{e.points} pts] - #{e.name} @ #{e.startDate}")
+      @user_events.append("[#{e.points} pts] - #{e.name} @ #{e.startDate}")
       i += 1
       break if i >= @display
     end
-    @numEvents = i
+    @num_events = i
     i = 0
     @user.point_events.each do |e|
-      @userPEvents.append(e.name)
+      @user_pevents.append(e.name)
       i += 1
       break if i >= @display
     end
-    @numPointEvents = i
+    @num_point_events = i
   end
 
   def registration
     @auth = User.find_by(email: current_userlogin.email)
+    if @auth
+      redirect_to member_dashboard_path
+      return
+    end
     @user = User.new
   end
 
