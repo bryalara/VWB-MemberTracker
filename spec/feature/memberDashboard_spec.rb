@@ -138,11 +138,11 @@ RSpec.describe 'MemberDashboard', type: :feature do
 						expect(page).to have_content('Events (5):')
 						expect(page).to have_content('Current points: '+expectedPoints.to_s)
 						
-						click_on 'Show All Events'
+						click_link 'Show All Events'
 						sleep(2)
 						expect(page).to have_content("Events (#{events.length.to_s}):")
 
-						click_on 'Only Show Recent Events'
+						click_link 'Only Show Recent Events'
 						sleep(2)
 						expect(page).to have_content('Events (5):')
 						
