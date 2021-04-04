@@ -43,9 +43,11 @@ RSpec.describe 'MemberDashboard', type: :feature do
 			setup do
 				#approving recent user as member
 				user=User.find_by(email: OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-				user.approved=true
-				user.save!
-				
+				while !user
+					user=User.find_by(email: OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
+				end
+				user.update(approved: true)
+				sleep(1)
 			end
 			it 'new member is approved and shown member dashboard' do
 				visit member_dashboard_path
@@ -138,7 +140,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 						
 						click_link 'Show All Events'
 						
-						expect(page).to have_content('Events ('+events.length.to_s+'):')
+						expect(page).to have_content("Events (#{events.length.to_s}):")
 
 						click_link 'Only Show Recent Events'
 						
