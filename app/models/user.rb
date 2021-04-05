@@ -7,49 +7,68 @@ class User < ApplicationRecord
 
   enum role_types: { Member: 0, Admin: 1 }
 
+  def self.get_users(appr, attr, ord)
+    case attr
+    when 'first'
+      User.where(approved: appr).order("UPPER(\"users\".\"firstName\") #{ord}")
+    when 'last'
+      User.where(approved: appr).order("UPPER(\"users\".\"lastName\") #{ord}")
+    when 'role'
+      User.where(approved: appr).order("\"users\".\"role\" #{ord}")
+    when 'class'
+      User.where(approved: appr).order("CASE \"users\".\"classification\"
+                                  WHEN 'Freshman'  THEN '0'
+                                  WHEN 'Sophomore' THEN '1'
+                                  WHEN 'Junior'    THEN '2'
+                                  WHEN 'Senior'    THEN '3'
+                                    END #{ord}")
+    when 'size'
+      User.where(approved: appr).order("CASE \"users\".\"tShirtSize\"
+                                  WHEN 'XXXS' THEN '0'
+                                  WHEN 'XXS'  THEN '1'
+                                  WHEN 'XS'   THEN '2'
+                                  WHEN 'S'    THEN '3'
+                                  WHEN 'M'    THEN '4'
+                                  WHEN 'L'    THEN '5'
+                                  WHEN 'XL'   THEN '6'
+                                  WHEN 'XXL'  THEN '7'
+                                  WHEN 'XXXL' THEN '8'
+                                    END #{ord}")
+    when 'points'
+      User.where(approved: appr).order("\"users\".\"participationPoints\" #{ord}")
+    else
+      User.where(approved: appr).order('UPPER("users"."lastName") ASC')
+    end
+  end
+
   def self.my_import(file)
     users = []
     wmsg = []
     begin
       CSV.foreach(file.path, headers: true) do |row|
-        puts('READING FROM CSV..........................................')
-        puts(row.to_h[1])
         users << User.new(row.to_h)
       end
     rescue StandardError => e
-      puts('Error reading specified csv file, maybe no csv selected')
       wmsg.append('Error reading specified csv file')
     end
     users.each do |user|
-      puts("#{user.firstName} #{user.lastName}")
       begin
         unless wmsg.first == 'Error reading specified csv file'
           if user.save
             wmsg.append("New user: #{user.firstName} #{user.lastName} created")
-            puts("New user: #{user.firstName} #{user.lastName} created")
           else
-            puts("Error with user: #{user.firstName} #{user.lastName}, might already exist")
             wmsg.append("Error with user: #{user.firstName} #{user.lastName}, might already exist")
             if @user.valid?
               wmsg.append("New user: #{user.firstName} #{user.lastName} created")
             else
               wmsg.append(user.errors.full_messages[0])
-              puts(user.errors.full_messages[0])
             end
           end
         end
       rescue StandardError => e
-        puts(e)
+        logger.warn e
       end
     end
-    # begin
-    #     unless(wmsg.length>0)
-    #         puts("IMPORTING FROM CSV..........................................")
-    #         User.import users, recursive: true,validate: true, ignore: true
-    #     end
-    # rescue StandardError => e
-    #     puts(e)
-    # end
     wmsg
   end
 
@@ -59,7 +78,7 @@ class User < ApplicationRecord
       total_points += event.points # points from events attended
     end
     user.point_events.each do |p_event|
-      total_points += p_event.points        # points from points attended
+      total_points += p_event.points # points from points attended
     end
     total_points
   end

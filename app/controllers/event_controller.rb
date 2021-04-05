@@ -5,27 +5,27 @@ class EventController < ApplicationController
   before_action :authenticate_userlogin! && :admin_verify, except: %i[create registration]
   def index
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @events = Event.all
     @point_events = PointEvent.all
   end
 
   def show
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
   end
 
   def new
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.new
   end
 
   def create
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
-    @event = Event.new(event_params)
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    @event = Event.new(eventParams)
 
     if @event.save
       flash[:notice] = "Successfully created #{@event.name}."
@@ -37,13 +37,13 @@ class EventController < ApplicationController
 
   def edit
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path unless @auth
+    redirect_to member_dashboard_path if !@auth
     @event = Event.find(params[:id])
   end
 
   def update
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path unless @auth
+    redirect_to member_dashboard_path if !@auth
     @event = Event.find(params[:id])
 
     if @event.update(event_params)
@@ -56,13 +56,13 @@ class EventController < ApplicationController
 
   def delete
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
   end
 
   def destroy
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
     @event.destroy
 
@@ -73,7 +73,7 @@ class EventController < ApplicationController
   # Creates @qr_code which can be used to display a qr code to attend an event.
   def qr
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path unless @auth
+    redirect_to member_dashboard_path if !@auth 
     @event = Event.find(params[:id])
     @qr_code = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_event_path(@event))
   end
@@ -81,7 +81,7 @@ class EventController < ApplicationController
   # Page for user to attend an event. If the client does a POST, it will try to add the user to the event.
   def attend
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path unless @auth
+    redirect_to member_dashboard_path if !@auth
     @event = Event.find(params[:id])
     @user = User.where(email: current_userlogin.email).first
 
@@ -107,7 +107,7 @@ class EventController < ApplicationController
   # Removes the user from an event they attended.
   def destroy_user
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
     @user = User.find(params[:user_id])
 

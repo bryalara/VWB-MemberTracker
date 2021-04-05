@@ -304,9 +304,11 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('Hello bryalara@tamu.edu')
 
 			click_on 'Click to attend!'
+			sleep(1)
 			expect(page).to have_content("Successfully attended Test Event!")
 
 			visit edit_event_path(event)
+			sleep(1)
 			expect(page).to have_content('bryalara@tamu.edu')
 			expect(page).to have_content('Remove')
 
