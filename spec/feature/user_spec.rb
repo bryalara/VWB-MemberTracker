@@ -954,8 +954,7 @@ RSpec.describe 'Users', type: :feature do
 					click_on 'Create User'
 				end
 	
-				it 'cannot attend an event' do
-					
+				it 'cannot attend an event' do			
 					visit attend_event_path(event)
 					
 					expect(page).to have_content('Test Event')

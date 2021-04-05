@@ -5,7 +5,7 @@
 		<h2 class="active">Edit a Points Event</h2>
 
 		<p>* denotes required fields.<p>
-		<%= form_with :method => :PATCH, url:"/point_event/#{@pointEvent.id}", model: @pointEvent do |form| %>
+		<%= form_with :method => :PATCH, url:"/point_event/#{@point_event.id}", model: @point_event do |form| %>
 			<table class="center-edit">
 				<tr>
 					<th><%= form.label :name %>*</th>
@@ -35,12 +35,12 @@
 			<th>Action</th>
 		</tr>
 
-		<% @pointEvent.users.each do |user| %>
+		<% @point_event.users.each do |user| %>
 		<tr>
 			<td><%= user.firstName %></td>
 			<td><%= user.lastName %></td>
 			<td><%= user.email %></td>
-			<td><%= link_to "Remove", delete_user_point_event_path(id: @pointEvent.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the points event again. Points that student received from this points event will also dissappear!"} %></td>
+			<td><%= link_to "Remove", delete_user_point_event_path(id: @point_event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the points event again. Points that student received from this points event will also dissappear!"} %></td>
 		</tr>
 		<% end %>
 	</table>

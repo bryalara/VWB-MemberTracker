@@ -2,7 +2,7 @@
 <h1>Scan this code for attendance!</h1>
 
 <div class="text-center">
-    <%= image_tag @qrCode.as_png(
+    <%= image_tag @qr_code.as_png(
         bit_depth: 1,
         border_modules: 4,
         color_mode: ChunkyPNG::COLOR_GRAYSCALE,

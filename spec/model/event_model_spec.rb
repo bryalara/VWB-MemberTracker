@@ -9,9 +9,14 @@ RSpec.describe Event, :type => :model do
 							endDate: DateTime.now + 1.week)
 	}
 
-	it "has and belongs to many users" do
+	it "has many users" do
 		a = Event.reflect_on_association(:users)
-		expect(a.macro).to eq(:has_and_belongs_to_many)
+		expect(a.macro).to eq(:has_many)
+	end
+
+	it "has many event_attendees" do
+		a = Event.reflect_on_association(:event_attendees)
+		expect(a.macro).to eq(:has_many)
 	end
 	
 	it "is valid with valid attributes" do

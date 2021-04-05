@@ -45,7 +45,14 @@ gem 'activerecord-import'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# Used to generate qr code for a string.
 gem 'rqrcode'
+
+# Used to generate a styled calendar view
+gem 'simple_calendar', '~> 2.4'
+
+# Used to generate and download .ics files
+gem 'icalendar'
 
 group :development, :test do
   # The RSpec testing framework

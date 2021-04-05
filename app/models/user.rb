@@ -99,13 +99,17 @@ class User < ApplicationRecord
   validates :role, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 2 }
   validates :firstName, presence: true
   validates :lastName, presence: true
-  validates :phoneNumber, presence: true, length: { is: 10 }, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :phoneNumber, presence: true, length: { is: 10 },
+                          numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :classification, presence: true
   validates :tShirtSize, presence: true
   validates :optInEmail, inclusion: { in: [true, false] }
   validates :approved, inclusion: { in: [true, false] }
   validates :participationPoints, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  has_and_belongs_to_many :events, -> { distinct }
-  has_and_belongs_to_many :point_events, -> { distinct }
+  has_many :event_attendees, dependent: :destroy
+  has_many :events, through: :event_attendees
+
+  has_many :point_event_attendees, dependent: :destroy
+  has_many :point_events, through: :point_event_attendees
 end
