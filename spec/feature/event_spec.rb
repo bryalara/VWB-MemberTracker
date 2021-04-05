@@ -11,12 +11,24 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('EVENTS')
 		end
 
+		it 'sign_up shows the right content' do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now,
+						endDate: DateTime.now + 1.week,
+						capacity: 5)
+			visit attend_event_path(id: event.id)
+			expect(page).to have_content('Test Event')
+		end
+
 		it 'qr shows the right content' do
 			event = Event.create!(name: 'Test Event',
 						description: 'Test Description',
 						points: 5,
 						startDate: DateTime.now, 	
-						endDate: DateTime.now + 1.week)
+						endDate: DateTime.now + 1.week,
+						capacity: 5)
 			visit qr_event_path(id: event.id)
 			expect(page).to have_content('Test Event')
 		end
@@ -26,7 +38,8 @@ RSpec.describe 'Events', type: :feature do
 						description: 'Test Description',
 						points: 5,
 						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
+						endDate: DateTime.now + 1.week,
+						capacity: 5)
 			visit attend_event_path(id: event.id)
 			expect(page).to have_content('Test Event')
 		end
@@ -40,6 +53,7 @@ RSpec.describe 'Events', type: :feature do
 			fill_in 'event_points', with: 5
 			fill_in 'event_startDate', with: DateTime.now
 			fill_in 'event_endDate', with: DateTime.now + 1.week
+			fill_in 'event_capacity', with: 5
 		end
 
 		it 'is valid with valid inputs' do
@@ -111,13 +125,15 @@ RSpec.describe 'Events', type: :feature do
 						description: 'Test Description',
 						points: 5,
 						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
+						endDate: DateTime.now + 1.week,
+						capacity: 4)
 			visit event_path(id: event.id)
 			expect(page).to have_content('Test Event')
 			expect(page).to have_content('Test Description')
 			expect(page).to have_content('5')
-			expect(page).to have_content(Event.date_time_display(event.startDate))
-			expect(page).to have_content(Event.date_time_display(event.endDate))
+			expect(page).to have_content(Event.display_date_time(event.startDate))
+			expect(page).to have_content(Event.display_date_time(event.endDate))
+			expect(page).to have_content('4')
 		end
 	end
 
@@ -128,7 +144,8 @@ RSpec.describe 'Events', type: :feature do
 						description: 'Test Description',
 						points: 5,
 						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
+						endDate: DateTime.now + 1.week,
+						capacity: 5)
 			visit edit_event_path(id: event.id)
 		end
 

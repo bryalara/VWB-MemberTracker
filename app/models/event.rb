@@ -22,6 +22,10 @@ class Event < ApplicationRecord
   end
 
   def self.display_capacity(event)
-    "#{event.users.size}" + "/" + "#{event.capacity}"
+    if event.capacity > 0
+      "#{event.users.size}" + "/" + "#{event.capacity}"
+    else
+      "#{event.users.size}" + "/" + "&amp#8734;"
+    end
   end
 end

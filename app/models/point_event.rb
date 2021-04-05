@@ -9,7 +9,11 @@ class PointEvent < ApplicationRecord
   has_many :users, through: :point_event_attendees
 
   def self.display_capacity(point_event)
-    "#{point_event.users.size}" + "/" + "#{point_event.capacity}"
+    if point_event.capacity > 0
+      "#{point_event.users.size}" + "/" + "#{point_event.capacity}"
+    else
+      "#{point_event.users.size}" + "/" + "\&#8734;"
+    end
   end
 
 end
