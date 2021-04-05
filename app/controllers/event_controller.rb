@@ -25,7 +25,7 @@ class EventController < ApplicationController
   def create
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
-    @event = Event.new(eventParams)
+    @event = Event.new(event_params)
 
     if @event.save
       flash[:notice] = "Successfully created #{@event.name}."
