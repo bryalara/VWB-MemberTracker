@@ -10,6 +10,26 @@ class PointEventController < ApplicationController
     @point_events = PointEvent.all
   end
 
+  def export_csv
+    @point_events = PointEvent.all
+    if true
+      respond_to do |format|
+        format.html
+        format.csv do
+          #make it available to output 2 csv files
+          #{ send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
+          if (params[:format_data] == 'events')
+            #to_csv is to only output users' emails
+            send_data @point_events.to_csv, filename: "events-emails-#{Date.today}.csv"
+          else
+            #to_csv_backup is to output users' all info
+            send_data @point_events.to_csv_users, filename: "member-emails-#{Date.today}.csv"
+          end
+        end
+      end
+    end
+  end
+
   def show
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false

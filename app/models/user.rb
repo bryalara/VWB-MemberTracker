@@ -95,6 +95,20 @@ class User < ApplicationRecord
     end
   end
 
+  #this is to backup the users information
+  def self.to_csv_backup
+    #includes all the information a user had
+    attributes = %w[email role firstName lastName phoneNumber classification tShirtSize optInEmail approved participationPoints]
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.find_each do |user|
+        csv << attributes.map { |attr| user.send(attr) }
+      end
+    end
+  end
+
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 2 }
   validates :firstName, presence: true

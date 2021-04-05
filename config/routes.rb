@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get '/memberDashboard', to: 'users#member_dashboard', as: :member_dashboard
   get 'user/registration', to: 'users#registration', as: :registration_user
   get '/import', to: 'users#my_import'
+  get 'event/csv', to: 'event#export_csv', as: :event_csv
+  get 'point_event/csv', to: 'point_event#export_csv', as: :point_event_csv
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :point_event do
