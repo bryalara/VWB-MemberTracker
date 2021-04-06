@@ -5,20 +5,21 @@
 <div id="formContent">
 <h2 class="active">Add an Event</h2>
 <p>* denotes required fields.<p>
+<p>A capacity of 0 represents "No Limit"</p>
 
 <%= form_with url:"/event", model: @event do |form| %>
 	<table style="text-align: center !important;">
 		<tr>
 			<th><%= form.label :name %>*</th>
-			<td><%= form.text_field :name %></td>
+			<td><%= form.text_field :name, placeholder: "Name" %></td>
 		</tr>
 		<tr>
 			<th><%= form.label :description %></th>
-			<td><%= form.text_field :description %></td>
+			<td><%= form.text_field :description, placeholder: "Description" %></td>
 		</tr>
 		<tr>
 			<th><%= form.label :points %>*</th>
-			<td><%= form.number_field :points %></td>
+			<td><%= form.number_field :points, placeholder: "Points" %></td>
 		</tr>
 		<tr>
 			<th>Start Time*</th>
@@ -30,7 +31,7 @@
 		</tr>
 		<tr>
 			<th>Capacity*</th>
-			<td><%= form.number_field :capacity, required: true %></td>
+			<td><%= form.number_field :capacity, placeholder: "Capacity" %></td>
 		</tr>
 	</table>
 	<%= form.submit "Add Event" %>

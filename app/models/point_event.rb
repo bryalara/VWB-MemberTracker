@@ -12,7 +12,7 @@ class PointEvent < ApplicationRecord
     if point_event.capacity > 0
       "#{point_event.users.size}" + "/" + "#{point_event.capacity}"
     else
-      "#{point_event.users.size}" + "/" + "\&#8734;"
+      "#{point_event.users.size}" + "/" + "No Limit"
     end
   end
 

@@ -18,14 +18,14 @@ class Event < ApplicationRecord
 
   def self.display_date_time(datetime)
     return if datetime.blank?
-    datetime.strftime('%Y/%m/%e %I:%M %p')
+    datetime.strftime('%Y/%m/%d %I:%M %p')
   end
 
   def self.display_capacity(event)
     if event.capacity > 0
       "#{event.users.size}" + "/" + "#{event.capacity}"
     else
-      "#{event.users.size}" + "/" + "&amp#8734;"
+      "#{event.users.size}" + "/" + "No Limit"
     end
   end
 end

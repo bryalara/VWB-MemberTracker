@@ -4,20 +4,21 @@
 	<div id="formContent">
 		<h2 class="active">Edit an Event</h2>
 		<p>* denotes required fields.<p>
+		<p>A capacity of 0 represents "No Limit"</p>
 
 		<%= form_with :method => :PATCH, url:"/event/#{@event.id}", model: @event do |form| %>
 			<table>
 				<tr>
 					<th><%= form.label :name %>*</th>
-					<td><%= form.text_field :name %></td>
+					<td><%= form.text_field :name, placeholder: "Name" %></td>
 				</tr>
 				<tr>
 					<th><%= form.label :description %></th>
-					<td><%= form.text_field :description %></td>
+					<td><%= form.text_field :description, placeholder: "Description" %></td>
 				</tr>
 				<tr>
 					<th><%= form.label :points %>*</th>
-					<td><%= form.number_field :points %></td>
+					<td><%= form.number_field :points, placeholder: "Points" %></td>
 				</tr>
 				<tr>
 					<th>Start Time*</th>
@@ -29,7 +30,7 @@
 				</tr>
 				<tr>
 					<th>Capacity*</th>
-					<td><%= form.number_field :capacity %></td>
+					<td><%= form.number_field :capacity, placeholder: "Capacity" %></td>
 				</tr>
 			</table>
 			<%= form.submit "Save Changes to Event" %>
@@ -54,8 +55,8 @@
 			<td><%= user.email %></td>
 
 			<% attendance = EventAttendee.find_by(user_id: user.id, event_id: @event.id) %>
-			<td><%= attendance.created_at %>
-			<td><%= attendance.created_at != attendance.updated_at ? attendance.updated_at : "N/A" %>
+			<td><%= Event.display_date_time(attendance.created_at) %>
+			<td><%= attendance.created_at != attendance.updated_at ? Event.display_date_time(attendance.updated_at) : "N/A" %>
 
 			<td><%= link_to "Remove", delete_user_event_path(id: @event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the event again. Points that student received from this event will also dissappear!"} %></td>
 		</tr>

@@ -8,11 +8,12 @@
 <h2 class="active">Add an Engagement</h2>
 
 <p>* denotes required fields.<p>
+<p>A capacity of 0 represents "No Limit"</p>
 <%= form_with url:"/point_event", model: @point_event do |form| %>
 	<table style="text-align: center !important;">
 		<tr>
 			<th><%= form.label :name %>*</th>
-			<td><%= form.text_field :name, placeholder: "Name*" %></td>
+			<td><%= form.text_field :name, placeholder: "Name" %></td>
 		</tr>
 		<tr>
 			<th><%= form.label :description %></th>
