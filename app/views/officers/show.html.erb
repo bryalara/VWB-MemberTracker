@@ -1,6 +1,15 @@
-<%= link_to 'Remove', @officer, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back to Edit Officer Page', officers_path %>
 <h1><%= @officer.name %></h1>
 <h4>"<%= @officer.email %>"</h4>
 <h4>"<%= @officer.photoUrl %>"</h4>
 <h4>"<%= @officer.description %>"</h4>
+<p>
+  <% if @officer.image.attached? %>
+    <p>
+      <strong>Image:</strong>
+      <br>
+      <%= image_tag @officer.image %>
+    </p>
+  <% end %>
+</p>
 
