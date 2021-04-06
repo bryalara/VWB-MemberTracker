@@ -2,6 +2,18 @@
     <% @officers.each do |officer| %>
         <li>
             <%= link_to officer.name, officer_path(officer) %> 
+            <p>
+                <% if officer.image.attached? %>
+                    <p>
+                    <% if flash[:notice] %>
+                        <div class="notice"><%= flash[:notice] %></div>
+                    <% end %>
+                    <strong>Image:</strong>
+                    <br>
+                    <%= image_tag officer.image, size: "175x250"  %>
+                    </p>
+                <% end %>
+            </p>
             <td><%= button_to 'Edit', edit_officer_path(officer), method: 'get'%></td>
             <td><%= button_to 'Remove', officer_path(officer), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
         </li>

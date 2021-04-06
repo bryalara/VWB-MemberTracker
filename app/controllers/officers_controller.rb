@@ -28,17 +28,25 @@ class OfficersController < ApplicationController
 
   def edit
     @officer = Officer.find(params[:id])
+    
   end
 
   def update
     @officer = Officer.find(params[:id])
     @officer.image.purge
     @officer.image.attach(officer_params[:image])
+    flash[:notice] = "Picture successfully uploaded"
     if @officer.update(officer_params)
-      format.html { redirect_to officers_path, notice: 'Post was successfully updated.' }
       redirect_to officers_path
     else
       render :edit
+    end
+  end
+
+  def picture
+    @officer = Officer.image
+    if @officer.empty?
+      @officer= image_tag("defaultOfficerImage.png", alt: Officer.name)
     end
   end
 

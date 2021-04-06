@@ -1,12 +1,11 @@
 <%= link_to 'Back to Edit Officer Page', officers_path %>
 
-<h3>Update Dog Details</h3>
+<h3>Update Officer Details</h3>
 <%= form_with model: @officer do |form| %>
   <%= form.text_field :name, placeholder: "name" %>
   <%= form.text_field :email , placeholder: "email " %>
-  <%= form.text_field :photoUrl  , placeholder: "photoUrl  " %>
   <%= form.text_field :description  , placeholder: "description  " %>
-  <%= form.file_field :image  , placeholder: "image  " %>
+  <%= form.file_field :image  , accept: 'image/png,image/jpeg' %>
 
   <%= form.submit %>
 <% end %>

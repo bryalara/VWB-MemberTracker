@@ -1,14 +1,16 @@
 <%= link_to 'Back to Edit Officer Page', officers_path %>
 <h1><%= @officer.name %></h1>
 <h4>"<%= @officer.email %>"</h4>
-<h4>"<%= @officer.photoUrl %>"</h4>
 <h4>"<%= @officer.description %>"</h4>
 <p>
   <% if @officer.image.attached? %>
     <p>
+      <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+      <% end %>
       <strong>Image:</strong>
       <br>
-      <%= image_tag @officer.image %>
+      <%= image_tag @officer.image, size: "175x250"  %>
     </p>
   <% end %>
 </p>
