@@ -84,7 +84,7 @@ class PointEventController < ApplicationController
 
     return unless request.post?
 
-    attendance = PointEventAttendee.find_by(user_id: @user.id, event_id: @point_event.id)
+    attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: @point_event.id)
     if attendance
       attendance.attended = true
       attendance.save

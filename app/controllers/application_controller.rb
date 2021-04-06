@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    user = User.find_by(email: current_userlogin.email) if userlogin_signed_in? && User.exists?(email: current_userlogin.email)
+    user = check_user
     return user.role == User::role_types["Admin"]
   end
 end

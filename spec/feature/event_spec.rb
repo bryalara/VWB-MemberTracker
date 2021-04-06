@@ -117,6 +117,27 @@ RSpec.describe 'Events', type: :feature do
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
+
+		it 'is valid with a capacity of 0' do
+			fill_in 'event_capacity', with: 0
+			click_on 'Add Event'
+			visit event_index_path
+			expect(page).to have_content('Test Event')
+		end
+
+		it 'is not valid with a negative capacity' do
+			fill_in 'event_capacity', with: -1
+			click_on 'Add Event'
+			visit event_index_path
+			expect(page).to_not have_content('Test Event')
+		end
+
+		it 'is not valid without a capacity' do
+			fill_in 'event_capacity', with: ""
+			click_on 'Add Event'
+			visit event_index_path
+			expect(page).to_not have_content('Test Event')
+		end
 	end
 
 	describe 'Reading an existing event' do
@@ -219,6 +240,30 @@ RSpec.describe 'Events', type: :feature do
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
+
+		it 'is valid with a capacity of 0' do
+			fill_in 'event_capacity', with: 0
+			fill_in 'event_description', with: "Edited Test Description"
+			click_on 'Save Changes to Event'
+			visit event_index_path
+			expect(page).to have_content('Edited Test Description')
+		end
+
+		it 'is not valid with a negative capacity' do
+			fill_in 'event_capacity', with: -1
+			fill_in 'event_description', with: "Edited Test Description"
+			click_on 'Save Changes to Event'
+			visit event_index_path
+			expect(page).to_not have_content('Edited Test Description')
+		end
+
+		it 'is not valid without a capacity' do
+			fill_in 'event_capacity', with: ""
+			fill_in 'event_description', with: "Edited Test Description"
+			click_on 'Save Changes to Event'
+			visit event_index_path
+			expect(page).to_not have_content('Edited Test Description')
+		end
 	end
 
 	describe 'Deleting an event' do
@@ -227,7 +272,8 @@ RSpec.describe 'Events', type: :feature do
 						description: 'Test Description',
 						points: 5,
 						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
+						endDate: DateTime.now + 1.week,
+						capacity: 5)
 			visit event_index_path
 			expect(page).to have_content('Test Event')
 
@@ -249,17 +295,20 @@ RSpec.describe 'Events', type: :feature do
 						description: 'Test Description 1',
 						points: 5,
 						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
+						endDate: DateTime.now + 1.week,
+						capacity: 5)
 			event2 = Event.create!(name: 'Test Event 2',
 						description: 'Test Description 2',
 						points: 5,
 						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
+						endDate: DateTime.now + 1.week,
+						capacity: 5)
 			event3 = Event.create!(name: 'Test Event 3',
 						description: 'Test Description 3',
 						points: 5,
 						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
+						endDate: DateTime.now + 1.week,
+						capacity: 5)
 
 			visit event_index_path
 			expect(page).to have_content('Test Event 1')
@@ -314,7 +363,15 @@ RSpec.describe 'Events', type: :feature do
 						description: 'Test Description',
 						points: 5,
 						startDate: DateTime.now,
-						endDate: DateTime.now + 1.week)
+						endDate: DateTime.now + 1.week,
+						capacity: 5)
+
+			visit sign_up_event_path(event)
+			expect(page).to have_content('Test Event')
+			expect(page).to have_content('Hello bryalara@tamu.edu')
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit attend_event_path(event)
 			expect(page).to have_content('Test Event')
@@ -335,7 +392,7 @@ RSpec.describe 'Events', type: :feature do
 			alert = wait.until { page.driver.browser.switch_to.alert }
 			alert.accept
 
-			expect(page).to have_content("Users that have attended")
+			expect(page).to have_content("Users that planned to attend")
 			expect(page).to_not have_content('bryalara@tamu.edu')
 		end
 	end
@@ -346,7 +403,8 @@ RSpec.describe 'Events', type: :feature do
 						description: 'Test Description',
 						points: 5,
 						startDate: DateTime.now,
-						endDate: DateTime.now + 1.hour)
+						endDate: DateTime.now + 1.hour,
+						capacity: 5)
 
 			visit event_index_path
 			expect(page).to have_content(event.startDate.strftime("%B %Y"))
@@ -364,7 +422,8 @@ RSpec.describe 'Events', type: :feature do
 						description: 'Test Description',
 						points: 5,
 						startDate: DateTime.now + 1.month,
-						endDate: DateTime.now + 1.month + 1.hour)
+						endDate: DateTime.now + 1.month + 1.hour,
+						capacity: 5)
 
 			visit event_index_path
 
@@ -381,6 +440,233 @@ RSpec.describe 'Events', type: :feature do
 			end
 
 			expect(page).to have_content("Test Event")
+		end
+	end
+
+	describe "When signing up for an event" do
+		event = Event.new
+		setup do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now + 1.month,
+						endDate: DateTime.now + 1.month + 1.hour,
+						capacity: 2)
+		end
+
+		it "will allow registered and approved users to sign up" do
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+		end
+
+		it "shows the correct amount of users that have signed up" do
+			visit event_index_path
+			expect(page).to have_content("0/2")
+
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			visit event_index_path
+			expect(page).to have_content("1/2")
+		end
+
+		it "shows the users that have signed up" do
+			visit event_index_path
+			expect(page).to have_content("0/2")
+
+			visit event_path(event)
+			expect(page).to_not have_content("bryalara@tamu.edu")
+
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			visit event_index_path
+			expect(page).to have_content("1/2")
+
+			visit event_path(event)
+			expect(page).to have_content("bryalara@tamu.edu")
+			expect(page).to have_content("N/A")
+		end
+
+		it "will notify users have already signed up if they try to sign up twice" do
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("You have already signed up for Test Event!")
+		end
+
+		it "will allow registered but not approved users to sign up" do
+			user = User.create!(email: 'dummy@tamu.edu',
+								role: 0,
+								firstName: 'Feature',
+								lastName: 'Testing',
+								phoneNumber: '1231231234',
+								tShirtSize: 'M',
+								participationPoints: 5,
+								classification: 'Senior',
+								optInEmail: true,
+								approved: false)
+			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
+
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello dummy@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+		end
+
+		it "will not allow unregistered users to sign up" do
+			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
+			visit sign_up_event_path(event)
+
+			expect(page).to_not have_content("Event: Test Event")
+		end
+
+		it "will not allow users to sign up if it is full" do
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			user = User.create!(email: 'dummy@tamu.edu',
+								role: 0,
+								firstName: 'Feature',
+								lastName: 'Testing',
+								phoneNumber: '1231231234',
+								tShirtSize: 'M',
+								participationPoints: 5,
+								classification: 'Senior',
+								optInEmail: true,
+								approved: true)
+			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello dummy@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			user2 = User.create!(email: 'dummy2@tamu.edu',
+								role: 0,
+								firstName: 'Feature',
+								lastName: 'Testing',
+								phoneNumber: '1231231234',
+								tShirtSize: 'M',
+								participationPoints: 5,
+								classification: 'Senior',
+								optInEmail: true,
+								approved: true)
+			login_with_oauth_as("Feature Testing", "dummy2@tamu.edu")
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello dummy2@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Cannot signup for Test Event! The event has reached its capacity.")
+		end
+
+		it "will allow users to sign up if the capacity is 0" do
+			event.capacity = 0
+			event.save
+
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+		end
+	end
+
+	describe "When attending an event" do
+		event = Event.new
+
+		setup do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now + 1.month,
+						endDate: DateTime.now + 1.month + 1.hour,
+						capacity: 2)
+		end
+
+		it "will not allow users that have not signed up to attend" do
+			visit attend_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to attend!'
+			expect(page).to have_content("Could not attend Test Event because you did not sign up for the event.")
+		end
+
+		it "will allow registered and approved users that have signed up to attend" do
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			visit attend_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to attend!'
+			expect(page).to have_content("Successfully attended Test Event!")
+		end
+
+		it "will allow registered but not approved users that have signed up to attend" do
+			user = User.create!(email: 'dummy@tamu.edu',
+								role: 0,
+								firstName: 'Feature',
+								lastName: 'Testing',
+								phoneNumber: '1231231234',
+								tShirtSize: 'M',
+								participationPoints: 5,
+								classification: 'Senior',
+								optInEmail: true,
+								approved: false)
+			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
+
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello dummy@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			visit attend_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello dummy@tamu.edu")
+
+			click_on 'Click to attend!'
+			expect(page).to have_content("Successfully attended Test Event!")
+		end
+
+		it "will not allow unregistered users to attend" do
+			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
+			visit attend_event_path(event)
+			expect(page).to have_content("Registration")
 		end
 	end
 end

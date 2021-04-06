@@ -16,9 +16,10 @@ th, td, tr {
 	<h2 class="active h2-title">Engagements</h2>
 </div>
 
+<%# Admin's View %>
 <% if admin? %>
 	<div class="align-table" >
-		<button class="btn btn-decor" style="padding-left: 0rem;" > <%= link_to "Add a Points Event", new_point_event_path(@point_events), class:"back-button" %></button>
+		<button class="btn btn-decor" style="padding-left: 0rem;" > <%= link_to "Add an Engagement", new_point_event_path(@point_events), class:"back-button" %></button>
 		<table class="styled-table" >
 			<tr>
 				<th>Event</th>
@@ -44,6 +45,8 @@ th, td, tr {
 			<% end %>
 		</table>
 	</div>
+
+<%# Member's View %>
 <% else %>
 	<div class="align-table" >
 		<table class="styled-table" >

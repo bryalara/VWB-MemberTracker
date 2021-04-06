@@ -8,13 +8,23 @@ RSpec.describe 'PointEvents', type: :feature do
 	describe 'Route for' do
 		it 'index shows the right content' do
 			visit event_index_path
-			expect(page).to have_content('POINTS EVENTS')
+			expect(page).to have_content('ENGAGEMENTS')
+		end
+
+		it 'sign_up shows the right content' do
+			event = PointEvent.create!(name: 'Test Event',
+				description: 'Test Description',
+				points: 5,
+				capacity: 5)
+			visit sign_up_point_event_path(id: event.id)
+			expect(page).to have_content('Test Event')
 		end
 
 		it 'qr shows the right content' do
 			event = PointEvent.create!(name: 'Test Event',
 				description: 'Test Description',
-				points: 5)
+				points: 5,
+				capacity: 5)
 			visit qr_point_event_path(id: event.id)
 			expect(page).to have_content('Test Event')
 		end
@@ -22,7 +32,8 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'attend shows the right content' do
 			event = PointEvent.create!(name: 'Test Event',
 				description: 'Test Description',
-				points: 5)
+				points: 5,
+				capacity: 5)
 			visit attend_point_event_path(id: event.id)
 			expect(page).to have_content('Test Event')
 		end
@@ -34,45 +45,67 @@ RSpec.describe 'PointEvents', type: :feature do
 			fill_in 'point_event_name', with: 'Test Event'
 			fill_in 'point_event_description', with: 'Test Description'
 			fill_in 'point_event_points', with: 5
+			fill_in 'point_event_capacity', with: 5
 		end
 		
 		it 'is valid with valid inputs' do
-			click_on 'Add Points Event'
+			click_on 'Add Engagement'
 			visit event_index_path
 			expect(page).to have_content('Test Event')
 		end
 
 		it 'is valid without a description' do
 			fill_in 'point_event_description', with: ""
-			click_on 'Add Points Event'
+			click_on 'Add Engagement'
 			visit event_index_path
 			expect(page).to have_content('Test Event')
 		end
 
 		it 'is not valid without a name' do
 			fill_in 'point_event_name', with: nil
-			click_on 'Add Points Event'
+			click_on 'Add Engagement'
 			visit event_index_path
 			expect(page).to_not have_content('Test Description')
 		end
 
 		it 'is not valid without points' do
 			fill_in 'point_event_points', with: nil
-			click_on 'Add Points Event'
+			click_on 'Add Engagement'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
 
 		it 'is valid with 0 points' do
 			fill_in 'point_event_points', with: 0
-			click_on 'Add Points Event'
+			click_on 'Add Engagement'
 			visit event_index_path
 			expect(page).to have_content('Test Event')
 		end
 
 		it 'is not valid with negative points' do
 			fill_in 'point_event_points', with: -1
-			click_on 'Add Points Event'
+			click_on 'Add Engagement'
+			visit event_index_path
+			expect(page).to_not have_content('Test Event')
+		end
+
+		it 'is valid with a capacity of 0' do
+			fill_in 'point_event_capacity', with: 0
+			click_on 'Add Engagement'
+			visit event_index_path
+			expect(page).to have_content('Test Event')
+		end
+
+		it 'is not valid with a negative capacity' do
+			fill_in 'point_event_capacity', with: -1
+			click_on 'Add Engagement'
+			visit event_index_path
+			expect(page).to_not have_content('Test Event')
+		end
+
+		it 'is not valid without a capacity' do
+			fill_in 'point_event_capacity', with: ""
+			click_on 'Add Engagement'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
 		end
@@ -82,7 +115,8 @@ RSpec.describe 'PointEvents', type: :feature do
 		setup do
 			event = PointEvent.create!(name: 'Test Event',
 				description: 'Test Description',
-				points: 5)
+				points: 5,
+				capacity: 5)
 			visit point_event_path(id: event.id)
 		end
 
@@ -97,13 +131,14 @@ RSpec.describe 'PointEvents', type: :feature do
 		setup do
 			event = PointEvent.create!(name: 'Test Event',
 				description: 'Test Description',
-				points: 5)
+				points: 5,
+				capacity: 5)
 			visit edit_point_event_path(id: event.id)
 		end
 
 		it 'is valid with valid changes' do
 			fill_in 'point_event_name', with: "Edited Event Name"
-			click_on 'Save Changes to Points Event'
+			click_on 'Save Changes to Engagement'
 			visit event_index_path
 			expect(page).to have_content('Edited Event Name')
 		end
@@ -111,7 +146,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is valid with the description deleted' do
 			fill_in 'point_event_name', with: "Edited Event Name"
 			fill_in 'point_event_description', with: nil
-			click_on 'Save Changes to Points Event'
+			click_on 'Save Changes to Engagement'
 			visit event_index_path
 			expect(page).to have_content('Edited Event Name')
 		end
@@ -119,7 +154,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid without a name' do
 			fill_in 'point_event_name', with: nil
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Points Event'
+			click_on 'Save Changes to Engagement'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -127,7 +162,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid without points' do
 			fill_in 'point_event_points', with: nil
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Points Event'
+			click_on 'Save Changes to Engagement'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -135,7 +170,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is valid with 0 points' do
 			fill_in 'point_event_points', with: 0
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Points Event'
+			click_on 'Save Changes to Engagement'
 			visit event_index_path
 			expect(page).to have_content('Edited Test Description')
 		end
@@ -143,7 +178,31 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid with negative points' do
 			fill_in 'point_event_points', with: -5
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Points Event'
+			click_on 'Save Changes to Engagement'
+			visit event_index_path
+			expect(page).to_not have_content('Edited Test Description')
+		end
+
+		it 'is valid with a capacity of 0' do
+			fill_in 'point_event_capacity', with: 0
+			fill_in 'point_event_description', with: "Edited Test Description"
+			click_on 'Save Changes to Engagement'
+			visit event_index_path
+			expect(page).to have_content('Edited Test Description')
+		end
+
+		it 'is not valid with a negative capacity' do
+			fill_in 'point_event_capacity', with: -1
+			fill_in 'point_event_description', with: "Edited Test Description"
+			click_on 'Save Changes to Engagement'
+			visit event_index_path
+			expect(page).to_not have_content('Edited Test Description')
+		end
+
+		it 'is not valid without a capacity' do
+			fill_in 'point_event_capacity', with: ""
+			fill_in 'point_event_description', with: "Edited Test Description"
+			click_on 'Save Changes to Engagement'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -153,7 +212,8 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'succeeded in deleting one event' do
 			event = PointEvent.create!(name: 'Test Event',
 						description: 'Test Description',
-						points: 5)
+						points: 5,
+						capacity: 5)
 			visit event_index_path
 			expect(page).to have_content('Test Event')
 
@@ -172,13 +232,16 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'succeeded in deleting three events' do
 			event1 = PointEvent.create!(name: 'Test Event 1',
 						description: 'Test Description 1',
-						points: 5)
+						points: 5,
+						capacity: 5)
 			event2 = PointEvent.create!(name: 'Test Event 2',
 						description: 'Test Description 2',
-						points: 5)
+						points: 5,
+						capacity: 5)
 			event3 = PointEvent.create!(name: 'Test Event 3',
 						description: 'Test Description 3',
-						points: 5)
+						points: 5,
+						capacity: 5)
 
 			visit event_index_path
 			expect(page).to have_content('Test Event 1')
@@ -228,7 +291,16 @@ RSpec.describe 'PointEvents', type: :feature do
 		it "succeeded in removing a user from a points event" do
 			event = PointEvent.create!(name: 'Test Event',
 						description: 'Test Description',
-						points: 5)
+						points: 5,
+						capacity: 5)
+
+
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content('Test Event')
+			expect(page).to have_content('Hello bryalara@tamu.edu')
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit attend_point_event_path(event)
 			expect(page).to have_content('Test Event')
@@ -249,8 +321,231 @@ RSpec.describe 'PointEvents', type: :feature do
 			alert = wait.until { page.driver.browser.switch_to.alert }
 			alert.accept
 
-			expect(page).to have_content("Users that have attended")
+			expect(page).to have_content("Users that planned to attend")
 			expect(page).to_not have_content('bryalara@tamu.edu')
+		end
+	end
+
+	describe "When signing up for a point event" do
+		event = PointEvent.new
+		setup do
+			event = PointEvent.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						capacity: 2)
+		end
+
+		it "will allow registered and approved users to sign up" do
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+		end
+
+		it "shows the correct amount of users that have signed up" do
+			visit event_index_path
+			expect(page).to have_content("0/2")
+
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			visit event_index_path
+			expect(page).to have_content("1/2")
+		end
+
+		it "shows the users that have signed up" do
+			visit event_index_path
+			expect(page).to have_content("0/2")
+
+			visit point_event_path(event)
+			expect(page).to_not have_content("bryalara@tamu.edu")
+
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			visit event_index_path
+			expect(page).to have_content("1/2")
+
+			visit point_event_path(event)
+			expect(page).to have_content("bryalara@tamu.edu")
+			expect(page).to have_content("N/A")
+		end
+
+		it "will notify users have already signed up if they try to sign up twice" do
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("You have already signed up for Test Event!")
+		end
+
+		it "will allow registered but not approved users to sign up" do
+			user = User.create!(email: 'dummy@tamu.edu',
+								role: 0,
+								firstName: 'Feature',
+								lastName: 'Testing',
+								phoneNumber: '1231231234',
+								tShirtSize: 'M',
+								participationPoints: 5,
+								classification: 'Senior',
+								optInEmail: true,
+								approved: false)
+			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
+
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello dummy@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+		end
+
+		it "will not allow unregistered users to sign up" do
+			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
+			visit sign_up_point_event_path(event)
+
+			expect(page).to_not have_content("Engagement: Test Event")
+		end
+
+		it "will not allow users to sign up if it is full" do
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			user = User.create!(email: 'dummy@tamu.edu',
+								role: 0,
+								firstName: 'Feature',
+								lastName: 'Testing',
+								phoneNumber: '1231231234',
+								tShirtSize: 'M',
+								participationPoints: 5,
+								classification: 'Senior',
+								optInEmail: true,
+								approved: true)
+			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello dummy@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			user2 = User.create!(email: 'dummy2@tamu.edu',
+								role: 0,
+								firstName: 'Feature',
+								lastName: 'Testing',
+								phoneNumber: '1231231234',
+								tShirtSize: 'M',
+								participationPoints: 5,
+								classification: 'Senior',
+								optInEmail: true,
+								approved: true)
+			login_with_oauth_as("Feature Testing", "dummy2@tamu.edu")
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello dummy2@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Cannot signup for Test Event! The engagement has reached its capacity.")
+		end
+
+		it "will allow users to sign up if the capacity is 0" do
+			event.capacity = 0
+			event.save
+
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+		end
+	end
+
+	describe "When attending a point event" do
+		event = PointEvent.new
+
+		setup do
+			event = PointEvent.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						capacity: 2)
+		end
+
+		it "will not allow users that have not signed up to attend" do
+			visit attend_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to attend!'
+			expect(page).to have_content("Could not attend Test Event because you did not sign up for the engagement.")
+		end
+
+		it "will allow registered and approved users that have signed up to attend" do
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			visit attend_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to attend!'
+			expect(page).to have_content("Successfully attended Test Event!")
+		end
+
+		it "will allow registered but not approved users that have signed up to attend" do
+			user = User.create!(email: 'dummy@tamu.edu',
+								role: 0,
+								firstName: 'Feature',
+								lastName: 'Testing',
+								phoneNumber: '1231231234',
+								tShirtSize: 'M',
+								participationPoints: 5,
+								classification: 'Senior',
+								optInEmail: true,
+								approved: false)
+			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
+
+			visit sign_up_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello dummy@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			visit attend_point_event_path(event)
+			expect(page).to have_content("Engagement: Test Event")
+			expect(page).to have_content("Hello dummy@tamu.edu")
+
+			click_on 'Click to attend!'
+			expect(page).to have_content("Successfully attended Test Event!")
+		end
+
+		it "will not allow unregistered users to attend" do
+			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
+			visit attend_point_event_path(event)
+			expect(page).to have_content("Registration")
 		end
 	end
 end
