@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'bootstrap', '~> 4.0'
 
+gem 'jquery-rails'
+
 # gem 'bootstrap-sass', '~> 3.3.6'
 
 # import for csv file

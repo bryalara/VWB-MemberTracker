@@ -1,4 +1,6 @@
 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<%# <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> %>
 <%= render "layouts/navbar2", user: @auth %>
 
 <% msgs= flash[:notice].to_s.split('|', -1) %>
@@ -13,15 +15,20 @@
 }
 </style>
 <div class="header">
-<h2 class="active h2-title">Users</h2>
+<h2 class="active h2-title">Admin Dashboard</h2>
 </div>
 
-
-<div class="align-table">
-
-<button class="btn" style="padding-left: 0rem;"> <%= link_to "Create New User", new_user_path, class: "back-button" %> </button>
+<div style="margin-top: 20px" >
+<div class="h2-title">
+<h3 class="text upper">Users </h3>
+    
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "Pending Users", pendingApproval_path, class: "back-button" %> </button>
 <button class="btn" style="padding-left: 0rem;"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
-<button class="btn" style="padding-left: 0rem;"> <%= link_to "Pending Users", pendingApproval_path, class: "back-button" %> </button>
+    
+   
+</div>
+
 <table class="styled-table">
     <tr>
         <th> First Name <%= link_to '⬛️', users_path(:attr => 'first', :order => !@order) %></th>
@@ -72,4 +79,4 @@
     </div>
 </div>
 <% end %>
-</div>
+

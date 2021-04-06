@@ -1,37 +1,63 @@
+
 <%= render "layouts/navbar2", user: @user %>
 
-<div style="margin-top: 100px" >
-    <h1>Hello, <%= @user.firstName+" "+@user.lastName%> </h1>
-    
-    <button class="btn " style="padding-left: 0rem;"> <%= link_to "Edit info", edit_user_path(@user) , class: "back-button" %> </button>
-    <%unless (@user.approved==true)%>
-        <h3>Your account is pending approval.</h3>
-    <%else%>
-        <h3> Current points: <%= @user.get_total_points(@user)%> </h3>
+<div class="header">
+<h2 class="active h2-title">Member Dashboard</h2>
+</div>
 
-        <%if (@display==5)%>
-            <p>Displaying most recent events attended: </p>
-        <%else%>
-            <p>Displaying all events attended: <p>
-        <%end%>
-        <div> 
-            Events (<%=@numEvents%>):
-            <ul>
-                <% @userEvents.each do |event| %>
-                    <li><%= event %> </li>
-                <% end %>
-            </ul>
-            Point Events (<%=@numPointEvents%>):
-            <ul>
-                <% @userPEvents.each do |event| %>                                                
-                    <li><%= event %> </li>
-                <% end %>
-            </ul>
-        </div>
+<div class="">
+
+<div style="margin-top: 20px" >
+<div class="h2-title">
+    <h3 class="text upper">Hello, <%= @user.firstName+" "+@user.lastName%> </h1>
+    <%unless (@user.approved==true)%>
+        <h3>Your account is pending approval. Please contact administrator to get approved.</h3>
+    <%else%>
+        <h3> Current Total Points: <%= @user.get_total_points(@user)%> </h3>
+    
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "Edit info", edit_user_path(@user) , class: "back-button" %> </button>
+</div>
+
+<br></br>
+            <table class="styled-table">
+            <tr>
+                <th>Events (<%=@numEvents%>): </th>
+                <th>Start Date </th>
+                <th>End Date </th>
+                <th>Points Earned </th>     
+            </tr>
+
+        <% @user.events.each do |event| %>
+            <tr>
+                <td><%= event.name %></td>
+                <td><%= Event.dateTimeDisplay(event.startDate) %></td>
+                <td><%= Event.dateTimeDisplay(event.endDate) %></td>
+                <td><%= event.points  %> </td>
+            </tr>
+        <% end %>
+        </table>
+
+        <br></br>
+        <table class="styled-table">
+            <tr>
+                <th>Engagements (<%=@numPointEvents%>): </th>
+                <th>Points Earned </th> 
+        
+            </tr>
+        <% @user.point_events.each do |event| %>
+            <tr>
+                <td><%= event.name %></td>
+                <td><%= event.points  %> </td>
+            </tr>
+        <% end %>
+        </table>
+
         <%unless (@showAll)%>
             <button class="btn " style="padding-left: 0rem;"> <%= link_to "Show All Events", memberDashboard_path(:showAll => true) , class: "back-button" %> </button>
         <%else%>
             <button class="btn " style="padding-left: 0rem;"> <%= link_to "Only Show Recent Events", memberDashboard_path(:showAll => nil) , class: "back-button" %> </button>
         <%end%>
     <%end%>
+</div>
+
 </div>
