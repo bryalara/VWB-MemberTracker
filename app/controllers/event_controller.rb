@@ -10,21 +10,21 @@ class EventController < ApplicationController
     @point_events = PointEvent.all
   end
 
-  #export csv
-  #another way to download csv other than what in the users
+  # export csv
+  # another way to download csv other than what in the users
   def export_csv
     @events = Event.all
     if true
       respond_to do |format|
         format.html
         format.csv do
-          #make it available to output 2 csv files
-          #{ send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
-          if (params[:format_data] == 'events')
-            #to_csv is to only output users' emails
+          # make it available to output 2 csv files
+          # { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
+          if params[:format_data] == 'events'
+            # to_csv is to only output users' emails
             send_data @events.to_csv, filename: "member-emails-#{Date.today}.csv"
           else
-            #to_csv_backup is to output users' all info
+            # to_csv_backup is to output users' all info
             send_data @events.to_csv_users, filename: "member-emails-#{Date.today}.csv"
           end
         end
@@ -59,13 +59,13 @@ class EventController < ApplicationController
 
   def edit
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to member_dashboard_path if !@auth
+    redirect_to member_dashboard_path unless @auth
     @event = Event.find(params[:id])
   end
 
   def update
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to member_dashboard_path if !@auth
+    redirect_to member_dashboard_path unless @auth
     @event = Event.find(params[:id])
 
     if @event.update(event_params)
@@ -95,7 +95,7 @@ class EventController < ApplicationController
   # Creates @qr_code which can be used to display a qr code to attend an event.
   def qr
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to member_dashboard_path if !@auth 
+    redirect_to member_dashboard_path unless @auth
     @event = Event.find(params[:id])
     @qr_code = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_event_path(@event))
   end
@@ -103,7 +103,7 @@ class EventController < ApplicationController
   # Page for user to attend an event. If the client does a POST, it will try to add the user to the event.
   def attend
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to member_dashboard_path if !@auth
+    redirect_to member_dashboard_path unless @auth
     @event = Event.find(params[:id])
     @user = User.where(email: current_userlogin.email).first
 

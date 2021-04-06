@@ -52,22 +52,20 @@ class User < ApplicationRecord
       wmsg.append('Error reading specified csv file')
     end
     users.each do |user|
-      begin
-        unless wmsg.first == 'Error reading specified csv file'
-          if user.save
+      unless wmsg.first == 'Error reading specified csv file'
+        if user.save
+          wmsg.append("New user: #{user.firstName} #{user.lastName} created")
+        else
+          wmsg.append("Error with user: #{user.firstName} #{user.lastName}, might already exist")
+          if @user.valid?
             wmsg.append("New user: #{user.firstName} #{user.lastName} created")
           else
-            wmsg.append("Error with user: #{user.firstName} #{user.lastName}, might already exist")
-            if @user.valid?
-              wmsg.append("New user: #{user.firstName} #{user.lastName} created")
-            else
-              wmsg.append(user.errors.full_messages[0])
-            end
+            wmsg.append(user.errors.full_messages[0])
           end
         end
-      rescue StandardError => e
-        logger.warn e
       end
+    rescue StandardError => e
+      logger.warn e
     end
     wmsg
   end
@@ -95,10 +93,11 @@ class User < ApplicationRecord
     end
   end
 
-  #this is to backup the users information
+  # this is to backup the users information
   def self.to_csv_backup
-    #includes all the information a user had
-    attributes = %w[email role firstName lastName phoneNumber classification tShirtSize optInEmail approved participationPoints]
+    # includes all the information a user had
+    attributes = %w[email role firstName lastName phoneNumber classification tShirtSize optInEmail approved
+                    participationPoints]
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
