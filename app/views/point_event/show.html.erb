@@ -1,26 +1,34 @@
 <%= render "layouts/navbar2", user: @user %>
-<div class="header">
-<h2 class="active h2-title">Event Details</h2>
-</div>
+<section style="padding-top: 0px;">
+	<div class="header">
+		<h2 class="active h2-title">Admin Dashboard</h2>
+	</div>
 
-<button class="btn align-center" style="margin-right: 20px;"> 
-<%= link_to "Back to Events", event_index_path, class:"back-button" %> 
-</button>
-<%= render "form", pointEvent: @pointEvent %>
+	<div class="h2-title">
+		<h3 class="text upper">Engagement Details </h3>
+		<button class="btn" style="padding-left: 0rem;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
+	</div> 
+	<br> 
+	<%= render "form", pointEvent: @pointEvent %>
 
-<h1>Users that have attended</h1>
-<table>
-	<tr>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>Email</th>
-	</tr>
+	<br></br>
+	<div class="h2-title">
+		<h3 class="text upper">Members That Attended</h3>
+	</div>
+	<table class="styled-table">
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+		</tr>
 
-	<% @pointEvent.users.each do |user| %>
-	<tr>
-		<td><%= user.firstName %></td>
-		<td><%= user.lastName %></td>
-		<td><%= user.email %></td>
-	</tr>
-	<% end %>
-</table>
+		<% @pointEvent.users.each do |user| %>
+		<tr>
+			<td><%= user.firstName %></td>
+			<td><%= user.lastName %></td>
+			<td><%= user.email %></td>
+		</tr>
+		<% end %>
+	</table>
+</section>
+<%= render "layouts/footer" %>

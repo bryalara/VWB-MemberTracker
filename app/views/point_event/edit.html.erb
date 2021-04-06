@@ -1,33 +1,43 @@
 <%= render "layouts/navbar2", user: @user %>
-<div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button></div>
-<div class="wrapper fadeInDown">
-	<div id="formContent">
-		<h2 class="active">Edit a Points Event</h2>
-
-		<p>* denotes required fields.<p>
-		<%= form_with :method => :PATCH, url:"/point_event/#{@pointEvent.id}", model: @pointEvent do |form| %>
-			<table class="center-edit">
-				<tr>
-					<th><%= form.label :name %>*</th>
-					<td><%= form.text_field :name %></td>
-				</tr>
-				<tr>
-					<th><%= form.label :description %></th>
-					<td><%= form.text_field :description %></td>
-				</tr>
-				<tr>
-					<th><%= form.label :points %>*</th>
-					<td><%= form.number_field :points %></td>
-				</tr>
-			</table>
-
-			<%= form.submit "Save Changes to Points Event" %>
-
-		<% end %>
+<section style="padding-top: 0px;">
+	<div class="header">
+		<h2 class="active h2-title">Admin Dashboard</h2>
 	</div>
 
-	<h1>Users that have attended</h1>
-	<table>
+	<div class="h2-title">
+		<h3 class="text upper">Edit An Engagement</h3>
+		<button class="btn"  style="padding-left: 0rem;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
+	</div> 
+
+	<div class="wrapper fadeInDown">
+		<div id="formContent">
+			<h2 class="active">Edit Engagement</h2>
+			<p>* denotes required fields.<p>
+			<%= form_with :method => :PATCH, url:"/point_event/#{@pointEvent.id}", model: @pointEvent do |form| %>
+				<table class="center-edit">
+					<tr>
+						<th><%= form.label :name %>*</th>
+						<td><%= form.text_field :name %></td>
+					</tr>
+					<tr>
+						<th><%= form.label :description %></th>
+						<td><%= form.text_field :description %></td>
+					</tr>
+					<tr>
+						<th><%= form.label :points %>*</th>
+						<td><%= form.number_field :points %></td>
+					</tr>
+				</table>
+				<%= form.submit "Save Changes" %>
+			<% end %>
+		</div>
+	</div>
+
+	<br></br>
+	<div class="h2-title">
+		<h3 class="text upper">Members That Attended</h3>
+	</div>
+	<table class="styled-table">
 		<tr>
 			<th>First Name</th>
 			<th>Last Name</th>
@@ -44,4 +54,5 @@
 		</tr>
 		<% end %>
 	</table>
-</div>
+</section>
+<%= render "layouts/footer" %>

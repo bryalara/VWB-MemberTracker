@@ -1,50 +1,54 @@
 
 <h1>Please submit info to be approved as a member</h1>
-<%= form_with model: @user do |form| %>
-    <div>
-        <%= form.label :email %><br>
-        <%= form.email_field :email %>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+    <%= form_with model: @user do |form| %>
+        <div>
+            <%= form.label :email %><br>
+            <%= form.email_field :email %>
+        </div>
+
+        <div>
+            <%= form.label :firstName %><br>
+            <%= form.text_field :firstName %>
+            <% @user.errors.full_messages_for(:firstName).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <div>
+            <%= form.label :lastName %><br>
+            <%= form.text_field :lastName %>
+            <% @user.errors.full_messages_for(:lastName).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <div>
+            <%= form.label :phoneNumber %><br>
+            <%= form.telephone_field :phoneNumber %>
+        </div>
+
+        <div>
+            <%= form.label :classification %><br>
+            <%= form.select :classification, options_for_select(["Freshman","Sophomore", "Junior", "Senior"]),:prompt => 'Select Year' %>
+        </div>
+
+        <div>
+            <%= form.label :tShirtSize %><br>
+            <%= form.select :tShirtSize, options_for_select(["XXS","XS","S", "M", "L", "XL", "XXL"]), :prompt => 'Select Size' %>
+        </div>
+
+        <div>
+            <%= form.label :optInEmail  %><br>
+            <%= form.check_box :optInEmail %>
     </div>
 
-    <div>
-        <%= form.label :firstName %><br>
-        <%= form.text_field :firstName %>
-        <% @user.errors.full_messages_for(:firstName).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
+        <div>
+            <%= form.submit %>
+        </div>
+    <% end %>
     </div>
-
-    <div>
-        <%= form.label :lastName %><br>
-        <%= form.text_field :lastName %>
-        <% @user.errors.full_messages_for(:lastName).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-
-    <div>
-        <%= form.label :phoneNumber %><br>
-        <%= form.telephone_field :phoneNumber %>
-    </div>
-
-    <div>
-        <%= form.label :classification %><br>
-        <%= form.select :classification, options_for_select(["Freshman","Sophomore", "Junior", "Senior"]),:prompt => 'Select Year' %>
-    </div>
-
-    <div>
-        <%= form.label :tShirtSize %><br>
-        <%= form.select :tShirtSize, options_for_select(["XXS","XS","S", "M", "L", "XL", "XXL"]), :prompt => 'Select Size' %>
-    </div>
-
-    <div>
-        <%= form.label :optInEmail  %><br>
-        <%= form.check_box :optInEmail %>
-   </div>
-
-    <div>
-        <%= form.submit %>
-    </div>
-<% end %>
+</div>
 
 <%= link_to "Return to dashboard", memberDashboard_path %>

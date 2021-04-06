@@ -16,41 +16,46 @@ th, td, tr {
 		<%= msg %>
 	</div>
 <% end %>
+<section style="padding-top: 0px;">
+	<div class="header">
+		<h2 class="active h2-title">Admin Dashboard</h2>
+	</div>
 
-<div class="header">
-<button class="btn back-btn" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
-</div>
-<div class="header2">
-<h2 class="active h2-title">Events</h2>
-</div>
-<div class="align-table">
-<button class="btn btn-decor" style="padding-left: 0rem;"> <%= link_to "Add an Event", new_event_path(@events), class:"back-button" %></button>
-<table class="styled-table" >
-	<tr>
-		<th>Event</th>
-		<th>Description</th>
-		<th>Points</th>
-		<th>Start Time</th>
-		<th>End Time</th>
-		<th>Event Type</th>
-		<th></th>
-		<th>Actions</th>
-		<th></th>
-	</tr>
+	<div class="h2-title">
+		<h3 class="text upper">Events</h3>
+		<button class="btn" style="padding-left: 0rem;"> <%= link_to "Add an Event", new_event_path(@events), class:"back-button" %></button>
+		<button class="btn back-btn" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
+	</div>
 
-	<% @events.each do |event| %>
-	<tr>
-		<td><%= event.name %></td>
-		<td><%= event.description %></td>
-		<td><%= event.points %></td>
-		<td><%= Event.dateTimeDisplay(event.startDate) %></td>
-		<td><%= Event.dateTimeDisplay(event.endDate) %></td>
-		<td><%= link_to "Show", event_path(event) %></td>
-		<td><%= link_to "Edit", edit_event_path(event) %></td>
-		<td><%= link_to "Delete", delete_event_path(event) %></td>
-	</tr>
-	<% end %>
-</table>
-</div>
+	<table class="styled-table" >
+		<tr>
+			<th>Event</th>
+			<th>Description</th>
+			<th>Points</th>
+			<th>Start Time</th>
+			<th>End Time</th>
+			<th></th>
+			<th>Actions</th>
+			<th></th>
+			<th>Attendance QRCode</th>
+		</tr>
 
-<%= render template: 'point_event/index' %>
+		<% @events.each do |event| %>
+		<tr>
+			<td><%= event.name %></td>
+			<td><%= event.description %></td>
+			<td><%= event.points %></td>
+			<td><%= Event.dateTimeDisplay(event.startDate) %></td>
+			<td><%= Event.dateTimeDisplay(event.endDate) %></td>
+			<td><%= link_to "Show", event_path(event) %></td>
+			<td><%= link_to "Edit", edit_event_path(event) %></td>
+			<td><%= link_to "Delete", delete_event_path(event) %></td>
+			<td><%= link_to "QR", qr_event_path(event) %></td>
+		</tr>
+		<% end %>
+	</table>
+
+	<%= render template: 'point_event/index' %>
+
+</section>
+<%= render "layouts/footer" %>

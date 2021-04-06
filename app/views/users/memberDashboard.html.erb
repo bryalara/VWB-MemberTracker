@@ -1,11 +1,9 @@
 
 <%= render "layouts/navbar2", user: @user %>
-
+<section style="padding-top: 0px;">
 <div class="header">
 <h2 class="active h2-title">Member Dashboard</h2>
 </div>
-
-<div class="">
 
 <div style="margin-top: 20px" >
 <div class="h2-title">
@@ -52,12 +50,12 @@
         <% end %>
         </table>
 
-        <%unless (@showAll)%>
-            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Show All Events", memberDashboard_path(:showAll => true) , class: "back-button" %> </button>
-        <%else%>
-            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Only Show Recent Events", memberDashboard_path(:showAll => nil) , class: "back-button" %> </button>
+        <%# <%unless (@showAll)>
+            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Show All Events", memberDashboard_path(:showAll => true) , class: "back-button" > </button>
+        <%else>
+            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Only Show Recent Events", memberDashboard_path(:showAll => nil) , class: "back-button" > </button>
         <%end%>
     <%end%>
 </div>
-
-</div>
+</section>
+<%= render "layouts/footer" %>

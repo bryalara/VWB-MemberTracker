@@ -1,55 +1,84 @@
+<style>
+select{
+  -webkit-appearance: none;
+  padding: 15px 10px 15px 10px;
+  width: 85%;
+  border: 1px solid #E8EAED;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 1px 3px -2px #9098A9;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 150ms ease;
+  text-align-last: center;
+}
+</style>
 <%= render "layouts/navbar2", user: @user %>
-<h1>Registration</h1>
-
-<%= form_with model: @user do |form| %>
-    <div>
-        <%= form.label :email %><br>
-        <%= form.email_field :email, value: current_userlogin.email, :readonly => true%>
+<section style="padding-top: 0px;">
+<div class="header">
+        <h2 class="active h2-title">Registration</h2>
     </div>
 
-    <div>
-        <%= form.label :firstName %><br>
-        <%= form.text_field :firstName %>
-        <% @user.errors.full_messages_for(:firstName).each do |message| %>
-            <div><%= message %></div>
+    <div class="h2-title">
+        <h3 class="text upper">New User</h3>
+    </div>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <%= form_with model: @user do |form| %>
+            <div>
+            <h2 class="active"> Sign Up </h2>
+                <%= form.email_field :email, value: "", :readonly => true, placeholder: "Email"%>
+            </div>
+
+            <div>
+                <br>
+                <%= form.text_field :firstName, placeholder: "First Name", value: "" %>
+                <% @user.errors.full_messages_for(:firstName).each do |message| %>
+                    <div><%= message %></div>
+                <% end %>
+            </div>
+
+            <div>
+                <br>
+                <%= form.text_field :lastName, placeholder: "Last Name", value: "" %>
+                <% @user.errors.full_messages_for(:lastName).each do |message| %>
+                    <div><%= message %></div>
+                <% end %>
+            </div>
+            
+            <div class="select">
+                <br>
+                <%= form.select :role, options_for_select([["Select a Role", ""], ["Member", 0], ["Admin", 1]]), id: "slct", value: "", :prompt => 'Select Role' %>
+            </div>
+
+            <div>
+                <br>
+                <%= form.telephone_field :phoneNumber, placeholder: "Phone Number", value: "" %>
+            </div>
+
+            <div>
+                <br>
+                <%= form.select :classification, options_for_select(["Freshman","Sophomore", "Junior", "Senior"]),:prompt => 'Select Year' %>
+            </div>
+
+            <div>
+                <br>
+                <%= form.select :tShirtSize, options_for_select(["XXS","XS","S", "M", "L", "XL", "XXL"]), :prompt => 'Select Size' %>
+            </div>
+
+            <div class="double" align="center">
+                <%# <%= form.label :optInEmail , :false<br> %> 
+                <%= form.label :optInEmail, "Opt-In Email", class: "label" %>
+                <div style="width: 50%;"><%= form.check_box :optInEmail, class: "field" %></div>
+            </div>
+
+            <div>
+                <%= form.submit "Sign Up" %>
+            </div>
         <% end %>
     </div>
-
-    <div>
-        <%= form.label :lastName %><br>
-        <%= form.text_field :lastName %>
-        <% @user.errors.full_messages_for(:lastName).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    
-    <div>
-        <%= form.label :role %><br>
-        <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]]), :prompt => 'Select Role' %>
-    </div>
-
-    <div>
-        <%= form.label :phoneNumber %><br>
-        <%= form.telephone_field :phoneNumber %>
-    </div>
-
-    <div>
-        <%= form.label :classification %><br>
-        <%= form.select :classification, options_for_select(["Freshman","Sophomore", "Junior", "Senior"]),:prompt => 'Select Year' %>
-    </div>
-
-    <div>
-        <%= form.label :tShirtSize %><br>
-        <%= form.select :tShirtSize, options_for_select(["XXS","XS","S", "M", "L", "XL", "XXL"]), :prompt => 'Select Size' %>
-    </div>
-
-    <div>
-        <%# <%= form.label :optInEmail , :false<br> %> 
-        <%= form.label :optInEmail %><br>
-        <%= form.check_box :optInEmail %>
-   </div>
-
-    <div>
-        <%= form.submit %>
-    </div>
-<% end %>
+</div>
+</section>
+<%= render "layouts/footer" %>

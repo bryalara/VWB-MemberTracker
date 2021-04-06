@@ -12,17 +12,19 @@ th, td, tr {
 }
 </style>
 
-<div class="header">
-<h2 class="active h2-title">Points Events</h2>
+<div class="h2-title" style="padding-top: 20px;">
+    <h3 class="text upper">Engagements</h3>
+	<button class="btn" style="padding-left: 0rem;" > <%= link_to "Add an Engagement", new_point_event_path(@pointEvents), class:"back-button" %></button>
 </div>
-<div class="align-table" >
-<button class="btn btn-decor" style="padding-left: 0rem;" > <%= link_to "Add a Points Event", new_point_event_path(@pointEvents), class:"back-button" %></button>
+
 <table class="styled-table" >
 	<tr>
 		<th>Event</th>
 		<th>Description</th>
 		<th>Points</th>
-		<th colspan="4">Actions<th>
+		<th></th>
+		<th>Actions<th>
+		<th>Attendance QRCode</th>
 	</tr>
 
 	<% @pointEvents.each do |pointEvent| %>
