@@ -508,6 +508,10 @@ RSpec.describe 'Events', type: :feature do
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+			
 			click_on 'Click to sign up!'
 			expect(page).to have_content("You have already signed up for Test Event!")
 		end

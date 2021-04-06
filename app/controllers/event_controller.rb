@@ -91,6 +91,7 @@ class EventController < ApplicationController
       attendance.attended = true
       attendance.save
       flash[:notice] = "Successfully attended #{@event.name}!"
+      redirect_to event_index_path
     else
       flash[:notice] = "Could not attend #{@event.name} because you did not sign up for the event."
       redirect_to attend_event_path(@event)
@@ -143,6 +144,7 @@ class EventController < ApplicationController
       if @user
         @event.users << @user
         flash[:notice] = "Successfully signed up for #{@event.name}!"
+        redirect_to event_index_path
       end
     rescue ActiveRecord::RecordNotUnique
       flash[:notice] = "You have already signed up for #{@event.name}!"

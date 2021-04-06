@@ -25,8 +25,8 @@
 		<td><%= user.email %></td>
 
 		<% attendance = PointEventAttendee.find_by(user_id: user.id, point_event_id: @point_event.id) %>
-		<td><%= PointEvent.display_date_time(attendance.created_at) %>
-		<td><%= attendance.created_at != attendance.updated_at ? PointEvent.display_date_time(attendance.updated_at) : "N/A" %>
+		<td><%= Event.display_date_time(attendance.created_at) %>
+		<td><%= attendance.created_at != attendance.updated_at ? Event.display_date_time(attendance.updated_at) : "N/A" %>
 	</tr>
 	<% end %>
 </table>

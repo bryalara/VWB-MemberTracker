@@ -6,13 +6,11 @@ class PointEventController < ApplicationController
 
   def index
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @point_events = PointEvent.all
   end
 
   def show
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @point_event = PointEvent.find(params[:id])
   end
 
@@ -89,6 +87,7 @@ class PointEventController < ApplicationController
       attendance.attended = true
       attendance.save
       flash[:notice] = "Successfully attended #{@point_event.name}!"
+      redirect_to event_index_path
     else
       flash[:notice] = "Could not attend #{@point_event.name} because you did not sign up for the engagement."
       redirect_to attend_point_event_path(@point_event)
@@ -120,6 +119,7 @@ class PointEventController < ApplicationController
       if @user
         @point_event.users << @user
         flash[:notice] = "Successfully signed up for #{@point_event.name}!"
+        redirect_to event_index_path
       end
     rescue ActiveRecord::RecordNotUnique
       flash[:notice] = "You have already signed up for #{@point_event.name}!"

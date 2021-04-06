@@ -48,8 +48,8 @@
 			<td><%= user.email %></td>
 
 			<% attendance = PointEventAttendee.find_by(user_id: user.id, point_event_id: @point_event.id) %>
-			<td><%= PointEvent.display_date_time(attendance.created_at) %>
-			<td><%= attendance.created_at != attendance.updated_at ? PointEvent.display_date_time(attendance.updated_at) : "N/A" %>
+			<td><%= Event.display_date_time(attendance.created_at) %>
+			<td><%= attendance.created_at != attendance.updated_at ? Event.display_date_time(attendance.updated_at) : "N/A" %>
 			
 			<td><%= link_to "Remove", delete_user_point_event_path(id: @point_event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the points event again. Points that student received from this points event will also dissappear!"} %></td>
 		</tr>
