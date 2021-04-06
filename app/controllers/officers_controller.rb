@@ -17,6 +17,9 @@ class OfficersController < ApplicationController
     end
   end
 
+  def save
+  end
+
 
   def show
     @officer = Officer.find(params[:id])
