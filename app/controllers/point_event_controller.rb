@@ -10,6 +10,7 @@ class PointEventController < ApplicationController
     @point_events = PointEvent.all
   end
 
+  # export csv for backup, could download 2 csv
   def export_csv
     @point_events = PointEvent.all
     if true
@@ -19,7 +20,7 @@ class PointEventController < ApplicationController
           # make it available to output 2 csv files
           # { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
           if params[:format_data] == 'events'
-            # to_csv is to only output users' emails
+            # to_csv is to only output events' details
             send_data @point_events.to_csv, filename: "events-emails-#{Date.today}.csv"
           else
             # to_csv_backup is to output users' all info

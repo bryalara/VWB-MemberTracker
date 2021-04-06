@@ -14,6 +14,7 @@ class EventController < ApplicationController
   # another way to download csv other than what in the users
   def export_csv
     @events = Event.all
+    #only allowed when user is an Admin
     if true
       respond_to do |format|
         format.html

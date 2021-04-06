@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
+
+  #setup to make sure some fields are always filled in
   validates :startDate, presence: true, unless: :end_date_is_bigger?
   validates :endDate, presence: true, unless: :end_date_is_bigger?
   validates :points, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -9,6 +11,7 @@ class Event < ApplicationRecord
   has_many :event_attendees, dependent: :destroy
   has_many :users, through: :event_attendees
 
+  # check if the end date is bigger than start date, if not, show error
   def end_date_is_bigger?
     return if [endDate.blank?, startDate.blank?].any?
 
@@ -27,7 +30,6 @@ class Event < ApplicationRecord
     attributes = %w[id name description startDate endDate points]
     CSV.generate(headers: true) do |csv|
       csv << attributes
-
       all.find_each do |event|
         csv << attributes.map { |attr| event.send(attr) }
       end
@@ -45,6 +47,7 @@ class Event < ApplicationRecord
       all.find_each do |event|
         event.users.each do |user|
           # push these things into csv
+          #it is int he pair of event-user
           csv << [event.id, event.name, user.firstName, user.lastName, user.email]
         end
       end

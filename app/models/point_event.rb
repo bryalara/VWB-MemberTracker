@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PointEvent < ApplicationRecord
+
+  #setup to make sure some fields are always filled in
   validates :points, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :name, presence: true
 
@@ -13,7 +15,6 @@ class PointEvent < ApplicationRecord
     attributes = %w[id name description points]
     CSV.generate(headers: true) do |csv|
       csv << attributes
-
       all.find_each do |event|
         csv << attributes.map { |attr| event.send(attr) }
       end

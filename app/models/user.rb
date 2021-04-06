@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   enum role_types: { Member: 0, Admin: 1 }
 
+  # setup the user attributes
   def self.get_users(appr, attr, ord)
     case attr
     when 'first'
@@ -41,6 +42,7 @@ class User < ApplicationRecord
     end
   end
 
+  # import a csv to import some initial users
   def self.my_import(file)
     users = []
     wmsg = []
@@ -70,6 +72,7 @@ class User < ApplicationRecord
     wmsg
   end
 
+  # this is used to get the total points of users
   def get_total_points(user)
     total_points = user.participationPoints # initial points user has
     user.events.each do |event|
@@ -81,19 +84,19 @@ class User < ApplicationRecord
     total_points
   end
 
+  # download the optin email lists to sent group emails
   def self.to_csv
     attributes = %w[email]
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
-
       all.find_each do |user|
         csv << attributes.map { |attr| user.send(attr) } if user.optInEmail == true
       end
     end
   end
 
-  # this is to backup the users information
+  # this is to backup the users information by download users' info in a CSV
   def self.to_csv_backup
     # includes all the information a user had
     attributes = %w[email role firstName lastName phoneNumber classification tShirtSize optInEmail approved
@@ -108,6 +111,7 @@ class User < ApplicationRecord
     end
   end
 
+  #setup to make sure some fields are always filled in
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 2 }
   validates :firstName, presence: true

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# from teh OAuth Instruction
 
 class Userlogin < ApplicationRecord
   # Include default devise modules. Others available are:
