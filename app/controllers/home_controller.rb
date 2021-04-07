@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    @signedInUser = check_user
+    @signed_in_user = check_user
   end
 end

@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class PointEvent < ApplicationRecord
-
-  #setup to make sure some fields are always filled in
+  # setup to make sure some fields are always filled in
   validates :points, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :name, presence: true
 
@@ -23,7 +22,6 @@ class PointEvent < ApplicationRecord
 
   # this is for download all the event-user pairs
   def self.to_csv_users
-    attributes = %w[name description startDate endDate points]
     columns = ['event ID', 'event name', 'User 1st name', 'user 2nd name', 'user email']
     # for all events
     CSV.generate(headers: true) do |csv|

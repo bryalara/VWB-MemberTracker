@@ -2,7 +2,7 @@
 
 class PointEventController < ApplicationController
   protect_from_forgery with: :exception
-  before_action :authenticate_userlogin! && :admin_verify, except: %i[create registration]
+  before_action :authenticate_userlogin! && :admin_verify, except: %i[create]
 
   def index
     @auth = User.find_by(email: current_userlogin.email)
@@ -13,19 +13,17 @@ class PointEventController < ApplicationController
   # export csv for backup, could download 2 csv
   def export_csv
     @point_events = PointEvent.all
-    if true
-      respond_to do |format|
-        format.html
-        format.csv do
-          # make it available to output 2 csv files
-          # { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
-          if params[:format_data] == 'events'
-            # to_csv is to only output events' details
-            send_data @point_events.to_csv, filename: "events-emails-#{Date.today}.csv"
-          else
-            # to_csv_backup is to output users' all info
-            send_data @point_events.to_csv_users, filename: "member-emails-#{Date.today}.csv"
-          end
+    respond_to do |format|
+      format.html
+      format.csv do
+        # make it available to output 2 csv files
+        # { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
+        if params[:format_data] == 'events'
+          # to_csv is to only output events' details
+          send_data @point_events.to_csv, filename: "engagement-events-#{Time.zone.today}.csv"
+        else
+          # to_csv_backup is to output users' all info
+          send_data @point_events.to_csv_users, filename: "engagement-members-#{Time.zone.today}.csv"
         end
       end
     end

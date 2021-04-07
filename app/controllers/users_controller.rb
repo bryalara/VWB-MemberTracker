@@ -28,10 +28,10 @@ class UsersController < ApplicationController
         case params[:format_data]
         when 'email'
           # to_csv is to only output users' emails
-          send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv"
+          send_data @users.to_csv, filename: "member-emails-#{Time.zone.today}.csv"
         when 'all'
           # to_csv_backup is to output users' all
-          send_data @users.to_csv_backup, filename: "member-info-#{Date.today}.csv"
+          send_data @users.to_csv_backup, filename: "member-info-#{Time.zone.today}.csv"
         end
       end
     end

@@ -17,7 +17,7 @@ AllCops:
     - '.git/**/*'
     - 'spec/**/*'
 Metrics/LineLength:
-  Max: 120
+  Max: 150
 Metrics/BlockLength:
   Exclude:
     - config/**/*
@@ -25,10 +25,12 @@ Metrics/BlockLength:
   Max: 20
 Metrics/MethodLength:
   Max: 50
+Metrics/CyclomaticComplexity:
+  Max: 20
 Metrics/ClassLength:
   Max: 200
 Metrics/AbcSize:
-  Max: 50
+  Max: 75
 Metrics/PerceivedComplexity:
   Max: 20
 Style/Documentation:

@@ -111,7 +111,7 @@ class User < ApplicationRecord
     end
   end
 
-  #setup to make sure some fields are always filled in
+  # setup to make sure some fields are always filled in
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 2 }
   validates :firstName, presence: true
