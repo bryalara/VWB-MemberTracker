@@ -135,7 +135,7 @@ class EventController < ApplicationController
     send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: 'VWB Calendar.ics'
   end
 
-  # Allows users to sign up by putting them in the event_attendee join table.
+  # Allows users to sign up by putting them in the event_attendees join table.
   def sign_up
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to memberDashboard_path unless @auth
@@ -182,15 +182,16 @@ class EventController < ApplicationController
     rescue ActiveRecord::RecordNotUnique
       attendee = EventAttendee.find_by(user_id: user.id, event_id: event.id)
 
-      # But has attended
+      # and has attended
       if attendee.attended
         flash[:alert] = "#{user.firstName} #{user.lastName} has already attended this event."
 
-      # But has not attended
+      # but has not attended
       else
         attendee.attended = true
         attendee.save
         flash[:notice] = "Successfully forced #{user.firstName} #{user.lastName} to attend this event."
+      end
       redirect_to edit_event_path(event)
     end
   end

@@ -9,7 +9,7 @@
 <%= render "form", event: @event %>
 
 <% if admin? %>
-<h1>Users that planned to attend</h1>
+<h1>Attendance</h1>
 	<table>
 		<tr>
 			<th>First Name</th>
@@ -27,7 +27,7 @@
 
 			<% attendance = EventAttendee.find_by(user_id: user.id, event_id: @event.id) %>
 			<td><%= Event.display_date_time(attendance.created_at) %>
-			<td><%= attendance.created_at != attendance.updated_at ? Event.display_date_time(attendance.updated_at) : "N/A" %>
+			<td><%= attendance.attended ? Event.display_date_time(attendance.updated_at) : "N/A" %>
 		</tr>
 		<% end %>
 	</table>
