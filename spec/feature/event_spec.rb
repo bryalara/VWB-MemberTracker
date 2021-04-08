@@ -673,4 +673,129 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content("Registration")
 		end
 	end
+
+	describe "When forcing users into an event" do
+		event = Event.new
+		setup do
+			event = Event.create!(name: 'Test Event',
+						description: 'Test Description',
+						points: 5,
+						startDate: DateTime.now + 1.month,
+						endDate: DateTime.now + 1.month + 1.hour,
+						capacity: 1)
+		end
+
+		it "is possible when the user has not signed up for it" do
+			visit edit_event_path(event)
+			expect(page).to have_content("Force a user to attend the event")
+
+			fill_in 'firstName', with: 'Bry'
+			click_on 'Search for users'
+
+			expect(page).to have_content("Force in")
+			click_on 'Force in'
+
+			expect(page).to have_content("Successfully")
+		end
+
+		it "is possible when the user has signed up for it but not attended" do
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+			click_on 'Click to sign up!'
+	 		expect(page).to have_content("Successfully signed up for Test Event!")
+
+			visit edit_event_path(event)
+			expect(page).to have_content("Force a user to attend the event")
+
+			fill_in 'firstName', with: 'Bry'
+			click_on 'Search for users'
+
+			expect(page).to have_content("Force in")
+			click_on 'Force in'
+			expect(page).to have_content("Successfully forced")
+		end
+
+		it "is possible even when the event is full" do
+			user = User.create!(email: 'dummy@tamu.edu',
+								role: 0,
+								firstName: 'Feature',
+								lastName: 'Testing',
+								phoneNumber: '1231231234',
+								tShirtSize: 'M',
+								participationPoints: 5,
+								classification: 'Senior',
+								optInEmail: true,
+								approved: false)
+			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
+
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello dummy@tamu.edu")
+
+			click_on 'Click to sign up!'
+			expect(page).to have_content("Successfully signed up for Test Event!")
+
+			login_with_oauth
+
+			visit edit_event_path(event)
+			expect(page).to have_content("Force a user to attend the event")
+
+			fill_in 'firstName', with: 'Bry'
+			click_on 'Search for users'
+
+			expect(page).to have_content("Force in")
+			click_on 'Force in'
+			expect(page).to have_content("Successfully")
+		end
+
+		it "is not possible if the user is already in the event" do
+			visit sign_up_event_path(event)
+			expect(page).to have_content("Event: Test Event")
+			expect(page).to have_content("Hello bryalara@tamu.edu")
+
+			click_on 'Click to sign up!'
+	 		expect(page).to have_content("Successfully signed up for Test Event!")
+
+			visit edit_event_path(event)
+			expect(page).to have_content("Force a user to attend the event")
+
+			fill_in 'firstName', with: 'Bry'
+			click_on 'Search for users'
+
+			expect(page).to have_content("Force in")
+			click_on 'Force in'
+			expect(page).to have_content("Successfully forced")
+
+			fill_in 'firstName', with: 'Bry'
+			click_on 'Search for users'
+
+			expect(page).to have_content("Force in")
+			click_on 'Force in'
+			expect(page).to have_content("has already attended this")
+		end
+
+		it "is possible to force a user that is not approved" do
+			user = User.create!(email: 'dummy@tamu.edu',
+								role: 0,
+								firstName: 'Feature',
+								lastName: 'Testing',
+								phoneNumber: '1231231234',
+								tShirtSize: 'M',
+								participationPoints: 5,
+								classification: 'Senior',
+								optInEmail: true,
+								approved: false)
+			visit edit_event_path(event)
+			expect(page).to have_content("Force a user to attend the event")
+
+			fill_in 'firstName', with: 'Fea'
+			click_on 'Search for users'
+
+			expect(page).to have_content("Force in")
+			click_on 'Force in'
+
+			expect(page).to have_content("Successfully")
+		end
+	end
 end

@@ -172,7 +172,7 @@ class PointEventController < ApplicationController
         attendee.save
         flash[:notice] = "Successfully forced #{user.firstName} #{user.lastName} to attend this engagement."
       end
-      redirect_to edit_point_event_path(event)
+      redirect_to edit_point_event_path(point_event)
     end
   end
 
