@@ -37,6 +37,10 @@ class EventController < ApplicationController
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to memberDashboard_path unless @auth
     @event = Event.find(params[:id])
+
+    if params[:firstName] || params[:lastName] || params[:email]
+      @users = User.search(params[:firstName], params[:lastName], params[:email])
+    end
   end
 
   def update
@@ -114,7 +118,7 @@ class EventController < ApplicationController
     redirect_to edit_event_path(@event)
   end
 
-  # Creates an ics file from events created.
+  # Creates an ics file from events created and downloads it.
   def download_ics
     @events = Event.all
     cal = Icalendar::Calendar.new
@@ -156,8 +160,47 @@ class EventController < ApplicationController
     end
   end
 
+  # Forces a selected user into an event
+  def force_in
+    @auth = User.find_by(email: current_userlogin.email)
+    redirect_to memberDashboard_path unless @auth
+
+    event = Event.find(params[:event_id])
+    user = User.find(params[:user_id])
+
+    event_attendee = EventAttendee.new(event_attendee_params)
+
+    begin
+      # validate: false forces the user in, even if the capacity is full.
+      if event_attendee.save(validate: false)
+        flash[:notice] = "Successfully forced the user in!"
+        redirect_to edit_event_path(event)
+      else
+        redirect_to edit_event_path(event)
+      end
+    # If the user has already signed up for the event...
+    rescue ActiveRecord::RecordNotUnique
+      attendee = EventAttendee.find_by(user_id: user.id, event_id: event.id)
+
+      # But has attended
+      if attendee.attended
+        flash[:alert] = "#{user.firstName} #{user.lastName} has already attended this event."
+
+      # But has not attended
+      else
+        attendee.attended = true
+        attendee.save
+        flash[:notice] = "Successfully forced #{user.firstName} #{user.lastName} to attend this event."
+      redirect_to edit_event_path(event)
+    end
+  end
+
   private
   def event_params
     params.require(:event).permit(:points, :name, :description, :startDate, :endDate, :capacity)
+  end
+
+  def event_attendee_params
+    params.permit(:event_id, :user_id, :attended)
   end
 end

@@ -8,6 +8,7 @@
 </button>
 <%= render "form", event: @event %>
 
+<% if admin? %>
 <h1>Users that planned to attend</h1>
 	<table>
 		<tr>
@@ -30,3 +31,4 @@
 		</tr>
 		<% end %>
 	</table>
+<% end %>

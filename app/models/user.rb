@@ -82,6 +82,14 @@ class User < ApplicationRecord
     end
   end
 
+  # Returns a list of users matching search parameters
+  def self.search(first_name, last_name, email)
+    users = User.where("\"firstName\" LIKE ? 
+                      AND \"lastName\" LIKE ? 
+                      AND email LIKE ?", 
+                      "%#{first_name}%", "%#{last_name}%", "%#{email}%")
+  end
+
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 2 }
   validates :firstName, presence: true
