@@ -88,6 +88,17 @@ th, td, tr {
 	</div>
 <% end %>
 
+<%# only an admin could download CSV %>
+<% if @auth.role == 1 %>
+<div align="center" >
+    <div>
+        <%# make two button to output 2 different kinds of CSV %>
+        <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Events List", event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
+		<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Events-Users List", event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
+    </div>
+</div>
+<% end %>
+
 <%= render template: 'point_event/index' %>
 
 <%= render template: 'layouts/events' %>

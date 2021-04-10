@@ -13,7 +13,42 @@ select{
   transition: all 150ms ease;
   text-align-last: center;
 }
+.section {
+    margin: 80px;
+}
+.notice {
+	border-radius: 5px;
+	padding: 10px;
+	background: #d8ecdb;
+	color: #295529;
+}
+.alert {
+	border-radius: 5px;
+	padding: 10px;
+	color: red;
+}
 </style>
+
+<div>
+  <%= render "layouts/navbar2", user: @user %>
+</div>
+<div id="section">
+<div style="margin-top: 50px">
+<% flash.each do |type, msgs| %>
+  <div class="notice">
+  <% if Array === msgs %>
+    <ul>
+    <% msgs.each do |msg| %>
+      <li class=<%=msg[0..4].to_s.chomp == 'Error'.to_s.chomp ? :"alert" : :"notice"  %> ><%= msg %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <%= msgs %>
+  <% end %>
+  </div>
+<% end %>
+</div>
+
 
 
  <%= render "layouts/navbar2", user: @user %>
@@ -23,7 +58,7 @@ select{
 </div>
 <div class="wrapper fadeInDown">
 <button class="btn" >
-<%= link_to "View All Users", users_path, class: "back-button" %>
+<%= link_to @auth.role==1 ? :"View All Users" : :"Member Dashboard", users_path, class: "back-button" %>
 </button>
 <div id="formContent">
 <%= form_with model: @user do |form| %>
@@ -51,7 +86,7 @@ select{
         <%if @auth.role==1%>
             <div class="select">
                 <br>
-                <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1] ]), id: "slct", prompt: "Select a Role"   %>
+                <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]] ,selected: @user.role)  ,prompt: "Select a Role"   %>
             </div>
         <%end%>
     <%end%>
@@ -59,16 +94,25 @@ select{
     <div>
         <br>
         <%= form.telephone_field :phoneNumber, placeholder: "Phone Number" %>
+        <% @user.errors.full_messages_for(:phoneNumber).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
     </div>
 
     <div>
        <br>
-        <%= form.select :classification, options_for_select(["Freshman", "Sophomore", "Junior", "Senior"]), :prompt => 'Select Year' %>
+        <%= form.select :classification, options_for_select(["Freshman", "Sophomore", "Junior", "Senior"], selected: @user.classification), :prompt => 'Select Year' %>
+        <% @user.errors.full_messages_for(:classification).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
     </div>
 
     <div>
         <br>
-        <%= form.select :tShirtSize, options_for_select(["XXS", "XS", "S", "M", "L", "XL", "XXL"]), :prompt => 'Select Size'%>
+        <%= form.select :tShirtSize, options_for_select(["XXS", "XS", "S", "M", "L", "XL", "XXL"], selected: @user.tShirtSize), :prompt => 'Select Size'%>
+        <% @user.errors.full_messages_for(:tShirtSize).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
     </div>
 
     <%if @auth%>
@@ -76,7 +120,10 @@ select{
             <div class="double" align="center">
             <br>
                 <%= form.label :participationPoints, "Participation Points", class: "label"%>
-            <div style="width: 50%;"> <%= form.number_field  :participationPoints, placeholder: "0", class: "field" %></div>
+            <div style="width: 50%;"> <%= form.number_field  :participationPoints, placeholder: "0", class: "field", value: 0 %></div>
+            <% @user.errors.full_messages_for(:participationPoints).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
             </div>
         <%end%>
     <%end%>

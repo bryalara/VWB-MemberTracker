@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# most of these are from the instruction
+
 module Userlogins
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def google_oauth2
@@ -22,6 +24,7 @@ module Userlogins
       new_userlogin_session_path
     end
 
+    # after signin, direct to the home page or the user did not exist before, then went to register the user
     def after_sign_in_path_for(_resource_or_scope)
       # stored_location_for(resource_or_scope) || root_path
       if User.exists?(email: current_userlogin.email)
