@@ -193,10 +193,10 @@ class PointEventController < ApplicationController
   private
 
   def point_event_params
-    params.require(:point_event).permit(:points, :name, :description, :capacity)
+    params.require(:point_event).permit(:points, :name, :description, :capacity, documents: [])
   end
 
   def point_event_attendee_params
-    params.permit(:point_event_id, :user_id, :attended)
+    params.permit(:point_event_id, :user_id, :attended, documents: [])
   end
 end

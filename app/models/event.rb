@@ -11,6 +11,8 @@ class Event < ApplicationRecord
   has_many :event_attendees, dependent: :destroy
   has_many :users, through: :event_attendees
 
+  has_many_attached :documents
+
   # A validator to ensure an event's end date is later then the start date
   def end_date_is_bigger?
     return if [endDate.blank?, startDate.blank?].any?

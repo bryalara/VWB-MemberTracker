@@ -48,6 +48,10 @@
 					<th>Capacity*</th>
 					<td><%= form.number_field :capacity, placeholder: "Capacity" %></td>
 				</tr>
+				<tr>
+					<th>Document(s)</th>
+					<td><%= form.file_field :documents, multiple: true, direct_upload: true %>
+				</tr>
 			</table>
 			<%= form.submit "Save Changes to Event" %>
 		<% end %>

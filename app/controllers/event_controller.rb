@@ -219,10 +219,10 @@ class EventController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:points, :name, :description, :startDate, :endDate, :capacity)
+    params.require(:event).permit(:points, :name, :description, :startDate, :endDate, :capacity, documents: [])
   end
 
   def event_attendee_params
-    params.permit(:event_id, :user_id, :attended)
+    params.permit(:event_id, :user_id, :attended, documents: [])
   end
 end

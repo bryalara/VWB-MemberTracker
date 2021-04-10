@@ -23,4 +23,10 @@
 		<th>Capacity</th>
 		<td><%= Event.display_capacity(@event) %></td>
 	</tr>
+	<tr>
+		<th>Documents</th>
+		<% @event.documents.each do |doc| %>
+			<td><%= doc.filename %> </td>
+		<% end %>
+	</tr>
 </table>
