@@ -82,7 +82,7 @@ class User < ApplicationRecord
       end
     end
     user.point_events.each do |p_event|
-      attendance = PointEventAttendee.find_by(user_id: user.id, event_id: event.id)
+      attendance = PointEventAttendee.find_by(user_id: user.id, point_event_id: p_event.id)
       if attendance && attendance.attended
         total_points += p_event.points # points from points events attended
       end
