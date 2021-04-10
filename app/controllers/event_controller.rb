@@ -62,7 +62,7 @@ class EventController < ApplicationController
     redirect_to member_dashboard_path unless @auth
     @event = Event.find(params[:id])
 
-    if params[:firstName] || params[:lastName] || params[:email]
+    if (params[:firstName] || params[:lastName] || params[:email])
       @users = User.search(params[:firstName], params[:lastName], params[:email])
     end
   end
@@ -199,10 +199,9 @@ class EventController < ApplicationController
       # validate: false forces the user in, even if the capacity is full.
       if event_attendee.save(validate: false)
         flash[:notice] = "Successfully forced the user in!"
-        redirect_to edit_event_path(event)
-      else
-        redirect_to edit_event_path(event)
       end
+      redirect_to edit_event_path(event)
+      
     # If the user has already signed up for the event...
     rescue ActiveRecord::RecordNotUnique
       attendee = EventAttendee.find_by(user_id: user.id, event_id: event.id)

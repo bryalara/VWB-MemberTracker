@@ -27,9 +27,9 @@ class Event < ApplicationRecord
   # Displays the capacity of the event passed in.
   def self.display_capacity(event)
     if event.capacity > 0
-      "#{event.users.size}" + "/" + "#{event.capacity}"
+      "#{event.users.size} / #{event.capacity}"
     else
-      "#{event.users.size}" + "/" + "No Limit"
+      "#{event.users.size} / No Limit"
     end
   end
 

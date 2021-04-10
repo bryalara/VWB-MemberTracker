@@ -12,9 +12,9 @@ class PointEvent < ApplicationRecord
   # Displays the capacity of the point_event passed in.
   def self.display_capacity(point_event)
     if point_event.capacity > 0
-      "#{point_event.users.size}" + "/" + "#{point_event.capacity}"
+      "#{point_event.users.size} / #{point_event.capacity}"
     else
-      "#{point_event.users.size}" + "/" + "No Limit"
+      "#{point_event.users.size} / No Limit"
     end
   end
 
