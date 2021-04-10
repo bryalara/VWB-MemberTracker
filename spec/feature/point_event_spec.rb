@@ -111,7 +111,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		end
 	end
 
-	describe 'Reading an existing event' do
+	describe 'Reading an existing point event' do
 		setup do
 			event = PointEvent.create!(name: 'Test Event',
 				description: 'Test Description',
@@ -127,7 +127,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		end
 	end
 
-	describe 'Updating an event' do
+	describe 'Updating a point event' do
 		setup do
 			event = PointEvent.create!(name: 'Test Event',
 				description: 'Test Description',
@@ -218,9 +218,9 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content('Test Event')
 
 			visit delete_point_event_path(id: event.id)
-			sleep(1)
+			sleep(0.5)
 			click_on 'delete-btn'
-			sleep(1)
+			sleep(0.5)
 
 			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 			alert = wait.until { page.driver.browser.switch_to.alert }
@@ -249,9 +249,9 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content('Test Event 3')
 
 			visit delete_point_event_path(id: event2.id)
-			sleep(1)
+			sleep(0.5)
 			click_on 'delete-btn'
-			sleep(1)
+			sleep(0.5)
 
 			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 			alert1 = wait.until { page.driver.browser.switch_to.alert }
@@ -262,9 +262,9 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content('Test Event 3')
 
 			visit delete_point_event_path(id: event1.id)
-			sleep(1)
+			sleep(0.5)
 			click_on 'delete-btn'
-			sleep(1)
+			sleep(0.5)
 
 			alert2 = wait.until { page.driver.browser.switch_to.alert }
 			alert2.accept
@@ -274,9 +274,9 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content('Test Event 3')
 
 			visit delete_point_event_path(id: event3.id)
-			sleep(1)
+			sleep(0.5)
 			click_on 'delete-btn'
-			sleep(1)
+			sleep(0.5)
 			
 			alert3 = wait.until { page.driver.browser.switch_to.alert }
 			alert3.accept
@@ -313,15 +313,15 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content('bryalara@tamu.edu')
 			expect(page).to have_content('Remove')
 
-			sleep(1)
+			sleep(0.5)
 			click_on 'Remove'
-			sleep(1)
+			sleep(0.5)
 			
 			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 			alert = wait.until { page.driver.browser.switch_to.alert }
 			alert.accept
 
-			expect(page).to have_content("Users that planned to attend")
+			expect(page).to have_content("Attendance")
 			expect(page).to_not have_content('bryalara@tamu.edu')
 		end
 	end
@@ -553,7 +553,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		end
 	end
 
-	describe "When forcing users into an engagement" do
+	describe "When forcing users into a point event" do
 		point_event = PointEvent.new
 		setup do
 			point_event = PointEvent.create!(name: 'Test Event',
@@ -568,9 +568,11 @@ RSpec.describe 'PointEvents', type: :feature do
 
 			fill_in 'firstName', with: 'Bry'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 
 			expect(page).to have_content("Successfully")
 		end
@@ -580,20 +582,23 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Engagement: Test Event")
 			expect(page).to have_content("Hello bryalara@tamu.edu")
 			click_on 'Click to sign up!'
-	 		expect(page).to have_content("Successfully signed up for Test Event!")
+			sleep(0.5)
+			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit edit_point_event_path(point_event)
 			expect(page).to have_content("Force a user to attend the engagement")
 
 			fill_in 'firstName', with: 'Bry'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 			expect(page).to have_content("Successfully forced")
 		end
 
-		it "is possible even when the event is full" do
+		it "is possible even when the point event is full" do
 			user = User.create!(email: 'dummy@tamu.edu',
 								role: 0,
 								firstName: 'Feature',
@@ -611,6 +616,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Hello dummy@tamu.edu")
 
 			click_on 'Click to sign up!'
+			sleep(0.5)
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			login_with_oauth
@@ -620,35 +626,42 @@ RSpec.describe 'PointEvents', type: :feature do
 
 			fill_in 'firstName', with: 'Bry'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 			expect(page).to have_content("Successfully")
 		end
 
-		it "is not possible if the user is already in the event" do
+		it "is not possible if the user is already in the engagement" do
 			visit sign_up_point_event_path(point_event)
 			expect(page).to have_content("Engagement: Test Event")
 			expect(page).to have_content("Hello bryalara@tamu.edu")
 
 			click_on 'Click to sign up!'
-	 		expect(page).to have_content("Successfully signed up for Test Event!")
+			sleep(0.5)
+			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit edit_point_event_path(point_event)
 			expect(page).to have_content("Force a user to attend the engagement")
 
 			fill_in 'firstName', with: 'Bry'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 			expect(page).to have_content("Successfully forced")
 
 			fill_in 'firstName', with: 'Bry'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 			expect(page).to have_content("has already attended this")
 		end
 
@@ -668,9 +681,11 @@ RSpec.describe 'PointEvents', type: :feature do
 
 			fill_in 'firstName', with: 'Fea'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 
 			expect(page).to have_content("Successfully")
 		end

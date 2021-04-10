@@ -279,9 +279,9 @@ RSpec.describe 'Events', type: :feature do
 
 			visit delete_event_path(id: event.id)
 			expect(page).to have_content('Test Event')
-			sleep(1)
+			sleep(0.5)
 			click_on 'delete-btn'
-			sleep(1)
+			sleep(0.5)
 
 			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 			alert = wait.until { page.driver.browser.switch_to.alert }
@@ -317,9 +317,9 @@ RSpec.describe 'Events', type: :feature do
 
 			visit delete_event_path(id: event2.id)
 			expect(page).to have_content('Test Event 2')
-			sleep(1)
+			sleep(0.5)
 			click_on 'delete-btn'
-			sleep(1)
+			sleep(0.5)
 
 			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 			alert1 = wait.until { page.driver.browser.switch_to.alert }
@@ -331,9 +331,9 @@ RSpec.describe 'Events', type: :feature do
 
 			visit delete_event_path(id: event1.id)
 			expect(page).to have_content('Test Event 1')
-			sleep(1)
+			sleep(0.5)
 			click_on 'delete-btn'
-			sleep(1)
+			sleep(0.5)
 
 			alert2 = wait.until { page.driver.browser.switch_to.alert }
 			alert2.accept
@@ -344,9 +344,9 @@ RSpec.describe 'Events', type: :feature do
 
 			visit delete_event_path(id: event3.id)
 			expect(page).to have_content('Test Event 3')
-			sleep(1)
+			sleep(0.5)
 			click_on 'delete-btn'
-			sleep(1)
+			sleep(0.5)
 
 			alert3 = wait.until { page.driver.browser.switch_to.alert }
 			alert3.accept
@@ -384,15 +384,15 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('bryalara@tamu.edu')
 			expect(page).to have_content('Remove')
 
-			sleep(1)
+			sleep(0.5)
 			click_on 'Remove'
-			sleep(1)
+			sleep(0.5)
 
 			wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 			alert = wait.until { page.driver.browser.switch_to.alert }
 			alert.accept
 
-			expect(page).to have_content("Users that planned to attend")
+			expect(page).to have_content("Attendance")
 			expect(page).to_not have_content('bryalara@tamu.edu')
 		end
 	end
@@ -691,9 +691,11 @@ RSpec.describe 'Events', type: :feature do
 
 			fill_in 'firstName', with: 'Bry'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 
 			expect(page).to have_content("Successfully")
 		end
@@ -703,16 +705,19 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content("Event: Test Event")
 			expect(page).to have_content("Hello bryalara@tamu.edu")
 			click_on 'Click to sign up!'
-	 		expect(page).to have_content("Successfully signed up for Test Event!")
+			sleep(0.5)
+			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit edit_event_path(event)
 			expect(page).to have_content("Force a user to attend the event")
 
 			fill_in 'firstName', with: 'Bry'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 			expect(page).to have_content("Successfully forced")
 		end
 
@@ -734,6 +739,7 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content("Hello dummy@tamu.edu")
 
 			click_on 'Click to sign up!'
+			sleep(0.5)
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			login_with_oauth
@@ -743,9 +749,11 @@ RSpec.describe 'Events', type: :feature do
 
 			fill_in 'firstName', with: 'Bry'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 			expect(page).to have_content("Successfully")
 		end
 
@@ -755,23 +763,28 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content("Hello bryalara@tamu.edu")
 
 			click_on 'Click to sign up!'
-	 		expect(page).to have_content("Successfully signed up for Test Event!")
+			sleep(0.5)
+			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit edit_event_path(event)
 			expect(page).to have_content("Force a user to attend the event")
 
 			fill_in 'firstName', with: 'Bry'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 			expect(page).to have_content("Successfully forced")
 
 			fill_in 'firstName', with: 'Bry'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 			expect(page).to have_content("has already attended this")
 		end
 
@@ -791,9 +804,11 @@ RSpec.describe 'Events', type: :feature do
 
 			fill_in 'firstName', with: 'Fea'
 			click_on 'Search for users'
+			sleep(0.5)
 
 			expect(page).to have_content("Force in")
 			click_on 'Force in'
+			sleep(0.5)
 
 			expect(page).to have_content("Successfully")
 		end
