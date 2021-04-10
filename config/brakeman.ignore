@@ -1,26 +1,6 @@
 {
   "ignored_warnings": [
     {
-      "warning_type": "Dynamic Render Path",
-      "warning_code": 15,
-      "fingerprint": "0d65275a6b9e56ab756db50e4ad75a7394a308992823937c716d8807ee4c8848",
-      "check_name": "Render",
-      "message": "Render path contains parameter value",
-      "file": "app/controllers/pages_controller.rb",
-      "line": 5,
-      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(template => \"pages/#{params[:page]}\", {})",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "PagesController",
-        "method": "show"
-      },
-      "user_input": "params[:page]",
-      "confidence": "Medium",
-      "note": ""
-    },
-    {
       "warning_type": "Mass Assignment",
       "warning_code": 105,
       "fingerprint": "77ec71c52e29eb8b153bb38c1cec7e67262b706dd79382174c33700188f02085",
