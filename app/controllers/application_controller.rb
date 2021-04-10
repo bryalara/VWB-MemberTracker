@@ -18,6 +18,6 @@ class ApplicationController < ActionController::Base
 
   def admin?
     user = check_user
-    return user.role == User::role_types["Admin"]
+    user.role == User.role_types['Admin']
   end
 end

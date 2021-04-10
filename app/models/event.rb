@@ -11,7 +11,7 @@ class Event < ApplicationRecord
   has_many :event_attendees, dependent: :destroy
   has_many :users, through: :event_attendees
 
-  # A validator to ensure an event's end date is later then the start date 
+  # A validator to ensure an event's end date is later then the start date
   def end_date_is_bigger?
     return if [endDate.blank?, startDate.blank?].any?
 
@@ -21,12 +21,13 @@ class Event < ApplicationRecord
   # Displays a date time in a readable format
   def self.display_date_time(datetime)
     return if datetime.blank?
+
     datetime.strftime('%Y/%m/%d %I:%M %p')
   end
 
   # Displays the capacity of the event passed in.
   def self.display_capacity(event)
-    if event.capacity > 0
+    if event.capacity.positive?
       "#{event.users.size} / #{event.capacity}"
     else
       "#{event.users.size} / No Limit"

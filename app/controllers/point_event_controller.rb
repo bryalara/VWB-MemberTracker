@@ -58,9 +58,7 @@ class PointEventController < ApplicationController
     redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @point_event = PointEvent.find(params[:id])
 
-    if (params[:firstName] || params[:lastName] || params[:email])
-      @users = User.search(params[:firstName], params[:lastName], params[:email])
-    end
+    @users = User.search(params[:firstName], params[:lastName], params[:email]) if params[:firstName] || params[:lastName] || params[:email]
   end
 
   def update
@@ -171,9 +169,7 @@ class PointEventController < ApplicationController
 
     begin
       # validate: false forces the user in, even if the capacity is full.
-      if point_event_attendee.save(validate: false)
-        flash[:notice] = "Successfully forced the user in!"
-      end
+      flash[:notice] = 'Successfully forced the user in!' if point_event_attendee.save(validate: false)
       redirect_to edit_point_event_path(point_event)
 
     # If the user has already signed up for the event...
@@ -195,6 +191,7 @@ class PointEventController < ApplicationController
   end
 
   private
+
   def point_event_params
     params.require(:point_event).permit(:points, :name, :description, :capacity)
   end

@@ -122,7 +122,7 @@ class User < ApplicationRecord
     User.where("\"firstName\" LIKE ?
                AND \"lastName\" LIKE ?
                AND email LIKE ?",
-              "%#{first_name}%", "%#{last_name}%", "%#{email}%")
+               "%#{first_name}%", "%#{last_name}%", "%#{email}%")
   end
 
   # this is to backup the users information by download users' info in a CSV
