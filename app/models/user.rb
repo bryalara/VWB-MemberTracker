@@ -11,65 +11,80 @@ class User < ApplicationRecord
   def self.get_users(appr, attr, ord)
     case attr
     when 'first'
-      User.where(approved: appr).order("UPPER(\"users\".\"firstName\") #{ord}")
+      case ord
+      when :ASC
+        User.where(approved: appr).order('UPPER("users"."firstName") ASC')
+      when :DESC
+        User.where(approved: appr).order('UPPER("users"."firstName") DESC')
+      end
     when 'last'
-      User.where(approved: appr).order("UPPER(\"users\".\"lastName\") #{ord}")
+      case ord
+      when :ASC
+        User.where(approved: appr).order('UPPER("users"."lastName") ASC')
+      when :DESC
+        User.where(approved: appr).order('UPPER("users"."lastName") DESC')
+      end
     when 'role'
-      User.where(approved: appr).order("\"users\".\"role\" #{ord}")
+      case ord
+      when :ASC
+        User.where(approved: appr).order('"users"."role" ASC')
+      when :DESC
+        User.where(approved: appr).order('"users"."role" DESC')
+      end
     when 'class'
-      User.where(approved: appr).order("CASE \"users\".\"classification\"
-                                  WHEN 'Freshman'  THEN '0'
-                                  WHEN 'Sophomore' THEN '1'
-                                  WHEN 'Junior'    THEN '2'
-                                  WHEN 'Senior'    THEN '3'
-                                    END #{ord}")
+      case ord
+      when :ASC
+        User.where(approved: appr).order('CASE "users"."classification"
+                                      WHEN \'Freshman\'  THEN \'0\'
+                                      WHEN \'Sophomore\' THEN \'1\'
+                                      WHEN \'Junior\'    THEN \'2\'
+                                      WHEN \'Senior\'    THEN \'3\'
+                                        END ASC')
+      when :DESC
+        User.where(approved: appr).order('CASE "users"."classification"
+                                    WHEN \'Freshman\'  THEN \'0\'
+                                    WHEN \'Sophomore\' THEN \'1\'
+                                    WHEN \'Junior\'    THEN \'2\'
+                                    WHEN \'Senior\'    THEN \'3\'
+                                      END DESC')
+      end
     when 'size'
-      User.where(approved: appr).order("CASE \"users\".\"tShirtSize\"
-                                  WHEN 'XXXS' THEN '0'
-                                  WHEN 'XXS'  THEN '1'
-                                  WHEN 'XS'   THEN '2'
-                                  WHEN 'S'    THEN '3'
-                                  WHEN 'M'    THEN '4'
-                                  WHEN 'L'    THEN '5'
-                                  WHEN 'XL'   THEN '6'
-                                  WHEN 'XXL'  THEN '7'
-                                  WHEN 'XXXL' THEN '8'
-                                    END #{ord}")
+      case ord
+      when :ASC
+        User.where(approved: appr).order('CASE "users"."tShirtSize"
+                                    WHEN \'XXXS\' THEN \'0\'
+                                    WHEN \'XXS\'  THEN \'1\'
+                                    WHEN \'XS\'   THEN \'2\'
+                                    WHEN \'S\'    THEN \'3\'
+                                    WHEN \'M\'    THEN \'4\'
+                                    WHEN \'L\'    THEN \'5\'
+                                    WHEN \'XL\'   THEN \'6\'
+                                    WHEN \'XXL\'  THEN \'7\'
+                                    WHEN \'XXXL\' THEN \'8\'
+                                      END ASC')
+      when :DESC
+        User.where(approved: appr).order('CASE "users"."tShirtSize"
+                                    WHEN \'XXXS\' THEN \'0\'
+                                    WHEN \'XXS\'  THEN \'1\'
+                                    WHEN \'XS\'   THEN \'2\'
+                                    WHEN \'S\'    THEN \'3\'
+                                    WHEN \'M\'    THEN \'4\'
+                                    WHEN \'L\'    THEN \'5\'
+                                    WHEN \'XL\'   THEN \'6\'
+                                    WHEN \'XXL\'  THEN \'7\'
+                                    WHEN \'XXXL\' THEN \'8\'
+                                      END DESC')
+      end
     when 'points'
-      User.where(approved: appr).order("\"users\".\"participationPoints\" #{ord}")
+      case ord
+      when :ASC
+        User.where(approved: appr).order('"users"."participationPoints" ASC')
+      when :DESC
+        User.where(approved: appr).order('"users"."participationPoints" DESC')
+      end
     else
       User.where(approved: appr).order('UPPER("users"."lastName") ASC')
     end
-  end
-
-  # import a csv to import some initial users
-  def self.my_import(file)
-    users = []
-    wmsg = []
-    begin
-      CSV.foreach(file.path, headers: true) do |row|
-        users << User.new(row.to_h)
-      end
-    rescue StandardError => e
-      wmsg.append('Error reading specified csv file')
-    end
-    users.each do |user|
-      unless wmsg.first == 'Error reading specified csv file'
-        if user.save
-          wmsg.append("New user: #{user.firstName} #{user.lastName} created")
-        else
-          wmsg.append("Error with user: #{user.firstName} #{user.lastName}, might already exist")
-          if @user.valid?
-            wmsg.append("New user: #{user.firstName} #{user.lastName} created")
-          else
-            wmsg.append(user.errors.full_messages[0])
-          end
-        end
-      end
-    rescue StandardError => e
-      logger.warn e
-    end
-    wmsg
   end
 
   # this is used to get the total points of users
