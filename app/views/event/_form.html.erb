@@ -25,8 +25,10 @@
 	</tr>
 	<tr>
 		<th>Documents</th>
-		<% @event.documents.each do |doc| %>
-			<td><%= doc.filename %> </td>
-		<% end %>
+		<td>
+			<% @event.documents.each do |file| %>
+				<ul><%= link_to file.filename, rails_blob_path(file) %></ul>
+			<% end %>
+		</td>
 	</tr>
 </table>
