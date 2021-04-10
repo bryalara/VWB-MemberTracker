@@ -61,12 +61,6 @@ RSpec.describe 'MemberDashboard', type: :feature do
 				expect(page).to have_content('Hello, John Doe')
 				expect(page).to have_content('Current points: 0')
 			end
-			it 'member redirected to dashboard when trying to access events' do
-				visit event_index_path
-				
-				expect(page).to have_content('Hello, John Doe')
-				expect(page).to have_content('Current points: 0')
-			end
 			it 'member able to edit their info' do
 				visit member_dashboard_path
 				
@@ -108,49 +102,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 					user.save!
 					
 				end
-				describe "attending events" do
-					it "member attend 1 event" do
-						eventId= Event.first.id
-						
-						visit attend_event_path(:id => eventId)
-						
-						click_link 'attend'
-						sleep(1)
-						visit member_dashboard_path
-						sleep(1)
-						expect(page).to have_content('Hello, John Doe')
-						expect(page).to have_content('Current points: 5')
-					end
-					it "member attend all event" do
-						expectedPoints=0
-						events= Event.order( :created_at )
-						events.each do |event|
-							eventId= event.id
-							visit attend_event_path(:id => eventId)
-							
-							click_on 'attend'
-							
-							expectedPoints+= event.points
-						end
-						visit member_dashboard_path
-						sleep(1)
-						expect(page).to have_content('Hello, John Doe')
-						expect(page).to have_content('Events (5):')
-						expect(page).to have_content('Current points: '+expectedPoints.to_s)
-						
-						click_link 'Show All Events'
-						sleep(2)
-						expect(page).to have_content("Events (#{events.length.to_s}):")
-
-						click_link 'Only Show Recent Events'
-						sleep(2)
-						expect(page).to have_content('Events (5):')
-						
-					end
-				end
 			end
-			
 		end	
-		
     end
 end

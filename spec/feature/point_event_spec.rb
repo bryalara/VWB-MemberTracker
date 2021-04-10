@@ -567,10 +567,12 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Force a user to attend the engagement")
 
 			fill_in 'firstName', with: 'Bry'
+			sleep(0.5)
 			click_on 'Search for users'
 			sleep(0.5)
 
 			expect(page).to have_content("Force in")
+			sleep(0.5)
 			click_on 'Force in'
 			sleep(0.5)
 
@@ -581,6 +583,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			visit sign_up_point_event_path(point_event)
 			expect(page).to have_content("Engagement: Test Event")
 			expect(page).to have_content("Hello bryalara@tamu.edu")
+			sleep(0.5)
 			click_on 'Click to sign up!'
 			sleep(0.5)
 			expect(page).to have_content("Successfully signed up for Test Event!")
@@ -589,10 +592,12 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Force a user to attend the engagement")
 
 			fill_in 'firstName', with: 'Bry'
+			sleep(0.5)
 			click_on 'Search for users'
 			sleep(0.5)
 
 			expect(page).to have_content("Force in")
+			sleep(0.5)
 			click_on 'Force in'
 			sleep(0.5)
 			expect(page).to have_content("Successfully forced")
@@ -615,6 +620,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Engagement: Test Event")
 			expect(page).to have_content("Hello dummy@tamu.edu")
 
+			sleep(0.5)
 			click_on 'Click to sign up!'
 			sleep(0.5)
 			expect(page).to have_content("Successfully signed up for Test Event!")
@@ -625,10 +631,12 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Force a user to attend the engagement")
 
 			fill_in 'firstName', with: 'Bry'
+			sleep(0.5)
 			click_on 'Search for users'
 			sleep(0.5)
 
 			expect(page).to have_content("Force in")
+			sleep(0.5)
 			click_on 'Force in'
 			sleep(0.5)
 			expect(page).to have_content("Successfully")
@@ -639,6 +647,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Engagement: Test Event")
 			expect(page).to have_content("Hello bryalara@tamu.edu")
 
+			sleep(0.5)
 			click_on 'Click to sign up!'
 			sleep(0.5)
 			expect(page).to have_content("Successfully signed up for Test Event!")
@@ -647,19 +656,23 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Force a user to attend the engagement")
 
 			fill_in 'firstName', with: 'Bry'
+			sleep(0.5)
 			click_on 'Search for users'
 			sleep(0.5)
 
 			expect(page).to have_content("Force in")
+			sleep(0.5)
 			click_on 'Force in'
 			sleep(0.5)
 			expect(page).to have_content("Successfully forced")
 
 			fill_in 'firstName', with: 'Bry'
+			sleep(0.5)
 			click_on 'Search for users'
 			sleep(0.5)
 
 			expect(page).to have_content("Force in")
+			sleep(0.5)
 			click_on 'Force in'
 			sleep(0.5)
 			expect(page).to have_content("has already attended this")
@@ -680,10 +693,12 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Force a user to attend the engagement")
 
 			fill_in 'firstName', with: 'Fea'
+			sleep(0.5)
 			click_on 'Search for users'
 			sleep(0.5)
 
 			expect(page).to have_content("Force in")
+			sleep(0.5)
 			click_on 'Force in'
 			sleep(0.5)
 

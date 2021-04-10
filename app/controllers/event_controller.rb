@@ -163,7 +163,7 @@ class EventController < ApplicationController
   # Allows users to sign up by putting them in the event_attendees join table.
   def sign_up
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path unless @auth
+    redirect_to member_dashboard_path unless @auth
     @event = Event.find(params[:id])
     @user = User.where(email: current_userlogin.email).first
 
@@ -188,7 +188,7 @@ class EventController < ApplicationController
   # Forces a selected user into an event
   def force_in
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path unless @auth
+    redirect_to member_dashboard_path unless @auth
 
     event = Event.find(params[:event_id])
     user = User.find(params[:user_id])

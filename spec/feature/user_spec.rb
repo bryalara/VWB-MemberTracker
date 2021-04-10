@@ -889,96 +889,6 @@ RSpec.describe 'Users', type: :feature do
 								capacity: 1)
 			end
 	
-			describe 'The users that have registered and are approved' do	
-				it 'can attend an event' do
-					visit attend_event_path(event)
-					
-					expect(page).to have_content('Test Event')
-					expect(page).to have_content('Hello '+ OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-					click_link 'Click to attend!'
-					
-					expect(page).to have_content("Successfully attended Test Event!")
-				end
-	
-				it 'cannot attend an event twice' do
-					visit attend_event_path(event)
-					
-					expect(page).to have_content('Test Event')
-					expect(page).to have_content('Hello '+ OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-	
-					click_link 'Click to attend!'
-					
-					
-					expect(page).to have_content("Successfully attended Test Event!")
-	
-					click_link 'Click to attend!'
-					
-					
-					expect(page).to have_content('You have already attended Test Event!')
-				end
-	
-				it 'can attend a point event' do
-					visit attend_point_event_path(pointEvent)
-					
-					expect(page).to have_content('Test Event')
-					expect(page).to have_content('Hello '+ OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-	
-					click_on 'Click to attend!'
-					
-					expect(page).to have_content("Successfully attended Test Event!")
-				end
-	
-				it 'cannot attend a point event twice' do
-					visit attend_point_event_path(pointEvent)
-					
-					expect(page).to have_content('Test Event')
-					expect(page).to have_content('Hello '+ OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-	
-					click_on 'Click to attend!'
-					
-					expect(page).to have_content("Successfully attended Test Event!")
-	
-					click_on 'Click to attend!'
-					
-					expect(page).to have_content('You have already attended Test Event!')
-				end
-			end
-	
-			describe 'The users that have registered but are not approved' do
-				setup do
-					login_with_oauth_member_registration
-					fill_in 'user_firstName', with: 'John'
-					fill_in 'user_lastName', with: 'Doe'
-					fill_in 'user_phoneNumber', with: '1234567890'
-					select 'Sophomore', :from => 'user_classification'
-					select 'M', :from => 'user_tShirtSize'
-					check 'user_optInEmail'
-					click_on 'Create User'
-				end
-	
-				it 'cannot attend an event' do			
-					visit attend_event_path(event)
-					
-					expect(page).to have_content('Test Event')
-					expect(page).to have_content('Hello '+OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-					
-					click_on 'Click to attend!'
-					
-					expect(page).to have_content("Could not attend the event because "+OmniAuth.config.mock_auth[:google_oauth2][:info][:email]+" has not been approved by an administrator.")
-				end
-	
-				it 'cannot attend a point event' do
-					visit attend_point_event_path(pointEvent)
-					
-					expect(page).to have_content('Test Event')
-					expect(page).to have_content('Hello '+OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-					
-					click_on 'Click to attend!'
-					
-					expect(page).to have_content("Could not attend the points event because "+OmniAuth.config.mock_auth[:google_oauth2][:info][:email]+" has not been approved by an administrator.")
-				end
-			end
-	
 			describe 'The users that are logged in devise but not in the user table' do
 				setup do
 					login_with_oauth_member_registration
@@ -1014,6 +924,13 @@ RSpec.describe 'Users', type: :feature do
 	
 				it 'A user with 5 points attends an event and point event for 5 points each has 15 points' do
 					
+					visit sign_up_event_path(event)
+					expect(page).to have_content('Test Event')
+
+					click_on 'Click to sign up!'
+					sleep(1)
+					expect(page).to have_content("Successfully signed up for Test Event!")
+
 					visit attend_event_path(event)
 
 					sleep(1)
@@ -1021,6 +938,13 @@ RSpec.describe 'Users', type: :feature do
 					click_link 'Click to attend!'
 					
 					sleep(1)
+
+					visit sign_up_point_event_path(pointEvent)
+					expect(page).to have_content('Test Event')
+
+					click_on 'Click to sign up!'
+					sleep(1)
+					expect(page).to have_content("Successfully signed up for Test Event!")
 					
 					visit attend_point_event_path(pointEvent)
 					
@@ -1038,6 +962,14 @@ RSpec.describe 'Users', type: :feature do
 				end
 	
 				it 'A user with 5 points attends an event for 5 points and has 10 points' do
+
+					visit sign_up_event_path(event)
+					expect(page).to have_content('Test Event')
+
+					click_on 'Click to sign up!'
+					sleep(1)
+					expect(page).to have_content("Successfully signed up for Test Event!")
+
 					visit attend_event_path(event)
 					
 					sleep(1)

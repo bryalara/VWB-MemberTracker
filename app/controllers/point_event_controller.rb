@@ -137,7 +137,7 @@ class PointEventController < ApplicationController
   # Allows users to sign up by putting them in the point_event_attendees join table.
   def sign_up
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path unless @auth
+    redirect_to member_dashboard_path unless @auth
     @point_event = PointEvent.find(params[:id])
     @user = User.where(email: current_userlogin.email).first
 
@@ -162,7 +162,7 @@ class PointEventController < ApplicationController
   # Forces a selected user into a point event
   def force_in
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path unless @auth
+    redirect_to member_dashboard_path unless @auth
 
     point_event = PointEvent.find(params[:point_event_id])
     user = User.find(params[:user_id])
