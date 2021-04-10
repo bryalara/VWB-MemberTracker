@@ -92,13 +92,13 @@ class User < ApplicationRecord
     total_points = user.participationPoints # initial points user has
     user.events.each do |event|
       attendance = EventAttendee.find_by(user_id: user.id, event_id: event.id)
-      if attendance && attendance.attended
+      if attendance&.attended
         total_points += event.points # points from events attended
       end
     end
     user.point_events.each do |p_event|
       attendance = PointEventAttendee.find_by(user_id: user.id, point_event_id: p_event.id)
-      if attendance && attendance.attended
+      if attendance&.attended
         total_points += p_event.points # points from points events attended
       end
     end
@@ -119,10 +119,10 @@ class User < ApplicationRecord
 
   # Returns a list of users matching search parameters
   def self.search(first_name, last_name, email)
-    users = User.where("\"firstName\" LIKE ? 
-                      AND \"lastName\" LIKE ? 
-                      AND email LIKE ?", 
-                      "%#{first_name}%", "%#{last_name}%", "%#{email}%")
+    User.where("\"firstName\" LIKE ?
+               AND \"lastName\" LIKE ?
+               AND email LIKE ?",
+              "%#{first_name}%", "%#{last_name}%", "%#{email}%")
   end
 
   # this is to backup the users information by download users' info in a CSV
