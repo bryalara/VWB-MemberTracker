@@ -32,7 +32,10 @@ Rails.application.routes.draw do
       get :attend
       post :attend
       delete '/user/:user_id/destroy' => 'point_event#destroy_user', :as => 'delete_user'
-  	end
+      get :sign_up
+      post :sign_up
+      post :force_in
+    end
   end
 
   resources :event do
@@ -42,6 +45,9 @@ Rails.application.routes.draw do
       get :attend
       post :attend
       delete '/user/:user_id/destroy' => 'event#destroy_user', :as => 'delete_user'
+      get :sign_up
+      post :sign_up
+      post :force_in
   	end
   end
   post 'event/download_ics', to: "event#download_ics"

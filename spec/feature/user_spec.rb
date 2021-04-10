@@ -880,11 +880,13 @@ RSpec.describe 'Users', type: :feature do
 							description: 'Test Description',
 							points: 5,
 							startDate: DateTime.now,
-							endDate: DateTime.now + 1.week)
+							endDate: DateTime.now + 1.week,
+							capacity: 1)
 	
 				pointEvent = PointEvent.create!(name: 'Test Event',
 								description: 'Test Description',
-								points: 5)
+								points: 5,
+								capacity: 1)
 			end
 	
 			describe 'The users that have registered and are approved' do	
@@ -892,7 +894,7 @@ RSpec.describe 'Users', type: :feature do
 					visit attend_event_path(event)
 					
 					expect(page).to have_content('Test Event')
-					expect(page).to have_content('Hello '+OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
+					expect(page).to have_content('Hello '+ OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
 					click_link 'Click to attend!'
 					
 					expect(page).to have_content("Successfully attended Test Event!")
@@ -902,7 +904,7 @@ RSpec.describe 'Users', type: :feature do
 					visit attend_event_path(event)
 					
 					expect(page).to have_content('Test Event')
-					expect(page).to have_content('Hello '+OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
+					expect(page).to have_content('Hello '+ OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
 	
 					click_link 'Click to attend!'
 					
@@ -919,7 +921,7 @@ RSpec.describe 'Users', type: :feature do
 					visit attend_point_event_path(pointEvent)
 					
 					expect(page).to have_content('Test Event')
-					expect(page).to have_content('Hello '+OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
+					expect(page).to have_content('Hello '+ OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
 	
 					click_on 'Click to attend!'
 					

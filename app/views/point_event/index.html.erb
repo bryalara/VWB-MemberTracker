@@ -13,40 +13,70 @@ th, td, tr {
 </style>
 
 <div class="header">
-<h2 class="active h2-title">Points Events</h2>
-</div>
-<div class="align-table" >
-<button class="btn btn-decor" style="padding-left: 0rem;" > <%= link_to "Add a Points Event", new_point_event_path(@point_events), class:"back-button" %></button>
-<table class="styled-table" >
-	<tr>
-		<th>Event</th>
-		<th>Description</th>
-		<th>Points</th>
-		
-		<th colspan="4">Actions</th>
-	</tr>
-
-	<% @point_events.each do |pointEvent| %>
-	<tr>
-		<td><%= pointEvent.name %></td>
-		<td><%= pointEvent.description %></td>
-		<td><%= pointEvent.points %></td>
-		
-		<td><%= link_to "Show", point_event_path(pointEvent) %></td>
-		<td><%= link_to "Edit", edit_point_event_path(pointEvent) %></td>
-		<td><%= link_to "Delete", delete_point_event_path(pointEvent) %></td>
-		<td><%= link_to "QR", qr_point_event_path(pointEvent) %></td>
-	</tr>
-	<% end %>
-</table>
+	<h2 class="active h2-title">Engagements</h2>
 </div>
 
-<% if @auth.role == 1 %>
-<div align="center" >
-    <div>
-        <%# make teo button to output 2 different kinds of CSV %>
-        <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Points Events List", point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
-		<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Points Events-Users List", point_event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
-    </div>
-</div>
+<%# Admin's View %>
+<% if admin? %>
+	<div class="align-table" >
+		<button class="btn btn-decor" style="padding-left: 0rem;" > <%= link_to "Add an Engagement", new_point_event_path(@point_events), class:"back-button" %></button>
+		<table class="styled-table" >
+			<tr>
+				<th>Event</th>
+				<th>Description</th>
+				<th>Points</th>
+				<th>Capacity</th>
+				<th colspan="5">Actions</th>
+			</tr>
+
+			<% @point_events.each do |point_event| %>
+			<tr>
+				<td><%= point_event.name %></td>
+				<td><%= point_event.description %></td>
+				<td><%= point_event.points %></td>
+				<td><%= PointEvent.display_capacity(point_event) %>
+				
+				<td><%= link_to "Show", point_event_path(point_event) %></td>
+				<td><%= link_to "Edit", edit_point_event_path(point_event) %></td>
+				<td><%= link_to "Delete", delete_point_event_path(point_event) %></td>
+				<td><%= link_to "QR", qr_point_event_path(point_event) %></td>
+				<td><%= link_to "Sign up", sign_up_point_event_path(point_event) %>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+
+  <div align="center" >
+      <div>
+          <%# make teo button to output 2 different kinds of CSV %>
+          <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Points Events List", point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
+      <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Points Events-Users List", point_event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
+      </div>
+  </div>
+
+<%# Member's View %>
+<% else %>
+	<div class="align-table" >
+		<table class="styled-table" >
+			<tr>
+				<th>Engagement</th>
+				<th>Description</th>
+				<th>Points</th>
+				<th>Capacity</th>
+				<th colspan="2">Actions</th>
+			</tr>
+
+			<% @point_events.each do |point_event| %>
+			<tr>
+				<td><%= point_event.name %></td>
+				<td><%= point_event.description %></td>
+				<td><%= point_event.points %></td>
+				<td><%= PointEvent.display_capacity(point_event) %>
+
+				<td><%= link_to "Show", point_event_path(point_event) %></td>
+				<td><%= link_to "Sign up", sign_up_point_event_path(point_event) %>
+			</tr>
+			<% end %>
+		</table>
+	</div>
 <% end %>

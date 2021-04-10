@@ -25,4 +25,16 @@ module IntegrationSpecHelper
 		# visit event_index_path
 		visit userlogin_google_oauth2_omniauth_authorize_path
 	end
+
+	def login_with_oauth_as(full_name, email)
+		OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+			:uid => '12245',
+			:info => {
+				:full_name => full_name,
+				:email => email,
+				:avatar_url => 'suprised_pikachu.png'
+			}	
+		})
+		visit userlogin_google_oauth2_omniauth_authorize_path
+	end
 end
