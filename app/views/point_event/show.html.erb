@@ -1,4 +1,20 @@
 <%= render "layouts/navbar2", user: @user %>
+
+<style>
+.alert {
+	border-radius: 5px;
+	padding: 15px;
+	background: #d8ecdb;
+	color: #295529;
+}
+</style>
+
+<% flash.each do |type, msg| %>
+	<div class="alert">
+		<%= msg %>
+	</div>
+<% end %>
+
 <div class="header">
 <h2 class="active h2-title">Engagement Details</h2>
 </div>

@@ -33,7 +33,6 @@ class EventController < ApplicationController
 
   def show
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to member_dashboard_path if !@auth || @auth.approved == false
     @event = Event.find(params[:id])
   end
 
