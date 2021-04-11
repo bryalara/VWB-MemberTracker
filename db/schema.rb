@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_220849) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
+    t.uuid "record_id", null: false
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
@@ -45,9 +45,10 @@ ActiveRecord::Schema.define(version: 2021_04_10_220849) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "event_attendees", id: false, force: :cascade do |t|
+  create_table "event_attendees", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id"
     t.uuid "event_id"
+    t.boolean "attended", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_event_attendees_on_event_id"
@@ -61,13 +62,15 @@ ActiveRecord::Schema.define(version: 2021_04_10_220849) do
     t.datetime "startDate"
     t.datetime "endDate"
     t.integer "points"
+    t.integer "capacity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "point_event_attendees", id: false, force: :cascade do |t|
+  create_table "point_event_attendees", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id"
     t.uuid "point_event_id"
+    t.boolean "attended", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["point_event_id"], name: "index_point_event_attendees_on_point_event_id"
@@ -79,6 +82,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_220849) do
     t.string "name"
     t.string "description"
     t.integer "points"
+    t.integer "capacity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

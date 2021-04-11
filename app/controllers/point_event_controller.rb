@@ -206,6 +206,22 @@ class PointEventController < ApplicationController
     end
   end
 
+  # Allows users to upload documents
+  def upload_user
+    @auth = check_user
+    redirect_to member_dashboard_path unless @auth
+    @point_event = PointEvent.find(params[:point_event_id])
+    @user = User.find(params[:user_id])
+
+    return unless request.post?
+    attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: @point_event.id)
+    attendance.documents.purge
+    attendance.documents.attach(params[:documents])
+
+    flash[:notice] = 'Successfully submitted document(s).'
+    redirect_to @point_event
+  end
+
   private
 
   def point_event_params
