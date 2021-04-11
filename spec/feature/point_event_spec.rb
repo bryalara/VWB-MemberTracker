@@ -346,7 +346,7 @@ RSpec.describe 'PointEvents', type: :feature do
 
 		it "shows the correct amount of users that have signed up" do
 			visit event_index_path
-			expect(page).to have_content("0/2")
+			expect(page).to have_content("0 / 2")
 
 			visit sign_up_point_event_path(event)
 			expect(page).to have_content("Engagement: Test Event")
@@ -356,12 +356,12 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit event_index_path
-			expect(page).to have_content("1/2")
+			expect(page).to have_content("1 / 2")
 		end
 
 		it "shows the users that have signed up" do
 			visit event_index_path
-			expect(page).to have_content("0/2")
+			expect(page).to have_content("0 / 2")
 
 			visit point_event_path(event)
 			expect(page).to_not have_content("bryalara@tamu.edu")
@@ -374,7 +374,7 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit event_index_path
-			expect(page).to have_content("1/2")
+			expect(page).to have_content("1 / 2")
 
 			visit point_event_path(event)
 			expect(page).to have_content("bryalara@tamu.edu")
@@ -550,6 +550,21 @@ RSpec.describe 'PointEvents', type: :feature do
 			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
 			visit attend_point_event_path(event)
 			expect(page).to have_content("Registration")
+		end
+
+		
+		describe "with a capacity of 0" do
+			it "will allow users who have not signed up for it to attend" do
+				event.capacity = 0
+				event.save
+
+				visit attend_point_event_path(event)
+				expect(page).to have_content("Engagement: Test Event")
+				expect(page).to have_content("Hello bryalara@tamu.edu")
+	
+				click_on 'Click to attend!'
+				expect(page).to have_content("Successfully attended Test Event!")
+			end
 		end
 	end
 
