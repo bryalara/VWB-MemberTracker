@@ -115,29 +115,26 @@ class EventController < ApplicationController
 
     attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
     if attendance
-      if (!attendance.attended)
+      if !attendance.attended
         attendance.attended = true
         attendance.save
         flash[:notice] = "Successfully attended #{@event.name}!"
-        redirect_to event_index_path
       else
         flash[:notice] = "You have already attended #{@event.name}!"
-        redirect_to event_index_path
       end
-    else
+      redirect_to @event
+    elsif @event.capacity.positive?
       # If the capacity is greater than zero, require signing up for the event to attend.
-      if (@event.capacity > 0)
-        flash[:notice] = "Could not attend #{@event.name} because you did not sign up for the event."
-        redirect_to attend_event_path(@event)
-        nil
-      else
-        @event.users << @user
-        attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
-        attendance.attended = true;
-        attendance.save
-        flash[:notice] = "Successfully attended #{@event.name}!"
-        redirect_to event_index_path
-      end
+      flash[:notice] = "Could not attend #{@event.name} because you did not sign up for the event."
+      redirect_to @event
+      nil
+    else
+      @event.users << @user
+      attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
+      attendance.attended = true
+      attendance.save
+      flash[:notice] = "Successfully attended #{@event.name}!"
+      redirect_to @event
     end
   end
 
@@ -186,15 +183,15 @@ class EventController < ApplicationController
       if @user
         @event.users << @user
         flash[:notice] = "Successfully signed up for #{@event.name}!"
-        redirect_to event_index_path
+        redirect_to @event
       end
     rescue ActiveRecord::RecordNotUnique
       flash[:notice] = "You have already signed up for #{@event.name}!"
-      redirect_to sign_up_event_path(@event)
+      redirect_to @event
       nil
     rescue NoMethodError
       flash[:alert] = "Cannot signup for #{@event.name}! The event has reached its capacity."
-      redirect_to sign_up_event_path(@event)
+      redirect_to @event
     end
   end
 
@@ -239,6 +236,7 @@ class EventController < ApplicationController
     @user = User.find(params[:user_id])
 
     return unless request.post?
+
     attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
     attendance.documents.purge
     attendance.documents.attach(params[:documents])
