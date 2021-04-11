@@ -48,9 +48,14 @@ th, td, tr {
 
   <div align="center" >
       <div>
-          <%# make teo button to output 2 different kinds of CSV %>
-          <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Points Events List", point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
-      <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Points Events-Users List", point_event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
+	  		<%# <h4> Import Data From CSV file </h4> %>
+			<%= form_tag import_point_event_index_path, multipart: true do %>
+				<%= file_field_tag :file %>
+				<%= submit_tag "Import CSV", class: "button" %>
+			<% end %>
+        	<%# make teo button to output 2 different kinds of CSV %>
+        	<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Points Events List", point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
+      		<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Points Events-Users List", point_event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
       </div>
   </div>
 

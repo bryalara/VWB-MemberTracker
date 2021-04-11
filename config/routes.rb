@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :point_event do
+    collection {post :import} #used for csv importing
   	member do
   		get :delete
       get :qr
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
   end
 
   resources :event do
+    collection {post :import} #used for csv importing
   	member do
   		get :delete
       get :qr

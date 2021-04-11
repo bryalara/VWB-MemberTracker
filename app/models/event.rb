@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
+  require 'csv'
+  require 'activerecord-import/base'
+  require 'activerecord-import/active_record/adapters/postgresql_adapter'
   # setup to make sure some fields are always filled in
   validates :startDate, presence: true, unless: :end_date_is_bigger?
   validates :endDate, presence: true, unless: :end_date_is_bigger?
@@ -59,6 +62,43 @@ class Event < ApplicationRecord
           # it is int he pair of event-user
           csv << [event.id, event.name, user.firstName, user.lastName, user.email]
         end
+      end
+    end
+  end
+
+  def self.my_import(file)
+    events = []
+    wmsg = []
+    begin
+      CSV.foreach(file.path, headers: true) do |row|
+        puts('READING FROM CSV..........................................')
+        puts(row.to_h[1])
+        events << Event.new(row.to_h)
+      end
+    rescue StandardError => e
+      puts('Error reading specified csv file, maybe no csv selected')
+      wmsg.append('Error reading specified csv file')
+    end
+    events.each do |event|
+      puts("#{event.name}")
+      begin
+        unless wmsg.first == 'Error reading specified csv file'
+          if event.save
+            wmsg.append("New event: #{event.name} created")
+            puts("New event: #{event.name} created")
+          else
+            puts("Error with event: #{event.name}, might already exist")
+            wmsg.append("Error with event: #{event.name}, might already exist")
+            if @event.valid?
+              wmsg.append("New event: #{event.name} created")
+            else
+              wmsg.append(event.errors.full_messages[0])
+              puts(event.errors.full_messages[0])
+            end
+          end
+        end
+      rescue StandardError => e
+        puts(e)
       end
     end
   end

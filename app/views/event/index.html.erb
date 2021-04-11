@@ -92,6 +92,11 @@ th, td, tr {
 <% if @auth.role == 1 %>
 <div align="center" >
     <div>
+		<%# <h4> Import Data From CSV file </h4> %>
+		<%= form_tag import_event_index_path, multipart: true do %>
+			<%= file_field_tag :file %>
+			<%= submit_tag "Import CSV", class: "button" %>
+		<% end %>
         <%# make two button to output 2 different kinds of CSV %>
         <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Events List", event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
 		<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Events-Users List", event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
