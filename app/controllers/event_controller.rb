@@ -15,17 +15,19 @@ class EventController < ApplicationController
   def export_csv
     @events = Event.all
     # only allowed when user is an Admin
-    respond_to do |format|
-      format.html
-      format.csv do
-        # make it available to output 2 csv files
-        # { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
-        if params[:format_data] == 'events'
-          # to_csv is to only output users' emails
-          send_data @events.to_csv, filename: "events-#{Time.zone.today}.csv"
-        else
-          # to_csv_backup is to output users' all info
-          send_data @events.to_csv_users, filename: "event-attendees-#{Time.zone.today}.csv"
+    if admin?
+      respond_to do |format|
+        format.html
+        format.csv do
+          # make it available to output 2 csv files
+          # { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
+          if params[:format_data] == 'events'
+            # to_csv is to only output users' emails
+            send_data @events.to_csv, filename: "events-#{Time.zone.today}.csv"
+          else
+            # to_csv_backup is to output users' all info
+            send_data @events.to_csv_users, filename: "event-attendees-#{Time.zone.today}.csv"
+          end
         end
       end
     end

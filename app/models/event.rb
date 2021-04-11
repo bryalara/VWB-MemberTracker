@@ -37,7 +37,7 @@ class Event < ApplicationRecord
   # this is for download all the events
   def self.to_csv
     # below is the all events information that is gonna be downloaded
-    attributes = %w[id name description startDate endDate points]
+    attributes = %w[name description startDate endDate points capacity]
     CSV.generate(headers: true) do |csv|
       csv << attributes
       all.find_each do |event|
