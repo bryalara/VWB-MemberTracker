@@ -6,7 +6,7 @@ class EventAttendee < ApplicationRecord
   belongs_to :event
 
   has_many_attached :documents
-
+  validates :documents, FILE_VALIDATIONS
   def not_full
     return true if event.capacity.zero?
     return true unless event.capacity < event.users.size + 1

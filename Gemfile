@@ -55,6 +55,9 @@ gem 'simple_calendar', '~> 2.4'
 # Used to generate and download .ics files
 gem 'icalendar'
 
+# Used for validating files uploaded.
+gem 'active_storage_validations'
+
 group :development, :test do
   # The RSpec testing framework
   # Capybara, the library that allows us to interact with the browser using Ruby
