@@ -239,10 +239,12 @@ class EventController < ApplicationController
     @user = User.find(params[:user_id])
 
     return unless request.post?
-    EventAttendee.find_by(user_id: @user.id, event_id: @event.id).documents.purge
-    EventAttendee.find_by(user_id: @user.id, event_id: @event.id).documents.attach(params[:documents])
+    attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
+    attendance.documents.purge
+    attendance.documents.attach(params[:documents])
+
+    flash[:notice] = 'Successfully submitted document(s).'
     redirect_to @event
-    
   end
 
   private

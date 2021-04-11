@@ -9,20 +9,20 @@
 <%= render "form", event: @event %>
 <% unless admin?%>
 	Your uploaded documents: 
-	
-	<% EventAttendee.find_by(user_id: @auth.id, event_id: @event.id)&.documents&.each do |file| %>
+	<% attendance = EventAttendee.find_by(user_id: @auth.id, event_id: @event.id) %>
+	<% attendance&.documents&.each do |file| %>
 		<li><%= link_to file.filename, rails_blob_path(file) %></li>
 	<% end %>
-	<%= form_with :method => :POST, url:"/event/#{@event.id}/upload_user" do |form| %>
+	<%= form_with method: :post, url: upload_user_event_path(@event) do |form| %>
 		<%= form.file_field :documents, multiple: true, direct_upload: true %>
 		<%= hidden_field_tag "user_id", "#{@auth.id}" %>
 		<%= hidden_field_tag "event_id", "#{@event.id}" %>
-		<% if EventAttendee.find_by(user_id: @auth.id, event_id: @event.id)&.documents&.attached? %>
-			<%= form.submit "Submit", data: {confirm: "Are you sure you want to reupload files? Reuploading files will remove previous submissions."}  %>
-		<%else%>
-			<%= form.submit "Submit" %>
-		<%end%>
+		<%= form.submit "Submit", data: {disable_with: "Submitting..."} %>
 	<%end%>
+
+	<% if attendance&.documents&.attached? %>
+		<p>Resubmiting documents will overwrite your last submission</p>
+	<% end %>
 
 <% end %>
 
