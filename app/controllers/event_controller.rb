@@ -239,10 +239,9 @@ class EventController < ApplicationController
     @user = User.find(params[:user_id])
 
     return unless request.post?
-    logger.debug "++++++++++++++++++++++++++"
-    logger.debug params
+    EventAttendee.find_by(user_id: @user.id, event_id: @event.id).documents.purge
     EventAttendee.find_by(user_id: @user.id, event_id: @event.id).documents.attach(params[:documents])
-    
+    redirect_to @event
     
   end
 

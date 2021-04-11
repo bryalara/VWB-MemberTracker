@@ -48,7 +48,6 @@ Rails.application.routes.draw do
       get :sign_up
       post :sign_up
       post :force_in
-      get :upload_user
       post :upload_user
   	end
   end
