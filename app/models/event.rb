@@ -48,7 +48,7 @@ class Event < ApplicationRecord
 
   # this is for download all the event-user pairs
   def self.to_csv_users
-    columns = ['event ID', 'event name', 'User 1st name', 'user 2nd name', 'user email']
+    columns = ['event_id', 'event name', 'user_id', 'User 1st name', 'user 2nd name', 'user email']
     # for all events
     CSV.generate(headers: true) do |csv|
       # for all users in this event
@@ -57,7 +57,7 @@ class Event < ApplicationRecord
         event.users.each do |user|
           # push these things into csv
           # it is int he pair of event-user
-          csv << [event.id, event.name, user.firstName, user.lastName, user.email]
+          csv << [event.id, event.name, user.id, user.firstName, user.lastName, user.email]
         end
       end
     end
