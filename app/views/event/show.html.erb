@@ -10,20 +10,23 @@
 <% unless admin?%>
 	Your uploaded documents: 
 	<% attendance = EventAttendee.find_by(user_id: @auth.id, event_id: @event.id) %>
-	<% attendance&.documents&.each do |file| %>
-		<li><%= link_to file.filename, rails_blob_path(file) %></li>
-	<% end %>
-	<%= form_with method: :post, url: upload_user_event_path(@event) do |form| %>
-		<%= form.file_field :documents, multiple: true, direct_upload: true %>
-		<%= hidden_field_tag "user_id", "#{@auth.id}" %>
-		<%= hidden_field_tag "event_id", "#{@event.id}" %>
-		<%= form.submit "Submit", data: {disable_with: "Submitting..."} %>
-	<%end%>
+	<%unless attendance%>
+		You have not signed up or attended this event.
+	<%else%>
+		<% attendance&.documents&.each do |file| %>
+			<li><%= link_to file.filename, rails_blob_path(file) %></li>
+		<% end %>
+		<%= form_with method: :post, url: upload_user_event_path(@event) do |form| %>
+			<%= form.file_field :documents, multiple: true, direct_upload: true %>
+			<%= hidden_field_tag "user_id", "#{@auth.id}" %>
+			<%= hidden_field_tag "event_id", "#{@event.id}" %>
+			<%= form.submit "Submit", data: {disable_with: "Submitting..."} %>
+		<%end%>
 
-	<% if attendance&.documents&.attached? %>
-		<p>Resubmiting documents will overwrite your last submission</p>
+		<% if attendance&.documents&.attached? %>
+			<p>Resubmiting documents will overwrite your last submission</p>
+		<% end %>
 	<% end %>
-
 <% end %>
 
 <% if admin? %>
@@ -35,6 +38,7 @@
 			<th>Email</th>
 			<th>Time Signed Up</th>
 			<th>Time Attended</th>
+			<th>Submitted Documents</th>
 		</tr>
 
 		<% @event.users.each do |user| %>
@@ -44,8 +48,12 @@
 			<td><%= user.email %></td>
 
 			<% attendance = EventAttendee.find_by(user_id: user.id, event_id: @event.id) %>
-			<td><%= Event.display_date_time(attendance.created_at) %>
-			<td><%= attendance.attended ? Event.display_date_time(attendance.updated_at) : "N/A" %>
+			<td><%= Event.display_date_time(attendance.created_at) %></td>
+			<td><%= attendance.attended ? Event.display_date_time(attendance.updated_at) : "N/A" %></td>
+			<td><% @event.documents.each do |file| %>
+					<%= link_to file.filename, rails_blob_path(file) %> |
+				<% end %>
+			</td>
 		</tr>
 		<% end %>
 	</table>
