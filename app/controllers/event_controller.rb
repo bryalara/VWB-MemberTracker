@@ -231,6 +231,21 @@ class EventController < ApplicationController
     end
   end
 
+  # Allows users to upload documents
+  def upload_user
+    @auth = check_user
+    redirect_to member_dashboard_path unless @auth
+    @event = Event.find(params[:event_id])
+    @user = User.find(params[:user_id])
+
+    return unless request.post?
+    logger.debug "++++++++++++++++++++++++++"
+    logger.debug params
+    EventAttendee.find_by(user_id: @user.id, event_id: @event.id).documents.attach(params[:documents])
+    
+    
+  end
+
   private
 
   def event_params
