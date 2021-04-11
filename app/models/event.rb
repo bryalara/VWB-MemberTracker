@@ -48,7 +48,7 @@ class Event < ApplicationRecord
 
   # this is for download all the event-user pairs
   def self.to_csv_users
-    columns = ['event ID', 'event name', 'User 1st name', 'user 2nd name', 'user email']
+    columns = ['event_id', 'event name', 'user_id', 'User 1st name', 'user 2nd name', 'user email']
     # for all events
     CSV.generate(headers: true) do |csv|
       # for all users in this event
@@ -57,8 +57,46 @@ class Event < ApplicationRecord
         event.users.each do |user|
           # push these things into csv
           # it is int he pair of event-user
-          csv << [event.id, event.name, user.firstName, user.lastName, user.email]
+          csv << [event.id, event.name, user.id, user.firstName, user.lastName, user.email]
         end
+      end
+    end
+  end
+
+  # import csv
+  def self.my_import(file)
+    events = []
+    wmsg = []
+    begin
+      CSV.foreach(file.path, headers: true) do |row|
+        puts('READING FROM CSV..........................................')
+        puts(row.to_h[1])
+        events << Event.new(row.to_h)
+      end
+    rescue StandardError => e
+      puts('Error reading specified csv file, maybe no csv selected')
+      wmsg.append('Error reading specified csv file')
+    end
+    events.each do |event|
+      puts("#{event.name}")
+      begin
+        unless wmsg.first == 'Error reading specified csv file'
+          if event.save
+            wmsg.append("New event: #{event.name} created")
+            puts("New event: #{event.name} created")
+          else
+            puts("Error with event: #{event.name}, might already exist")
+            wmsg.append("Error with event: #{event.name}, might already exist")
+            if @event.valid?
+              wmsg.append("New event: #{event.name} created")
+            else
+              wmsg.append(event.errors.full_messages[0])
+              puts(event.errors.full_messages[0])
+            end
+          end
+        end
+      rescue StandardError => e
+        puts(e)
       end
     end
   end
