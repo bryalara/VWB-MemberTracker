@@ -115,14 +115,29 @@ class EventController < ApplicationController
 
     attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
     if attendance
-      attendance.attended = true
-      attendance.save
-      flash[:notice] = "Successfully attended #{@event.name}!"
-      redirect_to event_index_path
+      if (!attendance.attended)
+        attendance.attended = true
+        attendance.save
+        flash[:notice] = "Successfully attended #{@event.name}!"
+        redirect_to event_index_path
+      else
+        flash[:notice] = "You have already attended #{@event.name}!"
+        redirect_to event_index_path
+      end
     else
-      flash[:notice] = "Could not attend #{@event.name} because you did not sign up for the event."
-      redirect_to attend_event_path(@event)
-      nil
+      # If the capacity is greater than zero, require signing up for the event to attend.
+      if (@event.capacity > 0)
+        flash[:notice] = "Could not attend #{@event.name} because you did not sign up for the event."
+        redirect_to attend_event_path(@event)
+        nil
+      else
+        @event.users << @user
+        attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
+        attendance.attended = true;
+        attendance.save
+        flash[:notice] = "Successfully attended #{@event.name}!"
+        redirect_to event_index_path
+      end
     end
   end
 

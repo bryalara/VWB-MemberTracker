@@ -108,14 +108,30 @@ class PointEventController < ApplicationController
 
     attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: @point_event.id)
     if attendance
-      attendance.attended = true
-      attendance.save
-      flash[:notice] = "Successfully attended #{@point_event.name}!"
-      redirect_to event_index_path
+      if (!attendance.attended)
+        attendance.attended = true
+        attendance.save
+        flash[:notice] = "Successfully attended #{@point_event.name}!"
+        redirect_to event_index_path
+      else
+        flash[:notice] = "Could not attend #{@point_event.name} because you did not sign up for the engagement."
+        redirect_to attend_point_event_path(@point_event)
+        nil
+      end
     else
-      flash[:notice] = "Could not attend #{@point_event.name} because you did not sign up for the engagement."
-      redirect_to attend_point_event_path(@point_event)
-      nil
+      # If the capacity is greater than zero, require signing up for the engagement to attend.
+      if (@point_event.capacity > 0)
+        flash[:notice] = "Could not attend #{@point_event.name} because you did not sign up for the engagement."
+        redirect_to attend_point_event_path(@point_event)
+        nil
+      else
+        @point_event.users << @user
+        attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: @point_event.id)
+        attendance.attended = true;
+        attendance.save
+        flash[:notice] = "Successfully attended #{@point_event.name}!"
+        redirect_to event_index_path
+      end
     end
   end
 
