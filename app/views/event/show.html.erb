@@ -7,6 +7,14 @@
 <%= link_to "Back to Events / Engagements", event_index_path, class: "back-button" %>
 </button>
 <%= render "form", event: @event %>
+<% unless admin?%>
+	Your uploaded documents: 
+	
+	<% EventAttendee.find_by(user_id: @auth.id, event_id: @event.id)&.documents&.each do |file| %>
+		<li><%= link_to file.filename, rails_blob_path(file) %></li>
+	<% end %>
+	<button class="btn" style="padding-left: 0rem;"> <%= link_to "Submit Forms", upload_user_event_path(user_id:@auth.id, event_id: @event.id), class: "back-button" %> </button>
+<% end %>
 
 <% if admin? %>
 <h1>Attendance</h1>
