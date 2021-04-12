@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   resources :point_event do
     collection {post :import} #used for csv importing
+    collection {post :import_part}
   	member do
   		get :delete
       get :qr
@@ -49,6 +50,8 @@ Rails.application.routes.draw do
 
   resources :event do
     collection {post :import} #used for csv importing
+    collection {post :import_part}
+  	member do
   	member do
   		get :delete
       get :qr
