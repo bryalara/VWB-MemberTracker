@@ -77,7 +77,7 @@ RSpec.describe 'Events', type: :feature do
 		end
 
 		it 'is not valid without points' do
-			fill_in 'event_points', with: nil
+			fill_in 'event_points', with: ""
 			click_on 'Add Event'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')

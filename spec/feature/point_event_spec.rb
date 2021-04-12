@@ -62,14 +62,14 @@ RSpec.describe 'PointEvents', type: :feature do
 		end
 
 		it 'is not valid without a name' do
-			fill_in 'point_event_name', with: nil
+			fill_in 'point_event_name', with: ""
 			click_on 'Add Engagement'
 			visit event_index_path
 			expect(page).to_not have_content('Test Description')
 		end
 
 		it 'is not valid without points' do
-			fill_in 'point_event_points', with: nil
+			fill_in 'point_event_points', with: ""
 			click_on 'Add Engagement'
 			visit event_index_path
 			expect(page).to_not have_content('Test Event')
@@ -146,14 +146,14 @@ RSpec.describe 'PointEvents', type: :feature do
 
 		it 'is valid with the description deleted' do
 			fill_in 'point_event_name', with: "Edited Event Name"
-			fill_in 'point_event_description', with: nil
+			fill_in 'point_event_description', with: ""
 			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Event Name')
 		end
 
 		it 'is not valid without a name' do
-			fill_in 'point_event_name', with: nil
+			fill_in 'point_event_name', with: ""
 			fill_in 'point_event_description', with: "Edited Test Description"
 			click_on 'Save Changes'
 			visit event_index_path
@@ -161,7 +161,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		end
 
 		it 'is not valid without points' do
-			fill_in 'point_event_points', with: nil
+			fill_in 'point_event_points', with: ""
 			fill_in 'point_event_description', with: "Edited Test Description"
 			click_on 'Save Changes'
 			visit event_index_path
