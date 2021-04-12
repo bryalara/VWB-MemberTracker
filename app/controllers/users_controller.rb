@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     # Guard case that returns so that index stops processing. Prevents double renders/redirects
     return unless @auth && (@auth.role == 1) && @auth.approved == true
+
     # Grabing params used for sorting users on view
     @order = params[:order] == 'true'
     @attr = params[:attr]
@@ -44,6 +45,7 @@ class UsersController < ApplicationController
     redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     # Guard case that returns so that index stops processing. Prevents double renders/redirects
     return unless @auth && (@auth.role == 1) && @auth.approved == true
+
     wmsg = User.my_import(params[:file])
     if wmsg.length.positive?
       # flash[:notice] ||= []
@@ -199,10 +201,7 @@ class UsersController < ApplicationController
     @auth = User.find_by(email: current_userlogin.email)
     @user = User.find_by(email: current_userlogin.email)
     @display = 0
-    unless @user
-      redirect_to new_user_path
-      return
-    end
+    redirect_to new_user_path and return unless @user
   end
 
   def registration
