@@ -19,18 +19,21 @@
     <br></br>
     <table class="styled-table">
         <tr>
-            <th>Events (<%=@numEvents%>): </th>
+            <th>Events: </th>
             <th>Start Date </th>
             <th>End Date </th>
-            <th>Points Earned </th>     
+            <th>Points </th>
+            <th>Attended </th>     
         </tr>
 
         <% @user.events.each do |event| %>
+        <% attendance = EventAttendee.find_by(user_id: @user.id, event_id: event.id) %>
         <tr>
             <td><%= event.name %></td>
             <td><%= Event.display_date_time(event.startDate) %></td>
             <td><%= Event.display_date_time(event.endDate) %></td>
             <td><%= event.points  %> </td>
+            <td><%= attendance&.attended ? :Yes : :No  %> </td>
         </tr>
         <% end %>
     </table>
@@ -39,14 +42,17 @@
     <br></br>
     <table class="styled-table">
         <tr>
-            <th>Engagements (<%=@numPointEvents%>): </th>
-            <th>Points Earned </th> 
+            <th>Engagements: </th>
+            <th>Points </th> 
+            <th>Participated </th>
 
         </tr>
         <% @user.point_events.each do |event| %>
+        <% attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: event.id) %>
         <tr>
             <td><%= event.name %></td>
             <td><%= event.points  %> </td>
+            <td><%= attendance&.attended ? :Yes : :No   %> </td>
         </tr>
         <% end %>
     </table>
