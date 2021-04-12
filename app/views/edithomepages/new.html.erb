@@ -1,26 +1,14 @@
-
-<br></br>
-<br></br>
-
 <%= link_to "Back to Edit home page", edithomepages_path %>
-<h1>Edit Sections</h1>
 
-<%= render "layouts/navbar2", user: @edithomepage %>
-<section style="padding-top: 10px;">
-<button class="btn btn-decor" style="border:0; text-decoration:none !important; outline:none">
-</button>
-<div class="wrapper fadeInDown">
-<div id="formContent">
+<h3>Create a attribute to page</h3>
 <%= form_with model: @edithomepage do |form| %>
-  <div>
-  <h2 class="active"> Edit Description </h2>
-
-   </div>
-  <div>
-      <%= form.text_field :description, placeholder: "Description" %>
-  </div>
+  <%= form.text_field :name, placeholder: "name" %>
+  <%= form.text_field :description, placeholder: "description" %>
+  <%= form.submit "Add attribute " %>
 <% end %>
-</div>
-</div>
-</section>
-<%= render "layouts/footer" %>
+
+<!-- <%= form_for @edithomepage do |form| %>
+  <%= form.text_field :name, placeholder: 'name' %>
+  <%= form.text_field :description, placeholder: 'description' %>
+  <%= form.submit %>
+<% end %> -->
