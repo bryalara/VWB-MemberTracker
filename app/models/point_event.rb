@@ -32,7 +32,7 @@ class PointEvent < ApplicationRecord
 
   # this is for download all the event-user pairs
   def self.to_csv_users
-    columns = ['event ID', 'event name', 'User 1st name', 'user 2nd name', 'user email']
+    columns = ['event_id', 'event name', 'user_id', 'User 1st name', 'user 2nd name', 'user email', 'attended', 'created_at', 'updated_at']
     # for all events
     CSV.generate(headers: true) do |csv|
       # for all users in this event
@@ -40,7 +40,10 @@ class PointEvent < ApplicationRecord
       all.find_each do |event|
         event.users.each do |user|
           # push these things into csv
-          csv << [event.id, event.name, user.firstName, user.lastName, user.email]
+          csv << [event.id, event.name, user.id, user.firstName, user.lastName, user.email, 
+            PointEventAttendee.find_by(user_id: user.id, point_event_id: event.id).attended,
+            PointEventAttendee.find_by(user_id: user.id, point_event_id: event.id).created_at,
+            PointEventAttendee.find_by(user_id: user.id, point_event_id: event.id).updated_at]
         end
       end
     end
@@ -81,6 +84,37 @@ class PointEvent < ApplicationRecord
       rescue StandardError => e
         puts(e)
       end
+    end
+  end
+
+  # import csv
+  def self.my_import_part(file)
+    events = []
+    wmsg = []
+    begin
+      CSV.foreach(file.path, headers: true) do |row|
+        puts('READING FROM CSV..........................................')
+        puts(row.to_h[1])
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+        @event = PointEvent.find_by(id: event_id)
+        @user = User.find_by(id: user_id)
+        if @event && @user
+          unless @event.users.find_by(id: user_id)
+            @event.users << @user
+            @event.save
+            if attended
+              attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: @event.id)
+              attendance.attended = true
+              attendance.save
+            end
+          end
+        else
+          wmsg.append("Some of the events or users do not exist")
+        end
+      end
+    rescue StandardError => e
+      puts('Error reading specified csv file, maybe no csv selected')
+      wmsg.append('Error reading specified csv file')
     end
   end
 end

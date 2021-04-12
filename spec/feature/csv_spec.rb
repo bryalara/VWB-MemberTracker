@@ -63,6 +63,11 @@ RSpec.describe 'CSV', type: :feature do
 			visit event_index_path
 			click_on 'Import CSV', match: :first
 		end
+
+		it 'import CSV 2' do
+			visit event_index_path
+			click_on 'Import CSV for Users\' Participation', match: :first
+		end
 	end
 
 	describe 'Cheking pointevents csv features' do
@@ -98,6 +103,11 @@ RSpec.describe 'CSV', type: :feature do
 		it 'import CSV' do
 			visit point_event_index_path
 			click_on 'Import CSV', match: :first
+		end
+
+		it 'import CSV 2' do
+			visit point_event_index_path
+			click_on 'Import CSV for Users\' Engagement', match: :first
 		end
 	end
 end

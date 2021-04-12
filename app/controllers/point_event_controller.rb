@@ -207,6 +207,14 @@ class PointEventController < ApplicationController
     end
   end
 
+  # import csv
+  def import_part
+    @auth = User.find_by(email: current_userlogin.email)
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    wmsg = PointEvent.my_import_part(params[:file])
+    redirect_to event_index_path
+  end
+
   private
 
   def point_event_params

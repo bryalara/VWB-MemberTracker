@@ -48,7 +48,8 @@ class Event < ApplicationRecord
 
   # this is for download all the event-user pairs
   def self.to_csv_users
-    columns = ['event_id', 'event name', 'user_id', 'User 1st name', 'user 2nd name', 'user email']
+    columns = ['event_id', 'event name', 'user_id', 'User 1st name', 'user 2nd name', 
+      'user email', 'attended', 'created_at', 'updated_at']
     # for all events
     CSV.generate(headers: true) do |csv|
       # for all users in this event
@@ -57,7 +58,10 @@ class Event < ApplicationRecord
         event.users.each do |user|
           # push these things into csv
           # it is int he pair of event-user
-          csv << [event.id, event.name, user.id, user.firstName, user.lastName, user.email]
+          csv << [event.id, event.name, user.id, user.firstName, user.lastName, user.email, 
+            EventAttendee.find_by(user_id: user.id, event_id: event.id).attended, 
+            EventAttendee.find_by(user_id: user.id, event_id: event.id).created_at,
+            EventAttendee.find_by(user_id: user.id, event_id: event.id).updated_at]
         end
       end
     end
@@ -98,6 +102,40 @@ class Event < ApplicationRecord
       rescue StandardError => e
         puts(e)
       end
+    end
+  end
+
+  # import csv
+  def self.my_import_part(file)
+    events = []
+    wmsg = []
+    begin
+      CSV.foreach(file.path, headers: true) do |row|
+        puts('READING FROM CSV..........................................')
+        puts(row.to_h[1])
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+        # created_at = DateTime.strptime(created_at, "%m/%d/%Y")
+        @event = Event.find_by(id: event_id)
+        @user = User.find_by(id: user_id)
+        if @event && @user
+          unless @event.users.find_by(id: user_id)
+            @event.users << @user
+            @event.save
+            if attended
+              attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
+              attendance.attended = true
+              # attendance.created_at = created_at
+              # attendance.updated_at = updated_at
+              attendance.save
+            end
+          end
+        else
+          wmsg.append("Some of the events or users do not exist")
+        end
+      end
+    rescue StandardError => e
+      puts('Error reading specified csv file, maybe no csv selected')
+      wmsg.append('Error reading specified csv file')
     end
   end
 end
