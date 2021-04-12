@@ -26,7 +26,7 @@ RSpec.describe 'PointEvents', type: :feature do
 				points: 5,
 				capacity: 5)
 			visit qr_point_event_path(id: event.id)
-			expect(page).to have_content('Test Event')
+			expect(page).to have_content('TEST EVENT')
 		end
 
 		it 'attend shows the right content' do
@@ -35,7 +35,7 @@ RSpec.describe 'PointEvents', type: :feature do
 				points: 5,
 				capacity: 5)
 			visit attend_point_event_path(id: event.id)
-			expect(page).to have_content('Test Event')
+			expect(page).to have_content('TEST EVENT')
 		end
 	end
 
@@ -138,7 +138,7 @@ RSpec.describe 'PointEvents', type: :feature do
 
 		it 'is valid with valid changes' do
 			fill_in 'point_event_name', with: "Edited Event Name"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Event Name')
 		end
@@ -146,7 +146,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is valid with the description deleted' do
 			fill_in 'point_event_name', with: "Edited Event Name"
 			fill_in 'point_event_description', with: nil
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Event Name')
 		end
@@ -154,7 +154,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid without a name' do
 			fill_in 'point_event_name', with: nil
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -162,7 +162,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid without points' do
 			fill_in 'point_event_points', with: nil
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -170,7 +170,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is valid with 0 points' do
 			fill_in 'point_event_points', with: 0
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Test Description')
 		end
@@ -178,7 +178,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid with negative points' do
 			fill_in 'point_event_points', with: -5
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -186,7 +186,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is valid with a capacity of 0' do
 			fill_in 'point_event_capacity', with: 0
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Test Description')
 		end
@@ -194,7 +194,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid with a negative capacity' do
 			fill_in 'point_event_capacity', with: -1
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -202,7 +202,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid without a capacity' do
 			fill_in 'point_event_capacity', with: ""
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -303,10 +303,10 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit attend_point_event_path(event)
-			expect(page).to have_content('Test Event')
-			expect(page).to have_content('Hello bryalara@tamu.edu')
+			expect(page).to have_content('TEST EVENT')
+			expect(page).to have_content('Registered User: Bryan Lara')
 
-			click_on 'Click to attend!'
+			click_link 'Attend'
 			expect(page).to have_content("Successfully attended Test Event!")
 
 			visit edit_point_event_path(event)
@@ -495,10 +495,10 @@ RSpec.describe 'PointEvents', type: :feature do
 
 		it "will not allow users that have not signed up to attend" do
 			visit attend_point_event_path(event)
-			expect(page).to have_content("Engagement: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content('TEST EVENT')
+			expect(page).to have_content('Registered User: Bryan Lara')
 
-			click_on 'Click to attend!'
+			click_link 'Attend'
 			expect(page).to have_content("Could not attend Test Event because you did not sign up for the engagement.")
 		end
 
@@ -511,10 +511,10 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit attend_point_event_path(event)
-			expect(page).to have_content("Engagement: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content('TEST EVENT')
+			expect(page).to have_content('Registered User: Bryan Lara')
 
-			click_on 'Click to attend!'
+			click_link 'Attend'
 			expect(page).to have_content("Successfully attended Test Event!")
 		end
 
@@ -539,17 +539,17 @@ RSpec.describe 'PointEvents', type: :feature do
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit attend_point_event_path(event)
-			expect(page).to have_content("Engagement: Test Event")
-			expect(page).to have_content("Hello dummy@tamu.edu")
+			expect(page).to have_content('TEST EVENT')
+			expect(page).to have_content('Registered User: Feature Testing')
 
-			click_on 'Click to attend!'
+			click_link 'Attend'
 			expect(page).to have_content("Successfully attended Test Event!")
 		end
 
 		it "will not allow unregistered users to attend" do
 			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
 			visit attend_point_event_path(event)
-			expect(page).to have_content("Registration")
+			expect(page).to have_content("REGISTRATION")
 		end
 
 		
@@ -559,10 +559,10 @@ RSpec.describe 'PointEvents', type: :feature do
 				event.save
 
 				visit attend_point_event_path(event)
-				expect(page).to have_content("Engagement: Test Event")
-				expect(page).to have_content("Hello bryalara@tamu.edu")
+				expect(page).to have_content('TEST EVENT')
+				expect(page).to have_content('Registered User: Bryan Lara')
 	
-				click_on 'Click to attend!'
+				click_link 'Attend'
 				expect(page).to have_content("Successfully attended Test Event!")
 			end
 		end
