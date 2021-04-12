@@ -1,65 +1,209 @@
-Inspecting 52 files
-......WC.W...C.............W.W....................EC
+Inspecting 51 files
+CCCCCCWCWCCCCCCCCCCCCCCCCCWCWC.CCCCCCCCCCCCCCCCCCEC
 
 Offenses:
 
-app/controllers/event_controller.rb:5:3: C: Rails/LexicallyScopedActionFilter: registration is not explicitly defined on the class.
-  before_action :authenticate_userlogin! && :admin_verify, except: %i[create registration]
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-app/controllers/event_controller.rb:17:5: C: Style/GuardClause: Use a guard clause (return unless true) instead of wrapping the code inside a conditional expression.
-    if true
-    ^^
-app/controllers/event_controller.rb:17:8: W: Lint/LiteralAsCondition: Literal true appeared as a condition.
-    if true
-       ^^^^
-app/controllers/event_controller.rb:25:71: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-            send_data @events.to_csv, filename: "member-emails-#{Date.today}.csv"
-                                                                      ^^^^^
-app/controllers/event_controller.rb:28:77: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-            send_data @events.to_csv_users, filename: "member-emails-#{Date.today}.csv"
-                                                                            ^^^^^
-app/controllers/home_controller.rb:5:5: C: Naming/VariableName: Use snake_case for variable names.
-    @signedInUser = check_user
-    ^^^^^^^^^^^^^
-app/controllers/point_event_controller.rb:5:3: C: Rails/LexicallyScopedActionFilter: registration is not explicitly defined on the class.
-  before_action :authenticate_userlogin! && :admin_verify, except: %i[create registration]
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-app/controllers/point_event_controller.rb:15:5: C: Style/GuardClause: Use a guard clause (return unless true) instead of wrapping the code inside a conditional expression.
-    if true
-    ^^
-app/controllers/point_event_controller.rb:15:8: W: Lint/LiteralAsCondition: Literal true appeared as a condition.
-    if true
-       ^^^^
-app/controllers/point_event_controller.rb:23:77: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-            send_data @point_events.to_csv, filename: "events-emails-#{Date.today}.csv"
-                                                                            ^^^^^
-app/controllers/point_event_controller.rb:26:83: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-            send_data @point_events.to_csv_users, filename: "member-emails-#{Date.today}.csv"
-                                                                                  ^^^^^
-app/controllers/point_event_controller.rb:96:121: C: Layout/LineLength: Line is too long. [122/120]
-    @qr_code = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_point_event_path(@point_event))
-                                                                                                                        ^^
-app/controllers/users_controller.rb:8:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for index is too high. [11/7]
-  def index ...
-  ^^^^^^^^^
-app/controllers/users_controller.rb:31:68: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-          send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv"
-                                                                   ^^^^^
-app/controllers/users_controller.rb:34:73: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-          send_data @users.to_csv_backup, filename: "member-info-#{Date.today}.csv"
-                                                                        ^^^^^
-app/controllers/users_controller.rb:123:3: C: Metrics/AbcSize: Assignment Branch Condition size for pending_approval is too high. [<13, 56, 21> 61.2/50]
-  def pending_approval ...
-  ^^^^^^^^^^^^^^^^^^^^
-app/controllers/users_controller.rb:123:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for pending_approval is too high. [16/7]
-  def pending_approval ...
-  ^^^^^^^^^^^^^^^^^^^^
-app/models/event.rb:39:5: W: Lint/UselessAssignment: Useless assignment to variable - attributes.
-    attributes = %w[name description startDate endDate points]
-    ^^^^^^^^^^
-app/models/point_event.rb:25:5: W: Lint/UselessAssignment: Useless assignment to variable - attributes.
-    attributes = %w[name description startDate endDate points]
-    ^^^^^^^^^^
+Gemfile:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Rakefile:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/channels/application_cable/channel.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/channels/application_cable/connection.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/application_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/edithomepages_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/event_controller.rb:240:5: W: Lint/UselessAssignment: Useless assignment to variable - wmsg.
+    wmsg = Event.my_import_part(params[:file])
+    ^^^^
+app/controllers/home_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/point_event_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/point_event_controller.rb:214:5: W: Lint/UselessAssignment: Useless assignment to variable - wmsg.
+    wmsg = PointEvent.my_import_part(params[:file])
+    ^^^^
+app/controllers/rspec_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/userlogins/omniauth_callbacks_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/userlogins/sessions_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/application_helper.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/edithomepages_helper.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/event_helper.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/home_helper.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/omniauth_callbacks_helper.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/pages_helper.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/point_event_helper.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/rspec_helper.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/users_helper.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/jobs/application_job.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/mailers/application_mailer.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/application_record.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/edithomepage.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/event.rb:109:5: W: Lint/UselessAssignment: Useless assignment to variable - events.
+    events = []
+    ^^^^^^
+app/models/event.rb:115:19: W: Lint/UselessAssignment: Useless assignment to variable - event_name. Use _ or _event_name as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                  ^^^^^^^^^^
+app/models/event.rb:115:40: W: Lint/UselessAssignment: Useless assignment to variable - user_1. Use _ or _user_1 as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                       ^^^^^^
+app/models/event.rb:115:40: C: Naming/VariableNumber: Use normalcase for variable numbers.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                       ^^^^^^
+app/models/event.rb:115:48: W: Lint/UselessAssignment: Useless assignment to variable - user_2. Use _ or _user_2 as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                               ^^^^^^
+app/models/event.rb:115:48: C: Naming/VariableNumber: Use normalcase for variable numbers.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                               ^^^^^^
+app/models/event.rb:115:56: W: Lint/UselessAssignment: Useless assignment to variable - user_email. Use _ or _user_email as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                                       ^^^^^^^^^^
+app/models/event.rb:115:78: W: Lint/UselessAssignment: Useless assignment to variable - created_at. Use _ or _created_at as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                                                             ^^^^^^^^^^
+app/models/event.rb:115:90: W: Lint/UselessAssignment: Useless assignment to variable - updated_at. Use _ or _updated_at as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                                                                         ^^^^^^^^^^
+app/models/event.rb:135:29: W: Lint/UselessAssignment: Useless assignment to variable - e.
+    rescue StandardError => e
+                            ^
+app/models/event_attendee.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/point_event.rb:91:5: W: Lint/UselessAssignment: Useless assignment to variable - events.
+    events = []
+    ^^^^^^
+app/models/point_event.rb:97:19: W: Lint/UselessAssignment: Useless assignment to variable - event_name. Use _ or _event_name as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                  ^^^^^^^^^^
+app/models/point_event.rb:97:40: W: Lint/UselessAssignment: Useless assignment to variable - user_1. Use _ or _user_1 as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                       ^^^^^^
+app/models/point_event.rb:97:40: C: Naming/VariableNumber: Use normalcase for variable numbers.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                       ^^^^^^
+app/models/point_event.rb:97:48: W: Lint/UselessAssignment: Useless assignment to variable - user_2. Use _ or _user_2 as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                               ^^^^^^
+app/models/point_event.rb:97:48: C: Naming/VariableNumber: Use normalcase for variable numbers.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                               ^^^^^^
+app/models/point_event.rb:97:56: W: Lint/UselessAssignment: Useless assignment to variable - user_email. Use _ or _user_email as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                                       ^^^^^^^^^^
+app/models/point_event.rb:97:78: W: Lint/UselessAssignment: Useless assignment to variable - created_at. Use _ or _created_at as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                                                             ^^^^^^^^^^
+app/models/point_event.rb:97:90: W: Lint/UselessAssignment: Useless assignment to variable - updated_at. Use _ or _updated_at as a variable name to indicate that it won't be used.
+        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+                                                                                         ^^^^^^^^^^
+app/models/point_event.rb:114:29: W: Lint/UselessAssignment: Useless assignment to variable - e.
+    rescue StandardError => e
+                            ^
+app/models/point_event_attendee.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/userlogin.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config.ru:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/application_system_test_case.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/channels/application_cable/connection_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/edithomepages_controller_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/event_controller_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/home_controller_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/omniauth_callbacks_controller_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/pages_controller_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/point_event_controller_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/rspec_controller_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/users_controller_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/models/edithomepage_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/models/event_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/models/point_event_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/models/user_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/models/userlogin_test.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/test_helper.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 vwb/node_modules/node-sass/src/libsass/contrib/libsass.spec:1:5: E: Lint/Syntax: unexpected token tCOLON
 (Using Ruby 2.7 parser; configure using TargetRubyVersion parameter, under AllCops)
 Name:           libsass
@@ -71,4 +215,4 @@ vwb/node_modules/node-sass/src/libsass/extconf.rb:7:1: C: Style/GlobalVars: Do n
 $LIBS << " #{ENV['LIBS']}"
 ^^^^^
 
-52 files inspected, 22 offenses detected
+51 files inspected, 70 offenses detected

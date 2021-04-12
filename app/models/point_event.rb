@@ -40,50 +40,49 @@ class PointEvent < ApplicationRecord
       all.find_each do |event|
         event.users.each do |user|
           # push these things into csv
-          csv << [event.id, event.name, user.id, user.firstName, user.lastName, user.email, 
-            PointEventAttendee.find_by(user_id: user.id, point_event_id: event.id).attended,
-            PointEventAttendee.find_by(user_id: user.id, point_event_id: event.id).created_at,
-            PointEventAttendee.find_by(user_id: user.id, point_event_id: event.id).updated_at]
+          csv << [event.id, event.name, user.id, user.firstName, user.lastName, user.email,
+                  PointEventAttendee.find_by(user_id: user.id, point_event_id: event.id).attended,
+                  PointEventAttendee.find_by(user_id: user.id, point_event_id: event.id).created_at,
+                  PointEventAttendee.find_by(user_id: user.id, point_event_id: event.id).updated_at]
         end
       end
     end
   end
-  
+
   # import csv
   def self.my_import(file)
     events = []
     wmsg = []
     begin
       CSV.foreach(file.path, headers: true) do |row|
-        puts('READING FROM CSV..........................................')
-        puts(row.to_h[1])
+        # puts('READING FROM CSV..........................................')
+        # puts(row.to_h[1])
         events << PointEvent.new(row.to_h)
       end
     rescue StandardError => e
-      puts('Error reading specified csv file, maybe no csv selected')
+      # puts('Error reading specified csv file, maybe no csv selected')
       wmsg.append('Error reading specified csv file')
     end
     events.each do |event|
-      puts("#{event.name}")
-      begin
-        unless wmsg.first == 'Error reading specified csv file'
-          if event.save
+      # puts("#{event.name}")
+
+      unless wmsg.first == 'Error reading specified csv file'
+        if event.save
+          wmsg.append("New event: #{event.name} created")
+          # puts("New event: #{event.name} created")
+        else
+          # puts("Error with event: #{event.name}, might already exist")
+          wmsg.append("Error with event: #{event.name}, might already exist")
+          if @event.valid?
             wmsg.append("New event: #{event.name} created")
-            puts("New event: #{event.name} created")
           else
-            puts("Error with event: #{event.name}, might already exist")
-            wmsg.append("Error with event: #{event.name}, might already exist")
-            if @event.valid?
-              wmsg.append("New event: #{event.name} created")
-            else
-              wmsg.append(event.errors.full_messages[0])
-              puts(event.errors.full_messages[0])
-            end
+            wmsg.append(event.errors.full_messages[0])
+            # puts(event.errors.full_messages[0])
           end
         end
-      rescue StandardError => e
-        puts(e)
       end
+    rescue StandardError => e
+      # puts(e)
     end
   end
 
@@ -93,10 +92,10 @@ class PointEvent < ApplicationRecord
     wmsg = []
     begin
       CSV.foreach(file.path, headers: true) do |row|
-        puts('READING FROM CSV..........................................')
-        puts(row.to_h[1])
+        # puts('READING FROM CSV..........................................')
+        # puts(row.to_h[1])
         event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
-        @event = PointEvent.find_by(id: event_id)
+        @event = PointEvent.find_by(name: event_name)
         @user = User.find_by(id: user_id)
         if @event && @user
           unless @event.users.find_by(id: user_id)
@@ -109,11 +108,11 @@ class PointEvent < ApplicationRecord
             end
           end
         else
-          wmsg.append("Some of the events or users do not exist")
+          wmsg.append('Some of the events or users do not exist')
         end
       end
     rescue StandardError => e
-      puts('Error reading specified csv file, maybe no csv selected')
+      # puts('Error reading specified csv file, maybe no csv selected')
       wmsg.append('Error reading specified csv file')
     end
   end

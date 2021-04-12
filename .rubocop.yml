@@ -4,6 +4,7 @@ require:
   - rubocop-rspec
 AllCops:
   Exclude:
+    - 'test'
     - 'db/**/*'
     - 'script/**/*'
     - 'bin/**/*'
