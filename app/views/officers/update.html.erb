@@ -1,0 +1,10 @@
+<%= link_to 'Back to Edit Officer Page', officers_path %>
+
+<h3>Update Officer page Details</h3>
+<%= form_with model: @officer do |form| %>
+    <%= form.text_field :name, placeholder: "name" %>
+    <%= form.text_field :email , placeholder: "email " %>
+    <%= form.text_field :description  , placeholder: "description " %>
+    <%= form.file_field :image, placeholder: "Upload Officer Image" %>
+    <%= form.submit %>
+<% end %>
