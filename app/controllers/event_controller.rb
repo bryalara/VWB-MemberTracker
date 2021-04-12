@@ -113,7 +113,9 @@ class EventController < ApplicationController
     return unless request.post?
 
     attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
+    # If the user has signed up
     if attendance
+      # If the user has not attended
       if !attendance.attended
         attendance.attended = true
         attendance.save
@@ -128,6 +130,7 @@ class EventController < ApplicationController
       redirect_to @event
       nil
     else
+      # Force a user in and set them as attended.
       @event.users << @user
       attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
       attendance.attended = true
