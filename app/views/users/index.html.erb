@@ -1,7 +1,9 @@
-
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<%# <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> %>
+<%= render "layouts/navbar2", user: @auth %>
 <style>
 .section {
-    margin: 80px;
+    padding: 0px;
 }
 .notice {
 	border-radius: 5px;
@@ -16,11 +18,8 @@
 }
 </style>
 
-<div>
-  <%= render "layouts/navbar2", user: @user %>
-</div>
-<div id="section">
-<div style="margin-top: 50px">
+<section style="padding-top: 0px;">
+
 <% flash.each do |type, msgs| %>
   <div class="notice">
   <% if Array === msgs %>
@@ -34,18 +33,18 @@
   <% end %>
   </div>
 <% end %>
-</div>
 
 <div class="header">
-<h2 class="active h2-title">Users</h2>
+    <h2 class="active h2-title">Admin Dashboard</h2>
 </div>
 
+<div class="h2-title">
+    <h3 class="text upper">Users </h3>
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "Pending Users", pendingApproval_path, class: "back-button" %> </button>
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
+</div> 
 
-<div class="align-table">
-
-<button class="btn" style="padding-left: 0rem;"> <%= link_to "Create New User", new_user_path, class: "back-button" %> </button>
-<button class="btn" style="padding-left: 0rem;"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
-<button class="btn" style="padding-left: 0rem;"> <%= link_to "Pending Users", pending_approval_path, class: "back-button" %> </button>
 <table class="styled-table">
     <tr>
         <th> First Name <%= link_to (@attr == 'first' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), users_path(:attr => 'first', :order => @attr=='first' ? !@order : :false) %></th>
@@ -100,5 +99,6 @@
     </div>
 </div>
 <% end %>
-</div>
-</div>
+
+</section>
+<%= render "layouts/footer" %>

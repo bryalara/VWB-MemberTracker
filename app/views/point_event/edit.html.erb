@@ -7,6 +7,7 @@
 	color: #295529;
 }
 </style>
+<section style="padding-top: 0px;">
 
 <% flash.each do |type, msg| %>
 	<div class="alert">
@@ -14,10 +15,19 @@
 	</div>
 <% end %>
 
-<div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events / Engagements", event_index_path, class:"back-button" %> </button></div>
+	<!--Header -->
+<div class="header">
+	<h2 class="active h2-title">Admin Dashboard</h2>
+</div>
+
+<div class="h2-title">
+	<h3 class="text upper">Edit An Engagement</h3>
+	<button class="btn"  style="padding-left: 0rem;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
+</div> 
+
 <div class="wrapper fadeInDown">
 	<div id="formContent">
-		<h2 class="active">Edit an Engagement</h2>
+		<h2 class="active">Edit Engagement</h2>
 		<p>* denotes required fields.<p>
 		<p>A capacity of 0 represents "No Limit".</p>
 		<p>Reuploading documents will replace the last submission.<p>
@@ -53,37 +63,40 @@
 					<td><%= form.file_field :documents, multiple: true, direct_upload: true %></td>
 				</tr>
 			</table>
-			<%= form.submit "Save Changes to Engagement" %>
+			<%= form.submit "Save Changes" %>
 		<% end %>
 	</div>
+</div>
 
-	<div>
-		<h1>Attendance</h1>
-		<table>
-			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Email</th>
-				<th>Time Signed Up</th>
-				<th>Time Attended</th>
-				<th>Action</th>
-			</tr>
-
-			<% @point_event.users.each do |user| %>
-			<tr>
-				<td><%= user.firstName %></td>
-				<td><%= user.lastName %></td>
-				<td><%= user.email %></td>
-
-				<% attendance = PointEventAttendee.find_by(user_id: user.id, point_event_id: @point_event.id) %>
-				<td><%= Event.display_date_time(attendance.created_at) %>
-				<td><%= attendance.attended ? Event.display_date_time(attendance.updated_at) : "N/A" %>
-				
-				<td><%= link_to "Remove", delete_user_point_event_path(id: @point_event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the points event again. Points that student received from this points event will also dissappear!"} %></td>
-			</tr>
-			<% end %>
-		</table>
+	<br></br>
+	<div class="h2-title">
+		<h3 class="text upper">Attendance</h3>
 	</div>
+
+	<table class="styled-table">
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Time Signed Up</th>
+			<th>Time Attended</th>
+			<th>Action</th>
+		</tr>
+
+		<% @point_event.users.each do |user| %>
+		<tr>
+			<td><%= user.firstName %></td>
+			<td><%= user.lastName %></td>
+			<td><%= user.email %></td>
+
+			<% attendance = PointEventAttendee.find_by(user_id: user.id, point_event_id: @point_event.id) %>
+			<td><%= Event.display_date_time(attendance.created_at) %>
+			<td><%= attendance.attended ? Event.display_date_time(attendance.updated_at) : "N/A" %>
+			
+			<td><%= link_to "Remove", delete_user_point_event_path(id: @point_event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the points event again. Points that student received from this points event will also dissappear!"} %></td>
+		</tr>
+		<% end %>
+	</table>
 
 	<div>
 		<h1>Force a user to attend the engagement</h1>
@@ -127,4 +140,5 @@
 			<% end %>
 		<% end %>
 	</div>
-</div>
+</section>
+<%= render "layouts/footer" %>

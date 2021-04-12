@@ -8,15 +8,23 @@
 	color: #295529;
 }
 </style>
+<section style="padding-top: 0px;">
+
+<div class="header">
+	<h2 class="active h2-title">Admin Dashboard</h2>
+</div>
 
 <% flash.each do |type, msg| %>
 	<div class="alert">
 		<%= msg %>
 	</div>
 <% end %>
+<div class="h2-title">
+	<h3 class="text upper">Edit An Event</h3>
+	<button class="btn" style="padding-left: 0rem;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
+</div> 
 
-<div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events / Engagements", event_index_path, class:"back-button" %> </button></div>
-<div class="wrapper">
+<div class="wrapper fadeInDown">
 	<div id="formContent">
 		<h2 class="active">Edit an Event</h2>
 		<p>* denotes required fields.<p>
@@ -62,78 +70,84 @@
 					<td><%= form.file_field :documents, multiple: true, direct_upload: true %></td>
 				</tr>
 			</table>
-			<%= form.submit "Save Changes to Event" %>
+			<%= form.submit "Save Changes" %>
 		<% end %>
 	</div>
+</div>
 
-	<div>
-		<h1>Attendance</h1>
+<br></br>
+<div class="h2-title">
+	<h3 class="text upper">Attendance</h3>
+</div>
+
+<div>
+	<table class="styled-table">
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Time Signed Up</th>
+			<th>Time Attended</th>
+			<th>Action</th>
+		</tr>
+
+		<% @event.users.each do |user| %>
+		<tr>
+			<td><%= user.firstName %></td>
+			<td><%= user.lastName %></td>
+			<td><%= user.email %></td>
+
+			<% attendance = EventAttendee.find_by(user_id: user.id, event_id: @event.id) %>
+			<td><%= Event.display_date_time(attendance.created_at) %>
+			<td><%= attendance.attended ? Event.display_date_time(attendance.updated_at) : "N/A" %>
+
+			<td><%= link_to "Remove", delete_user_event_path(id: @event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the event again. Points that student received from this event will also dissappear!"} %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+
+<div>
+	<h1>Force a user to attend the event</h1>
+	<%= form_with url: edit_event_path(@event), method: :get, local: true do |form| %>
+		<table>
+			<tr>
+				<th>First Name</th>
+				<td><%= form.text_field :firstName, placeholder: "First Name" %></td>
+				<th>Last Name</th>
+				<td><%= form.text_field :lastName, placeholder: "Last Name" %></td>
+				<th>Email</th>
+				<td><%= form.text_field :email, placeholder: "Email" %></td>
+				<td><%= form.submit "Search for users" %></td>
+			</tr>
+		</table>
+	<% end %>
+
+	<% if @users %>
 		<table>
 			<tr>
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Email</th>
-				<th>Time Signed Up</th>
-				<th>Time Attended</th>
 				<th>Action</th>
 			</tr>
 
-			<% @event.users.each do |user| %>
+			<% @users.each do |user| %>
 			<tr>
 				<td><%= user.firstName %></td>
 				<td><%= user.lastName %></td>
 				<td><%= user.email %></td>
-
-				<% attendance = EventAttendee.find_by(user_id: user.id, event_id: @event.id) %>
-				<td><%= Event.display_date_time(attendance.created_at) %>
-				<td><%= attendance.attended ? Event.display_date_time(attendance.updated_at) : "N/A" %>
-
-				<td><%= link_to "Remove", delete_user_event_path(id: @event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the event again. Points that student received from this event will also dissappear!"} %></td>
+				<td><%= link_to "Force in", force_in_event_path(event_id: @event.id, user_id: user.id, attended: true), method: :post %>
 			</tr>
 			<% end %>
 		</table>
-	</div>
-
-	<div>
-		<h1>Force a user to attend the event</h1>
-		<%= form_with url: edit_event_path(@event), method: :get, local: true do |form| %>
-			<table>
-				<tr>
-					<th>First Name</th>
-					<td><%= form.text_field :firstName, placeholder: "First Name" %></td>
-					<th>Last Name</th>
-					<td><%= form.text_field :lastName, placeholder: "Last Name" %></td>
-					<th>Email</th>
-					<td><%= form.text_field :email, placeholder: "Email" %></td>
-					<td><%= form.submit "Search for users" %></td>
-				</tr>
-			</table>
-		<% end %>
-
-		<% if @users %>
-			<table>
-				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
-					<th>Action</th>
-				</tr>
-
-				<% @users.each do |user| %>
-				<tr>
-					<td><%= user.firstName %></td>
-					<td><%= user.lastName %></td>
-					<td><%= user.email %></td>
-					<td><%= link_to "Force in", force_in_event_path(event_id: @event.id, user_id: user.id, attended: true), method: :post %>
-				</tr>
-				<% end %>
-			</table>
+	<% else %>
+		<% if params[:firstName] || params[:lastName] || params[:email] %>
+			<p>No matching users were found</p>
 		<% else %>
-			<% if params[:firstName] || params[:lastName] || params[:email] %>
-				<p>No matching users were found</p>
-			<% else %>
-				<%# Display nothing %>
-			<% end %>
+			<%# Display nothing %>
 		<% end %>
-	</div>
+	<% end %>
 </div>
+</section>
+<%= render "layouts/footer" %>

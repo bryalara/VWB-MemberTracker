@@ -29,124 +29,130 @@ select{
 }
 </style>
 
-<div>
-  <%= render "layouts/navbar2", user: @user %>
-</div>
-<div id="section">
-<div style="margin-top: 50px">
-<% flash.each do |type, msgs| %>
-  <div class="notice">
-  <% if Array === msgs %>
-    <ul>
-    <% msgs.each do |msg| %>
-      <li class=<%=msg[0..4].to_s.chomp == 'Error'.to_s.chomp ? :"alert" : :"notice"  %> ><%= msg %></li>
-    <% end %>
-    </ul>
-  <% else %>
-    <%= msgs %>
-  <% end %>
-  </div>
-<% end %>
-</div>
-
-
-
- <%= render "layouts/navbar2", user: @user %>
+<%= render "layouts/navbar2", user: @user %>
 <section style="padding-top: 10px;">
-<div class="header">
-<h2 class="active h2-title">Edit Users</h2>
-</div>
-<div class="wrapper fadeInDown">
-<button class="btn" >
-<%= link_to @auth.role==1 ? :"View All Users" : :"Member Dashboard", users_path, class: "back-button" %>
-</button>
-<div id="formContent">
-<%= form_with model: @user do |form| %>
-    <div>
-    <h2 class="active"><%= @user.firstName+" "+@user.lastName %> </h2>
-        <%= form.email_field :email, placeholder: "Email", prompt: "Email", value: @user.email %>
-    </div>
-
-    <div>
-       <br>
-        <%= form.text_field :firstName, placeholder: "First Name", value: @user.firstName %>
-        <% @user.errors.full_messages_for(:firstName).each do |message| %>
-            <div><%= message %></div>
+    <% flash.each do |type, msgs| %>
+        <div class="notice">
+        <% if Array === msgs %>
+            <ul>
+            <% msgs.each do |msg| %>
+            <li class=<%=msg[0..4].to_s.chomp == 'Error'.to_s.chomp ? :"alert" : :"notice"  %> ><%= msg %></li>
+            <% end %>
+            </ul>
+        <% else %>
+            <%= msgs %>
         <% end %>
+        </div>
+    <% end %>
+    <% if @auth.role == 1 %>
+        <div class="header">
+            <h2 class="active h2-title">Admin Dashboard</h2>
+        </div>
+    <%else%>
+        <div class="header">
+            <h2 class="active h2-title">Member Dashboard</h2>
+        </div>
+    <% end %>
+
+    <div class="h2-title">
+        <h2 class="text upper">Edit User</h2>
     </div>
 
-    <div>
+    <div class="h2-title">
+        <button class="btn" >
+            <%= link_to @auth.role==1 ? :"View All Users" : :"Member Dashboard", users_path, class: "back-button" %>
+        </button>
+    </div>
+
+    <div class="wrapper fadeInDown">
+    
+    <div id="formContent">
+    <%= form_with model: @user do |form| %>
+        <div>
+        <h2 class="active"><%= @user.firstName+" "+@user.lastName %> </h2>
+            <%= form.email_field :email, placeholder: "Email", prompt: "Email", value: @user.email %>
+        </div>
+
+        <div>
         <br>
-        <%= form.text_field :lastName, placeholder: "Last Name" , value: @user.lastName%>
-        <% @user.errors.full_messages_for(:lastName).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <%if @auth%>
-        <%if @auth.role==1%>
-            <div class="select">
-                <br>
-                <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]] ,selected: @user.role)  ,prompt: "Select a Role"   %>
-            </div>
-        <%end%>
-    <%end%>
+            <%= form.text_field :firstName, placeholder: "First Name", value: @user.firstName %>
+            <% @user.errors.full_messages_for(:firstName).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
 
-    <div>
-        <br>
-        <%= form.telephone_field :phoneNumber, placeholder: "Phone Number" %>
-        <% @user.errors.full_messages_for(:phoneNumber).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-
-    <div>
-       <br>
-        <%= form.select :classification, options_for_select(["Freshman", "Sophomore", "Junior", "Senior"], selected: @user.classification), :prompt => 'Select Year' %>
-        <% @user.errors.full_messages_for(:classification).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-
-    <div>
-        <br>
-        <%= form.select :tShirtSize, options_for_select(["XXS", "XS", "S", "M", "L", "XL", "XXL"], selected: @user.tShirtSize), :prompt => 'Select Size'%>
-        <% @user.errors.full_messages_for(:tShirtSize).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-
-    <%if @auth%>
-        <%if @auth.role==1%>
-            <div class="double" align="center">
+        <div>
             <br>
-                <%= form.label :participationPoints, "Participation Points", class: "label"%>
-            <div style="width: 50%;"> <%= form.number_field  :participationPoints, placeholder: "0", class: "field", value: 0 %></div>
-            <% @user.errors.full_messages_for(:participationPoints).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-            </div>
+            <%= form.text_field :lastName, placeholder: "Last Name" , value: @user.lastName%>
+            <% @user.errors.full_messages_for(:lastName).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+        <%if @auth%>
+            <%if @auth.role==1%>
+                <div class="select">
+                    <br>
+                    <%= form.select :role, options_for_select([["Member", 0], ["Admin", 1]] ,selected: @user.role)  ,prompt: "Select a Role"   %>
+                </div>
+            <%end%>
         <%end%>
-    <%end%>
 
-    <div class="double" align="center">
-        <%= form.label :optInEmail , "Opt-In Email", class: "label" %>
-        <div style="width: 50%;"><%= form.check_box :optInEmail, class: "field" %></div>
-   </div>
-    <%if @auth%>
-        <%if @auth.role==1%>
-            <div class="double" align="center">
-                <%= form.label :approved, class: "label" %>
-                <div style="width: 50%;"><%= form.check_box :approved, class: "field" %></div>
-            </div>
+        <div>
+            <br>
+            <%= form.telephone_field :phoneNumber, placeholder: "Phone Number" %>
+            <% @user.errors.full_messages_for(:phoneNumber).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <div>
+        <br>
+            <%= form.select :classification, options_for_select(["Freshman", "Sophomore", "Junior", "Senior"], selected: @user.classification), :prompt => 'Select Year' %>
+            <% @user.errors.full_messages_for(:classification).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <div>
+            <br>
+            <%= form.select :tShirtSize, options_for_select(["XXS", "XS", "S", "M", "L", "XL", "XXL"], selected: @user.tShirtSize), :prompt => 'Select Size'%>
+            <% @user.errors.full_messages_for(:tShirtSize).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <%if @auth%>
+            <%if @auth.role==1%>
+                <div class="double" align="center">
+                <br>
+                    <%= form.label :participationPoints, "Participation Points", class: "label"%>
+                <div style="width: 50%;"> <%= form.number_field  :participationPoints, placeholder: "0", class: "field", value: 0 %></div>
+                <% @user.errors.full_messages_for(:participationPoints).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+                </div>
+            <%end%>
         <%end%>
-    <%end%>
-    <div>
-        <%= form.submit %>
+
+        <div class="double" align="center">
+            <%= form.label :optInEmail , "Opt-In Email", class: "label" %>
+            <div style="width: 50%;"><%= form.check_box :optInEmail, class: "field" %></div>
     </div>
-<% end %>
+        <%if @auth%>
+            <%if @auth.role==1%>
+                <div class="double" align="center">
+                    <%= form.label :approved, class: "label" %>
+                    <div style="width: 50%;"><%= form.check_box :approved, class: "field" %></div>
+                </div>
+            <%end%>
+        <%end%>
+        <div>
+            <%= form.submit %>
+        </div>
+    <% end %>
 
 
-</div>
-</div>
+    </div>
+    </div>
 </section>
 <%= render "layouts/footer" %>

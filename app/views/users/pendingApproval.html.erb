@@ -1,0 +1,46 @@
+  <%= render "layouts/navbar2", user: @user %>
+
+<%= flash[:notice]%>
+<section style="padding-top: 0px;">
+    <div class="header">
+        <h2 class="active h2-title">Admin Dashboard</h2>
+    </div>
+    <div class="h2-title">
+        <h3 class="text upper">Pending Users</h3>
+        <button class="btn" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
+    <button class="btn"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
+    </div>
+
+    <table class="styled-table">
+
+        <tr>
+            <th> First Name</th>
+            <th> Last Name</th>
+            <th> Email</th>
+            <th> Phone Number</th>
+            <th> Classification</th>
+            <th> Role</th>
+            <th> T-Shirt </th>
+            <th> Points</th>
+            <th> Approved</th>
+        </tr>
+
+    <% @users.each do |user| %>
+        <tr>
+            <td><%=  user.firstName %></td>
+            <td><%=  user.lastName  %></td>
+            <td><%=  user.email  %> </td>
+            <td><%=  user.phoneNumber  %> </td>
+            <td><%=  user.classification %> </td>
+            <td><%=  user.role == 0 ? :"Member" : :"Admin"  %> </td>
+            <td><%=  user.tShirtSize  %> </td>
+            <td><%=  user.participationPoints  %> </td>
+            <td><%=  user.approved  %> </td>
+            <td><%= link_to "View Details", user %> </td>
+        </tr>
+    <% end %>
+
+    </table>
+
+</section>
+<%= render "layouts/footer" %>
