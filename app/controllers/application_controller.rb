@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
     User.find_by(email: current_userlogin.email)
   end
 
+  # Returns true if the user is an admin.
   def admin?
     user = check_user
     user.role == User.role_types['Admin']

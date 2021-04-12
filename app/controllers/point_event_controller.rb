@@ -107,7 +107,9 @@ class PointEventController < ApplicationController
     return unless request.post?
 
     attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: @point_event.id)
+    # If the user has signed up
     if attendance
+      # If the user has not attended
       if !attendance.attended
         attendance.attended = true
         attendance.save
@@ -124,6 +126,7 @@ class PointEventController < ApplicationController
       redirect_to @point_event
       nil
     else
+      # Force a user in and set them as attended.
       @point_event.users << @user
       attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: @point_event.id)
       attendance.attended = true

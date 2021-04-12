@@ -43,9 +43,15 @@ Rails.application.routes.draw do
       post :sign_up
       post :force_in
       post :upload_user
+
+      # A custom edit link so validating does not change url to an incorrect one when
+      # submitting a edit form.
       patch 'edit', to: 'point_event#update', as: 'update'
     end
   end
+
+  # A custom create link so validating does not change url to an incorrect one when
+  # submitting a create form.
   post 'point_event/new', to: 'point_event#create', as: 'create_point_event'
 
   resources :event do
@@ -61,9 +67,17 @@ Rails.application.routes.draw do
       post :sign_up
       post :force_in
       post :upload_user
+
+      # A custom edit link so validating does not change url to an incorrect one when
+      # submitting a edit form.
       patch 'edit', to: 'event#update', as: 'update'
   	end
   end
+  
+  # A custom create link so validating does not change url to an incorrect one when
+  # submitting a create form.
   post 'event/new', to: 'event#create', as: 'create_event'
+
+  # Route to download event ics.
   post 'event/download_ics', to: "event#download_ics"
 end
