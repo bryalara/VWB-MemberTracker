@@ -19,7 +19,7 @@ RSpec.describe 'Events', type: :feature do
 						endDate: DateTime.now + 1.week,
 						capacity: 5)
 			visit attend_event_path(id: event.id)
-			expect(page).to have_content('Test Event')
+			expect(page).to have_content('TEST EVENT')
 		end
 
 		it 'qr shows the right content' do
@@ -30,7 +30,7 @@ RSpec.describe 'Events', type: :feature do
 						endDate: DateTime.now + 1.week,
 						capacity: 5)
 			visit qr_event_path(id: event.id)
-			expect(page).to have_content('Test Event')
+			expect(page).to have_content('TEST EVENT')
 		end
 	
 		it 'attend shows the right content' do
@@ -41,7 +41,7 @@ RSpec.describe 'Events', type: :feature do
 						endDate: DateTime.now + 1.week,
 						capacity: 5)
 			visit attend_event_path(id: event.id)
-			expect(page).to have_content('Test Event')
+			expect(page).to have_content('TEST EVENT')
 		end
 	end
 
@@ -172,7 +172,7 @@ RSpec.describe 'Events', type: :feature do
 
 		it 'is valid with valid changes' do
 			fill_in 'event_name', with: "Edited Event Name"
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Event Name')
 		end
@@ -180,7 +180,7 @@ RSpec.describe 'Events', type: :feature do
 		it 'is valid with the description deleted' do
 			fill_in 'event_name', with: "Edited Event Name"
 			fill_in 'event_description', with: ""
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Event Name')
 		end
@@ -188,7 +188,7 @@ RSpec.describe 'Events', type: :feature do
 		it 'is not valid without a name' do
 			fill_in 'event_name', with: ""
 			fill_in 'event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -196,7 +196,7 @@ RSpec.describe 'Events', type: :feature do
 		it 'is not valid without points' do
 			fill_in 'event_points', with: ""
 			fill_in 'event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -204,7 +204,7 @@ RSpec.describe 'Events', type: :feature do
 		it 'is valid with 0 points' do
 			fill_in 'event_points', with: 0
 			fill_in 'event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Test Description')
 		end
@@ -212,7 +212,7 @@ RSpec.describe 'Events', type: :feature do
 		it 'is not valid with negative points' do
 			fill_in 'event_points', with: -5
 			fill_in 'event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -220,7 +220,7 @@ RSpec.describe 'Events', type: :feature do
 		it 'is not valid without a start date' do
 			fill_in 'event_startDate', with: ""
 			fill_in 'event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -228,7 +228,7 @@ RSpec.describe 'Events', type: :feature do
 		it 'is not valid without an end date' do
 			fill_in 'event_endDate', with: ""
 			fill_in 'event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -236,7 +236,7 @@ RSpec.describe 'Events', type: :feature do
 		it 'is not valid if the end date is before the start date' do
 			fill_in 'event_endDate', with: DateTime.now - 1.week
 			fill_in 'event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -244,7 +244,7 @@ RSpec.describe 'Events', type: :feature do
 		it 'is valid with a capacity of 0' do
 			fill_in 'event_capacity', with: 0
 			fill_in 'event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Test Description')
 		end
@@ -252,7 +252,7 @@ RSpec.describe 'Events', type: :feature do
 		it 'is not valid with a negative capacity' do
 			fill_in 'event_capacity', with: -1
 			fill_in 'event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -260,7 +260,7 @@ RSpec.describe 'Events', type: :feature do
 		it 'is not valid without a capacity' do
 			fill_in 'event_capacity', with: ""
 			fill_in 'event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Event'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -278,7 +278,7 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content('Test Event')
 
 			visit delete_event_path(id: event.id)
-			expect(page).to have_content('Test Event')
+			expect(page).to have_content('TEST EVENT')
 			sleep(0.5)
 			click_on 'delete-btn'
 			sleep(0.5)
@@ -368,14 +368,14 @@ RSpec.describe 'Events', type: :feature do
 
 			visit sign_up_event_path(event)
 			expect(page).to have_content('Test Event')
-			expect(page).to have_content('Hello bryalara@tamu.edu')
+			expect(page).to have_content('Registered User: Bryan Lara')
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit attend_event_path(event)
 			expect(page).to have_content('Test Event')
-			expect(page).to have_content('Hello bryalara@tamu.edu')
+			expect(page).to have_content('Registered User: Bryan Lara')
 
 			click_on 'Click to attend!'
 			sleep(1)
@@ -458,8 +458,8 @@ RSpec.describe 'Events', type: :feature do
 
 		it "will allow registered and approved users to sign up" do
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
@@ -470,8 +470,8 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to have_content("0 / 2")
 
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
@@ -488,8 +488,8 @@ RSpec.describe 'Events', type: :feature do
 			expect(page).to_not have_content("bryalara@tamu.edu")
 
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
@@ -504,15 +504,15 @@ RSpec.describe 'Events', type: :feature do
 
 		it "will notify users have already signed up if they try to sign up twice" do
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 			
 			click_on 'Click to sign up!'
 			expect(page).to have_content("You have already signed up for Test Event!")
@@ -532,8 +532,8 @@ RSpec.describe 'Events', type: :feature do
 			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
 
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello dummy@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
@@ -543,13 +543,13 @@ RSpec.describe 'Events', type: :feature do
 			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
 			visit sign_up_event_path(event)
 
-			expect(page).to_not have_content("Event: Test Event")
+			expect(page).to_not have_content("TEST EVENT")
 		end
 
 		it "will not allow users to sign up if it is full" do
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
@@ -566,8 +566,8 @@ RSpec.describe 'Events', type: :feature do
 								approved: true)
 			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello dummy@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
@@ -584,8 +584,8 @@ RSpec.describe 'Events', type: :feature do
 								approved: true)
 			login_with_oauth_as("Feature Testing", "dummy2@tamu.edu")
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello dummy2@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Cannot signup for Test Event! The event has reached its capacity.")
@@ -596,8 +596,8 @@ RSpec.describe 'Events', type: :feature do
 			event.save
 
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
@@ -618,8 +618,8 @@ RSpec.describe 'Events', type: :feature do
 
 		it "will not allow users that have not signed up to attend" do
 			visit attend_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to attend!'
 			expect(page).to have_content("Could not attend Test Event because you did not sign up for the event.")
@@ -627,15 +627,15 @@ RSpec.describe 'Events', type: :feature do
 
 		it "will allow registered and approved users that have signed up to attend" do
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit attend_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to attend!'
 			expect(page).to have_content("Successfully attended Test Event!")
@@ -655,15 +655,15 @@ RSpec.describe 'Events', type: :feature do
 			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
 
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello dummy@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to sign up!'
 			expect(page).to have_content("Successfully signed up for Test Event!")
 
 			visit attend_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello dummy@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			click_on 'Click to attend!'
 			expect(page).to have_content("Successfully attended Test Event!")
@@ -672,7 +672,7 @@ RSpec.describe 'Events', type: :feature do
 		it "will not allow unregistered users to attend" do
 			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
 			visit attend_event_path(event)
-			expect(page).to have_content("Registration")
+			expect(page).to have_content("REGISTRATION")
 		end
 
 		describe "with a capacity of 0" do
@@ -681,8 +681,8 @@ RSpec.describe 'Events', type: :feature do
 				event.save
 
 				visit attend_event_path(event)
-				expect(page).to have_content("Event: Test Event")
-				expect(page).to have_content("Hello bryalara@tamu.edu")
+				expect(page).to have_content("TEST EVENT")
+				expect(page).to have_content("Registered User: Bryan Lara")
 	
 				click_on 'Click to attend!'
 				expect(page).to have_content("Successfully attended Test Event!")
@@ -720,8 +720,8 @@ RSpec.describe 'Events', type: :feature do
 
 		it "is possible when the user has signed up for it but not attended" do
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 			sleep(0.5)
 			click_on 'Click to sign up!'
 			sleep(0.5)
@@ -756,8 +756,8 @@ RSpec.describe 'Events', type: :feature do
 			login_with_oauth_as("Feature Testing", "dummy@tamu.edu")
 
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello dummy@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			sleep(0.5)
 			click_on 'Click to sign up!'
@@ -783,8 +783,8 @@ RSpec.describe 'Events', type: :feature do
 
 		it "is not possible if the user is already in the event" do
 			visit sign_up_event_path(event)
-			expect(page).to have_content("Event: Test Event")
-			expect(page).to have_content("Hello bryalara@tamu.edu")
+			expect(page).to have_content("TEST EVENT")
+			expect(page).to have_content("Registered User: Bryan Lara")
 
 			sleep(0.5)
 			click_on 'Click to sign up!'

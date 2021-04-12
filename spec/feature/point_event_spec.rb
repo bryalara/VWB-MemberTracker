@@ -138,7 +138,7 @@ RSpec.describe 'PointEvents', type: :feature do
 
 		it 'is valid with valid changes' do
 			fill_in 'point_event_name', with: "Edited Event Name"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Event Name')
 		end
@@ -146,7 +146,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is valid with the description deleted' do
 			fill_in 'point_event_name', with: "Edited Event Name"
 			fill_in 'point_event_description', with: nil
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Event Name')
 		end
@@ -154,7 +154,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid without a name' do
 			fill_in 'point_event_name', with: nil
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -162,7 +162,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid without points' do
 			fill_in 'point_event_points', with: nil
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -170,7 +170,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is valid with 0 points' do
 			fill_in 'point_event_points', with: 0
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Test Description')
 		end
@@ -178,7 +178,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid with negative points' do
 			fill_in 'point_event_points', with: -5
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -186,7 +186,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is valid with a capacity of 0' do
 			fill_in 'point_event_capacity', with: 0
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to have_content('Edited Test Description')
 		end
@@ -194,7 +194,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid with a negative capacity' do
 			fill_in 'point_event_capacity', with: -1
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
@@ -202,7 +202,7 @@ RSpec.describe 'PointEvents', type: :feature do
 		it 'is not valid without a capacity' do
 			fill_in 'point_event_capacity', with: ""
 			fill_in 'point_event_description', with: "Edited Test Description"
-			click_on 'Save Changes to Engagement'
+			click_on 'Save Changes'
 			visit event_index_path
 			expect(page).to_not have_content('Edited Test Description')
 		end
