@@ -11,11 +11,14 @@ class Event < ApplicationRecord
   has_many :event_attendees, dependent: :destroy
   has_many :users, through: :event_attendees
 
+  has_many_attached :documents
+
+  validates :documents, content_type: FILE_VALIDATIONS
   # A validator to ensure an event's end date is later then the start date
   def end_date_is_bigger?
     return if [endDate.blank?, startDate.blank?].any?
 
-    errors.add(:endDate, 'must be possible') if endDate < startDate
+    errors.add(:base, 'The end time must be later than the start time') if endDate < startDate
   end
 
   # Displays a date time in a readable format

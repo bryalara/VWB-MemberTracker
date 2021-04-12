@@ -9,7 +9,16 @@
 
 <p>* denotes required fields.<p>
 <p>A capacity of 0 represents "No Limit"</p>
-<%= form_with url:"/point_event", model: @point_event do |form| %>
+
+<% if @point_event.errors.any? %>
+	<% @point_event.errors.full_messages.each do |message|%>
+	<p style="color: red;"><%= message %></p>
+	<%end%>
+<%end%>
+
+</br> 
+
+<%= form_with url: create_point_event_path, method: :post, model: @point_event, local: true do |form| %>
 	<table style="text-align: center !important;">
 		<tr>
 			<th><%= form.label :name %>*</th>
@@ -27,8 +36,11 @@
 			<th><%= form.label :capacity %>*</th>
 			<td><%= form.number_field :capacity, placeholder: "Capacity" %></td>
 		</tr>
+		<tr>
+			<th>Document(s)</th>
+			<td><%= form.file_field :documents, multiple: true, direct_upload: true %></td>
+		</tr>
 	</table>
-
 	<%= form.submit "Add Engagement" %>
 <% end %>
 

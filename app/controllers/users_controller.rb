@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # http_basic_authenticate_with name: "vwb", password: "password"
 
   def index
-    Rails.logger.info 'whatever'
+    Rails.logger.info 'Inside Index'
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
 
@@ -71,7 +71,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @auth = User.find_by(email: current_userlogin.email)
+    logged_auth = false
+    logged_auth = @auth.role.zero? ? false : true if @auth
+    @user = User.new(logged_auth ? user_params : member_params)
     if @user.save
       logger.debug "User: (#{@user.firstName} #{@user.lastName}) created @ #{Time.zone.now}"
       logger.debug @user.inspect
@@ -93,6 +96,7 @@ class UsersController < ApplicationController
       return
     end
     @user = User.find(params[:id])
+    @user = @auth if @auth.role.zero?
   end
 
   def update
@@ -102,8 +106,12 @@ class UsersController < ApplicationController
       return
     end
     @user = User.find(params[:id])
-
-    if @user.update(user_params)
+    # if auth is not an Admin, make the user that is being edited the same as the user thats logged
+    # prevents members from editing other members
+    @user = @auth if @auth.role.zero?
+    # if member editing, updates all params except role, points, and approved
+    # else if admin, allow admin to update all attributes of the user
+    if @user.update(@auth.role.zero? ? member_params : user_params)
       redirect_to @user
     else
       render :edit
@@ -212,5 +220,10 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :role, :firstName, :lastName, :phoneNumber, :classification, :tShirtSize,
                                  :optInEmail, :participationPoints, :approved)
+  end
+
+  def member_params
+    params.require(:user).permit(:email, :firstName, :lastName, :phoneNumber, :classification, :tShirtSize,
+                                 :optInEmail)
   end
 end

@@ -18,10 +18,19 @@
 <div class="wrapper fadeInDown">
 	<div id="formContent">
 		<h2 class="active">Edit an Engagement</h2>
-
 		<p>* denotes required fields.<p>
-		<p>A capacity of 0 represents "No Limit"</p>
-		<%= form_with :method => :PATCH, url:"/point_event/#{@point_event.id}", model: @point_event do |form| %>
+		<p>A capacity of 0 represents "No Limit".</p>
+		<p>Reuploading documents will replace the last submission.<p>
+
+		<% if @point_event.errors.any? %>
+			<% @point_event.errors.full_messages.each do |message|%>
+			<p style="color: red;"><%= message %></p>
+			<%end%>
+		<%end%>
+
+		</br> 
+
+		<%= form_with method: :patch, url: update_point_event_path(@point_event), model: @point_event, local: true do |form| %>
 			<table class="center-edit">
 				<tr>
 					<th><%= form.label :name %>*</th>
@@ -39,8 +48,11 @@
 					<th><%= form.label :capacity %>*</th>
 					<td><%= form.number_field :capacity, placeholder: "Capacity" %></td>
 				</tr>
+				<tr>
+					<th>Document(s)</th>
+					<td><%= form.file_field :documents, multiple: true, direct_upload: true %></td>
+				</tr>
 			</table>
-
 			<%= form.submit "Save Changes to Engagement" %>
 		<% end %>
 	</div>

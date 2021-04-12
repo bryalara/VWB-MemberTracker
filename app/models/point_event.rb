@@ -9,6 +9,9 @@ class PointEvent < ApplicationRecord
   has_many :point_event_attendees, dependent: :destroy
   has_many :users, through: :point_event_attendees
 
+  has_many_attached :documents
+  validates :documents, FILE_VALIDATIONS
+
   # Displays the capacity of the point_event passed in.
   def self.display_capacity(point_event)
     if point_event.capacity.positive?

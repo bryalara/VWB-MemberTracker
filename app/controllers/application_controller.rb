@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
   # check whether if the user is logined
   def check_user
     return nil unless userlogin_signed_in?
-    return User.find_by(email: current_userlogin.email) if User.exists?(email: current_userlogin.email)
+
+    User.find_by(email: current_userlogin.email)
   end
 
   def admin?

@@ -108,14 +108,28 @@ class PointEventController < ApplicationController
 
     attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: @point_event.id)
     if attendance
+      if !attendance.attended
+        attendance.attended = true
+        attendance.save
+        flash[:notice] = "Successfully attended #{@point_event.name}!"
+        redirect_to @point_event
+      else
+        flash[:notice] = "Could not attend #{@point_event.name} because you did not sign up for the engagement."
+        redirect_to @point_event
+        nil
+      end
+    elsif @point_event.capacity.positive?
+      # If the capacity is greater than zero, require signing up for the engagement to attend.
+      flash[:notice] = "Could not attend #{@point_event.name} because you did not sign up for the engagement."
+      redirect_to @point_event
+      nil
+    else
+      @point_event.users << @user
+      attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: @point_event.id)
       attendance.attended = true
       attendance.save
       flash[:notice] = "Successfully attended #{@point_event.name}!"
-      redirect_to event_index_path
-    else
-      flash[:notice] = "Could not attend #{@point_event.name} because you did not sign up for the engagement."
-      redirect_to attend_point_event_path(@point_event)
-      nil
+      redirect_to @point_event
     end
   end
 
@@ -145,15 +159,15 @@ class PointEventController < ApplicationController
       if @user
         @point_event.users << @user
         flash[:notice] = "Successfully signed up for #{@point_event.name}!"
-        redirect_to event_index_path
+        redirect_to @point_event
       end
     rescue ActiveRecord::RecordNotUnique
       flash[:notice] = "You have already signed up for #{@point_event.name}!"
-      redirect_to sign_up_point_event_path(@point_event)
+      redirect_to @point_event
       nil
     rescue NoMethodError
       flash[:alert] = "Cannot signup for #{@point_event.name}! The engagement has reached its capacity."
-      redirect_to sign_up_point_event_path(@point_event)
+      redirect_to @point_event
     end
   end
 
@@ -190,6 +204,23 @@ class PointEventController < ApplicationController
     end
   end
 
+  # Allows users to upload documents
+  def upload_user
+    @auth = check_user
+    redirect_to member_dashboard_path unless @auth
+    @point_event = PointEvent.find(params[:point_event_id])
+    @user = User.find(params[:user_id])
+
+    return unless request.post?
+
+    attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: @point_event.id)
+    attendance.documents.purge
+    attendance.documents.attach(params[:documents])
+
+    flash[:notice] = 'Successfully submitted document(s).'
+    redirect_to @point_event
+  end
+    
   # import csv
   def import
     @auth = User.find_by(email: current_userlogin.email)
@@ -210,10 +241,10 @@ class PointEventController < ApplicationController
   private
 
   def point_event_params
-    params.require(:point_event).permit(:points, :name, :description, :capacity)
+    params.require(:point_event).permit(:points, :name, :description, :capacity, documents: [])
   end
 
   def point_event_attendee_params
-    params.permit(:point_event_id, :user_id, :attended)
+    params.permit(:point_event_id, :user_id, :attended, documents: [])
   end
 end

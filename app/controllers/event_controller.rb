@@ -33,7 +33,6 @@ class EventController < ApplicationController
 
   def show
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to member_dashboard_path if !@auth || @auth.approved == false
     @event = Event.find(params[:id])
   end
 
@@ -115,14 +114,26 @@ class EventController < ApplicationController
 
     attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
     if attendance
+      if !attendance.attended
+        attendance.attended = true
+        attendance.save
+        flash[:notice] = "Successfully attended #{@event.name}!"
+      else
+        flash[:notice] = "You have already attended #{@event.name}!"
+      end
+      redirect_to @event
+    elsif @event.capacity.positive?
+      # If the capacity is greater than zero, require signing up for the event to attend.
+      flash[:notice] = "Could not attend #{@event.name} because you did not sign up for the event."
+      redirect_to @event
+      nil
+    else
+      @event.users << @user
+      attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
       attendance.attended = true
       attendance.save
       flash[:notice] = "Successfully attended #{@event.name}!"
-      redirect_to event_index_path
-    else
-      flash[:notice] = "Could not attend #{@event.name} because you did not sign up for the event."
-      redirect_to attend_event_path(@event)
-      nil
+      redirect_to @event
     end
   end
 
@@ -171,15 +182,15 @@ class EventController < ApplicationController
       if @user
         @event.users << @user
         flash[:notice] = "Successfully signed up for #{@event.name}!"
-        redirect_to event_index_path
+        redirect_to @event
       end
     rescue ActiveRecord::RecordNotUnique
       flash[:notice] = "You have already signed up for #{@event.name}!"
-      redirect_to sign_up_event_path(@event)
+      redirect_to @event
       nil
     rescue NoMethodError
       flash[:alert] = "Cannot signup for #{@event.name}! The event has reached its capacity."
-      redirect_to sign_up_event_path(@event)
+      redirect_to @event
     end
   end
 
@@ -216,6 +227,23 @@ class EventController < ApplicationController
     end
   end
 
+  # Allows users to upload documents
+  def upload_user
+    @auth = check_user
+    redirect_to member_dashboard_path unless @auth
+    @event = Event.find(params[:event_id])
+    @user = User.find(params[:user_id])
+
+    return unless request.post?
+
+    attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
+    attendance.documents.purge
+    attendance.documents.attach(params[:documents])
+
+    flash[:notice] = 'Successfully submitted document(s).'
+    redirect_to @event
+  end
+
   # import csv
   def import
     @auth = User.find_by(email: current_userlogin.email)
@@ -236,10 +264,10 @@ class EventController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:points, :name, :description, :startDate, :endDate, :capacity)
+    params.require(:event).permit(:points, :name, :description, :startDate, :endDate, :capacity, documents: [])
   end
 
   def event_attendee_params
-    params.permit(:event_id, :user_id, :attended)
+    params.permit(:event_id, :user_id, :attended, documents: [])
   end
 end

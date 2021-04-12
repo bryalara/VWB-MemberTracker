@@ -36,8 +36,11 @@ Rails.application.routes.draw do
       get :sign_up
       post :sign_up
       post :force_in
+      post :upload_user
+      patch 'edit', to: 'point_event#update', as: 'update'
     end
   end
+  post 'point_event/new', to: 'point_event#create', as: 'create_point_event'
 
   resources :event do
     collection {post :import} #used for csv importing
@@ -50,7 +53,10 @@ Rails.application.routes.draw do
       get :sign_up
       post :sign_up
       post :force_in
+      post :upload_user
+      patch 'edit', to: 'event#update', as: 'update'
   	end
   end
+  post 'event/new', to: 'event#create', as: 'create_event'
   post 'event/download_ics', to: "event#download_ics"
 end

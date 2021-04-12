@@ -87,7 +87,7 @@ class User < ApplicationRecord
     end
   end
 
-  # import csv
+  # Imports csv of users to pending users
   def self.my_import(file)
     users = []
     wmsg = []

@@ -23,4 +23,12 @@
 		<th>Capacity</th>
 		<td><%= Event.display_capacity(@event) %></td>
 	</tr>
+	<tr>
+		<th>Documents</th>
+		<td>
+			<% @event.documents.each do |file| %>
+				<ul><%= link_to file.filename, rails_blob_path(file) %></ul>
+			<% end %>
+		</td>
+	</tr>
 </table>

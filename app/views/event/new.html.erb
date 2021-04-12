@@ -4,14 +4,23 @@
 <div class="wrapper fadeInDown">
 <div id="formContent">
 <h2 class="active">Add an Event</h2>
-<p>* denotes required fields.<p>
+<p>* denotes required fields.</p>
 <p>A capacity of 0 represents "No Limit"</p>
 
-<%= form_with url:"/event", model: @event do |form| %>
+
+<% if @event.errors.any? %>
+	<% @event.errors.full_messages.each do |message|%>
+	<p style="color: red;"><%= message %></p>
+	<%end%>
+<%end%>
+
+</br> 
+
+<%= form_with url: create_event_path, method: :post, model: @event, local: true do |form| %>
 	<table style="text-align: center !important;">
 		<tr>
 			<th><%= form.label :name %>*</th>
-			<td><%= form.text_field :name, placeholder: "Name" %></td>
+			<td><%= form.text_field :name, placeholder: "Name", required: true %></td>
 		</tr>
 		<tr>
 			<th><%= form.label :description %></th>
@@ -19,7 +28,7 @@
 		</tr>
 		<tr>
 			<th><%= form.label :points %>*</th>
-			<td><%= form.number_field :points, placeholder: "Points" %></td>
+			<td><%= form.number_field :points, placeholder: "Points", required: true %></td>
 		</tr>
 		<tr>
 			<th>Start Time*</th>
@@ -31,7 +40,11 @@
 		</tr>
 		<tr>
 			<th>Capacity*</th>
-			<td><%= form.number_field :capacity, placeholder: "Capacity" %></td>
+			<td><%= form.number_field :capacity, placeholder: "Capacity", required: true %></td>
+		</tr>
+		<tr>
+			<th>Document(s)</th>
+			<td><%= form.file_field :documents, multiple: true, direct_upload: true %></td>
 		</tr>
 	</table>
 	<%= form.submit "Add Event" %>
