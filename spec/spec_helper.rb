@@ -18,7 +18,7 @@ require 'simplecov'
 SimpleCov.start
 
 require 'omniauth'
-require 'support/integration_spec_helper.rb'
+require_relative 'support/integration_spec_helper.rb'
 
 RSpec.configure do |config|
   config.include IntegrationSpecHelper, :type => :feature
@@ -27,7 +27,8 @@ RSpec.configure do |config|
   config.before(:suite) do
     load Rails.root.join('db', 'seeds.rb') # loading seeds
   end
-  
+  config.include IntegrationSpecHelper, :type => :feature
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

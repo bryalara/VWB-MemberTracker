@@ -1,26 +1,14 @@
 <table style="margin-left: auto; margin-right: auto; width: 60%; height: 50%;" class="styled-table" >
 	<tr>
-		<th>Engagement</th>
-		<td><%= @point_event.name %></td>
+		<th>Event</th>
+		<td><%= @pointEvent.name %></td>
 	</tr>
 	<tr>
 		<th>Description</th>
-		<td><%= @point_event.description %></td>
+		<td><%= @pointEvent.description %></td>
 	</tr>
 	<tr>
 		<th>Points awarding</th>
-		<td><%= @point_event.points %></td>
-	</tr>
-	<tr>
-		<th>Capacity</th>
-		<td><%= PointEvent.display_capacity(@point_event) %></td>
-	</tr>
-	<tr>
-		<th>Documents</th>
-		<td>
-			<% @point_event.documents.each do |file| %>
-				<ul><%= link_to file.filename, rails_blob_path(file) %></ul>
-			<% end %>
-		</td>
+		<td><%= @pointEvent.points %></td>
 	</tr>
 </table>

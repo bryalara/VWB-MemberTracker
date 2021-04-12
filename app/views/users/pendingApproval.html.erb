@@ -1,0 +1,59 @@
+
+<%= render "layouts/navbar2", user: @auth %>
+
+<% msgs= flash[:notice].to_s.split('|', -1) %>
+<% msgs.each do |msg|%>
+  <p> <%=msg%> </p>
+<%end%>
+
+<%= flash[:notice]%>
+<style>
+.section {
+    padding: 0px;
+}
+</style>
+<div class="header">
+<h2 class="active h2-title">Users</h2>
+</div>
+
+
+<div class="align-table">
+
+<button class="btn" style="padding-left: 0rem;"> <%= link_to "Create New User", new_user_path, class: "back-button" %> </button>
+<button class="btn" style="padding-left: 0rem;"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
+<button class="btn" style="padding-left: 0rem;"> <%= link_to "Approved Users", users_path, class: "back-button" %> </button>
+<table class="styled-table">
+    <tr>
+        <th> First Name <%= link_to '⬛️', pendingApproval_path(:attr => 'first', :order => !@order) %></th>
+        <th> Last Name <%= link_to '⬛️', pendingApproval_path(:attr => 'last', :order => !@order) %></th>
+        <th> Email </th>
+        <th> Phone Number </th>
+        <th> Classification <%= link_to '⬛️', pendingApproval_path(:attr => 'class', :order => !@order) %></th>
+        <th> Role <%= link_to '⬛️', pendingApproval_path(:attr => 'role', :order => !@order) %></th>
+        <th> T-Shirt <%= link_to '⬛️', pendingApproval_path(:attr => 'size', :order => !@order) %></th>
+        <th> Points <%= link_to '⬛️', pendingApproval_path(:attr => 'points', :order => !@order) %></th>
+        
+    </tr>
+
+
+<% @users.each do |user| %>
+    <tr>
+        <td><%= user.firstName %></td>
+        <td><%= user.lastName  %></td>
+        <td><%= user.email  %> </td>
+        <td><%= '('+user.phoneNumber[0..2]+')'+'-'+user.phoneNumber[3..5]+'-'+user.phoneNumber[6..]   %> </td>
+        <td><%= user.classification %> </td>
+        <td><%= user.role == 0 ? :"Member" : :"Admin"  %> </td>
+        <td><%= user.tShirtSize  %> </td>
+        <td><%=  user.get_total_points(user) %> </td>
+        <td><%= link_to "View Details", user %> </td>
+    </tr>
+<% end %>
+
+</table>
+
+<% if userlogin_signed_in? %>
+  <div>Signed in as: <%= current_userlogin.email %></div>
+  <div><%=  @auth.role == 0 ? :"Member" : :"Admin"  %> </div>
+<% end %>
+

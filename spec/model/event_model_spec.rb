@@ -6,18 +6,12 @@ RSpec.describe Event, :type => :model do
 							description: "Sample Description",
 							points: 2,
 							startDate: DateTime.now,
-							endDate: DateTime.now + 1.week,
-							capacity: 5)
+							endDate: DateTime.now + 1.week)
 	}
 
-	it "has many users" do
+	it "has and belongs to many users" do
 		a = Event.reflect_on_association(:users)
-		expect(a.macro).to eq(:has_many)
-	end
-
-	it "has many event_attendees" do
-		a = Event.reflect_on_association(:event_attendees)
-		expect(a.macro).to eq(:has_many)
+		expect(a.macro).to eq(:has_and_belongs_to_many)
 	end
 	
 	it "is valid with valid attributes" do
@@ -62,21 +56,6 @@ RSpec.describe Event, :type => :model do
 	it "is not valid if the end date is before the start date" do
 		subject.startDate = DateTime.now
 		subject.endDate = DateTime.now - 1.week
-		expect(subject).to_not be_valid
-	end
-
-	it "is not valid without a capacity" do
-		subject.capacity = nil
-		expect(subject).to_not be_valid
-	end
-
-	it "is valid with 0 capacity" do
-		subject.capacity = 0
-		expect(subject).to be_valid
-	end
-
-	it "is not valid with a negative capacity" do
-		subject.capacity = -1
 		expect(subject).to_not be_valid
 	end
 end

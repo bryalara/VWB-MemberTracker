@@ -11,7 +11,7 @@
             <%= link_to "Home", root_path, class: "nav-link js-scroll-trigger" %>
           </li>
            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="<%= member_dashboard_path%>">Member</a>
+            <a class="nav-link js-scroll-trigger" href="<%= memberDashboard_path%>">Member</a>
           </li> 
           <%if @auth%>
             <%if @auth.role == 1 %> 

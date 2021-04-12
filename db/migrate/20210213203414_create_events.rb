@@ -6,7 +6,6 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.datetime :startDate
       t.datetime :endDate
       t.integer :points
-      t.integer :capacity
 
       t.timestamps
     end

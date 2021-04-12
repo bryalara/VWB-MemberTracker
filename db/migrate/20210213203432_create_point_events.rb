@@ -4,7 +4,6 @@ class CreatePointEvents < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :description
       t.integer :points
-      t.integer :capacity
 
       t.timestamps
     end
