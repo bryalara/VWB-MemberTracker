@@ -106,16 +106,16 @@ class Event < ApplicationRecord
   # import csv
   # import csv
   def self.my_import_part(file)
-    events = []
+    # events = []
     wmsg = []
     begin
       CSV.foreach(file.path, headers: true) do |row|
         # puts('READING FROM CSV..........................................')
         # puts(row.to_h[1])
-        event_id, event_name, user_id, user_1, user_2, user_email, attended, created_at, updated_at = row
+        _event_id, event_name, user_id, user_first, user_second, _user_email, attended, _created_at, _updated_at = row
         # created_at = DateTime.strptime(created_at, "%m/%d/%Y")
         @event = Event.find_by(name: event_name)
-        @user = User.find_by(firstName: user_1, lastName: user_2)
+        @user = User.find_by(firstName: user_first, lastName: user_second)
         if @event && @user
           unless @event.users.find_by(id: user_id)
             @event.users << @user

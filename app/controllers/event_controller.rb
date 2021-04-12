@@ -245,7 +245,7 @@ class EventController < ApplicationController
   end
 
    # import csv
-   def import
+  def import
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     wmsg = Event.my_import(params[:file])
