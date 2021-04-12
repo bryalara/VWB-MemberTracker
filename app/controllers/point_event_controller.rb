@@ -220,7 +220,7 @@ class PointEventController < ApplicationController
     flash[:notice] = 'Successfully submitted document(s).'
     redirect_to @point_event
   end
-    
+
   # import csv
   def import
     @auth = User.find_by(email: current_userlogin.email)

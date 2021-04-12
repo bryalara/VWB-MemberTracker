@@ -48,7 +48,7 @@ class PointEvent < ApplicationRecord
       end
     end
   end
-  
+
   # import csv
   def self.my_import(file)
     events = []

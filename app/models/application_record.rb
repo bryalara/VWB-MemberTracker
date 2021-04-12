@@ -5,16 +5,16 @@ class ApplicationRecord < ActiveRecord::Base
 
   FILE_VALIDATIONS = {
     content_type: ['image/png',
-                  'image/gif',
-                  'image/jpeg',
-                  'application/pdf',
-                  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                  'application/msword',
-                  'application/vnd.ms-excel',
-                  'application/vnd.ms-powerpoint',
-                  'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-                  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-                  'text/csv',
-                  'text/plain']
+                   'image/gif',
+                   'image/jpeg',
+                   'application/pdf',
+                   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                   'application/msword',
+                   'application/vnd.ms-excel',
+                   'application/vnd.ms-powerpoint',
+                   'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+                   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                   'text/csv',
+                   'text/plain']
   }.freeze
 end

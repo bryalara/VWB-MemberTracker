@@ -8,7 +8,7 @@ class PointEventAttendee < ApplicationRecord
 
   has_many_attached :documents
   validates :documents, FILE_VALIDATIONS
-  
+
   def not_full
     return true if point_event.capacity.zero?
     return true unless point_event.capacity < point_event.users.size + 1

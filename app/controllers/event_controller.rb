@@ -244,7 +244,7 @@ class EventController < ApplicationController
     redirect_to @event
   end
 
-   # import csv
+  # import csv
   def import
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false

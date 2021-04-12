@@ -39,7 +39,6 @@ class EdithomepagesController < ApplicationController
     end
   end
 
-
   def delete
     @edithomepage = Edithomepage.find(params[:id])
   end

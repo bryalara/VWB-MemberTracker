@@ -18,7 +18,7 @@ class EventAttendee < ApplicationRecord
   end
 
   def on_time
-    return true if (DateTime.now <= event.endDate)
+    return true if DateTime.now <= event.endDate
 
     errors.add('Cannot join event because the event\'s time has already passed.')
   end
