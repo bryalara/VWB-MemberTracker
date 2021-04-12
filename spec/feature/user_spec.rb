@@ -935,7 +935,7 @@ RSpec.describe 'Users', type: :feature do
 
 					sleep(1)
 					
-					click_link 'Click to attend!'
+					click_link 'Attend'
 					
 					sleep(1)
 
@@ -950,7 +950,7 @@ RSpec.describe 'Users', type: :feature do
 					
 					sleep(1)
 					
-					click_link 'Click to attend!'
+					click_link 'Attend'
 					
 					sleep(1)
 					
@@ -974,7 +974,7 @@ RSpec.describe 'Users', type: :feature do
 					
 					sleep(1)
 					
-					click_link 'Click to attend!'
+					click_link 'Attend'
 					
 					sleep(1)
 					
