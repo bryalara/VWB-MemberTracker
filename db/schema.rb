@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(version: 2021_04_10_220849) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.uuid "record_id", null: false
+    # t.uuid "record_id", null: false
+    t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
@@ -37,6 +38,14 @@ ActiveRecord::Schema.define(version: 2021_04_10_220849) do
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
+
+
+  # create_table "edit_home_pages", force: :cascade do |t|
+  #   t.string "Name"
+  #   t.string "Description"
+  #   t.datetime "created_at", precision: 6, null: false
+  #   t.datetime "updated_at", precision: 6, null: false
+  # end
 
   create_table "edithomepages", force: :cascade do |t|
     t.string "name"
@@ -78,6 +87,15 @@ ActiveRecord::Schema.define(version: 2021_04_10_220849) do
     t.index ["user_id"], name: "index_point_event_attendees_on_user_id"
   end
 
+  create_table "officers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "photoUrl"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "point_events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -98,13 +116,13 @@ ActiveRecord::Schema.define(version: 2021_04_10_220849) do
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "email", null: false
+    t.string "email", default: "emailneeded", null: false
     t.integer "role", default: 0, null: false
-    t.string "firstName", null: false
-    t.string "lastName", null: false
-    t.string "phoneNumber", null: false
-    t.string "classification", null: false
-    t.string "tShirtSize", null: false
+    t.string "firstName", default: "FirstName", null: false
+    t.string "lastName", default: "LastName", null: false
+    t.string "phoneNumber", default: "1234567890", null: false
+    t.string "classification", default: "Freshmen", null: false
+    t.string "tShirtSize", default: "M", null: false
     t.boolean "optInEmail", default: true, null: false
     t.integer "participationPoints", default: 0, null: false
     t.boolean "approved", default: false, null: false

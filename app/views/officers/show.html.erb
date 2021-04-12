@@ -1,0 +1,37 @@
+<h1>View Officer</h1>
+
+<%= render "layouts/navbar2", user: @officer %>
+<section style="padding-top: 10px;">
+<button class="btn btn-decor" style="border:0; text-decoration:none !important; outline:none">
+</button>
+<div class="wrapper fadeInDown">
+<div id="formContent">
+<%= form_with model: @officer do |form| %>
+
+    <div>
+    <h1><%= @officer.name %></h1>
+    <h4><%= @officer.email %></h4>
+    <h4><%= @officer.description %></h4>
+    <p>
+      <% if @officer.image.attached? %>
+        <p>
+          <% if flash[:notice] %>
+            <div class="notice"><%= flash[:notice] %></div>
+          <% end %>
+          <strong>Image:</strong>
+          <br>
+          <%= image_tag @officer.image, size: "175x250"  %>
+        </p>
+      <% end %>
+    </p>
+    
+    </div>
+<% end %>
+<%= link_to 'Back to Edit Officer Page', officers_path %>
+
+</div>
+
+</div>
+
+</section>
+<%= render "layouts/footer" %>
