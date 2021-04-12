@@ -53,6 +53,10 @@ th, td, tr {
 			<%= file_field_tag :file %>
 			<%= submit_tag "Import CSV", class: "button" %>
 		<% end %>
+		<%= form_tag import_part_point_event_index_path, multipart: true do %>
+			<%= file_field_tag :file %>
+			<%= submit_tag "Import CSV for Users' Engagement", class: "button" %>
+		<% end %>
         <%# make teo button to output 2 different kinds of CSV %>
         <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Engagements List", point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
       	<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Users' Engagement", point_event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
