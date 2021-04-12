@@ -59,7 +59,7 @@ class PointEvent < ApplicationRecord
         # puts(row.to_h[1])
         events << PointEvent.new(row.to_h)
       end
-    rescue StandardError => e
+    rescue StandardError
       # puts('Error reading specified csv file, maybe no csv selected')
       wmsg.append('Error reading specified csv file')
     end
@@ -81,7 +81,7 @@ class PointEvent < ApplicationRecord
           end
         end
       end
-    rescue StandardError => e
+    rescue StandardError
       # puts(e)
     end
   end
@@ -111,7 +111,7 @@ class PointEvent < ApplicationRecord
           wmsg.append('Some of the events or users do not exist')
         end
       end
-    rescue StandardError => e
+    rescue StandardError
       # puts('Error reading specified csv file, maybe no csv selected')
       wmsg.append('Error reading specified csv file')
     end
