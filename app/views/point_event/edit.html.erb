@@ -1,47 +1,130 @@
 <%= render "layouts/navbar2", user: @user %>
-<div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button></div>
+<style>
+.alert {
+	border-radius: 5px;
+	padding: 15px;
+	background: #d8ecdb;
+	color: #295529;
+}
+</style>
+
+<% flash.each do |type, msg| %>
+	<div class="alert">
+		<%= msg %>
+	</div>
+<% end %>
+
+<div class="header"> <button class="btn btn-decor"> <%= link_to "Back to Events / Engagements", event_index_path, class:"back-button" %> </button></div>
 <div class="wrapper fadeInDown">
 	<div id="formContent">
-		<h2 class="active">Edit a Points Event</h2>
-
+		<h2 class="active">Edit an Engagement</h2>
 		<p>* denotes required fields.<p>
-		<%= form_with :method => :PATCH, url:"/point_event/#{@pointEvent.id}", model: @pointEvent do |form| %>
+		<p>A capacity of 0 represents "No Limit".</p>
+		<p>Reuploading documents will replace the last submission.<p>
+
+		<% if @point_event.errors.any? %>
+			<% @point_event.errors.full_messages.each do |message|%>
+			<p style="color: red;"><%= message %></p>
+			<%end%>
+		<%end%>
+
+		</br> 
+
+		<%= form_with method: :patch, url: update_point_event_path(@point_event), model: @point_event, local: true do |form| %>
 			<table class="center-edit">
 				<tr>
 					<th><%= form.label :name %>*</th>
-					<td><%= form.text_field :name %></td>
+					<td><%= form.text_field :name, placeholder: "Name" %></td>
 				</tr>
 				<tr>
 					<th><%= form.label :description %></th>
-					<td><%= form.text_field :description %></td>
+					<td><%= form.text_field :description, placeholder: "Description" %></td>
 				</tr>
 				<tr>
 					<th><%= form.label :points %>*</th>
-					<td><%= form.number_field :points %></td>
+					<td><%= form.number_field :points, placeholder: "Points" %></td>
+				</tr>
+				<tr>
+					<th><%= form.label :capacity %>*</th>
+					<td><%= form.number_field :capacity, placeholder: "Capacity" %></td>
+				</tr>
+				<tr>
+					<th>Document(s)</th>
+					<td><%= form.file_field :documents, multiple: true, direct_upload: true %></td>
 				</tr>
 			</table>
-
-			<%= form.submit "Save Changes to Points Event" %>
-
+			<%= form.submit "Save Changes to Engagement" %>
 		<% end %>
 	</div>
 
-	<h1>Users that have attended</h1>
-	<table>
-		<tr>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Email</th>
-			<th>Action</th>
-		</tr>
+	<div>
+		<h1>Attendance</h1>
+		<table>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Time Signed Up</th>
+				<th>Time Attended</th>
+				<th>Action</th>
+			</tr>
 
-		<% @pointEvent.users.each do |user| %>
-		<tr>
-			<td><%= user.firstName %></td>
-			<td><%= user.lastName %></td>
-			<td><%= user.email %></td>
-			<td><%= link_to "Remove", delete_user_point_event_path(id: @pointEvent.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the points event again. Points that student received from this points event will also dissappear!"} %></td>
-		</tr>
+			<% @point_event.users.each do |user| %>
+			<tr>
+				<td><%= user.firstName %></td>
+				<td><%= user.lastName %></td>
+				<td><%= user.email %></td>
+
+				<% attendance = PointEventAttendee.find_by(user_id: user.id, point_event_id: @point_event.id) %>
+				<td><%= Event.display_date_time(attendance.created_at) %>
+				<td><%= attendance.attended ? Event.display_date_time(attendance.updated_at) : "N/A" %>
+				
+				<td><%= link_to "Remove", delete_user_point_event_path(id: @point_event.id, user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove \"#{user.firstName} #{user.lastName}\"? \nOnce removed, the user will have to attend the points event again. Points that student received from this points event will also dissappear!"} %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+
+	<div>
+		<h1>Force a user to attend the engagement</h1>
+		<%= form_with url: edit_point_event_path(@point_event), method: :get, local: true do |form| %>
+			<table>
+				<tr>
+					<th>First Name</th>
+					<td><%= form.text_field :firstName, placeholder: "First Name" %></td>
+					<th>Last Name</th>
+					<td><%= form.text_field :lastName, placeholder: "Last Name" %></td>
+					<th>Email</th>
+					<td><%= form.text_field :email, placeholder: "Email" %></td>
+					<td><%= form.submit "Search for users" %></td>
+				</tr>
+			</table>
 		<% end %>
-	</table>
+
+		<% if @users %>
+			<table>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Action</th>
+				</tr>
+
+				<% @users.each do |user| %>
+				<tr>
+					<td><%= user.firstName %></td>
+					<td><%= user.lastName %></td>
+					<td><%= user.email %></td>
+					<td><%= link_to "Force in", force_in_point_event_path(point_event_id: @point_event.id, user_id: user.id, attended: true), method: :post %>
+				</tr>
+				<% end %>
+			</table>
+		<% else %>
+			<% if params[:firstName] || params[:lastName] || params[:email] %>
+				<p>No matching users were found</p>
+			<% else %>
+				<%# Display nothing %>
+			<% end %>
+		<% end %>
+	</div>
 </div>

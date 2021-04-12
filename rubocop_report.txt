@@ -1,0 +1,74 @@
+Inspecting 52 files
+......WC.W...C.............W.W....................EC
+
+Offenses:
+
+app/controllers/event_controller.rb:5:3: C: Rails/LexicallyScopedActionFilter: registration is not explicitly defined on the class.
+  before_action :authenticate_userlogin! && :admin_verify, except: %i[create registration]
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/event_controller.rb:17:5: C: Style/GuardClause: Use a guard clause (return unless true) instead of wrapping the code inside a conditional expression.
+    if true
+    ^^
+app/controllers/event_controller.rb:17:8: W: Lint/LiteralAsCondition: Literal true appeared as a condition.
+    if true
+       ^^^^
+app/controllers/event_controller.rb:25:71: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
+            send_data @events.to_csv, filename: "member-emails-#{Date.today}.csv"
+                                                                      ^^^^^
+app/controllers/event_controller.rb:28:77: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
+            send_data @events.to_csv_users, filename: "member-emails-#{Date.today}.csv"
+                                                                            ^^^^^
+app/controllers/home_controller.rb:5:5: C: Naming/VariableName: Use snake_case for variable names.
+    @signedInUser = check_user
+    ^^^^^^^^^^^^^
+app/controllers/point_event_controller.rb:5:3: C: Rails/LexicallyScopedActionFilter: registration is not explicitly defined on the class.
+  before_action :authenticate_userlogin! && :admin_verify, except: %i[create registration]
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/point_event_controller.rb:15:5: C: Style/GuardClause: Use a guard clause (return unless true) instead of wrapping the code inside a conditional expression.
+    if true
+    ^^
+app/controllers/point_event_controller.rb:15:8: W: Lint/LiteralAsCondition: Literal true appeared as a condition.
+    if true
+       ^^^^
+app/controllers/point_event_controller.rb:23:77: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
+            send_data @point_events.to_csv, filename: "events-emails-#{Date.today}.csv"
+                                                                            ^^^^^
+app/controllers/point_event_controller.rb:26:83: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
+            send_data @point_events.to_csv_users, filename: "member-emails-#{Date.today}.csv"
+                                                                                  ^^^^^
+app/controllers/point_event_controller.rb:96:121: C: Layout/LineLength: Line is too long. [122/120]
+    @qr_code = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_point_event_path(@point_event))
+                                                                                                                        ^^
+app/controllers/users_controller.rb:8:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for index is too high. [11/7]
+  def index ...
+  ^^^^^^^^^
+app/controllers/users_controller.rb:31:68: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
+          send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv"
+                                                                   ^^^^^
+app/controllers/users_controller.rb:34:73: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
+          send_data @users.to_csv_backup, filename: "member-info-#{Date.today}.csv"
+                                                                        ^^^^^
+app/controllers/users_controller.rb:123:3: C: Metrics/AbcSize: Assignment Branch Condition size for pending_approval is too high. [<13, 56, 21> 61.2/50]
+  def pending_approval ...
+  ^^^^^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:123:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for pending_approval is too high. [16/7]
+  def pending_approval ...
+  ^^^^^^^^^^^^^^^^^^^^
+app/models/event.rb:39:5: W: Lint/UselessAssignment: Useless assignment to variable - attributes.
+    attributes = %w[name description startDate endDate points]
+    ^^^^^^^^^^
+app/models/point_event.rb:25:5: W: Lint/UselessAssignment: Useless assignment to variable - attributes.
+    attributes = %w[name description startDate endDate points]
+    ^^^^^^^^^^
+vwb/node_modules/node-sass/src/libsass/contrib/libsass.spec:1:5: E: Lint/Syntax: unexpected token tCOLON
+(Using Ruby 2.7 parser; configure using TargetRubyVersion parameter, under AllCops)
+Name:           libsass
+    ^
+vwb/node_modules/node-sass/src/libsass/extconf.rb:6:1: C: Style/GlobalVars: Do not introduce global variables.
+$CFLAGS << " #{ENV['CFLAGS']}"
+^^^^^^^
+vwb/node_modules/node-sass/src/libsass/extconf.rb:7:1: C: Style/GlobalVars: Do not introduce global variables.
+$LIBS << " #{ENV['LIBS']}"
+^^^^^
+
+52 files inspected, 22 offenses detected

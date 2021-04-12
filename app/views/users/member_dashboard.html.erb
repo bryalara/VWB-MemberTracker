@@ -15,23 +15,23 @@
             <p>Displaying all events attended: <p>
         <%end%>
         <div> 
-            Events (<%=@numEvents%>):
+            Events (<%=@num_events%>):
             <ul>
-                <% @userEvents.each do |event| %>
+                <% @user_events.each do |event| %>
                     <li><%= event %> </li>
                 <% end %>
             </ul>
-            Point Events (<%=@numPointEvents%>):
+            Point Events (<%=@num_point_events%>):
             <ul>
-                <% @userPEvents.each do |event| %>                                                
+                <% @user_pevents.each do |event| %>                                                
                     <li><%= event %> </li>
                 <% end %>
             </ul>
         </div>
-        <%unless (@showAll)%>
-            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Show All Events", memberDashboard_path(:showAll => true) , class: "back-button" %> </button>
+        <%unless (@show_all)%>
+            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Show All Events", member_dashboard_path(:show_all => true) , class: "back-button" %> </button>
         <%else%>
-            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Only Show Recent Events", memberDashboard_path(:showAll => nil) , class: "back-button" %> </button>
+            <button class="btn " style="padding-left: 0rem;"> <%= link_to "Only Show Recent Events", member_dashboard_path(:show_all => nil) , class: "back-button" %> </button>
         <%end%>
     <%end%>
 </div>

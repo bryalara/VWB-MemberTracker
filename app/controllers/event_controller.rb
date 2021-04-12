@@ -2,30 +2,51 @@
 
 class EventController < ApplicationController
   protect_from_forgery with: :exception
-  before_action :authenticate_userlogin! && :admin_verify, except: %i[create registration]
+
+  before_action :authenticate_userlogin!
   def index
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @events = Event.all
-    @pointEvents = PointEvent.all
+    @point_events = PointEvent.all
+  end
+
+  # export csv
+  # another way to download csv other than what in the users
+  def export_csv
+    @events = Event.all
+    # only allowed when user is an Admin
+    respond_to do |format|
+      format.html
+      format.csv do
+        # make it available to output 2 csv files
+        # { send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv" }
+        if params[:format_data] == 'events'
+          # to_csv is to only output users' emails
+          send_data @events.to_csv, filename: "events-#{Time.zone.today}.csv"
+        else
+          # to_csv_backup is to output users' all info
+          send_data @events.to_csv_users, filename: "event-attendees-#{Time.zone.today}.csv"
+        end
+      end
+    end
   end
 
   def show
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
   end
 
   def new
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.new
   end
 
   def create
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
-    @event = Event.new(eventParams)
+    redirect_to member_dashboard_path and return if !@auth || @auth.role.zero? || @auth.approved == false
+
+    @event = Event.new(event_params)
 
     if @event.save
       flash[:notice] = "Successfully created #{@event.name}."
@@ -37,16 +58,18 @@ class EventController < ApplicationController
 
   def edit
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth
+    redirect_to member_dashboard_path unless @auth
     @event = Event.find(params[:id])
+
+    @users = User.search(params[:firstName], params[:lastName], params[:email]) if params[:firstName] || params[:lastName] || params[:email]
   end
 
   def update
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth
+    redirect_to member_dashboard_path unless @auth
     @event = Event.find(params[:id])
 
-    if @event.update(eventParams)
+    if @event.update(event_params)
       flash[:notice] = "Successfully edited #{@event.name}."
       redirect_to @event
     else
@@ -56,13 +79,14 @@ class EventController < ApplicationController
 
   def delete
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
   end
 
   def destroy
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path and return if !@auth || @auth.role.zero? || @auth.approved == false
+
     @event = Event.find(params[:id])
     @event.destroy
 
@@ -70,42 +94,53 @@ class EventController < ApplicationController
     redirect_to event_index_path
   end
 
+  # Creates @qr_code which can be used to display a qr code to attend an event.
   def qr
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth 
+    redirect_to member_dashboard_path unless @auth
     @event = Event.find(params[:id])
-    @qrCode = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_event_path(@event))
+    @qr_code = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_event_path(@event))
   end
 
+  # Page for user to attend an event if they have already signed up for it. If the client does a POST, it will set the
+  # user attended attribute in the event_attendee to true.
   def attend
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth
+    redirect_to member_dashboard_path unless @auth
     @event = Event.find(params[:id])
     @user = User.where(email: current_userlogin.email).first
 
-    if request.post?
-      begin
-        if @user.approved == true
-          @event.users << @user
-          flash[:notice] = "Successfully attended #{@event.name}!"
-        else
-          flash[:notice] =
-            "Could not attend the event because #{@user.email} has not been approved by an administrator."
-          redirect_to attend_event_path(@event)
-          nil
-        end
-      rescue ActiveRecord::RecordNotUnique
+    return unless request.post?
+
+    attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
+    if attendance
+      if !attendance.attended
+        attendance.attended = true
+        attendance.save
+        flash[:notice] = "Successfully attended #{@event.name}!"
+      else
         flash[:notice] = "You have already attended #{@event.name}!"
-        redirect_to attend_event_path(@event)
-        nil
       end
+      redirect_to @event
+    elsif @event.capacity.positive?
+      # If the capacity is greater than zero, require signing up for the event to attend.
+      flash[:notice] = "Could not attend #{@event.name} because you did not sign up for the event."
+      redirect_to @event
+      nil
+    else
+      @event.users << @user
+      attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
+      attendance.attended = true
+      attendance.save
+      flash[:notice] = "Successfully attended #{@event.name}!"
+      redirect_to @event
     end
   end
 
-  # removes user from an event attended
+  # Removes the user from an event they attended.
   def destroy_user
     @auth = User.find_by(email: current_userlogin.email)
-    redirect_to memberDashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
     @event = Event.find(params[:id])
     @user = User.find(params[:user_id])
 
@@ -117,9 +152,105 @@ class EventController < ApplicationController
     redirect_to edit_event_path(@event)
   end
 
+  # Creates an ics file from events created and downloads it.
+  def download_ics
+    @events = Event.all
+    cal = Icalendar::Calendar.new
+
+    @events.each do |e|
+      event = Icalendar::Event.new
+      event.dtstart = e.startDate
+      event.dtend = e.endDate
+      event.summary = e.name
+      event.description = e.description
+      cal.add_event(event)
+    end
+
+    send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: 'VWB Calendar.ics'
+  end
+
+  # Allows users to sign up by putting them in the event_attendees join table.
+  def sign_up
+    @auth = User.find_by(email: current_userlogin.email)
+    redirect_to member_dashboard_path unless @auth
+    @event = Event.find(params[:id])
+    @user = User.where(email: current_userlogin.email).first
+
+    return unless request.post?
+
+    begin
+      if @user
+        @event.users << @user
+        flash[:notice] = "Successfully signed up for #{@event.name}!"
+        redirect_to @event
+      end
+    rescue ActiveRecord::RecordNotUnique
+      flash[:notice] = "You have already signed up for #{@event.name}!"
+      redirect_to @event
+      nil
+    rescue NoMethodError
+      flash[:alert] = "Cannot signup for #{@event.name}! The event has reached its capacity."
+      redirect_to @event
+    end
+  end
+
+  # Forces a selected user into an event
+  def force_in
+    @auth = User.find_by(email: current_userlogin.email)
+    redirect_to member_dashboard_path unless @auth
+
+    event = Event.find(params[:event_id])
+    user = User.find(params[:user_id])
+
+    event_attendee = EventAttendee.new(event_attendee_params)
+
+    begin
+      # validate: false forces the user in, even if the capacity is full.
+      flash[:notice] = 'Successfully forced the user in!' if event_attendee.save(validate: false)
+      redirect_to edit_event_path(event)
+
+    # If the user has already signed up for the event...
+    rescue ActiveRecord::RecordNotUnique
+      attendee = EventAttendee.find_by(user_id: user.id, event_id: event.id)
+
+      # and has attended
+      if attendee.attended
+        flash[:alert] = "#{user.firstName} #{user.lastName} has already attended this event."
+
+      # but has not attended
+      else
+        attendee.attended = true
+        attendee.save
+        flash[:notice] = "Successfully forced #{user.firstName} #{user.lastName} to attend this event."
+      end
+      redirect_to edit_event_path(event)
+    end
+  end
+
+  # Allows users to upload documents
+  def upload_user
+    @auth = check_user
+    redirect_to member_dashboard_path unless @auth
+    @event = Event.find(params[:event_id])
+    @user = User.find(params[:user_id])
+
+    return unless request.post?
+
+    attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
+    attendance.documents.purge
+    attendance.documents.attach(params[:documents])
+
+    flash[:notice] = 'Successfully submitted document(s).'
+    redirect_to @event
+  end
+
   private
 
-  def eventParams
-    params.require(:event).permit(:points, :name, :description, :startDate, :endDate)
+  def event_params
+    params.require(:event).permit(:points, :name, :description, :startDate, :endDate, :capacity, documents: [])
+  end
+
+  def event_attendee_params
+    params.permit(:event_id, :user_id, :attended, documents: [])
   end
 end

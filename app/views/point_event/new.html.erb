@@ -1,18 +1,28 @@
 <%= render "layouts/navbar2", user: @user %>
 <div class="header">
-<button class="btn btn-decor"><%= link_to "Back to Events", event_index_path, class: "back-button" %></button>
+<button class="btn btn-decor"><%= link_to "Back to Events / Engagements", event_index_path, class: "back-button" %></button>
 </div>
 <div class="wrapper fadeInDown">
 <div id="formContent">
 
-<h2 class="active">Add a Points Event</h2>
+<h2 class="active">Add an Engagement</h2>
 
 <p>* denotes required fields.<p>
-<%= form_with url:"/point_event", model: @pointEvent do |form| %>
+<p>A capacity of 0 represents "No Limit"</p>
+
+<% if @point_event.errors.any? %>
+	<% @point_event.errors.full_messages.each do |message|%>
+	<p style="color: red;"><%= message %></p>
+	<%end%>
+<%end%>
+
+</br> 
+
+<%= form_with url: create_point_event_path, method: :post, model: @point_event, local: true do |form| %>
 	<table style="text-align: center !important;">
 		<tr>
 			<th><%= form.label :name %>*</th>
-			<td><%= form.text_field :name, placeholder: "Name*" %></td>
+			<td><%= form.text_field :name, placeholder: "Name" %></td>
 		</tr>
 		<tr>
 			<th><%= form.label :description %></th>
@@ -22,10 +32,16 @@
 			<th><%= form.label :points %>*</th>
 			<td><%= form.number_field :points, placeholder: "Points" %></td>
 		</tr>
+		<tr>
+			<th><%= form.label :capacity %>*</th>
+			<td><%= form.number_field :capacity, placeholder: "Capacity" %></td>
+		</tr>
+		<tr>
+			<th>Document(s)</th>
+			<td><%= form.file_field :documents, multiple: true, direct_upload: true %></td>
+		</tr>
 	</table>
-
-	<%= form.submit "Add Points Event" %>
-
+	<%= form.submit "Add Engagement" %>
 <% end %>
 
 </div>

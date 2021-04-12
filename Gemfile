@@ -7,6 +7,7 @@ ruby '2.7.2'
 
 gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'figaro'
+gem 'google-cloud-storage', '~> 1.11', require: false
 gem 'omniauth', '~>1.9.1'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
@@ -45,7 +46,17 @@ gem 'activerecord-import'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# Used to generate qr code for a string.
 gem 'rqrcode'
+
+# Used to generate a styled calendar view
+gem 'simple_calendar', '~> 2.4'
+
+# Used to generate and download .ics files
+gem 'icalendar'
+
+# Used for validating files uploaded.
+gem 'active_storage_validations'
 
 group :development, :test do
   # The RSpec testing framework

@@ -42,10 +42,10 @@
             <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
           </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="<%= memberDashboard_path%>">Member</a>
+                <a class="nav-link js-scroll-trigger" href="<%= member_dashboard_path%>">Member</a>
               </li> 
-          <% if @signedInUser %>
-            <% if @signedInUser.role == 1 %>
+          <% if @signed_in_user %>
+            <% if @signed_in_user.role == 1 %>
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="<%= users_path %>">Admin</a>
               </li> 
