@@ -1,26 +1,88 @@
 <%= render "layouts/navbar2", user: @user %>
-<div class="header">
-<h2 class="active h2-title">Event Details</h2>
-</div>
 
-<button class="btn align-center" style="margin-right: 20px;"> 
-<%= link_to "Back to Events", event_index_path, class:"back-button" %> 
-</button>
-<%= render "form", pointEvent: @pointEvent %>
-
-<h1>Users that have attended</h1>
-<table>
-	<tr>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>Email</th>
-	</tr>
-
-	<% @pointEvent.users.each do |user| %>
-	<tr>
-		<td><%= user.firstName %></td>
-		<td><%= user.lastName %></td>
-		<td><%= user.email %></td>
-	</tr>
+<style>
+.alert {
+	border-radius: 5px;
+	padding: 15px;
+	background: #d8ecdb;
+	color: #295529;
+}
+</style>
+<section style="padding-top: 0px;">
+	<% flash.each do |type, msg| %>
+		<div class="alert">
+			<%= msg %>
+		</div>
 	<% end %>
-</table>
+	<div class="header">
+		<h2 class="active h2-title">Admin Dashboard</h2>
+	</div>
+	
+	<div class="h2-title">
+		<h3 class="text upper">Engagement Details </h3>
+		<button class="btn" style="padding-left: 0rem;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
+	</div> 
+	<br>
+	<%= render "form", pointEvent: @point_event %>
+	<br></br>
+	<div class="wrapper">
+		<% unless admin?%>
+			<p>Your uploaded documents:</p>
+			<% attendance = PointEventAttendee.find_by(user_id: @auth.id, point_event_id: @point_event.id) %>
+			<%unless attendance%>
+				<p>You have not signed up or attended this engagement.</p>
+			<%else%>
+				<% attendance&.documents&.each do |file| %>
+					<li><%= link_to file.filename, rails_blob_path(file) %></li>
+				<% end %>
+				<%= form_with method: :post, url: upload_user_point_event_path(@point_event) do |form| %>
+					<%= form.file_field :documents, multiple: true, direct_upload: true %>
+					<%= hidden_field_tag "user_id", "#{@auth.id}" %>
+					<%= hidden_field_tag "point_event_id", "#{@point_event.id}" %>
+					<%= form.submit "Submit", data: {disable_with: "Submitting..."} %>
+				<%end%>
+
+				<% if attendance&.documents&.attached? %>
+					<p>Resubmiting documents will overwrite your last submission.</p>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+		<% if admin? %>
+			<div class="h2-title">
+				<h3 class="text upper">Attendance</h3>
+			</div>
+			<table class="styled-table">
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Time Signed Up</th>
+					<th>Time Attended</th>
+					<th>Submitted Documents</th>
+				</tr>
+
+				<% @point_event.users.each do |user| %>
+				<tr>
+					<td><%= user.firstName %></td>
+					<td><%= user.lastName %></td>
+					<td><%= user.email %></td>
+
+					<% attendance = PointEventAttendee.find_by(user_id: user.id, point_event_id: @point_event.id) %>
+					<td><%= Event.display_date_time(attendance.created_at) %>
+					<td><%= attendance.attended ? Event.display_date_time(attendance.updated_at) : "N/A" %>
+					<td>
+						<% attendance.documents.each do |file| %>
+							<% unless file == attendance.documents.last %>
+								<%= link_to file.filename, rails_blob_path(file) %> |
+							<% else %>
+								<%= link_to file.filename, rails_blob_path(file) %>
+							<% end %>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</table>
+		<% end %>
+</section>
+<%= render "layouts/footer" %>

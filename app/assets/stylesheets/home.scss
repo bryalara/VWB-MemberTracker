@@ -10,17 +10,19 @@
  header {
     // padding: 156px 0 100px;
     padding: 406px 0 350px;
-    background-image: url("vwb-group.jpg");
+    background-image: url("group-photo.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
     background-size: cover;
+    transform: translate(-25px, 100px);
+    transform: scale(1.0001);
 
   }
 
   
   section {
-    padding: 370px 90px;
+    padding: 355px 200px;
   }
   
 
@@ -10187,7 +10189,7 @@ header.masthead h1 {
 }
 
 .title {
-  color: rgba(80,0,0,255);
+  color: rgba(255, 255, 255, 0.7);
   font-weight: bold;
   font-family: 'Homenaje', sans-serif;
   font-size: 100px;
@@ -10195,8 +10197,8 @@ header.masthead h1 {
 
 .title-bar
 {
-  background-color: white;
-  background-image: url("herringbone/herringbone.png");
+  background-color: #222222;
+  // background-image: url("herringbone/herringbone.png");
 }
 
 // .bg-dark{
@@ -10205,3 +10207,4 @@ header.masthead h1 {
 // .maroon {
 //   background-color: maroon !important;
 // }
+

@@ -1,9 +1,18 @@
 <%= render "layouts/navbar2", user: @user %>
-<div class="header">
-<h2 class="active h2-title">Delete <%= @pointEvent.name %>?</h2>
-</div>
-<button class="btn align-center" style="float:right; margin-right: 20px;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
+<section style="padding-top: 0px;">
+ <div class="header">
+        <h2 class="active h2-title">Admin Dashboard</h2>
+    </div>
 
-<%= render "form", pointEvent: @pointEvent %>
+    <div class="h2-title">
+        <h3 class="text upper">Delete <%= @point_event.name %>?</h3>
+        <button class="btn" style="padding-left: 0rem;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
+        <button class="btn" style="padding-left: 0rem;"><td><%= link_to "Delete", point_event_path(@point_event), method: :delete, data: {confirm: "Are you sure you want to delete \"#{@point_event.name}\"?\nOnce deleted, the data will be lost forever. Points that students received from this event will also dissappear!"}, class:"back-button", id: "delete-btn" %></td></button>
+    </div>
 
-<button class="btn btn-decor" style="float:right; margin-right: 70px;"><td><%= link_to "Delete", point_event_path(@pointEvent), method: :delete, data: {confirm: "Are you sure you want to delete \"#{@pointEvent.name}\"?\nOnce deleted, the data will be lost forever. Points that students received from this event will also dissappear!"}, class:"back-button", id: "delete-btn" %></td></button>
+    <br>
+
+<%= render "form", point_event: @point_event %>
+
+</section>
+<%= render "layouts/footer" %>

@@ -1,10 +1,10 @@
+<%= render "layouts/navbar2", user: @user %>
 
-<%= render "layouts/navbar2" %>
-
-<section>
+<section style="margin-top: auto; margin-bottom: auto;">
 <h2 class="active h2-center">You are logged out!</h2>
-<h2 class="h2-center" style="font-size: 14px; padding-top: 10px;" >Please <%= link_to "click here", userlogin_google_oauth2_omniauth_authorize_path %> to log back in.</h2>
+<h3 class="text upper" align="center" >Please <%= link_to "click here", userlogin_google_oauth2_omniauth_authorize_path %> to log back in.</h3>
+
+<%# <h2 class="h2-center" style="font-size: 14px; padding-top: 10px;" >Please <%= link_to "click here", userlogin_google_oauth2_omniauth_authorize_path > to log back in.</h2> %>
 
 </section>
-
 <%= render "layouts/footer"%>

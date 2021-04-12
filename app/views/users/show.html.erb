@@ -20,36 +20,42 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 </style>
-<section style="padding-top: 30px;">
-<div class="header">
-<button class="btn btn-decor"><%= link_to "Return to all users", users_path, class: "back-button" %></button>
-</div>
-<div class="center-col">
-<h2 class="active" style="margin-right: auto; margin-left: auto;"><%= @user.firstName %> <%= @user.lastName %></h2>
-<table  class="center styled-table"> 
-    <tr>    
-        <th>Attribute</th>    
-        <th>Information</th>
-    </tr>
-<tr> <td> Email </td> <td> <%= @user.email %> </td> </tr>
-<tr> <td> Role </td> <td> <% if @user.role == 0 %> Member <%end%> <% if @user.role == 1 %> Admin <%end%>  </td> </tr>
-<tr> <td> First Name </td> <td> <%= @user.firstName %>  </td> </tr>
-<tr> <td> Last Name </td> <td> <%= @user.lastName %>  </td> </tr>
-<tr> <td> Phone Number </td> <td> <%= '('+@user.phoneNumber[0..2]+')'+'-'+@user.phoneNumber[3..5]+'-'+@user.phoneNumber[6..] %>  </td> </tr>
-<tr> <td> Classification </td> <td> <%= @user.classification %>  </td> </tr>
-<tr> <td> TShirt Size </td> <td> <%= @user.tShirtSize %>  </td> </tr>
-<tr> <td> Email Opt-In </td> <td> <%= @user.optInEmail %>  </td> </tr>
-<tr> <td> Participation Points </td> <td> <%= @user.participationPoints %>  </td> </tr>
-<tr> <td> Approved </td> <td> <%= @user.approved%>  </td> </tr>
+<section style="padding-top: 0px;">
+  <div class="header">
+      <h2 class="active h2-title">Admin Dashboard</h2>
+  </div>
 
-</table>
+  <div class="h2-title">
+      <h3 class="text upper">User Details </h3>
+      <button class="btn" style="padding-left: 0rem;"><%= link_to "Return to all users", users_path, class: "back-button" %></button>
+  </div>  
 
-<div  align="center" >
-<button class="btn"> <%= link_to "Edit User", edit_user_path(@user), class: "back-button" %> </button>
+  <div class="center-col">
+  <h2 class="active" style="margin-right: auto; margin-left: auto;"><%= @user.firstName %> <%= @user.lastName %></h2>
+  <table  class="center styled-table"> 
+      <tr>    
+          <th>Attribute</th>    
+          <th>Information</th>
+      </tr>
+  <tr> <td> Email </td> <td> <%= @user.email %> </td> </tr>
+  <tr> <td> Role </td> <td> <% if @user.role == 0 %> Member <%end%> <% if @user.role == 1 %> Admin <%end%>  </td> </tr>
+  <tr> <td> First Name </td> <td> <%= @user.firstName %>  </td> </tr>
+  <tr> <td> Last Name </td> <td> <%= @user.lastName %>  </td> </tr>
+  <tr> <td> Phone Number </td> <td> <%= '('+@user.phoneNumber[0..2]+')'+'-'+@user.phoneNumber[3..5]+'-'+@user.phoneNumber[6..] %>  </td> </tr>
+  <tr> <td> Classification </td> <td> <%= @user.classification %>  </td> </tr>
+  <tr> <td> TShirt Size </td> <td> <%= @user.tShirtSize %>  </td> </tr>
+  <tr> <td> Email Opt-In </td> <td> <%= @user.optInEmail %>  </td> </tr>
+  <tr> <td> Participation Points </td> <td> <%= @user.participationPoints %>  </td> </tr>
+  <tr> <td> Approved </td> <td> <%= @user.approved%>  </td> </tr>
 
-<button class="btn"> <%= link_to "Destroy", user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, class: "back-button", id: "delete-btn" %> </button>
-</div>
-</div>
+  </table>
+
+  <div  align="center" >
+  <button class="btn"> <%= link_to "Edit User", edit_user_path(@user), class: "back-button" %> </button>
+
+  <button class="btn"> <%= link_to "Destroy", user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, class: "back-button", id: "delete-btn" %> </button>
+  </div>
+  </div>
 
 </section>
 <%= render "layouts/footer" %>
