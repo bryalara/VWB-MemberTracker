@@ -43,9 +43,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 			setup do
 				#approving recent user as member
 				user=User.find_by(email: OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-				while !user
-					user=User.find_by(email: OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-				end
+				sleep(1)
 				user.update(approved: true)
 				sleep(1)
 			end
