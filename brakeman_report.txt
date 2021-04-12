@@ -1,73 +1,24 @@
 
 == Brakeman Report ==
 
-Application Path: /mnt/c/Files/StudyMaterials/Spring 2021/CSCE 431/VWB-MemberTracker1
+Application Path: /mnt/c/Files/StudyMaterials/Spring 2021/CSCE 431/2/VWB-MemberTracker
 Rails Version: 6.0.3.5
 Brakeman Version: 5.0.0
-Scan Date: 2021-04-05 23:15:58 -0500
-Duration: 7.532662 seconds
+Scan Date: 2021-04-12 04:00:03 -0500
+Duration: 15.0437509 seconds
 Checks Run: BasicAuth, BasicAuthTimingAttack, CSRFTokenForgeryCVE, ContentTag, CookieSerialization, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONEntityEscape, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, PageCachingCVE, PermitAttributes, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, SprocketsPathTraversal, StripTags, SymbolDoSCVE, TemplateInjection, TranslateBug, UnsafeReflection, UnsafeReflectionMethods, ValidationRegex, VerbConfusion, WithoutProtection, XMLDoS, YAMLParsing
 
 == Overview ==
 
 Controllers: 10
-Models: 8
-Templates: 45
+Models: 9
+Templates: 52
 Errors: 0
-Security Warnings: 6
-Ignored Warnings: 2
+Security Warnings: 0
+Ignored Warnings: 1
 
 == Warning Types ==
 
-SQL Injection: 6
 
-== Warnings ==
-
-Confidence: Medium
-Category: SQL Injection
-Check: SQL
-Message: Possible SQL injection
-Code: User.where(:approved => appr).order("UPPER(\"users\".\"firstName\") #{ord}")
-File: app/models/user.rb
-Line: 13
-
-Confidence: Medium
-Category: SQL Injection
-Check: SQL
-Message: Possible SQL injection
-Code: User.where(:approved => appr).order("UPPER(\"users\".\"lastName\") #{ord}")
-File: app/models/user.rb
-Line: 15
-
-Confidence: Medium
-Category: SQL Injection
-Check: SQL
-Message: Possible SQL injection
-Code: User.where(:approved => appr).order("\"users\".\"role\" #{ord}")
-File: app/models/user.rb
-Line: 17
-
-Confidence: Medium
-Category: SQL Injection
-Check: SQL
-Message: Possible SQL injection
-Code: User.where(:approved => appr).order("CASE \"users\".\"classification\"\n                                  WHEN 'Freshman'  THEN '0'\n                                  WHEN 'Sophomore' THEN '1'\n                                  WHEN 'Junior'    THEN '2'\n                                  WHEN 'Senior'    THEN '3'\n                                    END #{ord}")
-File: app/models/user.rb
-Line: 24
-
-Confidence: Medium
-Category: SQL Injection
-Check: SQL
-Message: Possible SQL injection
-Code: User.where(:approved => appr).order("CASE \"users\".\"tShirtSize\"\n                                  WHEN 'XXXS' THEN '0'\n                                  WHEN 'XXS'  THEN '1'\n                                  WHEN 'XS'   THEN '2'\n                                  WHEN 'S'    THEN '3'\n                                  WHEN 'M'    THEN '4'\n                                  WHEN 'L'    THEN '5'\n                                  WHEN 'XL'   THEN '6'\n                                  WHEN 'XXL'  THEN '7'\n                                  WHEN 'XXXL' THEN '8'\n                                    END #{ord}")
-File: app/models/user.rb
-Line: 36
-
-Confidence: Medium
-Category: SQL Injection
-Check: SQL
-Message: Possible SQL injection
-Code: User.where(:approved => appr).order("\"users\".\"participationPoints\" #{ord}")
-File: app/models/user.rb
-Line: 38
+No warnings found
 
