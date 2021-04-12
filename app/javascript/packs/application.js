@@ -15,7 +15,7 @@ import "../stylesheets/application"
 // import "../home/bootstrap/css/bootstrap.min.css"
 // import "../home/jquery/jquery.min.js"
 // import "../home/bootstrap/js/bootstrap.bundle.min.js"
-import "../home/jquery-easing/jquery.easing.min.js"
+// import "../home/jquery-easing/jquery.easing.min.js"
  
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
