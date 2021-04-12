@@ -14,6 +14,11 @@
             <a class="nav-link js-scroll-trigger" href="<%= member_dashboard_path%>">Member</a>
           </li> 
           <%if @auth%>
+            <li class="nav-item"> 
+                <a class="nav-link js-scroll-trigger" href="<%= event_index_path%>">Events</a>
+            </li>
+          <%end%>
+          <%if @auth%>
             <%if @auth.role == 1 %> 
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="<%= users_path %>">Admin</a>
