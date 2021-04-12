@@ -12,17 +12,14 @@ Rails.application.routes.draw do
 
   
   get 'home/index'
-  root to: 'home#index'      
-  resources :home
-  resources :edithomepages
+  root to: 'home#index'            
+  resources :home                   
 
 
-  match '/pendingApproval', to: 'users#pending_approval', via: [:get, :post], as: :pending_approval
-  get '/memberDashboard', to: 'users#member_dashboard', as: :member_dashboard
+  get '/pendingApproval', to: 'users#pendingApproval'
+  get '/memberDashboard', to: 'users#memberDashboard'
   get 'user/registration', to: 'users#registration', as: :registration_user
   get '/import', to: 'users#my_import'
-  get 'event/csv', to: 'event#export_csv', as: :event_csv
-  get 'point_event/csv', to: 'point_event#export_csv', as: :point_event_csv
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :point_event do
@@ -32,14 +29,8 @@ Rails.application.routes.draw do
       get :attend
       post :attend
       delete '/user/:user_id/destroy' => 'point_event#destroy_user', :as => 'delete_user'
-      get :sign_up
-      post :sign_up
-      post :force_in
-      post :upload_user
-      patch 'edit', to: 'point_event#update', as: 'update'
-    end
+  	end
   end
-  post 'point_event/new', to: 'point_event#create', as: 'create_point_event'
 
   resources :event do
   	member do
@@ -48,13 +39,6 @@ Rails.application.routes.draw do
       get :attend
       post :attend
       delete '/user/:user_id/destroy' => 'event#destroy_user', :as => 'delete_user'
-      get :sign_up
-      post :sign_up
-      post :force_in
-      post :upload_user
-      patch 'edit', to: 'event#update', as: 'update'
   	end
   end
-  post 'event/new', to: 'event#create', as: 'create_event'
-  post 'event/download_ics', to: "event#download_ics"
 end

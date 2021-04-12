@@ -6,18 +6,6 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-google:
-  service: GCS
-  project: vwb-app
-  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
-  bucket: vwb_sto
-  
-google_dev:
-  service: GCS
-  project: vwb-app
-  credentials: <%= Rails.root.join("config/secrets/vwb-sto.json") %>
-  bucket: vwb_sto
-
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3

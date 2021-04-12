@@ -9,13 +9,6 @@
 User.create(email: 'bryalara@tamu.edu', role: 1, firstName: 'Bryan', lastName: 'Lara', phoneNumber:'7138847570', classification:'Senior', tShirtSize:'XXL', optInEmail: true, participationPoints: 0, approved: true)
 User.create(email: 'entao2000@gmail.com', role: 1, firstName: 'Yingtao', lastName: 'Jiang', phoneNumber:'9797399011', classification:'Senior', tShirtSize:'XXL', optInEmail: true, participationPoints: 0, approved: true)
 User.create(email: 'phand972@gmail.com', role: 1, firstName: 'Daniel', lastName: 'Phan', phoneNumber:'7133631944', classification:'Junior', tShirtSize:'XXL', optInEmail: true, participationPoints: 0, approved: true)
-User.create(email: 'sainikhilnaru@gmail.com', role: 1, firstName: 'Sai', lastName: 'Naru', phoneNumber:'1231231234', classification:'Junior', tShirtSize:'L', optInEmail: true, participationPoints: 0, approved: true)
-User.create(email: 'mefsaenz@gmail.com', role: 1, firstName: 'Elisa', lastName: 'Flores', phoneNumber:'1231231234', classification:'Junior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
-User.create(email: 'soto_samantha@tamu.edu', role: 1, firstName: 'Samantha', lastName: 'Soto', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
-User.create(email: 'manseerat@tamu.edu', role: 1, firstName: 'Manseerat', lastName: 'Batra', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
-User.create(email: 'paulinewade@tamu.edu', role: 1, firstName: 'Pauline', lastName: 'Wade', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
-User.create(email: 'shayle@tamu.edu', role: 1, firstName: 'Yihao', lastName: 'Xie', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
-
 
 Edithomepage.create(name: 'home', description: 'This is the home description')
 Edithomepage.create(name: 'about_us', description: 'This is the about us description')
