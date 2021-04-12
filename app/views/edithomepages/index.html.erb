@@ -1,8 +1,25 @@
 
 
-<br>
+<%= render "layouts/navbar2", user: @edithomepage %>
+<section style="padding-top: 10px;">
+<button class="btn btn-decor" style="border:0; text-decoration:none !important; outline:none">
+</button>
+<div class="wrapper fadeInDown">
+<div id="formContent">
 
-<table style="text-align: left">
+<%= form_with model: @edithomepage do |form| %>
+
+	
+	<div>
+    <h2 class="active"> Edit Home Page </h2>
+		<br></br>
+		<%= form.label "Background photo: " %>
+        <%= form.file_field :image, placeholder: "image" %>
+		<%= form.submit "Submit" %>
+    </div>
+
+	<div>
+	<table style="text-align: left">
 	<tr>
 		<th>Name</th>
 		<th>Description</th>
@@ -11,12 +28,14 @@
 
 	<% @edithomepages.each do |edithomepage| %>
     <tr>
-    <td><%= link_to edithomepage.name, edithomepage_path(edithomepage) %></td>
-    <td><%= link_to edithomepage.description, edithomepage_path(edithomepage) %></td>
+    <td><%=  edithomepage.name    %></td>
+    <td><%= edithomepage.description %></td>
     <td><%= button_to 'Edit', edit_edithomepage_path(edithomepage), method: 'get'%></td>
-    <td><%= button_to 'Remove', edithomepage_path(edithomepage), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
 	<% end %>
 </table>
-<%= link_to "Add a New Attribute ", new_edithomepage_path %>
-
-
+	</div>
+<% end %>
+</div>
+</div>
+</section>
+<%= render "layouts/footer" %>

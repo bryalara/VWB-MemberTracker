@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   root to: 'home#index'            
   resources :home                   
   resources :officers
+  resources :edithomepages
 
   get '/pendingApproval', to: 'users#pendingApproval'
   get '/memberDashboard', to: 'users#memberDashboard'

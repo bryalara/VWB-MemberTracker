@@ -1,29 +1,40 @@
-<ul>
-    <% @officers.each do |officer| %>
-        <li>
+
+
+<%= render "layouts/navbar2", user: @officer %>
+<section style="padding-top: 10px;">
+<button class="btn btn-decor" style="border:0; text-decoration:none !important; outline:none">
+</button>
+<div class="wrapper fadeInDown">
+<div id="formContent">
+    <div>
+    <h1>Current Officers</h1>
+        <% @officers.each do |officer| %>
+            
             <%= link_to officer.name, officer_path(officer) %> 
-            <p>
-                <% if officer.image.attached? %>
-                    <p>
-                    <% if flash[:notice] %>
-                        <div class="notice"><%= flash[:notice] %></div>
+                <p>
+                    <% if officer.image.attached? %>
+                        <p>
+                        <% if flash[:notice] %>
+                            <div class="notice"><%= flash[:notice] %></div>
+                        <% end %>
+                        <strong>Image:</strong>
+                        <br>
+                        <%= image_tag officer.image, size: "175x250"  %>
+                        </p>
                     <% end %>
-                    <strong>Image:</strong>
-                    <br>
-                    <%= image_tag officer.image, size: "175x250"  %>
-                    </p>
-                <% end %>
-            </p>
-            <%= form_with model: officer do |form| %>
-                <%= form.file_field :image  , accept: 'image/png,image/jpeg' %>
-                <%= form.submit %>
-            <% end %>
-            <td><%= button_to 'Edit', edit_officer_path(officer), method: 'get'%></td>
+                </p>
+        
+            <td><%= button_to 'Edit', edit_officer_path(officer), method: 'get' %></td>
             <td><%= button_to 'Remove', officer_path(officer), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
-        </li>
-    <% end %>
-</ul>
-
-
+        
+        <% end %>
+    </div>
 
 <%= link_to "Add a New Attribute ", new_officer_path %>
+
+</div>
+
+</div>
+
+</section>
+<%= render "layouts/footer" %>

@@ -32,6 +32,9 @@ class EdithomepagesController < ApplicationController
   def update
     @edithomepage = Edithomepage.find(params[:id])
 
+    @edithomepage.image.purge
+    @edithomepage.image.attach(edithomepage_params[:image])
+    
     if @edithomepage.update(edithomepage_params)
       redirect_to edithomepages_path
     else
@@ -53,6 +56,6 @@ class EdithomepagesController < ApplicationController
   private
 
   def edithomepage_params
-    params.require(:edithomepage).permit(:name, :description)
+    params.permit(:name, :description, :image)
   end
 end

@@ -79,17 +79,17 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <h2 id="aboutH">About Us</h2>
-
-          <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
-        
-            <% if edithomepage.name == "about_us" %>
-              <td><%= (edithomepage.description) %></td>
-            <% else %>
-              <%  "Wrong Spelling of website attribute" %>
+          <p>
+            <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+          
+              <% if edithomepage.name == "about_us" %>
+                <td><%= (edithomepage.description) %></td>
+              <% else %>
+                <%  "Wrong Spelling of website attribute" %>
+              <% end %>
+      
             <% end %>
-    
-          <% end %>
-
+          </p>
           <p class="lead"></p>
           <ul>
           </ul>
@@ -103,6 +103,51 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <h2 id="serviceH">Service</h2>
+          <p>
+            <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+          
+              <% if edithomepage.name == "service" %>
+                <td><%= (edithomepage.description) %></td>
+              <% else %>
+                <%  "Wrong Spelling of website attribute" %>
+              <% end %>
+      
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="officers" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 id="officers">Officers</h2>
+          <p>
+            <% Officer.all.each_with_index  do |officer, i| %>                        
+              <td><%= (officer.name) %></td> 
+              <br></br>   
+              <td><%= (officer.email) %></td> 
+              <br></br>
+              <td><%= (officer.description) %></td> 
+              <br></br>
+              <p>
+                <% if officer.image.attached? %>
+                    <p>
+                    <% if flash[:notice] %>
+                        <div class="notice"><%= flash[:notice] %></div>
+                    <% end %>
+                    <strong>Image:</strong>
+                    <br>
+                    <%= image_tag officer.image, size: "175x250"  %>
+                    </p>
+                <% end %>
+              </p>
+              <br></br>              
+            <% end %>
+          </p>
         </div>
       </div>
     </div>
