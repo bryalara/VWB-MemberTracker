@@ -37,6 +37,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # import csv
   def import
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false

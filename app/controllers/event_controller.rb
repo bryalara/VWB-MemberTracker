@@ -244,6 +244,23 @@ class EventController < ApplicationController
     redirect_to @event
   end
 
+  # import csv
+  def import
+    @auth = User.find_by(email: current_userlogin.email)
+    redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    wmsg = Event.my_import(params[:file])
+    if wmsg.length.positive?
+      # flash[:notice] ||= []
+      wmsg.each do |msg|
+        flash[:notice] ||= []
+        flash[:notice] << msg.to_s
+      end
+      redirect_to event_index_path
+    else
+      redirect_to event_index_path, success: "Events' information imported from csv file"
+    end
+  end
+
   private
 
   def event_params
