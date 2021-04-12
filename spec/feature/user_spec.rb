@@ -11,12 +11,12 @@ RSpec.describe 'Users', type: :feature do
 		it 'shows the right content first time login' do
 			login_with_oauth_member_registration
 			visit registration_user_path
-			expect(page).to have_content('Registration')
+			expect(page).to have_content('REGISTRATION')
 		end
 		it 'register a new user' do
 			login_with_oauth_member_registration
 			visit registration_user_path
-			expect(page).to have_content('Registration')
+			expect(page).to have_content('REGISTRATION')
 			fill_in 'user_firstName', with: 'John'
 			fill_in 'user_lastName', with: 'Doe'
 			fill_in 'user_phoneNumber', with: '1234567890'
@@ -25,7 +25,7 @@ RSpec.describe 'Users', type: :feature do
 			check 'user_optInEmail'
 			
 			
-			click_on 'Create User'
+			click_on 'Sign Up'
 			login_with_oauth
 			visit pending_approval_path
 			expect(page).to have_content('entao@tamu.edu')
@@ -33,7 +33,7 @@ RSpec.describe 'Users', type: :feature do
 		it 'member cannot visit users pages' do
 			login_with_oauth_member_registration
 			visit registration_user_path
-			expect(page).to have_content('Registration')
+			expect(page).to have_content('REGISTRATION')
 			fill_in 'user_firstName', with: 'John'
 			fill_in 'user_lastName', with: 'Doe'
 			fill_in 'user_phoneNumber', with: '1234567890'
@@ -42,14 +42,14 @@ RSpec.describe 'Users', type: :feature do
 			check 'user_optInEmail'
 			
 			
-			click_on 'Create User'
+			click_on 'Sign Up'
 			visit users_path
 			#expect(page).to have_content('You are not an Admin')
 		end
 		it 'member cannot visit events pages' do
 			login_with_oauth_member_registration
 			visit registration_user_path
-			expect(page).to have_content('Registration')
+			expect(page).to have_content('REGISTRATION')
 			fill_in 'user_firstName', with: 'John'
 			fill_in 'user_lastName', with: 'Doe'
 			fill_in 'user_phoneNumber', with: '1234567890'
@@ -58,7 +58,7 @@ RSpec.describe 'Users', type: :feature do
 			check 'user_optInEmail'
 			
 			
-			click_on 'Create User'
+			click_on 'Sign Up'
 			event_index_path
 			#expect(page).to have_content('You are not an Admin')
 		end
@@ -70,7 +70,7 @@ RSpec.describe 'Users', type: :feature do
 			it 'shows the right content' do
 				visit users_path
 				
-				expect(page).to have_selector(:xpath, "//div/div/h2['Users']")
+				expect(page).to have_selector(:xpath, "//section/div/h3['Users']")
 			end
 		end
 	
@@ -896,13 +896,13 @@ RSpec.describe 'Users', type: :feature do
 				it 'are asked to register first when trying to attend an event' do
 					visit attend_event_path(event)
 					
-					expect(page).to have_content("Registration")
+					expect(page).to have_content("REGISTRATION")
 				end
 	
 				it 'are asked to register first when trying to attend a points event' do
 					visit attend_point_event_path(pointEvent)
 					
-					expect(page).to have_content("Registration")
+					expect(page).to have_content("REGISTRATION")
 				end
 			end
 	
@@ -915,7 +915,7 @@ RSpec.describe 'Users', type: :feature do
 					select 'Sophomore', :from => 'user_classification'
 					select 'M', :from => 'user_tShirtSize'
 					check 'user_optInEmail'
-					click_on 'Create User'
+					click_on 'Sign Up'
 					sleep(1)
 					User.find_by(email:OmniAuth.config.mock_auth[:google_oauth2][:info][:email]).update(approved: true, participationPoints: 5)
 

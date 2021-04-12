@@ -29,7 +29,7 @@ select{
         <%= form_with model: @user do |form| %>
             <div>
             <h2 class="active"> Sign Up </h2>
-                <%= form.email_field :email, value: "", :readonly => true, placeholder: "Email"%>
+                <%= form.email_field :email, value: current_userlogin.email, :readonly => true, placeholder: "Email"%>
             </div>
 
             <div>
@@ -46,11 +46,6 @@ select{
                 <% @user.errors.full_messages_for(:lastName).each do |message| %>
                     <div><%= message %></div>
                 <% end %>
-            </div>
-            
-            <div class="select">
-                <br>
-                <%= form.select :role, options_for_select([["Select a Role", ""], ["Member", 0], ["Admin", 1]]), id: "slct", value: "", :prompt => 'Select Role' %>
             </div>
 
             <div>

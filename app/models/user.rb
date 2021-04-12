@@ -9,9 +9,12 @@ class User < ApplicationRecord
 
   # setup the user attributes
   def self.get_users(appr, attr, ord)
+    # used to get users to display in user index and pending approval views
     case attr
+    # attr is used to sort by, currently handle firstnName, lastName, role, classification, tShistSize, and points
     when 'first'
       case ord
+      # ord is used to order in descending or ascending order
       when :ASC
         User.where(approved: appr).order('UPPER("users"."firstName") ASC')
       when :DESC
@@ -93,36 +96,36 @@ class User < ApplicationRecord
     wmsg = []
     begin
       CSV.foreach(file.path, headers: true) do |row|
-        # puts('READING FROM CSV..........................................')
-        # puts(row.to_h[1])
+        logger.debug 'READING FROM CSV..........................................'
         users << User.new(row.to_h)
       end
     rescue StandardError => e
-      # puts('Error reading specified csv file, maybe no csv selected')
+      logger.debug 'Error reading specified csv file, maybe no csv selected'
       wmsg.append('Error reading specified csv file')
     end
     users.each do |user|
-      # puts("#{user.firstName} #{user.lastName}")
+      logger.debug "#{user.firstName} #{user.lastName}"
 
       unless wmsg.first == 'Error reading specified csv file'
         if user.save
           wmsg.append("New user: #{user.firstName} #{user.lastName} created")
-          # puts("New user: #{user.firstName} #{user.lastName} created")
+          logger.debug "New user: #{user.firstName} #{user.lastName} created"
         else
-          # puts("Error with user: #{user.firstName} #{user.lastName}, might already exist")
+          logger.debug "Error with user: #{user.firstName} #{user.lastName}, might already exist"
           wmsg.append("Error with user: #{user.firstName} #{user.lastName}, might already exist")
           if @user.valid?
             wmsg.append("New user: #{user.firstName} #{user.lastName} created")
           else
             wmsg.append(user.errors.full_messages[0])
-            # puts(user.errors.full_messages[0])
+            logger.debug user.errors.full_messages[0]
           end
         end
         user.approved = FALSE
       end
     rescue StandardError => e
-      # puts(e)
+      logger.debug e
     end
+    wmsg
   end
 
   # this is used to get the total points of users

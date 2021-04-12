@@ -11,7 +11,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 		it 'logged in user prompted to make account' do
 			visit member_dashboard_path	
 			
-			expect(page).to have_content('Registration')
+			expect(page).to have_content('REGISTRATION')
 		end
 	end
 
@@ -28,7 +28,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 			select 'M', :from => 'user_tShirtSize'
 			check 'user_optInEmail'
 			
-			click_on 'Create User'
+			click_on 'Sign Up'
 			
 		end
 
@@ -53,13 +53,13 @@ RSpec.describe 'MemberDashboard', type: :feature do
 				visit member_dashboard_path
 				
 				expect(page).to have_content('Hello, John Doe')
-				expect(page).to have_content('Current points: 0')
+				expect(page).to have_content('Current Total Points: 0')
 			end
 			it 'member redirected to dashboard when trying to access users' do
 				visit users_path
 				
 				expect(page).to have_content('Hello, John Doe')
-				expect(page).to have_content('Current points: 0')
+				expect(page).to have_content('Current Total Points: 0')
 			end
 			it 'member able to edit their info' do
 				visit member_dashboard_path
@@ -72,7 +72,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 				click_on 'Update User'
 				
 				expect(page).to have_content('Hello, Doe John')
-				expect(page).to have_content('Current points: 0')
+				expect(page).to have_content('Current Total Points: 0')
 			end
 
 			describe "Member Attending events " do
