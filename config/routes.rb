@@ -52,7 +52,6 @@ Rails.application.routes.draw do
     collection {post :import} #used for csv importing
     collection {post :import_part}
   	member do
-  	member do
   		get :delete
       get :qr
       get :attend
