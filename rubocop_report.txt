@@ -1,74 +1,130 @@
-Inspecting 52 files
-......WC.W...C.............W.W....................EC
+Inspecting 49 files
+C...C.C.C...C...........C.CCCCC..................
 
 Offenses:
 
-app/controllers/event_controller.rb:5:3: C: Rails/LexicallyScopedActionFilter: registration is not explicitly defined on the class.
-  before_action :authenticate_userlogin! && :admin_verify, except: %i[create registration]
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-app/controllers/event_controller.rb:17:5: C: Style/GuardClause: Use a guard clause (return unless true) instead of wrapping the code inside a conditional expression.
-    if true
-    ^^
-app/controllers/event_controller.rb:17:8: W: Lint/LiteralAsCondition: Literal true appeared as a condition.
-    if true
-       ^^^^
-app/controllers/event_controller.rb:25:71: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-            send_data @events.to_csv, filename: "member-emails-#{Date.today}.csv"
-                                                                      ^^^^^
-app/controllers/event_controller.rb:28:77: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-            send_data @events.to_csv_users, filename: "member-emails-#{Date.today}.csv"
-                                                                            ^^^^^
-app/controllers/home_controller.rb:5:5: C: Naming/VariableName: Use snake_case for variable names.
-    @signedInUser = check_user
-    ^^^^^^^^^^^^^
-app/controllers/point_event_controller.rb:5:3: C: Rails/LexicallyScopedActionFilter: registration is not explicitly defined on the class.
-  before_action :authenticate_userlogin! && :admin_verify, except: %i[create registration]
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-app/controllers/point_event_controller.rb:15:5: C: Style/GuardClause: Use a guard clause (return unless true) instead of wrapping the code inside a conditional expression.
-    if true
-    ^^
-app/controllers/point_event_controller.rb:15:8: W: Lint/LiteralAsCondition: Literal true appeared as a condition.
-    if true
-       ^^^^
-app/controllers/point_event_controller.rb:23:77: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-            send_data @point_events.to_csv, filename: "events-emails-#{Date.today}.csv"
-                                                                            ^^^^^
-app/controllers/point_event_controller.rb:26:83: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-            send_data @point_events.to_csv_users, filename: "member-emails-#{Date.today}.csv"
-                                                                                  ^^^^^
-app/controllers/point_event_controller.rb:96:121: C: Layout/LineLength: Line is too long. [122/120]
-    @qr_code = RQRCode::QRCode.new("#{request.protocol}#{request.host_with_port}" + attend_point_event_path(@point_event))
-                                                                                                                        ^^
-app/controllers/users_controller.rb:8:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for index is too high. [11/7]
-  def index ...
-  ^^^^^^^^^
-app/controllers/users_controller.rb:31:68: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-          send_data @users.to_csv, filename: "member-emails-#{Date.today}.csv"
-                                                                   ^^^^^
-app/controllers/users_controller.rb:34:73: C: Rails/Date: Do not use Date.today without zone. Use Time.zone.today instead.
-          send_data @users.to_csv_backup, filename: "member-info-#{Date.today}.csv"
-                                                                        ^^^^^
-app/controllers/users_controller.rb:123:3: C: Metrics/AbcSize: Assignment Branch Condition size for pending_approval is too high. [<13, 56, 21> 61.2/50]
-  def pending_approval ...
-  ^^^^^^^^^^^^^^^^^^^^
-app/controllers/users_controller.rb:123:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for pending_approval is too high. [16/7]
-  def pending_approval ...
-  ^^^^^^^^^^^^^^^^^^^^
-app/models/event.rb:39:5: W: Lint/UselessAssignment: Useless assignment to variable - attributes.
-    attributes = %w[name description startDate endDate points]
-    ^^^^^^^^^^
-app/models/point_event.rb:25:5: W: Lint/UselessAssignment: Useless assignment to variable - attributes.
-    attributes = %w[name description startDate endDate points]
-    ^^^^^^^^^^
-vwb/node_modules/node-sass/src/libsass/contrib/libsass.spec:1:5: E: Lint/Syntax: unexpected token tCOLON
-(Using Ruby 2.7 parser; configure using TargetRubyVersion parameter, under AllCops)
-Name:           libsass
-    ^
-vwb/node_modules/node-sass/src/libsass/extconf.rb:6:1: C: Style/GlobalVars: Do not introduce global variables.
-$CFLAGS << " #{ENV['CFLAGS']}"
-^^^^^^^
-vwb/node_modules/node-sass/src/libsass/extconf.rb:7:1: C: Style/GlobalVars: Do not introduce global variables.
-$LIBS << " #{ENV['LIBS']}"
-^^^^^
+Gemfile:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/application_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/event_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/event_controller.rb:3:1: C: Metrics/ClassLength: Class has too many lines. [205/200]
+class EventController < ApplicationController ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/point_event_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/point_event_controller.rb:223:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/users_controller.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/application_record.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/event.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/event.rb:75:9: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+        puts('READING FROM CSV..........................................')
+        ^^^^
+app/models/event.rb:76:9: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+        puts(row.to_h[1])
+        ^^^^
+app/models/event.rb:80:7: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+      puts('Error reading specified csv file, maybe no csv selected')
+      ^^^^
+app/models/event.rb:84:7: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+      puts("#{event.name}")
+      ^^^^
+app/models/event.rb:84:12: C: [Correctable] Style/RedundantInterpolation: Prefer to_s over string interpolation.
+      puts("#{event.name}")
+           ^^^^^^^^^^^^^^^
+app/models/event.rb:89:13: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+            puts("New event: #{event.name} created")
+            ^^^^
+app/models/event.rb:91:13: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+            puts("Error with event: #{event.name}, might already exist")
+            ^^^^
+app/models/event.rb:97:15: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+              puts(event.errors.full_messages[0])
+              ^^^^
+app/models/event.rb:102:9: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+        puts(e)
+        ^^^^
+app/models/event_attendee.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/event_attendee.rb:21:20: C: [Correctable] Style/ParenthesesAroundCondition: Don't use parentheses around the condition of an if.
+    return true if (DateTime.now <= event.endDate)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/point_event.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/point_event.rb:51:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/models/point_event.rb:58:9: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+        puts('READING FROM CSV..........................................')
+        ^^^^
+app/models/point_event.rb:59:9: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+        puts(row.to_h[1])
+        ^^^^
+app/models/point_event.rb:63:7: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+      puts('Error reading specified csv file, maybe no csv selected')
+      ^^^^
+app/models/point_event.rb:67:7: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+      puts("#{event.name}")
+      ^^^^
+app/models/point_event.rb:67:12: C: [Correctable] Style/RedundantInterpolation: Prefer to_s over string interpolation.
+      puts("#{event.name}")
+           ^^^^^^^^^^^^^^^
+app/models/point_event.rb:72:13: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+            puts("New event: #{event.name} created")
+            ^^^^
+app/models/point_event.rb:74:13: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+            puts("Error with event: #{event.name}, might already exist")
+            ^^^^
+app/models/point_event.rb:80:15: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+              puts(event.errors.full_messages[0])
+              ^^^^
+app/models/point_event.rb:85:9: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+        puts(e)
+        ^^^^
+app/models/point_event_attendee.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/point_event_attendee.rb:11:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/models/user.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:96:9: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+        puts('READING FROM CSV..........................................')
+        ^^^^
+app/models/user.rb:97:9: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+        puts(row.to_h[1])
+        ^^^^
+app/models/user.rb:101:7: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+      puts('Error reading specified csv file, maybe no csv selected')
+      ^^^^
+app/models/user.rb:104:5: C: Metrics/BlockLength: Block has too many lines. [21/20]
+    users.each do |user| ...
+    ^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:105:7: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+      puts("#{user.firstName} #{user.lastName}")
+      ^^^^
+app/models/user.rb:110:13: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+            puts("New user: #{user.firstName} #{user.lastName} created")
+            ^^^^
+app/models/user.rb:112:13: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+            puts("Error with user: #{user.firstName} #{user.lastName}, might already exist")
+            ^^^^
+app/models/user.rb:118:15: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+              puts(user.errors.full_messages[0])
+              ^^^^
+app/models/user.rb:124:9: C: Rails/Output: Do not write to stdout. Use Rails's logger if you want to log.
+        puts(e)
+        ^^^^
 
-52 files inspected, 22 offenses detected
+49 files inspected, 43 offenses detected, 6 offenses auto-correctable

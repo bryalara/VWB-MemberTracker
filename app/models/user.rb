@@ -87,42 +87,41 @@ class User < ApplicationRecord
     end
   end
 
-  # Imports csv of users to pending users
+  # import csv
   def self.my_import(file)
     users = []
     wmsg = []
     begin
       CSV.foreach(file.path, headers: true) do |row|
-        puts('READING FROM CSV..........................................')
-        puts(row.to_h[1])
+        # puts('READING FROM CSV..........................................')
+        # puts(row.to_h[1])
         users << User.new(row.to_h)
       end
     rescue StandardError => e
-      puts('Error reading specified csv file, maybe no csv selected')
+      # puts('Error reading specified csv file, maybe no csv selected')
       wmsg.append('Error reading specified csv file')
     end
     users.each do |user|
-      puts("#{user.firstName} #{user.lastName}")
-      begin
-        unless wmsg.first == 'Error reading specified csv file'
-          if user.save
+      # puts("#{user.firstName} #{user.lastName}")
+
+      unless wmsg.first == 'Error reading specified csv file'
+        if user.save
+          wmsg.append("New user: #{user.firstName} #{user.lastName} created")
+          # puts("New user: #{user.firstName} #{user.lastName} created")
+        else
+          # puts("Error with user: #{user.firstName} #{user.lastName}, might already exist")
+          wmsg.append("Error with user: #{user.firstName} #{user.lastName}, might already exist")
+          if @user.valid?
             wmsg.append("New user: #{user.firstName} #{user.lastName} created")
-            puts("New user: #{user.firstName} #{user.lastName} created")
           else
-            puts("Error with user: #{user.firstName} #{user.lastName}, might already exist")
-            wmsg.append("Error with user: #{user.firstName} #{user.lastName}, might already exist")
-            if @user.valid?
-              wmsg.append("New user: #{user.firstName} #{user.lastName} created")
-            else
-              wmsg.append(user.errors.full_messages[0])
-              puts(user.errors.full_messages[0])
-            end
+            wmsg.append(user.errors.full_messages[0])
+            # puts(user.errors.full_messages[0])
           end
-          user.approved = FALSE
         end
-      rescue StandardError => e
-        puts(e)
+        user.approved = FALSE
       end
+    rescue StandardError => e
+      # puts(e)
     end
   end
 
