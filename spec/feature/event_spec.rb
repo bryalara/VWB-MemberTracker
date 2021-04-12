@@ -168,6 +168,7 @@ RSpec.describe 'Events', type: :feature do
 						endDate: DateTime.now + 1.week,
 						capacity: 5)
 			visit edit_event_path(id: event.id)
+			expect(page).to have_content("EDIT AN EVENT")
 		end
 
 		it 'is valid with valid changes' do

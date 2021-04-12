@@ -134,6 +134,7 @@ RSpec.describe 'PointEvents', type: :feature do
 				points: 5,
 				capacity: 5)
 			visit edit_point_event_path(id: event.id)
+			expect(page).to have_content('EDIT ENGAGEMENT')
 		end
 
 		it 'is valid with valid changes' do
