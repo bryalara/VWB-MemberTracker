@@ -28,8 +28,8 @@
         <% @user.events.each do |event| %>
         <tr>
             <td><%= event.name %></td>
-            <td><%= Event.dateTimeDisplay(event.startDate) %></td>
-            <td><%= Event.dateTimeDisplay(event.endDate) %></td>
+            <td><%= Event.display_date_time(event.startDate) %></td>
+            <td><%= Event.display_date_time(event.endDate) %></td>
             <td><%= event.points  %> </td>
         </tr>
         <% end %>
