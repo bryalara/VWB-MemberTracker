@@ -18,7 +18,7 @@ class Event < ApplicationRecord
   def end_date_is_bigger?
     return if [endDate.blank?, startDate.blank?].any?
 
-    errors.add(:endDate, 'must be possible') if endDate < startDate
+    errors.add(:base, 'The end time must be later than the start time') if endDate < startDate
   end
 
   # Displays a date time in a readable format

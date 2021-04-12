@@ -23,7 +23,15 @@
 		<p>A capacity of 0 represents "No Limit".</p>
 		<p>Reuploading documents will replace the last submission.<p>
 
-		<%= form_with :method => :PATCH, url:"/event/#{@event.id}", model: @event do |form| %>
+		<% if @event.errors.any? %>
+			<% @event.errors.full_messages.each do |message|%>
+			<p style="color: red;"><%= message %></p>
+			<%end%>
+		<%end%>
+
+		</br> 
+
+		<%= form_with method: :patch, url: update_event_path(@event), model: @event, local: true do |form| %>
 			<table>
 				<tr>
 					<th><%= form.label :name %>*</th>
