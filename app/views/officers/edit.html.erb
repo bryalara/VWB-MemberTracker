@@ -1,0 +1,23 @@
+
+<%= render "layouts/navbar2", user: @edithomepage %>
+<section style="padding-top: 10px;">
+<button class="btn btn-decor" style="border:0; text-decoration:none !important; outline:none">
+</button>
+<div class="wrapper fadeInDown">
+<div id="formContent">
+<%= link_to 'Back to Edit Officer Page', officers_path %>
+
+<%= form_with model: @officer do |form| %>
+ 
+  <div>
+    <%= form.text_field :name, placeholder: "name" %>
+    <%= form.text_field :email , placeholder: "email " %>
+    <%= form.text_field :description  , placeholder: "description  " %>
+    <%= form.file_field :image  , accept: 'image/png,image/jpeg' %>
+    <%= form.submit "Update officer" %>
+  </div>
+<% end %>
+</div>
+</div>
+</section>
+<%= render "layouts/footer" %>

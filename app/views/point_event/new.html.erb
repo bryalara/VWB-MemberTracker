@@ -1,33 +1,57 @@
 <%= render "layouts/navbar2", user: @user %>
-<div class="header">
-<button class="btn btn-decor"><%= link_to "Back to Events", event_index_path, class: "back-button" %></button>
-</div>
-<div class="wrapper fadeInDown">
-<div id="formContent">
+<section style="padding-top: 0px;">
+	<div class="header">
+		<h2 class="active h2-title">Admin Dashboard</h2>
+	</div>
 
-<h2 class="active">Add a Points Event</h2>
+	<div class="h2-title">
+		<h3 class="text upper">Add an Engagement</h3>
+		<button class="btn" style="padding-left: 0rem;"><%= link_to "Back to Events", event_index_path, class: "back-button" %></button>
+	</div>
 
-<p>* denotes required fields.<p>
-<%= form_with url:"/point_event", model: @pointEvent do |form| %>
-	<table style="text-align: center !important;">
-		<tr>
-			<th><%= form.label :name %>*</th>
-			<td><%= form.text_field :name, placeholder: "Name*" %></td>
-		</tr>
-		<tr>
-			<th><%= form.label :description %></th>
-			<td><%= form.text_field :description, placeholder: "Description" %></td>
-		</tr>
-		<tr>
-			<th><%= form.label :points %>*</th>
-			<td><%= form.number_field :points, placeholder: "Points" %></td>
-		</tr>
-	</table>
+	<div class="wrapper fadeInDown">
+	<div id="formContent">
 
-	<%= form.submit "Add Points Event" %>
+		<h2 class="active">New Engagement</h2>
 
-<% end %>
+		<p>* denotes required fields.<p>
+		<p>A capacity of 0 represents "No Limit"</p>
 
-</div>
-</div>
+		<% if @point_event.errors.any? %>
+			<% @point_event.errors.full_messages.each do |message|%>
+			<p style="color: red;"><%= message %></p>
+			<%end%>
+		<%end%>
+
+		</br> 
+
+		<%= form_with url: create_point_event_path, method: :post, model: @point_event, local: true do |form| %>
+			<table style="text-align: center !important;">
+				<tr>
+					<th><%= form.label :name %>*</th>
+					<td><%= form.text_field :name, placeholder: "Name" %></td>
+				</tr>
+				<tr>
+					<th><%= form.label :description %></th>
+					<td><%= form.text_field :description, placeholder: "Description" %></td>
+				</tr>
+				<tr>
+					<th><%= form.label :points %>*</th>
+					<td><%= form.number_field :points, placeholder: "Points" %></td>
+				</tr>
+				<tr>
+					<th><%= form.label :capacity %>*</th>
+					<td><%= form.number_field :capacity, placeholder: "Capacity" %></td>
+				</tr>
+				<tr>
+					<th>Document(s)</th>
+					<td><%= form.file_field :documents, multiple: true, direct_upload: true %></td>
+				</tr>
+			</table>
+			<%= form.submit "Add Engagement" %>
+		<% end %>
+
+	</div>
+	</div>
+</section>
 <%= render "layouts/footer" %>

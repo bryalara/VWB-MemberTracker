@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  def index 
-    @signedInUser= check_user
+  def index
+    @signed_in_user = check_user
   end
 end

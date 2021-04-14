@@ -1,0 +1,22 @@
+<style>
+.alert {
+	border-radius: 5px;
+	padding: 15px;
+	background: #d8ecdb;
+	color: #295529;
+}
+</style>
+
+<% flash.each do |type, msg| %>
+	<div class="alert">
+		<%= msg %>
+	</div>
+<% end %>
+
+<h1>Event: <%= @event.name %></h1>
+<h1>User: <%= @user.nil? ? "Register first!" : "Hello " + @user.email %></h1>
+
+<%= if !@user.nil?
+        link_to "Click to sign up!", sign_up_event_path(@event), method: :post 
+    end
+%>

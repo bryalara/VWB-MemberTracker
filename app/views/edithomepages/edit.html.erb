@@ -1,8 +1,23 @@
-<%= link_to "Back to Home page", edithomepages_path %>
 
+
+
+
+<%= render "layouts/navbar2", user: @edithomepage %>
+<section style="padding-top: 10px;">
+<button class="btn btn-decor" style="border:0; text-decoration:none !important; outline:none">
+</button>
+<div class="wrapper fadeInDown">
+<div id="formContent">
+<%= link_to "Back to Home page", edithomepages_path %>
 <h3>Edit home page Details</h3>
 <%= form_with model: @edithomepage do |form| %>
-  <%= form.text_field :name, placeholder: "name" %>
-  <%= form.text_field :description, placeholder: "description" %>
-  <%= form.submit "save changes to Home page"%>
+ 
+  <div>
+    <%= form.text_field :description, placeholder: "description" %>
+    <%= form.submit "save changes to Home page"%>
+  </div>
 <% end %>
+</div>
+</div>
+</section>
+<%= render "layouts/footer" %>

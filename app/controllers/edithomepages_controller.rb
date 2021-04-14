@@ -55,4 +55,8 @@ class EdithomepagesController < ApplicationController
   def edithomepage_params
     params.require(:edithomepage).permit(:name, :description)
   end
+
+  def image_params
+    params.require(:edithomepage).permit(:image)
+  end
 end

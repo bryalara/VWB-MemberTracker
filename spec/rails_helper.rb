@@ -1,18 +1,15 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'spec_helper'
-
-require 'webdrivers'
-require 'selenium-webdriver'
-
-
-
-
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+
+# This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'spec_helper'
+
+require 'webdrivers'
+require 'selenium-webdriver'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -78,29 +75,41 @@ RSpec.configure do |config|
 end
 
 
-require "selenium/webdriver"
-require "webdrivers/chromedriver"
+# require "selenium/webdriver"
+# require "webdrivers/chromedriver"
 
-Webdrivers::Chromedriver.required_version = "89.0.4389.90"
+# Webdrivers::Chromedriver.required_version = "89.0.4389.90"
 
 Capybara.server = :puma, { Silent: true }
 
-Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
-end
+# Capybara.register_driver :chrome do |app|
+#   Capybara::Selenium::Driver.new(app, browser: :chrome)
+# end
 
-Capybara.register_driver :headless_chrome do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: {
-      args:['no-sandbox', 'headless', 'disable-gpu', 'window-size=1280,800']
-    },
-  )
+# Capybara.register_driver :headless_chrome do |app|
+#   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+#     chromeOptions: {
+#       args:['no-sandbox', 'headless', 'disable-gpu', 'window-size=1280,800']
+#     },
+#   )
 
-  Capybara::Selenium::Driver.new app,
-    browser: :chrome,
-    desired_capabilities: capabilities
-end
+#   Capybara::Selenium::Driver.new app,
+#     browser: :chrome,
+#     desired_capabilities: capabilities
+# end
 
-Capybara.javascript_driver = :headless_chrome
+# Capybara.javascript_driver = :chrome
 
-# Capybara.default_driver = :selenium_chrome_headless
+Capybara.default_driver = :selenium_chrome_headless
+
+# Capybara.register_driver :selenium_chrome_headless do |app|
+#   Capybara::Selenium::Driver.load_selenium
+#   browser_options = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
+#     opts.args << "--headless"
+#   end
+
+#   browser_options.add_preference(:download, { prompt_for_download: false, default_directory: DOWNLOAD_PATH })
+#   Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
+# end
+
+# Capybara.current_driver = Capybara.javascript_driver

@@ -1,0 +1,93 @@
+
+<%= render "layouts/navbar2", user: @user %>
+
+<style>
+.notice {
+	border-radius: 5px;
+	padding: 10px;
+	background: #d8ecdb;
+	color: #295529;
+}
+.alert {
+	border-radius: 5px;
+	padding: 10px;
+	color: red;
+}
+</style>
+
+<section style="padding-top: 0px;">
+  <% flash.each do |type, msgs| %>
+    <div class="notice">
+    <% if Array === msgs %>
+      <ul>
+      <% msgs.each do |msg| %>
+        <li class=<%=msg[0..4].to_s.chomp == 'Error'.to_s.chomp ? :"alert" : :"notice"  %> ><%= msg %></li>
+      <% end %>
+      </ul>
+    <% else %>
+      <%= msgs %>
+    <% end %>
+    </div>
+  <% end %>
+    <div class="header">
+        <h2 class="active h2-title">Admin Dashboard</h2>
+    </div>
+    <div class="h2-title">
+        <h3 class="text upper">Pending Users</h3>
+        <button class="btn" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
+    <button class="btn"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
+    </div>
+
+<%= form_with do |form| %>
+  <table class="styled-table">
+      <tr>
+          <th> First Name <%= link_to (@attr == 'first' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pending_approval_path(:attr => 'first', :order => @attr=='first' ? !@order : :false) %></th>
+          <th> Last Name <%= link_to (@attr == 'last' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pending_approval_path(:attr => 'last', :order => @attr=='last' ? !@order : :false) %></th>
+          <th> Email </th>
+          <th> Phone Number </th>
+          <th> Classification <%= link_to (@attr == 'class' ? (@order== true ? :'🔽' : :'🔼') : :'⬜'), pending_approval_path(:attr => 'class', :order => @attr=='class' ? !@order : :true) %></th>
+          <th> Role <%= link_to (@attr == 'role' ? (@order== true ? :'🔽' : :'🔼') : :'⬜'), pending_approval_path(:attr => 'role', :order => @attr=='role' ? !@order : :true) %></th>
+          <th> T-Shirt <%= link_to (@attr == 'size' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pending_approval_path(:attr => 'size', :order => @attr=='size' ? !@order : :false) %></th>
+          <th> Points <%= link_to (@attr == 'points' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), pending_approval_path(:attr => 'points', :order => @attr=='points' ? !@order : :false) %></th>
+          <th> Action </th>
+          <th> Selection <%= link_to @select_all ? :'☑️' : :'⬜', pending_approval_path(:select_all => !@select_all, :attr => @attr, :order => @order) %></th>
+      </tr>
+
+
+  <% @users.each do |user| %>
+      <tr>
+          <td><%= user.firstName %></td>
+          <td><%= user.lastName  %></td>
+          <td><%= user.email  %> </td>
+          <td><%= '('+user.phoneNumber[0..2]+')'+'-'+user.phoneNumber[3..5]+'-'+user.phoneNumber[6..]   %> </td>
+          <td><%= user.classification %> </td>
+          <td><%= user.role == 0 ? :"Member" : :"Admin"  %> </td>
+          <td><%= user.tShirtSize  %> </td>
+          <td><%=  user.get_total_points(user) %> </td>
+          <td><%= link_to "View Details", user %> </td>
+          <td>
+              <%= form.check_box :users_ids, {multiple: true, checked: @select_all}, user.id, nil  %>
+          </td>
+      </tr>
+  <% end %>
+      <%if @users.length == 0 %>
+          <tr >
+              <td colspan="10"> No users need approving </td>
+          <tr>
+      <%end%>
+  </table>
+  <% if userlogin_signed_in? %>
+  <div>Signed in as: <%= current_userlogin.email %></div>
+  <div><%=  @auth.role == 0 ? :"Member" : :"Admin"  %> </div>
+<% end %>
+  <br>
+  <div align="center" >
+      <%= form.submit "Approve Selected"%>
+      
+      <%= form.submit "Destroy Selected", name: 'delete', data: { confirm: "Are you sure?" }%>
+  </div>
+<% end %>
+
+
+</section>
+<%= render "layouts/footer" %>

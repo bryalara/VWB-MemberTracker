@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
     <!-- Third party plugin CSS-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+    <%# <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" /> %>
     <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Homenaje&display=swap" rel="stylesheet">
 
@@ -39,18 +39,25 @@
             <a class="nav-link js-scroll-trigger" href="#services">Service</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#officers">Officers</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
           </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="<%= memberDashboard_path%>">Member</a>
-              </li> 
-          <% if @signedInUser %>
-            <% if @signedInUser.role == 1 %>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="<%= users_path %>">Admin</a>
-              </li> 
-            <%end%>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="<%= member_dashboard_path%>">Member</a>
+          </li> 
+          <% if userlogin_signed_in? && @signed_in_user%>
+            <li class="nav-item"> 
+              <a class="nav-link js-scroll-trigger" href="<%= event_index_path%>">Events</a>
+            </li>
           <%end%>
+          <%if @signed_in_user&.role==1 && @signed_in_user %>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="<%= users_path %>">Admin</a>
+            </li> 
+          <%end%>
+          
           <% if !userlogin_signed_in? %>
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="<%= userlogin_google_oauth2_omniauth_authorize_path %>"><i class="fas fa-sign-in-alt"></i> Sign In</a>
@@ -73,14 +80,39 @@
     </div>
   </header>
   </div>
+  <!-- About Us Section -->
+  <section class="page-section" id="about">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase" style="color: #660000;">About Us</h2>
+                    <h3 class="section-subheading text-muted">Vets Without Borders is a student led organization centered around veterinary medicine, with a focus on international veterinary 
+          medicine</h3>
+                </div>
+                <div class="timeline-heading">
+                    <h4 class="subheading" style="color: ##212529;">Who Can Join</h4>
+                </div>
+                <div class="timeline-body"><p class="text-muted">Anyone who is passionate about animals and interested in veterinary medicine!</p></div>
+                <div class="timeline-heading">
+                    <h4 class="subheading" style="color: ##212529;">Why You Should Join</h4>
+                </div>
+                <div class="timeline-body"><p class="text-muted">Our organization offers many opportunities for students who wish to become vets. We host weekly 
+                volunteer events where you will gain experience with a variety of animals locally. We also have speakers at our meetings that you won't want to miss! 
+                Additionaly, we host several trips during the summer where you are able to gain experience with animals abroad.</p>
+                </div>
+                <div class="text-center">
+              <span>
+                  <img src="assets/giraffe.jpeg" width="30%" height="30%">
+              </span>
+              <span>
+                  <img src="assets/girlandanimal.jpg" width="30%" height="30%">
+              </span> 
+              <span>
+                  <img src="assets/horse.jpeg" width="30%" height="30%">
+              </span> 
+            </div>
+            </div>
 
-  <section id="about">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2 id="aboutH">About Us</h2>
-
-          <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+            <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
         
             <% if edithomepage.name == "about_us" %>
               <td><%= (edithomepage.description) %></td>
@@ -89,46 +121,87 @@
             <% end %>
     
           <% end %>
-
-          <p class="lead"></p>
-          <ul>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" class="bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2 id="serviceH">Service</h2>
-        </div>
-      </div>
-    </div>
-  </section>
-
+        </section>
+  <!-- Service-->
+        <section class="page-section bg-light" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase" style="color: #660000;">Service</h2>
+                    <h3 class="section-subheading text-muted">Vets Without Borders offers 1-2 volunteer opportunities per week where you can gain animal
+                    experience locally</h3>
+                </div>
+                <div class="text-center">
+                    <span>
+                        <img src="assets/volunteer.jpeg" >
+                    </span>             
+                </div>
+                <br></br>
+                <div class="timeline-heading">
+                    <h4 class="subheading" style="color: ##212529;">Volunteering</h4>
+                </div>
+                <div class="timeline-body"><p class="text-muted"><% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+          
+              <% if edithomepage.name == "service" %>
+                <td><%= (edithomepage.description) %></td>
+              <% else %>
+                <%  "Wrong Spelling of website attribute" %>
+              <% end %>
+      
+            <% end %></p>
+                </div>
+            </div>
+             <div class="text-center">
+              <span>
+                  <img src="assets/elephant2.jpeg" width="41%" height="41%">
+              </span>
+              <span>
+                  <img src="assets/sunset.jpg" width="33%" height="33%">
+              </span> 
+            </div>
+        </section>
+  <!-- Officers-->
+        <section class="page-section" id="officers">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase" style="color: #660000;">Officers</h2>
+                </div>
+                <div class="row" id="officer-row">
+                    
+                </div>
+                <div class="row">
+                    <div class="text-center"><p class="large text-muted">As the first official student-led chapter of Veterinarians Without Borders 
+                    in the nation, we have the opportunity to maintain a program that works to improve global health for both humans and animals. As the Texas A&M chapter 
+                    of Veterinarians we work to uphold the same value as the national program. It will be an experience unlike any other and hope you are interested in 
+                    becoming involved!</p></div>
+                </div>
+            </div>
+        </section>
+<!-- Contact Us Section -->
   <section id="contact">
     <div class="container">
       <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
                 <h2 id="contactH" class="mt-0">Contact Us!</h2>
                 <hr class="divider my-4" />
-                <p class="text-muted mb-5">Stay up to date with the happenings at Veterinarians Without Borders by following our social medias and contacting us through our email!</p>
+                <div class="text-center"><p class="large" style="color: #cccccc;">For more information, feel free to follow us on our social media to see all our community service and international
+                trip experiences!</p>
+                </div>
             </div>
         </div>
+        <br>
+        <!-- Social Media Section -->
             <div class="row">
             <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                <a class="d-block" href="https://www.facebook.com/vwbtamu/"><i class="fab fa-facebook-f fa-3x mb-3 text-muted"></i></a>
-                <div>Veterinarians Without Borders- Texas A&M</div>
+                <a class="d-block" href="https://www.facebook.com/vwbtamu/"><i class="fab fa-facebook-f fa-3x mb-3 "></i></a>
+                <div class="large" style="color: #cccccc;">Veterinarians Without Borders- Texas A&M</div>
             </div>
             <div class="col-lg-4 mr-auto text-center">
-                <a class="d-block" href="mailto:vetswithoutborders@tamu.edu"><i class="fas fa-envelope fa-3x mb-3 text-muted"></i></a>
-                <div>vetswithoutborders@tamu.edu</div>
+                <a class="d-block" href="mailto:vetswithoutborders@tamu.edu"><i class="fas fa-envelope fa-3x mb-3 "></i></a>
+                <div class="large" style="color: #cccccc;">vetswithoutborders@tamu.edu</div>
             </div>
             <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                <a class="d-block" href="https://www.instagram.com/vwbtamu/?hl=en"><i class="fab fa-instagram fa-3x mb-3 text-muted"></i></a>
-                <div>@vwbtamu</div>
+                <a class="d-block" href="https://www.instagram.com/vwbtamu/?hl=en"><i class="fab fa-instagram fa-3x mb-3 "></i></a>
+                <div class="large" style="color: #cccccc;">@vwbtamu</div>
             </div>
         </div>
     </div>
@@ -136,8 +209,8 @@
 
 <%= render "layouts/footer"%>
           <!-- Bootstrap core JS-->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+        <%# <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> %>
+        <%# <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script> %>
 </body>
 
 </html>
