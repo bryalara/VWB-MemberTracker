@@ -17,10 +17,6 @@ User.create(email: 'paulinewade@tamu.edu', role: 1, firstName: 'Pauline', lastNa
 User.create(email: 'shayle@tamu.edu', role: 1, firstName: 'Yihao', lastName: 'Xie', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 32afdc6d4a9b784f4f4839a3048fbfc6195f183c
 # Edithomepage.create(name: 'home', description: 'This is the home description')
 Edithomepage.create(name: 'about_us', description: 'This is the about us description')
 Edithomepage.create(name: 'service', description: 'This is the service description')
