@@ -15,8 +15,7 @@ User.create(email: 'soto_samantha@tamu.edu', role: 1, firstName: 'Samantha', las
 User.create(email: 'manseerat@tamu.edu', role: 1, firstName: 'Manseerat', lastName: 'Batra', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
 User.create(email: 'paulinewade@tamu.edu', role: 1, firstName: 'Pauline', lastName: 'Wade', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
 User.create(email: 'shayle@tamu.edu', role: 1, firstName: 'Yihao', lastName: 'Xie', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
-
-
+User.create(email: 'keerthana96@tamu.edu', role: 1, firstName: 'Keerthana', lastName: 'Reddy Nerella', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
 
 # Edithomepage.create(name: 'home', description: 'This is the home description')
 Edithomepage.create(name: 'about_us', description: 'This is the about us description')
@@ -27,7 +26,6 @@ Officer.create( name: "name1 ",email: "name1@gmail.com ",  description: "descrip
 Officer.create( name: "name2 ",email: "name2@gmail.com ", description: "description 2 ")
 Officer.create( name: "name3 ",email: "name3@gmail.com ",  description: "description 3 ")
 Officer.create( name: "name4 ",email: "name4@gmail.com ",  description: "description 4 ")
-
 
 # if @officer.image.attached?
 #     @officer.image.attach(io: File.open('app/assets/images/deafultOfficerImage.png'), filename: 'defaultOfficerImage.png')
