@@ -7,19 +7,20 @@ class UsersController < ApplicationController
 
   def index
     Rails.logger.info 'Inside Index'
+    # Check that auth user is signed in and an approved admin, else redirect
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    # Guard case that returns so that index stops processing. Prevents double renders/redirects
+    return unless @auth && (@auth.role == 1) && @auth.approved == true
 
+    # Grabing params used for sorting users on view
     @order = params[:order] == 'true'
     @attr = params[:attr]
     @attr ||= 'last'
     ord = @order == true ? :DESC : :ASC
     @users = User.get_users(true, @attr, ord)
-    @latest_new = User.order('created_at').last
-    @latest_update = User.order('updated_at').last
-
-    return unless @auth && (@auth.role == 1) && @auth.approved == true
-
+    # This responds to when we want to download approved users as csv.
+    # Using Gaurd case above makes sure only approved admins have access
     respond_to do |format|
       format.html
       format.csv do
@@ -39,8 +40,12 @@ class UsersController < ApplicationController
 
   # import csv
   def import
+    # Check that auth user is signed in and an approved admin, else redirect
     @auth = User.find_by(email: current_userlogin.email)
     redirect_to member_dashboard_path if !@auth || @auth.role.zero? || @auth.approved == false
+    # Guard case that returns so that index stops processing. Prevents double renders/redirects
+    return unless @auth && (@auth.role == 1) && @auth.approved == true
+
     wmsg = User.my_import(params[:file])
     if wmsg.length.positive?
       # flash[:notice] ||= []
@@ -55,10 +60,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    # Find user entity from params id to be displayed
     @user = User.find(params[:id])
     @msg = params[:notice]
+    # Check that auth user is signed in and an approved member, else redirect
     @auth = User.find_by(email: current_userlogin.email)
     if @auth
+      # redirect to logged in users info, prevent them from viewing other users' data
       redirect_to users_path(@auth) if @auth.role.zero?
     else
       redirect_to registration_user_path
@@ -66,22 +74,31 @@ class UsersController < ApplicationController
   end
 
   def new
+    # Auth used to check if user is already created
     @auth = User.find_by(email: current_userlogin.email)
+    # Creating new user entity to be created and filled in
     @user = User.new
   end
 
   def create
+    # Auth used to check if user is already created
     @auth = User.find_by(email: current_userlogin.email)
+    # logged_auth used to determine what params to pass depending on admin or not
     logged_auth = false
     logged_auth = @auth.role.zero? ? false : true if @auth
+    # Creating user with params determine by logged_auth. Fals means logged in is a member or new registering user
     @user = User.new(logged_auth ? user_params : member_params)
+    # Handling case that user is saved properly
     if @user.save
+      # Outputing newly created user information
       logger.debug "User: (#{@user.firstName} #{@user.lastName}) created @ #{Time.zone.now}"
       logger.debug @user.inspect
+      # Redirecting to show user information
       redirect_to @user, notice: "Successfully created new user: #{"#{@user.firstName} #{@user.lastName}"}."
     elsif @user.valid?
       flash[:notice] = "Successfully created new user: #{"#{@user.firstName} #{@user.lastName}"}."
     else
+      # Outputing errors if user params were not valid
       @msg = @user.errors.full_messages[0]
       logger.warn "Creating user input field error: #{@msg}"
       flash.now[:notice] = @msg
@@ -96,6 +113,8 @@ class UsersController < ApplicationController
       return
     end
     @user = User.find(params[:id])
+    # Changine user to auth if logged in user is not admin.
+    # Makes sure that non admins can only edit their own information
     @user = @auth if @auth.role.zero?
   end
 
@@ -120,6 +139,7 @@ class UsersController < ApplicationController
 
   def destroy
     @auth = User.find_by(email: current_userlogin.email)
+    # Redirects to member_dashboard if not an approved admin, not processing delete
     if !@auth || @auth.role.zero? || @auth.approved == false
       redirect_to member_dashboard_path
       return
@@ -141,10 +161,10 @@ class UsersController < ApplicationController
       redirect_to member_dashboard_path
       return
     end
-
+    # Post request are when admin selected pendingUsers for approval or deletion
     if request.post? && user_ids
       action_users = User.where(id: user_ids)
-
+      # Handling approving selected users
       if params[:commit]
         action_users.each do |user|
           flash[:notice] ||= []
@@ -154,7 +174,7 @@ class UsersController < ApplicationController
             flash[:alert] << ("#{user.firstName} #{user.lastName} could not be approved")
           end
         end
-
+      # Handling deleting selected users
       elsif params[:delete]
         action_users.each do |user|
           flash[:notice] ||= []
@@ -165,10 +185,11 @@ class UsersController < ApplicationController
           end
         end
       end
-
+      # Redirecting to previous page after processing, in case redirection fails it goes to users_path
       redirect_back(fallback_location: users_path)
+      return
     end
-
+    # Processing display of pending approval user, similar to index
     @order = params[:order] == 'true'
     @attr = params[:attr]
     @attr ||= 'last'
@@ -180,30 +201,7 @@ class UsersController < ApplicationController
     @auth = User.find_by(email: current_userlogin.email)
     @user = User.find_by(email: current_userlogin.email)
     @display = 0
-    unless @user
-      redirect_to new_user_path
-      return
-    end
-    @show_all = (params[:show_all] == 'true')
-    @user_events = []
-    @user_pevents = []
-
-    @display = params[:show_all] ? @user.events.length : 5
-
-    i = 0
-    @user.events.order(:created_at).each do |e|
-      @user_events.append("[#{e.points} pts] - #{e.name} @ #{e.startDate}")
-      i += 1
-      break if i >= @display
-    end
-    @num_events = i
-    i = 0
-    @user.point_events.each do |e|
-      @user_pevents.append(e.name)
-      i += 1
-      break if i >= @display
-    end
-    @num_point_events = i
+    redirect_to new_user_path and return unless @user
   end
 
   def registration

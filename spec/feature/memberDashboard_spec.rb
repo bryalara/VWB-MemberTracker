@@ -29,12 +29,12 @@ RSpec.describe 'MemberDashboard', type: :feature do
 			check 'user_optInEmail'
 			
 			click_on 'Sign Up'
-			
+			sleep(1)
 		end
 
 		it 'new member is shown pending approval' do
 			visit member_dashboard_path
-			
+			sleep(1)
 			expect(page).to have_content('Hello, John Doe')
 			expect(page).to have_content('Your account is pending approval.')
 		end
@@ -42,35 +42,34 @@ RSpec.describe 'MemberDashboard', type: :feature do
 		describe "Approved new member" do
 			setup do
 				#approving recent user as member
+				sleep(1)
 				user=User.find_by(email: OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-				while !user
-					user=User.find_by(email: OmniAuth.config.mock_auth[:google_oauth2][:info][:email])
-				end
+				sleep(1)
 				user.update(approved: true)
 				sleep(1)
 			end
 			it 'new member is approved and shown member dashboard' do
 				visit member_dashboard_path
-				
+				sleep(1)
 				expect(page).to have_content('Hello, John Doe')
 				expect(page).to have_content('Current Total Points: 0')
 			end
 			it 'member redirected to dashboard when trying to access users' do
 				visit users_path
-				
+				sleep(1)
 				expect(page).to have_content('Hello, John Doe')
 				expect(page).to have_content('Current Total Points: 0')
 			end
 			it 'member able to edit their info' do
 				visit member_dashboard_path
-				
+				sleep(1)
 				click_link 'Edit info'
-				
+				sleep(1)
 				fill_in 'user_firstName', with: 'Doe'
 				fill_in 'user_lastName', with: 'John'
-				
+				sleep(1)
 				click_on 'Update User'
-				
+				sleep(1)
 				expect(page).to have_content('Hello, Doe John')
 				expect(page).to have_content('Current Total Points: 0')
 			end

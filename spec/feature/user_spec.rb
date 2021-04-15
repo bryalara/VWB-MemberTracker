@@ -27,6 +27,7 @@ RSpec.describe 'Users', type: :feature do
 			
 			click_on 'Sign Up'
 			login_with_oauth
+			sleep(1)
 			visit pending_approval_path
 			expect(page).to have_content('entao@tamu.edu')
 		end
