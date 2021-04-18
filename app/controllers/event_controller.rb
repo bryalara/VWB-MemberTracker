@@ -130,12 +130,16 @@ class EventController < ApplicationController
       redirect_to @event
       nil
     else
-      # Force a user in and set them as attended.
-      @event.users << @user
-      attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
-      attendance.attended = true
-      attendance.save
-      flash[:notice] = "Successfully attended #{@event.name}!"
+      if (DateTime.now > @event.endDate)
+        flash[:notice] = "Could not attend #{@event.name} because the event has already ended."
+      else
+        # Force a user in and set them as attended.
+        @event.users << @user
+        attendance = EventAttendee.find_by(user_id: @user.id, event_id: @event.id)
+        attendance.attended = true
+        attendance.save
+        flash[:notice] = "Successfully attended #{@event.name}!"
+      end
       redirect_to @event
     end
   end

@@ -12,13 +12,14 @@ th, td, tr {
 }
 </style>
 
-<div class="h2-title" style="padding-top: 20px;">
-    <h3 class="text upper">Engagements</h3>
-	<button class="btn" style="padding-left: 0rem;" > <%= link_to "Add an Engagement", new_point_event_path(@pointEvents), class:"back-button" %></button>
-</div>
-
 <%# Admin's View %>
 <% if admin? %>
+
+	<div class="h2-title" style="padding-top: 20px;">
+		<h3 class="text upper">Engagements</h3>
+		<button class="btn" style="padding-left: 0rem;" > <%= link_to "Add an Engagement", new_point_event_path(@pointEvents), class:"back-button" %></button>
+	</div>
+
 	<table class="styled-table" >
 		<tr>
 			<th>Event</th>
@@ -30,7 +31,15 @@ th, td, tr {
 		</tr>
 
 		<% @point_events.each do |point_event| %>
-		<tr>
+		
+		<% if (@auth.attended_point_event?(point_event) == 2) %>
+			<tr style="background-color: #d6ffe1;">
+		<% elsif (@auth.attended_point_event?(point_event) == 1) %>
+			<tr style="background-color: #fff6d6;">
+		<% else %>
+			<tr>
+		<% end %>
+
 			<td><%= point_event.name %></td>
 			<td><%= point_event.description %></td>
 			<td><%= point_event.points %></td>
@@ -65,6 +74,11 @@ th, td, tr {
 
 <%# Member's View %>
 <% else %>
+
+	<div class="h2-title" style="padding-top: 20px;">
+		<h3 class="text upper">Engagements</h3>
+	</div>
+
 	<table class="styled-table" >
 		<tr>
 			<th>Engagement</th>
@@ -75,7 +89,15 @@ th, td, tr {
 		</tr>
 
 		<% @point_events.each do |point_event| %>
-		<tr>
+		
+		<% if (@auth.attended_point_event?(point_event) == 2) %>
+			<tr style="background-color: #d6ffe1;">
+		<% elsif (@auth.attended_point_event?(point_event) == 1) %>
+			<tr style="background-color: #fff6d6;">
+		<% else %>
+			<tr>
+		<% end %>
+
 			<td><%= point_event.name %></td>
 			<td><%= point_event.description %></td>
 			<td><%= point_event.points %></td>

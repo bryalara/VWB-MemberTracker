@@ -1,4 +1,9 @@
 <%# Renders a calender of events.%>
+
+<div class="h2-title">
+	<h3 class="text upper">Calender</h3>
+</div>
+
 <% @meetings = Event.all %>
 <%= month_calendar(events: @meetings, attribute: :startDate, end_attribute: :endDate) do |date, meetings| %>
 	<%= date %>

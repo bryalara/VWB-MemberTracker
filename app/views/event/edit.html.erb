@@ -19,6 +19,7 @@
 		<%= msg %>
 	</div>
 <% end %>
+
 <div class="h2-title">
 	<h3 class="text upper">Edit An Event</h3>
 	<button class="btn" style="padding-left: 0rem;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
@@ -36,8 +37,6 @@
 			<p style="color: red;"><%= message %></p>
 			<%end%>
 		<%end%>
-
-		</br> 
 
 		<%= form_with method: :patch, url: update_event_path(@event), model: @event, local: true do |form| %>
 			<table>
@@ -75,7 +74,7 @@
 	</div>
 </div>
 
-<br></br>
+<br>
 <div class="h2-title">
 	<h3 class="text upper">Attendance</h3>
 </div>
