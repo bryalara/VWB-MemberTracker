@@ -6,7 +6,7 @@ class EventController < ApplicationController
   before_action :authenticate_userlogin!
   def index
     @auth = User.find_by(email: current_userlogin.email)
-    @events = Event.all
+    @events = Event.all.order('"startDate" DESC')
     @point_events = PointEvent.all
   end
 
