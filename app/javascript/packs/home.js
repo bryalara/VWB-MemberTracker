@@ -1,58 +1,5 @@
 import "../stylesheets/home_extra"
 
-class Officer {
-  constructor(name, role, imageURL){
-    this.name = name;
-    this.role = role;
-    this.imageURL = imageURL;
-  }
-
-  createOfficer() {
-
-  var div1 = document.createElement('div');
-  div1.className = "col-lg-4";
-  var div2 = document.createElement('div');
-  div2.className = "team-member";
-
-  const img = document.createElement("img");
-  img.src = "/assets/" + this.imageURL;
-  img.className = "mx-auto rounded-circle";
-  img.setAttribute("style", "border-radius: 50%;");
-  div2.appendChild(img);
-
-  var nameField = document.createElement("h4");
-  nameField.textContent = this.name;
-  div2.appendChild(nameField);
-
-  var roleField = document.createElement("p");
-  roleField.textContent = this.role;
-  div2.appendChild(roleField);
-  div1.appendChild(div2);
-
-  document.getElementById("officer-row").appendChild(div1);
-  }
-}
-$(document).ready(function () {
-  var officers = [];
-  var officer1 = new Officer("Jane Doe", "President", "1.jpg");
-  officers.push(officer1);
-
-  var officer2 = new Officer("Matt Smith", "Vice President", "2.jpg");
-  officers.push(officer2);
-
-  var officer3 = new Officer("Tina Philips", "Treasurer", "3.jpg");
-  officers.push(officer3);
-
-  for (var i = 0; i < officers.length; i++){
-    officers[i].createOfficer();
-  }
-
-
-
-
-
-});
-
 (function($) {
     "use strict"; // Start of use strict
 

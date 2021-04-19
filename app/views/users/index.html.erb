@@ -1,6 +1,5 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <%# <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> %>
-<%= render "layouts/navbar2", user: @auth %>
 <style>
 .section {
     padding: 0px;
@@ -41,8 +40,9 @@
 <div class="h2-title">
     <h3 class="text upper">Users </h3>
     <button class="btn" style="padding-left: 0rem;"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
-    <button class="btn" style="padding-left: 0rem;"> <%= link_to "Pending Users", pending_approval_path, class: "back-button" %> </button>
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "\u25F4".encode('utf-8'), pending_approval_path, class: "back-button fas fa-clock" %> </button>
     <button class="btn" style="padding-left: 0rem;"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "Officers", officers_path, class: "back-button" %> </button>
 </div> 
 
 <table class="styled-table">
@@ -56,10 +56,7 @@
         <th> T-Shirt <%= link_to (@attr == 'size' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), users_path(:attr => 'size', :order => @attr=='size' ? !@order : :false) %></th>
         <th> Points <%= link_to (@attr == 'points' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), users_path(:attr => 'points', :order => @attr=='points' ? !@order : :false) %></th>
         <th> Action </th>
-        
     </tr>
-
-
 <% @users.each do |user| %>
     <tr>
         <td><%= user.firstName %></td>

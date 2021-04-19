@@ -153,8 +153,6 @@ html {
     // padding: 20px;
     // padding: 90px;
     padding: 40px;
-
-
   }
   
   #formContent {
@@ -171,7 +169,6 @@ html {
     text-align: center;
     padding-left: 100px;
     padding-right: 100px;
-
   }
 
   /* TABS */
@@ -194,7 +191,8 @@ input[type=button], input[type=submit], input[type=reset], .back-button  {
     background-color: #660000;
     border: none;
     color: white;
-    padding: 15px 80px;
+    // padding: 15px 80px;
+    padding: 15px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
