@@ -113,10 +113,23 @@ th, td, tr {
 	<%= link_to "Download .ics", event_download_ics_path, method: :post %>
 <% end %>
 
-<%# only an admin could download CSV %>
+<hr>
+
+<%= render template: 'point_event/index' %>
+
+<hr>
+
+<%= render template: 'layouts/events' %>
+
+<hr>
+
 <% if admin? %>
-<div align="center">
-    <div>
+
+	<div class="h2-title">
+		<h3 class="text upper">Back up events</h3>
+	</div>
+
+	<div>
 		<%# <h4> Import Data From CSV file </h4> %>
 		<%= form_tag import_event_index_path, multipart: true do %>
 			<%= file_field_tag :file %>
@@ -126,19 +139,33 @@ th, td, tr {
 			<%= file_field_tag :file %>
 			<%= submit_tag "Import CSV for Users' Participation", class: "button" %>
 		<% end %>
-        <%# make two button to output 2 different kinds of CSV %>
-        <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Events List", event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
+		<%# make two button to output 2 different kinds of CSV %>
+		<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Events List", event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
 		<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Users' Participation", event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
-    </div>
-</div>
+	</div>
+
+	<hr>
+
+	<div class="h2-title">
+		<h3 class="text upper">Back up engagements</h3>
+	</div>
+
+	<div>
+		<%# <h4> Import Data From CSV file </h4> %>
+		<%= form_tag import_point_event_index_path, multipart: true do %>
+			<%= file_field_tag :file %>
+			<%= submit_tag "Import CSV", class: "button" %>
+		<% end %>
+
+		<%= form_tag import_part_point_event_index_path, multipart: true do %>
+			<%= file_field_tag :file %>
+			<%= submit_tag "Import CSV for Users' Engagement", class: "button" %>
+		<% end %>
+        <%# make teo button to output 2 different kinds of CSV %>
+        <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Engagements List", point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
+      	<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Users' Engagement", point_event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
+      </div>
 <% end %>
-
-
-<%= render template: 'point_event/index' %>
-
-<br>
-<%= render template: 'layouts/events' %>
-
 
 </section>
 <%= render "layouts/footer" %>
