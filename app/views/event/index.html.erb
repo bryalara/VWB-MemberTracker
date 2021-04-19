@@ -110,7 +110,7 @@ th, td, tr {
 		</tr>
 		<% end %>
 	</table>
-	<%= link_to "Download .ics", event_download_ics_path, method: :post %>
+	<%= link_to "Download .ics for events", event_download_ics_path, method: :post %>
 <% end %>
 
 <hr>
@@ -120,29 +120,46 @@ th, td, tr {
 <hr>
 
 <%= render template: 'layouts/events' %>
+<%= link_to "Download .ics for events", event_download_ics_path, method: :post %>
 
 <hr>
 
 <% if admin? %>
-
 	<div class="h2-title">
 		<h3 class="text upper">Back up events</h3>
 	</div>
 
-	<div>
-		<%# <h4> Import Data From CSV file </h4> %>
-		<%= form_tag import_event_index_path, multipart: true do %>
-			<%= file_field_tag :file %>
-			<%= submit_tag "Import CSV", class: "button" %>
-		<% end %>
-		<%= form_tag import_part_event_index_path, multipart: true do %>
-			<%= file_field_tag :file %>
-			<%= submit_tag "Import CSV for Users' Participation", class: "button" %>
-		<% end %>
-		<%# make two button to output 2 different kinds of CSV %>
-		<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Events List", event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
-		<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Users' Participation", event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
-	</div>
+	<table>
+		<%# Event downloading, uploading, and importing %>
+		<tr>
+			<td>
+				<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Events List", event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
+			</td>
+			<td>
+				<%= form_tag import_event_index_path, multipart: true do %>
+					<%= file_field_tag :file %>
+			</td>
+			<td>
+					<%= submit_tag "Import CSV", class: "btn" %>
+				<% end %>
+			</td>
+		</tr>
+
+		<%# Event Participation downloading, uploading, and importing %>
+		<tr>
+			<td>
+				<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Users' Participation", event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
+			</td>
+			<td>
+				<%= form_tag import_part_event_index_path, multipart: true do %>
+					<%= file_field_tag :file %>	
+			</td>
+			<td>
+					<%= submit_tag "Import CSV for Users' Participation", class: "btn" %>
+				<% end %>
+			</td>
+		</tr>
+	</table>
 
 	<hr>
 
@@ -150,21 +167,37 @@ th, td, tr {
 		<h3 class="text upper">Back up engagements</h3>
 	</div>
 
-	<div>
-		<%# <h4> Import Data From CSV file </h4> %>
-		<%= form_tag import_point_event_index_path, multipart: true do %>
-			<%= file_field_tag :file %>
-			<%= submit_tag "Import CSV", class: "button" %>
-		<% end %>
+	<table>
+		<%# Engagement downloading, uploading, and importing %>
+		<tr>
+			<td>
+        		<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Engagements List", point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
+			</td>
+			<td>
+				<%= form_tag import_point_event_index_path, multipart: true do %>
+					<%= file_field_tag :file %>
+			</td>
+			<td>
+					<%= submit_tag "Import CSV", class: "button" %>
+				<% end %>
+			</td>
+		</tr>
 
-		<%= form_tag import_part_point_event_index_path, multipart: true do %>
-			<%= file_field_tag :file %>
-			<%= submit_tag "Import CSV for Users' Engagement", class: "button" %>
-		<% end %>
-        <%# make teo button to output 2 different kinds of CSV %>
-        <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Engagements List", point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
-      	<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Users' Engagement", point_event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
-      </div>
+		<%# Engagement Participation downloading, uploading, and importing %>
+		<tr>
+			<td>
+      			<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Users' Engagement", point_event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
+			</td>
+			<td>
+				<%= form_tag import_part_point_event_index_path, multipart: true do %>
+					<%= file_field_tag :file %>
+			</td>
+			<td>
+					<%= submit_tag "Import CSV for Users' Engagement", class: "button" %>
+				<% end %>
+			</td>
+		</tr>
+	</table>
 <% end %>
 
 </section>
