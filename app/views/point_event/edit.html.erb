@@ -9,18 +9,18 @@
 </style>
 <section style="padding-top: 0px;">
 <div class="header h2-title">
-        <button class="btn" style="padding-left: 0rem;"> <%= link_to event_index_path, class: "nor-button small" do %>
-		<%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
-		</button>
-    </div>
+  <button class="btn" style="padding-left: 0rem;"> <%= link_to event_index_path, class: "nor-button small" do %>
+    <%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
+  </button>
+</div>
 
-	<% flash.each do |type, msg| %>
+<% flash.each do |type, msg| %>
 	<div class="alert">
 		<%= msg %>
 	</div>
 	<% end %>
 
-	<!--Header -->
+<!--Header -->
 <div class="header2">
 	<h2 class="active h2-title">Engagements</h2>
 </div>

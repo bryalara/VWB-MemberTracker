@@ -18,15 +18,17 @@
 		<%= msg %>
 	</div>
 	<% end %>
+  
 	<div class="header2">
-		<h2 class="active h2-title">Admin Dashboard</h2>
+		<h2 class="active h2-title">Engagements</h2>
 	</div>
+  
 	<div class="h2-title">
 		<h3 class="text upper">Engagement Details </h3>
 	</div> 
 	<br>
 	<%= render "form", pointEvent: @point_event %>
-	<br></br>
+	<br>
 	<div class="wrapper">
 		<% unless admin?%>
 			<p>Your uploaded documents:</p>
