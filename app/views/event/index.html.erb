@@ -29,9 +29,6 @@ th, td, tr {
 		  <%= fa_icon "plus", size: '3x' %><span class="lbl">New</span><% end %>
 		</button>
 	</div>
-
-<% if admin? %>
-<%# Admin's View %>
 	<table class="styled-table small" >
 		<tr>
 			<th>Event</th>
@@ -70,8 +67,12 @@ th, td, tr {
 	</table>
   <button class="btn" style="padding-left: 0rem;"> <%= link_to event_download_ics_path, method: :post, class: "nor-button small" do %>
     <%= fa_icon "download", size: '3x' %><span class="lbl">Download .ics</span><% end %>
-  </button><% else %>
+  </button>
+<% else %>
 <%# Member's View %>
+	<div class="h2-title">
+		<h3 class="text upper">Events</h3>
+	</div>
 	<table class="styled-table small">
 		<tr>
 			<th>Event</th>
@@ -175,14 +176,18 @@ th, td, tr {
 		<%# Engagement downloading, uploading, and importing %>
 		<tr>
 			<td>
-        		<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Engagements List", point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
+				<button class="btn " style="padding-left: 0rem;"> <%= link_to point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "nor-button small" do %>
+					<%= fa_icon "download", size: '3x' %><span class="lbl">Download</span><% end %>
+				</button>			
 			</td>
 			<td>
-				<%= form_tag import_point_event_index_path, multipart: true do %>
+				<%= form_tag import_point_event_index_path, class: "small", multipart: true do %>
 					<%= file_field_tag :file %>
 			</td>
 			<td>
-					<%= submit_tag "Import CSV", class: "button" %>
+					<%= button_tag :submit, class: "nor-button small" do %>
+						<%= fa_icon "upload", size: '3x'%><span class="lbl">Import</span>
+					<% end %>
 				<% end %>
 			</td>
 		</tr>
@@ -190,14 +195,18 @@ th, td, tr {
 		<%# Engagement Participation downloading, uploading, and importing %>
 		<tr>
 			<td>
-      			<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Users' Engagement", point_event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
+				<button class="btn " style="padding-left: 0rem;"> <%= link_to point_event_csv_path(:format => :csv), format_data: "users", class: "nor-button small" do %>
+					<%= fa_icon "download", size: '3x' %><span class="lbl">Download Attendance</span><% end %>
+				</button>
 			</td>
 			<td>
-				<%= form_tag import_part_point_event_index_path, multipart: true do %>
+				<%= form_tag import_part_point_event_index_path, class: "small", multipart: true do %>
 					<%= file_field_tag :file %>
 			</td>
 			<td>
-					<%= submit_tag "Import CSV for Users' Engagement", class: "button" %>
+					<%= button_tag :submit, class: "nor-button small" do %><%= fa_icon "upload", size: '3x'%>
+						<span class="lbl">Import Attendance</span>
+					<% end %>
 				<% end %>
 			</td>
 		</tr>

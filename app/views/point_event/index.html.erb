@@ -11,22 +11,15 @@ th, td, tr {
 }
 </style>
 
-<div class="h2-title" style="padding-top: 20px;">
-    <h3 class="text upper">Engagements</h3>
-	<button class="btn" style="padding-left: 0rem;" > <%= link_to new_point_event_path(@pointEvents), class: "nor-button small" do %>
-	  <%= fa_icon "plus", size: '3x' %><span class="lbl">New</span><% end %>
-	</button>
-	<%# make two buttons to output 2 different kinds of CSV %>
-	<button class="btn " style="padding-left: 0rem;"> <%= link_to point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "nor-button small" do %>
-	  <%= fa_icon "download", size: '3x' %><span class="lbl">Download</span><% end %>
-	</button>
-	<button class="btn " style="padding-left: 0rem;"> <%= link_to point_event_csv_path(:format => :csv), format_data: "users", class: "nor-button small" do %>
-	  <%= fa_icon "download", size: '3x' %><span class="lbl">Download Attendance</span><% end %>
-	</button>
-</div>
-
 <%# Admin's View %>
 <% if admin? %>
+	<div class="h2-title" style="padding-top: 20px;">
+		<h3 class="text upper">Engagements</h3>
+		<button class="btn" style="padding-left: 0rem;" > <%= link_to new_point_event_path(@pointEvents), class: "nor-button small" do %>
+			<%= fa_icon "plus", size: '3x' %><span class="lbl">New</span><% end %>
+		</button>
+	</div>
+
 	<table class="styled-table small" >
 		<tr>
 			<th>Event</th>
@@ -61,27 +54,12 @@ th, td, tr {
 		<% end %>
 	</table>
 	<br>
-  <div align="center" >
-      <div>
-		<%# <h4> Import Data From CSV file </h4> %>
-		<%= form_tag import_point_event_index_path, class: "small", multipart: true do %>
-			<%= file_field_tag :file %>
-			<%= button_tag :submit, class: "nor-button small" do %>
-			<%= fa_icon "upload", size: '3x'%><span class="lbl">Import</span>
-			<% end %>
-		<% end %>
-
-		<%= form_tag import_part_point_event_index_path, class: "small", multipart: true do %>
-			<%= file_field_tag :file %>
-			<%= button_tag :submit, class: "nor-button small" do %><%= fa_icon "upload", size: '3x'%>
-			<span class="lbl">Import Attendance</span>
-			<% end %>
-		<% end %>
-      </div>
-  </div>
 
 <%# Member's View %>
 <% else %>
+	<div class="h2-title" style="padding-top: 20px;">
+		<h3 class="text upper">Engagements</h3>
+	</div>
 	<table class="styled-table small" >
 		<tr>
 			<th>Engagement</th>
