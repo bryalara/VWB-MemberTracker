@@ -1,4 +1,3 @@
-<%= render "layouts/navbar2", user: @user %>
 <style>
 th, td, tr {
 	padding-right: 15px;
@@ -14,12 +13,21 @@ th, td, tr {
 
 <div class="h2-title" style="padding-top: 20px;">
     <h3 class="text upper">Engagements</h3>
-	<button class="btn" style="padding-left: 0rem;" > <%= link_to "Add an Engagement", new_point_event_path(@pointEvents), class:"back-button" %></button>
+	<button class="btn" style="padding-left: 0rem;" > <%= link_to new_point_event_path(@pointEvents), class: "nor-button small" do %>
+	<%= fa_icon "plus", size: '3x' %><span class="lbl">New</span><% end %>
+	</button>
+	<%# make two buttons to output 2 different kinds of CSV %>
+	<button class="btn " style="padding-left: 0rem;"> <%= link_to point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "nor-button small" do %>
+	<%= fa_icon "download", size: '3x' %><span class="lbl">Download</span><% end %>
+	</button>
+	<button class="btn " style="padding-left: 0rem;"> <%= link_to point_event_csv_path(:format => :csv), format_data: "users", class: "nor-button small" do %>
+	<%= fa_icon "download", size: '3x' %><span class="lbl">Download Attendance</span><% end %>
+	</button>
 </div>
 
 <%# Admin's View %>
 <% if admin? %>
-	<table class="styled-table" >
+	<table class="styled-table small" >
 		<tr>
 			<th>Event</th>
 			<th>Description</th>
@@ -44,28 +52,29 @@ th, td, tr {
 		</tr>
 		<% end %>
 	</table>
-
+	<br>
   <div align="center" >
       <div>
 		<%# <h4> Import Data From CSV file </h4> %>
-		<%= form_tag import_point_event_index_path, multipart: true do %>
+		<%= form_tag import_point_event_index_path, class: "small", multipart: true do %>
 			<%= file_field_tag :file %>
-			<%= submit_tag "Import CSV", class: "button" %>
+			<%= button_tag :submit, class: "nor-button small" do %>
+			<%= fa_icon "upload", size: '3x'%><span class="lbl">Import</span>
+			<% end %>
 		<% end %>
 
-		<%= form_tag import_part_point_event_index_path, multipart: true do %>
+		<%= form_tag import_part_point_event_index_path, class: "small", multipart: true do %>
 			<%= file_field_tag :file %>
-			<%= submit_tag "Import CSV for Users' Engagement", class: "button" %>
+			<%= button_tag :submit, class: "nor-button small" do %><%= fa_icon "upload", size: '3x'%>
+			<span class="lbl">Import Attendance</span>
+			<% end %>
 		<% end %>
-        <%# make teo button to output 2 different kinds of CSV %>
-        <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Engagements List", point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
-      	<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Users' Engagement", point_event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
       </div>
   </div>
 
 <%# Member's View %>
 <% else %>
-	<table class="styled-table" >
+	<table class="styled-table small" >
 		<tr>
 			<th>Engagement</th>
 			<th>Description</th>

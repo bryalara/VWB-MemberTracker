@@ -1,19 +1,24 @@
-<%= render "layouts/navbar2", user: @user %>
 
 <section style="padding-top: 0px;">
 
-<div class="header">
-	<h2 class="active h2-title">Admin Dashboard</h2>
-</div>
-
-<% flash.each do |type, msg| %>
+<div class="header h2-title">
+        <button class="btn" style="padding-left: 0rem;"> <%= link_to officers_path, class: "nor-button small" do %>
+		<%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
+		</button>
+    </div>
+    
+    <% flash.each do |type, msg| %>
 	<div class="alert">
 		<%= msg %>
 	</div>
-<% end %>
+  <% end %>
+
+<div class="header2">
+	<h2 class="active h2-title">Admin Dashboard</h2>
+</div>
+
 <div class="h2-title">
 	<h3 class="text upper">Edit An Officer</h3>
-    <button class="btn" style="padding-left: 0rem;"> <%= link_to "\u2190".encode('utf-8'), officers_path, class: "back-button" %> </button>
 </div> 
 
 <div class="wrapper fadeInDown">
@@ -34,4 +39,3 @@
   </div>
 </div>
 </section>
-<%= render "layouts/footer" %>

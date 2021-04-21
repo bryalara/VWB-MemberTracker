@@ -1,19 +1,35 @@
-<%= render "layouts/navbar2", user: @edithomepage %>
-<section style="padding-top: 10px;">
-<button class="btn btn-decor" style="border:0; text-decoration:none !important; outline:none">
-</button>
-<div class="wrapper fadeInDown">
-<div id="formContent">
+<section style="padding-top: 0px;">
+
+<div class="header h2-title">
+        <button class="btn" style="padding-left: 0rem;"> <%= link_to users_path, class: "nor-button small" do %>
+		<%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
+		</button>
+    </div>
+
+<div class="header2">
+    <h2 class="active h2-title">Admin Dashboard</h2>
+</div>
+
+<div class="h2-title">
+    <h3 class="text upper">Edit Home Page </h3>
+</div> 
+<br>
+<table class="styled-table small">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Action</th>       
+    </tr>
+
+
 <% @edithomepages.each do |edithomepage| %>
- 
-  <div>
-  <td><%=  edithomepage.name    %></td>
-  <br></br>
-  <td><%= edithomepage.description %></td>
-  <td><%= button_to 'Edit', edit_edithomepage_path(edithomepage), method: 'get'%></td>
-  </div>
+    <tr>
+        <td><%= edithomepage.name %></td>
+        <td><%= edithomepage.description  %></td>
+        <td><%= button_to 'Edit', edit_edithomepage_path(edithomepage), method: 'get' %> </td>
+    </tr>
 <% end %>
-</div>
-</div>
+
+</table>
+
 </section>
-<%= render "layouts/footer" %>

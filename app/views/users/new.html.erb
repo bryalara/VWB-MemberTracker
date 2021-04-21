@@ -14,30 +14,20 @@ select{
   text-align-last: center;
 }
 </style>
-<p id="notice"><%= flash[:notice] %></p>
+<!--<p id="notice"><%= flash[:notice] %></p>-->
 
-
-<%if (!@auth)%>
-    <%#= render "userRegisterForm", user:@user  %>
-<%elsif (@auth.role==1 && @auth.approved==true)%>
-    <h1>New Users</h1>
-    <%#= render "form", user:@user  %>
-<%else%>
-    <%#= render "userRegisterForm", user:@user  %>
-<%end%>
-
-
-<%= render "layouts/navbar2", user: @user %>
 <section style="padding-top: 0px;">
- <div class="header" style="padding-top: 0px;">
+ <div class="header h2-title">
+        <button class="btn" style="padding-left: 0rem;"> <%= link_to users_path, class: "nor-button small" do %>
+        <%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
+        </button>
+    </div>
+ <div class="header2">
         <h2 class="active h2-title">Admin Dashboard</h2>
     </div>
 
     <div class="h2-title">
         <h3 class="text upper">New User</h3>
-        <button class="btn" style="padding-left: 0rem;">
-        <%= link_to "Back to All Users", users_path, class: "back-button" %>
-        </button>
     </div>
     
 <div class="wrapper fadeInDown">
@@ -108,4 +98,3 @@ select{
 </div>
 </div>
 </section>
-<%= render "layouts/footer" %>

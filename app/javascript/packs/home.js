@@ -5,7 +5,7 @@ import "../stylesheets/home_extra"
 
       // Preloader JS
 jQuery(window).on('load', function () {
-  // $('.preloader').fadeOut();
+  $('.preloader').fadeOut();
 });
   
     // Smooth scrolling using jQuery easing

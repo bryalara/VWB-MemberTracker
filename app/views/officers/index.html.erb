@@ -1,23 +1,29 @@
 
 
 <section style="padding-top: 0px;">
-	<% flash.each do |type, msg| %>
-		<div class="alert">
-			<%= msg %>
-		</div>
-	<% end %>
 
 <div class="header">
     <h2 class="active h2-title">Admin Dashboard</h2>
 </div>
 
+<% flash.each do |type, msg| %>
+    <div class="alert">
+        <%= msg %>
+    </div>
+<% end %>
+
 <div class="h2-title">
     <h3 class="text upper">Officers </h3>
-    <button class="btn" style="padding-left: 0rem;"> <%= link_to "\u2190".encode('utf-8'), users_path, class: "back-button" %> </button>
-    <button class="btn" style="padding-left: 0rem;"> <%= link_to "\uFF0B".encode('utf-8'), new_officer_path, class: "back-button" %> </button>
+    <button class="btn" style="padding-left: 0rem;"> 
+        <%= link_to users_path, class: "nor-button small" do %>
+        <%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
+    </button>
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to new_officer_path, class: "nor-button small" do %>
+    <i class="fas fa-plus fa-3x" ></i><span class="lbl">New</span><% end %>
+    </button>
 </div> 
 
-<table class="styled-table">
+<table class="styled-table small">
     <tr>
         <th>Name</th>
         <th>Description</th>
@@ -42,4 +48,3 @@
 </table>
 
 </section>
-<%= render "layouts/footer" %>

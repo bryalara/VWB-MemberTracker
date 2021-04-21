@@ -1,4 +1,3 @@
-<%= render "layouts/navbar2", user: @user %>
 <section style="padding-top: 0px;">
     <div class="header">
     <h2 class="active h2-title">Member Dashboard</h2>
@@ -6,24 +5,29 @@
     <!-- Header -->
     <div style="margin-top: 20px" >
     <div class="h2-title">
-        <h3 class="text upper">Hello, <%= @user.firstName+" "+@user.lastName%> </h1>
+        <h3 class="text upper">Hello, <%= @user.firstName+" "+@user.lastName%> </h3>
         <%unless (@user.approved==true)%>
             <h3>Your account is pending approval. Please contact administrator to get approved.</h3>
         <%else%>
             <h3> Current Total Points: <%= @user.get_total_points(@user)%> </h3>
         
-        <button class="btn" style="padding-left: 0rem;"> <%= link_to "Edit info", edit_user_path(@user) , class: "back-button" %> </button>
+        <button class="btn"> <%= link_to edit_user_path(@user), class: "nor-button small" do %>
+            <%= fa_icon "user-edit", size: '3x' %><span class="lbl">Edit Info</span><% end %>
+        </button>
     </div>
 
     <!--Events Table -->
-    <br></br>
-    <table class="styled-table">
+    <br>
+     <div class="h2-title">
+        <h3 class="text upper">Event Attendance</h3>
+    </div>
+    <table class="styled-table small">
         <tr>
-            <th>Events: </th>
-            <th>Start Date </th>
-            <th>End Date </th>
-            <th>Points </th>
-            <th>Attended </th>     
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Points</th>
+            <th>Attended</th>     
         </tr>
 
         <% @user.events.each do |event| %>
@@ -40,11 +44,14 @@
 
     <!--Engagements Table-->
     <br></br>
-    <table class="styled-table">
+    <div class="h2-title">
+        <h3 class="text upper">Engagement Attendance</h3>
+    </div>
+    <table class="styled-table small">
         <tr>
-            <th>Engagements: </th>
-            <th>Points </th> 
-            <th>Participated </th>
+            <th>Name</th>
+            <th>Points</th> 
+            <th>Participated</th>
 
         </tr>
         <% @user.point_events.each do |event| %>
@@ -60,4 +67,3 @@
     <%end%>
 </div>
 </section>
-<%= render "layouts/footer" %>

@@ -1,6 +1,15 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.name {
+  margin-right: auto; 
+  margin-left: auto; 
+  font-size: 35px !important; 
+  border-bottom: none !important;
+}
+.small {
+  font-size: 0.85rem !important;
+}
 .btn {
     background-color: none;
     border-color: none;
@@ -86,7 +95,7 @@
     color: #009879;
 }
 .header{
-    padding-top: 60px;
+    padding-top: 80px;
     display: flex;
     width:100%;
     overflow:hidden;
@@ -185,7 +194,7 @@ h2.inactive {
 
   /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset], .back-button  {
+input[type=button], input[type=submit], input[type=reset], .back-button {
     // background-color: #56baed;
     // background-color: rgba(42,70,77,255);
     background-color: #660000;
@@ -202,7 +211,8 @@ input[type=button], input[type=submit], input[type=reset], .back-button  {
     box-shadow: 0 10px 30px 0 #f0e6e6;
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 40px 20px;
+    // margin: 5px 20px 40px 20px;
+    margin: 15px 20px 15px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -210,14 +220,16 @@ input[type=button], input[type=submit], input[type=reset], .back-button  {
     transition: all 0.3s ease-in-out;
   }
   
-  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, .back-button:hover  {
+  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, .back-button:hover {
     background-color: #470000;
     // background-color: rgba(42,70,77,255);
+  }
 
-    
+  .nor-button:hover {
+    color: #470000 !important;
   }
   
-  input[type=button]:active, input[type=submit]:active, input[type=reset]:active, .back-button:active  {
+  input[type=button]:active, input[type=submit]:active, input[type=reset]:active, .back-button:active, .nor-button:active {
     -moz-transform: scale(0.95);
     -webkit-transform: scale(0.95);
     -o-transform: scale(0.95);
@@ -463,24 +475,23 @@ select{
     width: 25%;
 }
 ///////////////////////
+.nor-button {
+  background-color: transparent !important;
+  margin: 5px 20px 5px 0px;
+  color: #660000 !important;
+  border: 0;
+  padding: 0;
+}
+.lbl {
+  display: block;
+  font-size: 1em;
+}
 .back-button {
   margin: 5px 20px 5px 0px;
   background-color: #660000 !important;
   color: white !important;
-  // color: white; /* blue colors for links too */
-  // text-decoration: none; /* no underline */
-
-  // color: #fff !important;
-  //   text-transform: uppercase;
-  //   text-decoration: none;
-  //   background: #60a3bc;
-  //   padding: 20px;
-  //   border-radius: 50px;
-  //   display: inline-block;
-  //   border: none;
-  //   transition: all 0.4s ease 0s;
 }
-.back-button:focus{
+.back-button:focus, .nor-button:focus{
   outline:0;
   // text-decoration: none;
   // color: inherit;
@@ -538,4 +549,3 @@ a:-webkit-any-link {
   font-size: 40px;
   color: #0269A4;
  }
-
