@@ -9,6 +9,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <%= favicon_link_tag 'favicon.ico' %>
     <style>
         .flash__alert   { color: red; }
@@ -23,7 +24,10 @@
   </head>
   
   <body>
+      <%= render "layouts/navbar2", user: @auth %>
     <%= yield %>
+      <%= render "layouts/footer" %>
+
   </body>
 
 

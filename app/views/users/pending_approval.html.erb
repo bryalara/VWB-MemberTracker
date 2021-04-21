@@ -1,6 +1,4 @@
 
-<%= render "layouts/navbar2", user: @user %>
-
 <style>
 .notice {
 	border-radius: 5px;
@@ -16,7 +14,11 @@
 </style>
 
 <section style="padding-top: 0px;">
-  <% flash.each do |type, msgs| %>
+    <div class="header">
+        <h2 class="active h2-title">Admin Dashboard</h2>
+    </div>
+
+      <% flash.each do |type, msgs| %>
     <div class="notice">
     <% if Array === msgs %>
       <ul>
@@ -29,13 +31,17 @@
     <% end %>
     </div>
   <% end %>
-    <div class="header">
-        <h2 class="active h2-title">Admin Dashboard</h2>
-    </div>
+
     <div class="h2-title">
         <h3 class="text upper">Pending Users</h3>
-        <button class="btn" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
-    <button class="btn"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
+        <button class="btn" style="padding-left: 0rem;"> 
+            <%= link_to users_path, class: "nor-button small" do %>
+            <%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
+        </button>
+        <button class="btn" style="padding-left: 0rem;">
+            <%= link_to new_user_path, class: "nor-button small" do %>
+            <i class="fas fa-plus fa-3x" ></i><span class="lbl">New</span><% end %>
+        </button>
     </div>
 
 <%= form_with do |form| %>
@@ -76,18 +82,23 @@
           <tr>
       <%end%>
   </table>
+
+  <!--
   <% if userlogin_signed_in? %>
   <div>Signed in as: <%= current_userlogin.email %></div>
   <div><%=  @auth.role == 0 ? :"Member" : :"Admin"  %> </div>
-<% end %>
+<% end %> -->
+
   <br>
   <div align="center" >
-      <%= form.submit "Approve Selected"%>
+      <%= button_tag :submit, class: "nor-button small" do %>
+      <%= fa_icon "user-check", size: '3x'%>
+      <span class="lbl">Approve Selected</span><% end %>
       
-      <%= form.submit "Destroy Selected", name: 'delete', data: { confirm: "Are you sure?" }%>
+      <%= button_tag :submit, name: 'delete',  data: { confirm: "Are you sure?" }, class: "nor-button small" do %>
+      <%= fa_icon "user-times", size: '3x'%>
+      <span class="lbl">Destroy Selected</span><% end %>
+
   </div>
 <% end %>
-
-
 </section>
-<%= render "layouts/footer" %>

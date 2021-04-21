@@ -1,5 +1,3 @@
-<%= render "layouts/navbar2", user: @user %>
-
 <style>
 .alert {
 	border-radius: 5px;
@@ -9,25 +7,23 @@
 }
 </style>
 <section style="padding-top: 0px;">
-
-<div class="header">
-	<h2 class="active h2-title">Admin Dashboard</h2>
+<div class="header h2-title">
+	<button class="btn" style="padding-left: 0rem;"> <%= link_to event_index_path, class: "nor-button small" do %>
+	<%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
+	</button>
 </div>
 
-<% flash.each do |type, msg| %>
-	<div class="alert">
-		<%= msg %>
-	</div>
-<% end %>
+<div class="header2">
+	<h2 class="active h2-title">Events</h2>
+</div>
 
 <div class="h2-title">
 	<h3 class="text upper">Edit An Event</h3>
-	<button class="btn" style="padding-left: 0rem;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
 </div> 
 
 <div class="wrapper fadeInDown">
 	<div id="formContent">
-		<h2 class="active">Edit an Event</h2>
+		<h2 class="active">Edit Event</h2>
 		<p>* denotes required fields.<p>
 		<p>A capacity of 0 represents "No Limit".</p>
 		<p>Reuploading documents will replace the last submission.<p>
@@ -80,7 +76,7 @@
 </div>
 
 <div>
-	<table class="styled-table">
+	<table class="styled-table small">
 		<tr>
 			<th>First Name</th>
 			<th>Last Name</th>
@@ -107,9 +103,12 @@
 </div>
 
 <div>
-	<h1>Force a user to attend the event</h1>
+	<br></br>
+	<div class="h2-title">
+		<h3 class="text upper">Force User Attendance</h3>
+	</div>
 	<%= form_with url: edit_event_path(@event), method: :get, local: true do |form| %>
-		<table>
+		<table class="styled-table small">
 			<tr>
 				<th>First Name</th>
 				<td><%= form.text_field :firstName, placeholder: "First Name" %></td>
@@ -122,8 +121,10 @@
 		</table>
 	<% end %>
 
+	<br></br>
+
 	<% if @users %>
-		<table>
+		<table class="styled-table small">
 			<tr>
 				<th>First Name</th>
 				<th>Last Name</th>
@@ -149,4 +150,3 @@
 	<% end %>
 </div>
 </section>
-<%= render "layouts/footer" %>

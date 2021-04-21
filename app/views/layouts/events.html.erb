@@ -1,15 +1,12 @@
 <%# Renders a calender of events.%>
-
-<div class="h2-title">
-	<h3 class="text upper">Calender</h3>
+<div class="small">
+  <% @meetings = Event.all %>
+  <%= month_calendar(events: @meetings, attribute: :startDate, end_attribute: :endDate) do |date, meetings| %>
+    <%= date.to_formatted_s(:short) %>
+    <% meetings.each do |meeting| %>
+      <div>
+          <p><%= link_to "#{meeting.name}", event_path(meeting) %></p>
+      </div>
+    <% end %>
+  <% end %>
 </div>
-
-<% @meetings = Event.all %>
-<%= month_calendar(events: @meetings, attribute: :startDate, end_attribute: :endDate) do |date, meetings| %>
-	<%= date %>
-	<% meetings.each do |meeting| %>
-		<div>
-		  	<p><%= link_to "#{meeting.name}", event_path(meeting) %></p>
-		</div>
-	<% end %>
-<% end %>

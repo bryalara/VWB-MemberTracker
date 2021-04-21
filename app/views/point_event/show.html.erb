@@ -1,4 +1,3 @@
-<%= render "layouts/navbar2", user: @user %>
 
 <style>
 .alert {
@@ -9,19 +8,23 @@
 }
 </style>
 <section style="padding-top: 0px;">
-	<div class="header">
-		<h2 class="active h2-title">Admin Dashboard</h2>
-	</div>
-	
+<div class="header h2-title">
+        <button class="btn" style="padding-left: 0rem;"> <%= link_to event_index_path, class: "nor-button small" do %>
+		<%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
+		</button>
+    </div>
 	<% flash.each do |type, msg| %>
-		<div class="alert">
-			<%= msg %>
-		</div>
+	<div class="alert">
+		<%= msg %>
+	</div>
 	<% end %>
-
+  
+	<div class="header2">
+		<h2 class="active h2-title">Engagements</h2>
+	</div>
+  
 	<div class="h2-title">
 		<h3 class="text upper">Engagement Details </h3>
-		<button class="btn" style="padding-left: 0rem;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
 	</div> 
 	<br>
 	<%= render "form", pointEvent: @point_event %>
@@ -53,7 +56,7 @@
 			<div class="h2-title">
 				<h3 class="text upper">Attendance</h3>
 			</div>
-			<table class="styled-table">
+			<table class="styled-table small">
 				<tr>
 					<th>First Name</th>
 					<th>Last Name</th>
@@ -86,4 +89,3 @@
 			</table>
 		<% end %>
 </section>
-<%= render "layouts/footer" %>
