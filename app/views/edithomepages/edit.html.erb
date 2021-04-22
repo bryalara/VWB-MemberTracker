@@ -21,6 +21,10 @@
     <h2 class="active name">Edit <%= @edithomepage.name %> Description</h2>
       <div>
         <%= form.text_field :description, placeholder: "description" %>
+        <%= form.text_field :h1, placeholder: "heading 1" %>
+        <%= form.text_field :d1, placeholder: "heading 1 description" %>
+        <%= form.text_field :h2, placeholder: "heading 2" %>
+        <%= form.text_field :d2, placeholder: "heading 2 description" %>
         <%= form.submit "save changes"%>
       </div>
     <% end %>
