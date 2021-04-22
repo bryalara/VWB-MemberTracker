@@ -28,6 +28,9 @@ th, td, tr {
 		<button class="btn" style="padding-left: 0rem;"> <%= link_to new_event_path(@events), class: "nor-button small" do %>
 		  <%= fa_icon "plus", size: '3x' %><span class="lbl">New</span><% end %>
 		</button>
+		<button class="btn" style="padding-left: 0rem;"> <%= link_to event_download_ics_path, method: :post, class: "nor-button small" do %>
+			<%= fa_icon "download", size: '3x' %><span class="lbl">Download .ics</span><% end %>
+		</button>
 	</div>
 	<table class="styled-table small" >
 		<tr>
@@ -65,13 +68,13 @@ th, td, tr {
 		</tr>
 		<% end %>
 	</table>
-  <button class="btn" style="padding-left: 0rem;"> <%= link_to event_download_ics_path, method: :post, class: "nor-button small" do %>
-    <%= fa_icon "download", size: '3x' %><span class="lbl">Download .ics</span><% end %>
-  </button>
 <% else %>
 <%# Member's View %>
 	<div class="h2-title">
 		<h3 class="text upper">Events</h3>
+			<button class="btn" style="padding-left: 0rem;"> <%= link_to event_download_ics_path, method: :post, class: "nor-button small" do %>
+			<%= fa_icon "download", size: '3x' %><span class="lbl">Download .ics</span><% end %>
+		</button>
 	</div>
 	<table class="styled-table small">
 		<tr>
@@ -105,9 +108,7 @@ th, td, tr {
 		</tr>
 		<% end %>
 	</table>
-  <button class="btn" style="padding-left: 0rem;"> <%= link_to event_download_ics_path, method: :post, class: "nor-button small" do %>
-    <%= fa_icon "download", size: '3x' %><span class="lbl">Download .ics</span><% end %>
-  </button><% end %>
+ <% end %>
 <br>
 
 <%= render template: 'point_event/index' %>
@@ -120,17 +121,15 @@ th, td, tr {
 
 
 <%= render template: 'layouts/events' %>
-<button class="btn" style="padding-left: 0rem;"> <%= link_to event_download_ics_path, method: :post, class: "nor-button small" do %>
-  <%= fa_icon "download", size: '3x' %><span class="lbl">Download .ics</span><% end %>
-</button>
-<hr>
-
+<hr> 
+<div>
+<div style="display: inline-block; width: 40%; text-align: center;">
 <% if admin? %>
 	<div class="h2-title">
-		<h3 class="text upper">Back Up Events</h3>
+		<h3 class="text upper" style="text-align: center;">Back Up Events</h3>
 	</div>
 
-	<table>
+	<table class="table2 small">
 		<%# Event downloading, uploading, and importing %>
 		<tr>
 			<td>
@@ -152,7 +151,7 @@ th, td, tr {
 		<tr>
 			<td>
 				<button class="btn" style="padding-left: 0rem;"> <%= link_to event_csv_path(:format => :csv), format_data: "users", class: "nor-button small" do %>
-		      <%= fa_icon "download", size: '3x' %><span class="lbl">Download Attendance</span><% end %>
+		      <%= fa_icon "download", size: '3x' %><span class="lbl">Download<br>Attendance</span><% end %>
 		    </button>
 			</td>
 			<td>
@@ -160,19 +159,20 @@ th, td, tr {
 					<%= file_field_tag :file %>	
 			</td>
 			<td>
-					<%= button_tag :submit, class: "nor-button small" do %><%= fa_icon "upload", size: '3x'%><span class="lbl">Import Attendance</span><% end %>
+					<%= button_tag :submit, class: "nor-button small" do %><%= fa_icon "upload", size: '3x'%><span class="lbl">Import<br>Attendance</span><% end %>
 				<% end %>
 			</td>
 		</tr>
 	</table>
-
-	<hr>
-
+</div>
+<div style="display: inline-block; width: 19%;">
+</div>
+<div style="display: inline-block; width: 40%; text-align: center;">
 	<div class="h2-title">
-		<h3 class="text upper">Back up engagements</h3>
+		<h3 class="text upper" >Back Up Engagements</h3>
 	</div>
 
-	<table>
+	<table class="table2 small">
 		<%# Engagement downloading, uploading, and importing %>
 		<tr>
 			<td>
@@ -196,7 +196,7 @@ th, td, tr {
 		<tr>
 			<td>
 				<button class="btn " style="padding-left: 0rem;"> <%= link_to point_event_csv_path(:format => :csv), format_data: "users", class: "nor-button small" do %>
-					<%= fa_icon "download", size: '3x' %><span class="lbl">Download Attendance</span><% end %>
+					<%= fa_icon "download", size: '3x' %><span class="lbl">Download<br>Attendance</span><% end %>
 				</button>
 			</td>
 			<td>
@@ -205,11 +205,13 @@ th, td, tr {
 			</td>
 			<td>
 					<%= button_tag :submit, class: "nor-button small" do %><%= fa_icon "upload", size: '3x'%>
-						<span class="lbl">Import Attendance</span>
+						<span class="lbl">Import<br>Attendance</span>
 					<% end %>
 				<% end %>
 			</td>
 		</tr>
 	</table>
 <% end %>
+</div>
+</div>
 </section>
