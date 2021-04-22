@@ -18,9 +18,11 @@ User.create(email: 'shayle@tamu.edu', role: 1, firstName: 'Yihao', lastName: 'Xi
 User.create(email: 'keerthana96@tamu.edu', role: 1, firstName: 'Keerthana', lastName: 'Reddy Nerella', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
 
 # Edithomepage.create(name: 'home', description: 'This is the home description')
-Edithomepage.create(name: 'about_us', description: 'This is the about us description')
-Edithomepage.create(name: 'service', description: 'This is the service description')
-Edithomepage.create(name: 'landing_page_image')
+Edithomepage.create(name: 'about_us', description: 'Vets Without Borders is a student led organization centered around veterinary medicine, with a focus on international veterinary medicine',
+h1: 'Who Can Join', d1: 'Anyone who is passionate about animals and interested in veterinary medicine!' ,
+h2: 'Why You Should Join', d2: 'Our organization offers many opportunities for students who wish to become vets. We host weekly volunteer events where you will gain experience with a variety of animals locally. We also have speakers at our meetings that you won\\''t want to miss! Additionaly, we host several trips during the summer where you are able to gain experience with animals abroad.')
+Edithomepage.create(name: 'service', description: 'Vets Without Borders offers 1-2 volunteer opportunities per week where you can gain animal experience locally', h1: 'Volunteering', d1: 'Vets Without Borders offers 1-2 volunteer opportunities per week where you can gain animal experience locally')
+
 
 Officer.create( name: "name1 ",email: "name1@gmail.com ",  description: "description 1 ")
 Officer.create( name: "name2 ",email: "name2@gmail.com ", description: "description 2 ")
