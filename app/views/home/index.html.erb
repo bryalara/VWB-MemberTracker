@@ -32,6 +32,50 @@
   </header>
   </div>
   <!-- About Us Section -->
+
+  <%# Add back this section later! %>
+
+ <%
+=begin%>
+ <% even_section = 0 %>
+  <% Edithomepage.all.each do |section| %>
+    <% if even_section % 2 == 0 %>
+      <section class="page-section">
+    <% else %>
+      <section class="page-section bg-light">
+    <% end %>
+    <% even_section += 1 %>
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-heading text-uppercase" style="color: #660000;"><%= section.name %></h2>
+          <h3 class="section-subheading text-muted">
+            <%= section.description %>
+          </h3>
+        </div>
+        <div class="timeline-heading">
+          <h4 class="subheading" style="color: ##212529;">
+            <%= section.h1 %>
+          </h4>
+        </div>
+        <div class="timeline-body">
+          <p class="text-muted"><% section.d1 %></p> 
+        </div>
+        <div class="timeline-heading">
+          <h4 class="subheading" style="color: ##212529;">
+            <%= section.h1 %>
+          </h4>
+        </div>
+        <div class="timeline-body">
+          <p class="text-muted"><%= section.d1 %></p> 
+        </div>
+ 
+        <%# Do images later %>
+      </div>
+    </section> 
+  <% end %> 
+<%
+=end%>
+
   <section class="page-section" id="about">
             <div class="container">
                 <div class="text-center">
