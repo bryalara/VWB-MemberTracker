@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :home
   resources :officers
   resources :edithomepages
+  resources :special
 
 
   match '/pendingApproval', to: 'users#pending_approval', via: [:get, :post], as: :pending_approval
