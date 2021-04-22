@@ -18,6 +18,7 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <%= form_with model: @edithomepage do |form| %>
+
     <h2 class="active name">Edit <%= @edithomepage.name %> Description</h2>
       <div>
         <%= form.text_field :description, placeholder: "description" %>
@@ -25,6 +26,8 @@
         <%= form.text_field :d1, placeholder: "heading 1 description" %>
         <%= form.text_field :h2, placeholder: "heading 2" %>
         <%= form.text_field :d2, placeholder: "heading 2 description" %>
+        <br>
+        <%= form.file_field :image  , accept: 'image/png,image/jpeg', multiple:true %>
         <%= form.submit "save changes"%>
       </div>
     <% end %>

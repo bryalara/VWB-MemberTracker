@@ -21,7 +21,8 @@
         <th>Heading 1</th> 
         <th>Heading 1 Description</th>
         <th>Heading 2</th>
-        <th>Heading 2 Description</th>   
+        <th>Heading 2 Description</th>  
+        <th>Image Uploaded</th> 
         <th>Action</th>
               
     </tr>
@@ -35,6 +36,7 @@
         <td><%= edithomepage.d1  %></td>
         <td><%= edithomepage.h2  %></td>
         <td><%= edithomepage.d2  %></td>
+        <td><%=  edithomepage.image.attached? ? :"Yes" : :"No"  %></td>
         <td><%= button_to 'Edit', edit_edithomepage_path(edithomepage), method: 'get' %> </td>
     </tr>
 <% end %>
