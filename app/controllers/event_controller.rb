@@ -196,7 +196,11 @@ class EventController < ApplicationController
       redirect_to @event
       nil
     rescue NoMethodError
-      flash[:alert] = "Cannot signup for #{@event.name}! The event has reached its capacity."
+      if (DateTime.now > @event.endDate)
+        flash[:alert] = "Could not sign up #{@event.name} because the event has already ended."
+      else
+        flash[:alert] = "Cannot sign up for #{@event.name}! The event has reached its capacity."
+      end
       redirect_to @event
     end
   end
