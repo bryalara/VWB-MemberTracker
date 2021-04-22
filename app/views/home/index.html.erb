@@ -32,23 +32,125 @@
   </header>
   </div>
   <!-- About Us Section -->
+
+  <%# Add back this section later! %>
+
+ <%
+=begin%>
+ <% even_section = 0 %>
+  <% Edithomepage.all.each do |section| %>
+    <% if even_section % 2 == 0 %>
+      <section class="page-section">
+    <% else %>
+      <section class="page-section bg-light">
+    <% end %>
+    <% even_section += 1 %>
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-heading text-uppercase" style="color: #660000;"><%= section.name %></h2>
+          <h3 class="section-subheading text-muted">
+            <%= section.description %>
+          </h3>
+        </div>
+        <div class="timeline-heading">
+          <h4 class="subheading" style="color: ##212529;">
+            <%= section.h1 %>
+          </h4>
+        </div>
+        <div class="timeline-body">
+          <p class="text-muted"><% section.d1 %></p> 
+        </div>
+        <div class="timeline-heading">
+          <h4 class="subheading" style="color: ##212529;">
+            <%= section.h1 %>
+          </h4>
+        </div>
+        <div class="timeline-body">
+          <p class="text-muted"><%= section.d1 %></p> 
+        </div>
+ 
+        <%# Do images later %>
+      </div>
+    </section> 
+  <% end %> 
+<%
+=end%>
+
   <section class="page-section" id="about">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase" style="color: #660000;">About Us</h2>
-                    <h3 class="section-subheading text-muted">Vets Without Borders is a student led organization centered around veterinary medicine, with a focus on international veterinary 
-          medicine</h3>
+                    <h3 class="section-subheading text-muted">
+                    
+                    <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+        
+                      <% if edithomepage.name == "about_us" %>
+                        <td><%= (edithomepage.description) %></td>
+                      <% else %>
+                        <%  "Wrong Spelling of website attribute" %>
+                      <% end %>
+              
+                    <% end %>
+
+                  </h3>
                 </div>
                 <div class="timeline-heading">
-                    <h4 class="subheading" style="color: ##212529;">Who Can Join</h4>
+                    <h4 class="subheading" style="color: ##212529;">
+                    
+                    <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+        
+                      <% if edithomepage.name == "about_us" %>
+                        <td><%= (edithomepage.h1) %></td>
+                      <% else %>
+                        <%  "Wrong Spelling of website attribute" %>
+                      <% end %>
+              
+                    <% end %>
+                    
+                    </h4>
                 </div>
-                <div class="timeline-body"><p class="text-muted">Anyone who is passionate about animals and interested in veterinary medicine!</p></div>
+                <div class="timeline-body"><p class="text-muted">
+                
+                <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+        
+                  <% if edithomepage.name == "about_us" %>
+                    <td><%= (edithomepage.d1) %></td>
+                  <% else %>
+                    <%  "Wrong Spelling of website attribute" %>
+                  <% end %>
+          
+                <% end %>
+                
+                </p></div>
                 <div class="timeline-heading">
-                    <h4 class="subheading" style="color: ##212529;">Why You Should Join</h4>
+                    <h4 class="subheading" style="color: ##212529;">
+                    
+                    <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+        
+                      <% if edithomepage.name == "about_us" %>
+                        <td><%= (edithomepage.h2) %></td>
+                      <% else %>
+                        <%  "Wrong Spelling of website attribute" %>
+                      <% end %>
+              
+                    <% end %>
+                    
+                    </h4>
                 </div>
-                <div class="timeline-body"><p class="text-muted">Our organization offers many opportunities for students who wish to become vets. We host weekly 
-                volunteer events where you will gain experience with a variety of animals locally. We also have speakers at our meetings that you won't want to miss! 
-                Additionaly, we host several trips during the summer where you are able to gain experience with animals abroad.</p>
+                <div class="timeline-body"><p class="text-muted">
+                
+                
+                <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+        
+                  <% if edithomepage.name == "about_us" %>
+                    <td><%= (edithomepage.d2) %></td>
+                  <% else %>
+                    <%  "Wrong Spelling of website attribute" %>
+                  <% end %>
+          
+                <% end %>
+                
+                </p>
                 </div>
                 <div class="text-center">
               <span>
@@ -63,23 +165,26 @@
             </div>
             </div>
 
-            <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
-        
-            <% if edithomepage.name == "about_us" %>
-              <td><%= (edithomepage.description) %></td>
-            <% else %>
-              <%  "Wrong Spelling of website attribute" %>
-            <% end %>
-    
-          <% end %>
+            
         </section>
   <!-- Service-->
         <section class="page-section bg-light" id="services">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase" style="color: #660000;">Service</h2>
-                    <h3 class="section-subheading text-muted">Vets Without Borders offers 1-2 volunteer opportunities per week where you can gain animal
-                    experience locally</h3>
+                    <h3 class="section-subheading text-muted">
+                    
+                    <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+        
+                      <% if edithomepage.name == "service" %>
+                        <td><%= (edithomepage.description) %></td>
+                      <% else %>
+                        <%  "Wrong Spelling of website attribute" %>
+                      <% end %>
+              
+                    <% end %>
+                    
+                    </h3>
                 </div>
                 <div class="text-center">
                     <span>
@@ -88,12 +193,24 @@
                 </div>
                 <br></br>
                 <div class="timeline-heading">
-                    <h4 class="subheading" style="color: ##212529;">Volunteering</h4>
+                    <h4 class="subheading" style="color: ##212529;">
+                    
+                    <% Edithomepage.all.each_with_index  do |edithomepage, i| %>
+        
+                      <% if edithomepage.name == "service" %>
+                        <td><%= (edithomepage.h1) %></td>
+                      <% else %>
+                        <%  "Wrong Spelling of website attribute" %>
+                      <% end %>
+              
+                    <% end %>
+                    
+                    </h4>
                 </div>
                 <div class="timeline-body"><p class="text-muted"><% Edithomepage.all.each_with_index  do |edithomepage, i| %>
           
               <% if edithomepage.name == "service" %>
-                <td><%= (edithomepage.description) %></td>
+                <td><%= (edithomepage.d1) %></td>
               <% else %>
                 <%  "Wrong Spelling of website attribute" %>
               <% end %>
