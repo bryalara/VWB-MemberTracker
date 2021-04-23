@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     user.role == User.role_types['Admin']
   end
 
-  #Returns true if the admin is to super admin (org email)
+  # Returns true if the admin is to super admin (org email)
   def super_user?
     user = check_user
     # user.email == 'vetswithoutborderstamu@gmail.com'
