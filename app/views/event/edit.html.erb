@@ -17,6 +17,12 @@
 	<h2 class="active h2-title">Events</h2>
 </div>
 
+<% flash.each do |type, msg| %>
+	<div class="alert">
+		<%= msg %>
+	</div>
+<% end %>
+
 <div class="h2-title">
 	<h3 class="text upper">Edit An Event</h3>
 </div> 

@@ -24,10 +24,10 @@
     </div>
 
 	<div class="h2-title">
-		<h3 class="text upper"><%= @user.nil? ? "Register first!" : "Hello " + @user.email %></h3>
+		<h3 class="text upper"><%= @user.nil? ? "Please register to sign up for this event." : "Registered User: " + @user.firstName + " " + @user.lastName%></h3>
 
 		<% if !@user.nil? %>
-				<button class="btn" style="padding-left: 0rem;"> <%= link_to "Sign Up", sign_up_event_path(@event), method: :post, class:"back-button" %> </button>
+			<button class="btn" style="padding-left: 0rem;"> <%= link_to "Sign Up", sign_up_event_path(@event), method: :post, class:"back-button" %> </button>
 		<% end %>
 
 	</div>
