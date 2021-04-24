@@ -8,6 +8,9 @@
         <h3 class="text upper">Hello, <%= @user.firstName+" "+@user.lastName%> </h3>
         <%unless (@user.approved==true)%>
             <h3>Your account is pending approval. Please contact administrator to get approved.</h3>
+            <button class="btn"> <%= link_to edit_user_path(@user), class: "nor-button small" do %>
+            <%= fa_icon "user-edit", size: '3x' %><span class="lbl">Edit Info</span><% end %>
+        </button>
         <%else%>
             <h3> Current Total Points: <%= @user.get_total_points(@user)%> </h3>
         

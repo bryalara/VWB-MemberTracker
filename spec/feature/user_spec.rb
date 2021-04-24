@@ -777,7 +777,7 @@ RSpec.describe 'Users', type: :feature do
 				expect(page).to have_content('featureRead16@tamu.edu')
 				visit user_path(id: user.id)
 				sleep(1)
-				click_button 'Destroy'
+				click_button 'Delete'
 				wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 				alert = wait.until { page.driver.browser.switch_to.alert }
 				alert.accept
@@ -838,7 +838,7 @@ RSpec.describe 'Users', type: :feature do
 				visit user_path(id: user1.id)
 				
 				sleep(1)
-				click_button 'Destroy'
+				click_button 'Delete'
 				wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 				alert = wait.until { page.driver.browser.switch_to.alert }
 				alert.accept
@@ -848,7 +848,7 @@ RSpec.describe 'Users', type: :feature do
 				sleep(1)
 				visit user_path(id: user2.id)
 				sleep(1)
-				click_button 'Destroy'
+				click_button 'Delete'
 				wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 				alert = wait.until { page.driver.browser.switch_to.alert }
 				alert.accept
@@ -857,7 +857,7 @@ RSpec.describe 'Users', type: :feature do
 				sleep(1)
 				visit user_path(id: user3.id)
 				sleep(1)
-				click_button 'Destroy'
+				click_button 'Delete'
 				wait = Selenium::WebDriver::Wait.new ignore: Selenium::WebDriver::Error::NoSuchAlertError
 				alert = wait.until { page.driver.browser.switch_to.alert }
 				alert.accept
@@ -926,7 +926,7 @@ RSpec.describe 'Users', type: :feature do
 				it 'A user with 5 points attends an event and point event for 5 points each has 15 points' do
 					
 					visit sign_up_event_path(event)
-					expect(page).to have_content('Test Event')
+					expect(page).to have_content('TEST EVENT')
 
 					click_on 'Click to sign up!'
 					sleep(1)
@@ -941,7 +941,7 @@ RSpec.describe 'Users', type: :feature do
 					sleep(1)
 
 					visit sign_up_point_event_path(pointEvent)
-					expect(page).to have_content('Test Event')
+					expect(page).to have_content('TEST EVENT')
 
 					click_on 'Click to sign up!'
 					sleep(1)
@@ -965,7 +965,7 @@ RSpec.describe 'Users', type: :feature do
 				it 'A user with 5 points attends an event for 5 points and has 10 points' do
 
 					visit sign_up_event_path(event)
-					expect(page).to have_content('Test Event')
+					expect(page).to have_content('TEST EVENT')
 
 					click_on 'Click to sign up!'
 					sleep(1)

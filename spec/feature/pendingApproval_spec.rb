@@ -22,7 +22,7 @@ RSpec.describe 'PendingApproval', type: :feature do
 			sleep(1)
 			attach_file('file', File.join(Rails.root, '/spec/support/Users_test.csv'))
 			sleep(1)
-			click_button 'Import CSV'
+			click_button 'Import'
 			sleep(2)
 			
 		end
