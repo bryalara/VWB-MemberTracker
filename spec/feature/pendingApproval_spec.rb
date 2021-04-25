@@ -11,7 +11,7 @@ RSpec.describe 'PendingApproval', type: :feature do
 		it 'logged in admin sees users index' do
 			visit users_path	
 			sleep(2)
-			expect(page).to have_content('Import Data From CSV file')
+			expect(page).to have_content('ADMIN DASHBOARD')
 		end
 	end
 
