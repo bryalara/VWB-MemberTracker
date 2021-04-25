@@ -928,7 +928,7 @@ RSpec.describe 'Users', type: :feature do
 					visit sign_up_event_path(event)
 					expect(page).to have_content('TEST EVENT')
 
-					click_on 'Sign Up'
+					click_button 'Sign Up'
 					sleep(1)
 					expect(page).to have_content("Successfully signed up for Test Event!")
 
@@ -943,7 +943,7 @@ RSpec.describe 'Users', type: :feature do
 					visit sign_up_point_event_path(pointEvent)
 					expect(page).to have_content('TEST EVENT')
 
-					click_on 'Sign Up'
+					click_button 'Sign Up'
 					sleep(1)
 					expect(page).to have_content("Successfully signed up for Test Event!")
 					
@@ -967,7 +967,7 @@ RSpec.describe 'Users', type: :feature do
 					visit sign_up_event_path(event)
 					expect(page).to have_content('TEST EVENT')
 
-					click_on 'Sign Up'
+					click_button 'Sign Up'
 					sleep(1)
 					expect(page).to have_content("Successfully signed up for Test Event!")
 
