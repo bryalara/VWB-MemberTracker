@@ -184,30 +184,30 @@ class User < ApplicationRecord
   # Checks if a user has attended an event. Returns 2 if they signed up and
   # attended, 1 if they only signed up, 0 if they have not signed up.
   def attended_event?(event)
-    attendee = EventAttendee.find_by(event_id: event.id, user_id: self.id)
-    if (attendee)
-      if (attendee.attended)
-        return 2
+    attendee = EventAttendee.find_by(event_id: event.id, user_id: id)
+    if attendee
+      if attendee.attended
+        2
       else
-        return 1
+        1
       end
     else
-      return 0
+      0
     end
   end
 
   # Checks if a user has attended a point event. Returns 2 if they signed up and
   # attended, 1 if they only signed up, 0 if they have not signed up.
   def attended_point_event?(point_event)
-    attendee = PointEventAttendee.find_by(point_event_id: point_event.id, user_id: self.id)
-    if (attendee)
-      if (attendee.attended)
-        return 2
+    attendee = PointEventAttendee.find_by(point_event_id: point_event.id, user_id: id)
+    if attendee
+      if attendee.attended
+        2
       else
-        return 1
+        1
       end
     else
-      return 0
+      0
     end
   end
 

@@ -130,7 +130,7 @@ class EventController < ApplicationController
       redirect_to @event
       nil
     else
-      if (DateTime.now > @event.endDate)
+      if DateTime.now > @event.endDate
         flash[:notice] = "Could not attend #{@event.name} because the event has already ended."
       else
         # Force a user in and set them as attended.
@@ -196,7 +196,11 @@ class EventController < ApplicationController
       redirect_to @event
       nil
     rescue NoMethodError
-      flash[:alert] = "Cannot signup for #{@event.name}! The event has reached its capacity."
+      flash[:alert] = if DateTime.now > @event.endDate
+                        "Could not sign up #{@event.name} because the event has already ended."
+                      else
+                        "Cannot sign up for #{@event.name}! The event has reached its capacity."
+                      end
       redirect_to @event
     end
   end

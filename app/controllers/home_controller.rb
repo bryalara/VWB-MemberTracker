@@ -5,5 +5,4 @@ class HomeController < ApplicationController
     @signed_in_user = check_user
     @officers = Officer.all
   end
-
 end
