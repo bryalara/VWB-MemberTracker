@@ -2,7 +2,7 @@
 
 class EdithomepagesController < ApplicationController
   protect_from_forgery with: :exception
-  before_action :authenticate_userlogin!
+  before_action :authenticate_userlogin!, :member_check
 
   def index
     @edithomepages = Edithomepage.all
