@@ -29,4 +29,12 @@ class ApplicationController < ActionController::Base
     # user.email == 'vetswithoutborderstamu@gmail.com'
     user.email == 'bryalara@tamu.edu'
   end
+
+  # Redirects to memberDashboard if not an admin
+  def member_check
+    return nil if admin?
+    
+    # if not admin, redirect to memberDashboard
+    redirect_to member_dashboard_path
+  end
 end
