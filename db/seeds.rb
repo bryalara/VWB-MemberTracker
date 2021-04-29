@@ -28,6 +28,7 @@ Edithomepage.create(name: 'Service', description: 'Vets Without Borders offers 1
 
 Edithomepage.create(name: 'Volunteering', description: 'Vets Without Borders offers 1-2 volunteer opportunities per week where you can gain animal experience locally')
 
+
 Officer.create( name: "name1 ",email: "name1@gmail.com ",  description: "description 1 ")
 Officer.create( name: "name2 ",email: "name2@gmail.com ", description: "description 2 ")
 Officer.create( name: "name3 ",email: "name3@gmail.com ",  description: "description 3 ")
