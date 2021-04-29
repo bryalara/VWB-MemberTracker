@@ -1,0 +1,63 @@
+<%= render "layouts/navbar2", user: @user %>
+<section style="padding-top: 0px;">
+    <div class="header">
+    <h2 class="active h2-title">Member Dashboard</h2>
+    </div>
+    <!-- Header -->
+    <div style="margin-top: 20px" >
+    <div class="h2-title">
+        <h3 class="text upper">Hello, <%= @user.firstName+" "+@user.lastName%> </h1>
+        <%unless (@user.approved==true)%>
+            <h3>Your account is pending approval. Please contact administrator to get approved.</h3>
+        <%else%>
+            <h3> Current Total Points: <%= @user.get_total_points(@user)%> </h3>
+        
+        <button class="btn" style="padding-left: 0rem;"> <%= link_to "Edit info", edit_user_path(@user) , class: "back-button" %> </button>
+    </div>
+
+    <!--Events Table -->
+    <br></br>
+    <table class="styled-table">
+        <tr>
+            <th>Events: </th>
+            <th>Start Date </th>
+            <th>End Date </th>
+            <th>Points </th>
+            <th>Attended </th>     
+        </tr>
+
+        <% @user.events.each do |event| %>
+        <% attendance = EventAttendee.find_by(user_id: @user.id, event_id: event.id) %>
+        <tr>
+            <td><%= event.name %></td>
+            <td><%= Event.display_date_time(event.startDate) %></td>
+            <td><%= Event.display_date_time(event.endDate) %></td>
+            <td><%= event.points  %> </td>
+            <td><%= attendance&.attended ? :Yes : :No  %> </td>
+        </tr>
+        <% end %>
+    </table>
+
+    <!--Engagements Table-->
+    <br></br>
+    <table class="styled-table">
+        <tr>
+            <th>Engagements: </th>
+            <th>Points </th> 
+            <th>Participated </th>
+
+        </tr>
+        <% @user.point_events.each do |event| %>
+        <% attendance = PointEventAttendee.find_by(user_id: @user.id, point_event_id: event.id) %>
+        <tr>
+            <td><%= event.name %></td>
+            <td><%= event.points  %> </td>
+            <td><%= attendance&.attended ? :Yes : :No   %> </td>
+        </tr>
+        <% end %>
+    </table>
+
+    <%end%>
+</div>
+</section>
+<%= render "layouts/footer" %>

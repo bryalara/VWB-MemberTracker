@@ -63,7 +63,7 @@ RSpec.describe 'MemberDashboard', type: :feature do
 			it 'member able to edit their info' do
 				visit member_dashboard_path
 				sleep(1)
-				click_link 'Edit Info'
+				click_link 'Edit info'
 				sleep(1)
 				fill_in 'user_firstName', with: 'Doe'
 				fill_in 'user_lastName', with: 'John'
