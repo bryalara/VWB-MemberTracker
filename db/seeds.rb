@@ -15,18 +15,23 @@ User.create(email: 'soto_samantha@tamu.edu', role: 1, firstName: 'Samantha', las
 User.create(email: 'manseerat@tamu.edu', role: 1, firstName: 'Manseerat', lastName: 'Batra', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
 User.create(email: 'paulinewade@tamu.edu', role: 1, firstName: 'Pauline', lastName: 'Wade', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
 User.create(email: 'shayle@tamu.edu', role: 1, firstName: 'Yihao', lastName: 'Xie', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
-
+User.create(email: 'keerthana96@tamu.edu', role: 1, firstName: 'Keerthana', lastName: 'Reddy Nerella', phoneNumber:'1231231234', classification:'Senior', tShirtSize:'S', optInEmail: true, participationPoints: 0, approved: true)
 
 # Edithomepage.create(name: 'home', description: 'This is the home description')
-Edithomepage.create(name: 'about_us', description: 'This is the about us description')
-Edithomepage.create(name: 'service', description: 'This is the service description')
-Edithomepage.create(name: 'landing_page_image')
+Edithomepage.create(name: 'About Us', description: 'Vets Without Borders is a student led organization centered around veterinary medicine, with a focus on international veterinary medicine',
+                                        h1: 'Who Can Join', 
+                                        d1: 'Anyone who is passionate about animals and interested in veterinary medicine!',
+                                        h2: 'Why You Should Join',
+                                        d2: 'Our organization offers many opportunities for students who wish to become vets. Wehost weekly volunteer events where you will gain experience with a variety of animals locally. We also have speakers at our meetings that you won\t want to miss! Additionaly, we host several trips during the summer where you are able to gain experience with animals abroad.')
+
+Edithomepage.create(name: 'Service', description: 'Vets Without Borders offers 1-2 volunteer opportunities per week where you can gain animal experience locally')
+
+Edithomepage.create(name: 'Volunteering', description: 'Vets Without Borders offers 1-2 volunteer opportunities per week where you can gain animal experience locally')
 
 Officer.create( name: "name1 ",email: "name1@gmail.com ",  description: "description 1 ")
 Officer.create( name: "name2 ",email: "name2@gmail.com ", description: "description 2 ")
 Officer.create( name: "name3 ",email: "name3@gmail.com ",  description: "description 3 ")
 Officer.create( name: "name4 ",email: "name4@gmail.com ",  description: "description 4 ")
-
 
 # if @officer.image.attached?
 #     @officer.image.attach(io: File.open('app/assets/images/deafultOfficerImage.png'), filename: 'defaultOfficerImage.png')
