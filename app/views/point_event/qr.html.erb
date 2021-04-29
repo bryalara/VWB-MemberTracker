@@ -1,8 +1,7 @@
+<%= render "layouts/navbar2", user: @user %>
 <section style="padding-top: 0px;">
     <div class="header h2-title">
-        <button class="btn" style="padding-left: 0rem;"> <%= link_to event_index_path, class: "nor-button small" do %>
-        <%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
-        </button>
+        <button class="btn" style="padding-left: 0rem;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
     </div>
 
     <div class="header2">
@@ -27,4 +26,6 @@
             size: 500
             ).to_data_url %>
     </div>
+
 </section>
+<%= render "layouts/footer" %>

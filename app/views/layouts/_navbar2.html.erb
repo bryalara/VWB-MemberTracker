@@ -1,44 +1,39 @@
  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top white" id="mainNav" style="border-bottom: 2px solid #a36666;">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: #222222;">
     <div class="container">
-      <%= link_to root_path, class: "navbar-brand js-scroll-trigger" do %> 
-      <%= image_tag "VWB-logo.png" %><% end %>
-      <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <%= link_to "Vets Without Borders", root_path, class: "navbar-brand js-scroll-trigger" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>-->
+      </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item nav-text">
-            <%= link_to "Home", root_path, class: "nav-link nav-text" %>
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link js-scroll-trigger" %>
           </li>
-          <%if @auth%>
            <li class="nav-item">
-          <%= link_to "Member", member_dashboard_path, class: "nav-link nav-text" %>
+            <a class="nav-link js-scroll-trigger" href="<%= member_dashboard_path%>">Member</a>
           </li> 
-        <%end%>
           <%if @auth%>
             <li class="nav-item"> 
-              <%= link_to "Events", event_index_path, class: "nav-link nav-text" %>
+                <a class="nav-link js-scroll-trigger" href="<%= event_index_path%>">Events</a>
             </li>
           <%end%>
           <%if @auth%>
-            <%if admin? %> 
+            <%if @auth.role == 1 %> 
               <li class="nav-item">
-              <%= link_to "Admin", users_path, class: "nav-link nav-text" %>
+                <a class="nav-link js-scroll-trigger" href="<%= users_path %>">Admin</a>
               </li> 
             <%end%>
           <%end%>
           <% if !userlogin_signed_in? %>
               <li class="nav-item">
-              <%= link_to userlogin_google_oauth2_omniauth_authorize_path, class: "nav-link nav-text" do %>
-                <%= fa_icon "sign-in-alt", text: "Sign In" %><% end %>              
-                </li>
+                <a class="nav-link js-scroll-trigger" href="<%= userlogin_google_oauth2_omniauth_authorize_path %>"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+              </li>
           <%end%>
           <% if userlogin_signed_in? %>
               <li class="nav-item">
-              <%= link_to destroy_userlogin_session_path, class: "nav-link nav-text" do %>
-                <%= fa_icon "sign-out-alt", text: "Log Out" %><% end %>              
-                </li>
+                <a class="nav-link js-scroll-trigger" href="/userlogins/sign_out"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+              </li>
           <%end%>
         </ul>
       </div>

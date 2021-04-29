@@ -1,50 +1,40 @@
 
 
-<section style="padding-top: 0px;">
+<%= render "layouts/navbar2", user: @officer %>
+<section style="padding-top: 10px;">
+<button class="btn btn-decor" style="border:0; text-decoration:none !important; outline:none">
+</button>
+<div class="wrapper fadeInDown">
+<div id="formContent">
+    <div>
+    <h1>Current Officers</h1>
+        <% @officers.each do |officer| %>
+            
+            <%= link_to officer.name, officer_path(officer) %> 
+                <p>
+                    <% if officer.image.attached? %>
+                        <p>
+                        <% if flash[:notice] %>
+                            <div class="notice"><%= flash[:notice] %></div>
+                        <% end %>
+                        <strong>Image:</strong>
+                        <br>
+                        <%= image_tag officer.image, size: "175x250"  %>
+                        </p>
+                    <% end %>
+                </p>
+        
+            <td><%= button_to 'Edit', edit_officer_path(officer), method: 'get' %></td>
+            <td><%= button_to 'Remove', officer_path(officer), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
+        
+        <% end %>
+    </div>
 
-<div class="header">
-    <h2 class="active h2-title">Admin Dashboard</h2>
+<%= link_to "Add a New Attribute ", new_officer_path %>
+
 </div>
 
-<% flash.each do |type, msg| %>
-    <div class="alert">
-        <%= msg %>
-    </div>
-<% end %>
-
-<div class="h2-title">
-    <h3 class="text upper">Officers </h3>
-    <button class="btn" style="padding-left: 0rem;"> 
-        <%= link_to users_path, class: "nor-button small" do %>
-        <%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
-    </button>
-    <button class="btn" style="padding-left: 0rem;"> <%= link_to new_officer_path, class: "nor-button small" do %>
-    <i class="fas fa-plus fa-3x" ></i><span class="lbl">New</span><% end %>
-    </button>
-</div> 
-
-<table class="styled-table small">
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Email</th>
-        <th>Image Uploaded</th>
-        <th colspan="2">Actions</th>
-        
-    </tr>
-
-
-<% @officers.each do |officer| %>
-    <tr>
-        <td><%= link_to officer.name, officer_path(officer) %></td>
-        <td><%= officer.description  %></td>
-        <td><%= officer.email  %> </td>
-        <td><%=  officer.image.attached? ? :"Yes" : :"No"  %></td>
-        <td><%= link_to "Edit", edit_officer_path(officer) %></td>
-        <td><%= link_to 'Remove', officer_path(officer), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-<% end %>
-
-</table>
+</div>
 
 </section>
+<%= render "layouts/footer" %>

@@ -47,8 +47,6 @@ gem 'activerecord-import'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'font_awesome5_rails'
-
 # Used to generate qr code for a string.
 gem 'rqrcode'
 
