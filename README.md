@@ -74,3 +74,24 @@ If you want to run testing files on local machine:
     brakeman
     ```
 - Simplecov: result will be automatically generated after running Rspec
+
+# Deploying to Heroku
+Deploying a git repository to Heroku.
+## 1. Install Heroku CLI
+- You can find instructions [here](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+## 2. Create a Heroku remote
+- You need a remote repository on Heroku if you do not have one already.
+    ```
+    $ heroku create
+    Creating app... done, ⬢ thawing-inlet-61413
+    https://thawing-inlet-61413.herokuapp.com/ | https://git.heroku.com/thawing-inlet-61413.git
+    ```
+## 3. Deploying the code
+- Use ```git push``` to push the code to Heroku.
+    ```
+    git push heroku main
+    Initializing repository, done.
+    updating 'refs/heads/main'
+    ...
+    ```
+More detailed documentation for Heroku's CLI can be found [here](https://devcenter.heroku.com/articles/git#prerequisites-install-git-and-the-heroku-cli)
