@@ -8,7 +8,7 @@ This repository can be easily setup on you own server, the following instruction
 - Install [PostgresSQL](https://www.postgresql.org/download/)
 - In the command line, run:
     ```
-    yarn install
+    yarn install --check-file
     bundle install
     ```
     to setup environment
