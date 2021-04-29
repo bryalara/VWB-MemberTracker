@@ -94,4 +94,4 @@ Deploying a git repository to Heroku.
     updating 'refs/heads/main'
     ...
     ```
-More detailed documentation for Heroku's CLI can be found [here](https://devcenter.heroku.com/articles/git#prerequisites-install-git-and-the-heroku-cli)
+More detailed documentation for deploying using Heroku CLI can be found [here](https://devcenter.heroku.com/articles/git#prerequisites-install-git-and-the-heroku-cli)
