@@ -5,7 +5,7 @@ class EdithomepagesController < ApplicationController
   before_action :authenticate_userlogin!, :member_check
 
   def index
-    @edithomepages = Edithomepage.all.order("created_at DESC")
+    @edithomepages = Edithomepage.all.order("created_at ASC")
   end
 
   def show
