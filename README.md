@@ -8,7 +8,7 @@ This repository can be easily setup on you own server, the following instruction
 - Install [PostgresSQL](https://www.postgresql.org/download/)
 - In the command line, run:
     ```
-    yarn install
+    yarn install --check-file
     bundle install
     ```
     to setup environment
@@ -72,7 +72,7 @@ Deploying a git repository to Heroku.
 More detailed documentation for deploying using Heroku CLI can be found [here](https://devcenter.heroku.com/articles/git#prerequisites-install-git-and-the-heroku-cli)
 
 # CI/CD
-Continous Integration and Continous Deployment
+Continous Integration and Continuous Deployment
 
 ## 1. Create main.yml file in .github/workflows path
 - Our main.yml file can be located in the .github/workflows path in this repository with everything set up.
@@ -84,7 +84,7 @@ Continous Integration and Continous Deployment
 - Running these test ensures that all functionality of the site is working properly when changes to the repository have been made.
 - Once the build and testing phases have passed, github will show that the newly update reposirty was built properly.
 
-## 2. Adding continous integration with Heroku
+## 2. Adding continuous deployment with Heroku
 - Once our CI workflow has been set up, we are ready to add continous deployment for our app. It can also be found at the end of this section.                                                                  
 - More in detail information can be found [here.](https://devcenter.heroku.com/articles/github-integration) 
 - First you will need a heroku app create on your heroku dashboard.
