@@ -64,7 +64,6 @@ RSpec.describe 'MemberDashboard', type: :feature do
 				visit member_dashboard_path
 				sleep(1)
 				click_link 'Edit Info'
-
 				sleep(1)
 				fill_in 'user_firstName', with: 'Doe'
 				fill_in 'user_lastName', with: 'John'
