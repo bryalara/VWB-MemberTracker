@@ -10,29 +10,25 @@ th, td, tr {
 	color: #295529;
 }
 </style>
-<section style="padding-top: 0px;">	
-	<div class="header">
-		<h2 class="active h2-title">Events and Engagements</h2>
-	</div>
-
-  	<% flash.each do |type, msg| %>
+<section style="padding-top: 0px;">
+	<% flash.each do |type, msg| %>
 		<div class="alert">
 			<%= msg %>
 		</div>
 	<% end %>
+	<div class="header">
+		<h2 class="active h2-title">Admin Dashboard</h2>
+	</div>
+
+	<div class="h2-title">
+		<h3 class="text upper">Events</h3>
+		<button class="btn" style="padding-left: 0rem;"> <%= link_to "Add an Event", new_event_path(@events), class:"back-button" %></button>
+		<button class="btn back-btn" style="padding-left: 0rem;"><%= link_to "Back to All users", users_path, class: "back-button" %></button>
+	</div>
 
 <% if admin? %>
 <%# Admin's View %>
-	<div class="h2-title">
-		<h3 class="text upper">Events</h3>
-		<button class="btn" style="padding-left: 0rem;"> <%= link_to new_event_path(@events), class: "nor-button small" do %>
-		  <%= fa_icon "plus", size: '3x' %><span class="lbl">New</span><% end %>
-		</button>
-		<button class="btn" style="padding-left: 0rem;"> <%= link_to event_download_ics_path, method: :post, class: "nor-button small" do %>
-			<%= fa_icon "download", size: '3x' %><span class="lbl">Download .ics</span><% end %>
-		</button>
-	</div>
-	<table class="styled-table small" >
+	<table class="styled-table" >
 		<tr>
 			<th>Event</th>
 			<th>Description</th>
@@ -45,15 +41,7 @@ th, td, tr {
 		</tr>
 
 		<% @events.each do |event| %>
-
-		<% if (@auth.attended_event?(event) == 2) %>
-			<tr style="background-color: #d6ffe1;">
-		<% elsif (@auth.attended_event?(event) == 1) %>
-			<tr style="background-color: #fff6d6;">
-		<% else %>
-			<tr>
-		<% end %>
-
+		<tr>
 			<td><%= event.name %></td>
 			<td><%= event.description %></td>
 			<td><%= event.points %></td>
@@ -70,13 +58,7 @@ th, td, tr {
 	</table>
 <% else %>
 <%# Member's View %>
-	<div class="h2-title">
-		<h3 class="text upper">Events</h3>
-			<button class="btn" style="padding-left: 0rem;"> <%= link_to event_download_ics_path, method: :post, class: "nor-button small" do %>
-			<%= fa_icon "download", size: '3x' %><span class="lbl">Download .ics</span><% end %>
-		</button>
-	</div>
-	<table class="styled-table small">
+	<table class="styled-table">
 		<tr>
 			<th>Event</th>
 			<th>Description</th>
@@ -88,15 +70,7 @@ th, td, tr {
 		</tr>
 
 		<% @events.each do |event| %>
-		
-		<% if (@auth.attended_event?(event) == 2) %>
-			<tr style="background-color: #d6ffe1;">
-		<% elsif (@auth.attended_event?(event) == 1) %>
-			<tr style="background-color: #fff6d6;">
-		<% else %>
-			<tr>
-		<% end %>
-
+		<tr>
 			<td><%= event.name %></td>
 			<td><%= event.description %></td>
 			<td><%= event.points %></td>
@@ -108,110 +82,33 @@ th, td, tr {
 		</tr>
 		<% end %>
 	</table>
- <% end %>
-<br>
+<% end %>
+
+<%# only an admin could download CSV %>
+<% if @auth.role == 1 %>
+<div align="center" >
+    <div>
+		<%# <h4> Import Data From CSV file </h4> %>
+		<%= form_tag import_event_index_path, multipart: true do %>
+			<%= file_field_tag :file %>
+			<%= submit_tag "Import CSV", class: "button" %>
+		<% end %>
+		<%= form_tag import_part_event_index_path, multipart: true do %>
+			<%= file_field_tag :file %>
+			<%= submit_tag "Import CSV for Users' Participation", class: "button" %>
+		<% end %>
+        <%# make two button to output 2 different kinds of CSV %>
+        <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Events List", event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "back-button" %> </button>
+		<button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Users' Participation", event_csv_path(:format => :csv), format_data: "users", class: "back-button" %> </button>
+    </div>
+</div>
+<% end %>
 
 <%= render template: 'point_event/index' %>
 
-<hr>
-
-<div class="h2-title">
-		<h3 class="text upper">Calendar</h3>
-</div>
-
-
 <%= render template: 'layouts/events' %>
-<hr> 
-<div>
-<div style="display: inline-block; width: 40%; text-align: center;">
-<% if admin? %>
-	<div class="h2-title">
-		<h3 class="text upper" style="text-align: center;">Back Up Events</h3>
-	</div>
 
-	<table class="table2 small">
-		<%# Event downloading, uploading, and importing %>
-		<tr>
-			<td>
-				<button class="btn" style="padding-left: 0rem;"> <%= link_to event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "nor-button small" do %>
-		      <%= fa_icon "download", size: '3x' %><span class="lbl">Download</span><% end %>
-		    </button>
-			</td>
-			<td>
-				<%= form_tag import_event_index_path, class: "small", multipart: true do %>
-					<%= file_field_tag :file %>
-			</td>
-			<td>
-					<%= button_tag :submit, class: "nor-button small" do %><%= fa_icon "upload", size: '3x'%><span class="lbl">Import</span><% end %>
-				<% end %>
-			</td>
-		</tr>
+<%= link_to "Download .ics", event_download_ics_path, method: :post %>
 
-		<%# Event Participation downloading, uploading, and importing %>
-		<tr>
-			<td>
-				<button class="btn" style="padding-left: 0rem;"> <%= link_to event_csv_path(:format => :csv), format_data: "users", class: "nor-button small" do %>
-		      <%= fa_icon "download", size: '3x' %><span class="lbl">Download<br>Attendance</span><% end %>
-		    </button>
-			</td>
-			<td>
-				<%= form_tag import_part_event_index_path, class: "small", multipart: true do %>
-					<%= file_field_tag :file %>	
-			</td>
-			<td>
-					<%= button_tag :submit, class: "nor-button small" do %><%= fa_icon "upload", size: '3x'%><span class="lbl">Import<br>Attendance</span><% end %>
-				<% end %>
-			</td>
-		</tr>
-	</table>
-</div>
-<div style="display: inline-block; width: 19%;">
-</div>
-<div style="display: inline-block; width: 40%; text-align: center;">
-	<div class="h2-title">
-		<h3 class="text upper" >Back Up Engagements</h3>
-	</div>
-
-	<table class="table2 small">
-		<%# Engagement downloading, uploading, and importing %>
-		<tr>
-			<td>
-				<button class="btn " style="padding-left: 0rem;"> <%= link_to point_event_csv_path(:format => :csv, format_data: "events"), format_data: "events", class: "nor-button small" do %>
-					<%= fa_icon "download", size: '3x' %><span class="lbl">Download</span><% end %>
-				</button>			
-			</td>
-			<td>
-				<%= form_tag import_point_event_index_path, class: "small", multipart: true do %>
-					<%= file_field_tag :file %>
-			</td>
-			<td>
-					<%= button_tag :submit, class: "nor-button small" do %>
-						<%= fa_icon "upload", size: '3x'%><span class="lbl">Import</span>
-					<% end %>
-				<% end %>
-			</td>
-		</tr>
-
-		<%# Engagement Participation downloading, uploading, and importing %>
-		<tr>
-			<td>
-				<button class="btn " style="padding-left: 0rem;"> <%= link_to point_event_csv_path(:format => :csv), format_data: "users", class: "nor-button small" do %>
-					<%= fa_icon "download", size: '3x' %><span class="lbl">Download<br>Attendance</span><% end %>
-				</button>
-			</td>
-			<td>
-				<%= form_tag import_part_point_event_index_path, class: "small", multipart: true do %>
-					<%= file_field_tag :file %>
-			</td>
-			<td>
-					<%= button_tag :submit, class: "nor-button small" do %><%= fa_icon "upload", size: '3x'%>
-						<span class="lbl">Import<br>Attendance</span>
-					<% end %>
-				<% end %>
-			</td>
-		</tr>
-	</table>
-<% end %>
-</div>
-</div>
 </section>
+<%= render "layouts/footer" %>

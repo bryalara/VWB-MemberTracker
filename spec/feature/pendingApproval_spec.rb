@@ -11,7 +11,7 @@ RSpec.describe 'PendingApproval', type: :feature do
 		it 'logged in admin sees users index' do
 			visit users_path	
 			sleep(2)
-			expect(page).to have_content('ADMIN DASHBOARD')
+			expect(page).to have_content('Import Data From CSV file')
 		end
 	end
 
@@ -22,7 +22,7 @@ RSpec.describe 'PendingApproval', type: :feature do
 			sleep(1)
 			attach_file('file', File.join(Rails.root, '/spec/support/Users_test.csv'))
 			sleep(1)
-			click_button 'Import'
+			click_button 'Import CSV'
 			sleep(2)
 			
 		end

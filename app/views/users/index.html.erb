@@ -1,5 +1,6 @@
-<%# <link rel="preconnect" href="https://fonts.gstatic.com"> %>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <%# <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> %>
+<%= render "layouts/navbar2", user: @auth %>
 <style>
 .section {
     padding: 0px;
@@ -17,11 +18,7 @@
 }
 </style>
 
-<section style="padding-top: 0px;">
-
-<div class="header">
-    <h2 class="active h2-title">Admin Dashboard</h2>
-</div>
+<section style="padding-top: 80px;">
 
 <% flash.each do |type, msgs| %>
   <div class="notice">
@@ -37,26 +34,18 @@
   </div>
 <% end %>
 
+<div class="header">
+    <h2 class="active h2-title">Admin Dashboard</h2>
+</div>
+
 <div class="h2-title">
     <h3 class="text upper">Users </h3>
-    <button class="btn" style="padding-left: 0rem;"> <%= link_to new_user_path, class: "nor-button small" do %>
-    <i class="fas fa-plus fa-3x" ></i><span class="lbl">New</span><% end %>
-    </button>
-    <button class="btn" style="padding-left: 0rem;"> <%= link_to pending_approval_path, class: "nor-button small" do %>
-    <%= fa_icon "clock", size: '3x' %><span class="lbl">Pending</span><% end %>
-    </button>
-    <button class="btn" style="padding-left: 0rem;"> <%= link_to event_index_path, class: "nor-button small" do %>
-    <%= fa_icon "calendar-alt", size: '3x' %><span class="lbl">Events</span><% end %>
-    </button>
-    <button class="btn" style="padding-left: 0rem;"> <%= link_to officers_path, class: "nor-button small" do %>
-    <%= fa_icon "users", size: '3x' %><span class="lbl">Officers</span><% end %>
-    </button>
-    <button class="btn" style="padding-left: 0rem;"> <%= link_to edithomepages_path, class: "nor-button small" do %>
-    <%= fa_icon "laptop-house", size: '3x' %><span class="lbl">Edit Home</span><% end %>
-    </button>
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "New User", new_user_path, class: "back-button" %> </button>
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "Pending Users", pending_approval_path, class: "back-button" %> </button>
+    <button class="btn" style="padding-left: 0rem;"> <%= link_to "Events", event_index_path, class: "back-button" %> </button>
 </div> 
 
-<table class="styled-table small">
+<table class="styled-table">
     <tr>
         <th> First Name <%= link_to (@attr == 'first' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), users_path(:attr => 'first', :order => @attr=='first' ? !@order : :false) %></th>
         <th> Last Name <%= link_to (@attr == 'last' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), users_path(:attr => 'last', :order => @attr=='last' ? !@order : :false) %></th>
@@ -67,7 +56,10 @@
         <th> T-Shirt <%= link_to (@attr == 'size' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), users_path(:attr => 'size', :order => @attr=='size' ? !@order : :false) %></th>
         <th> Points <%= link_to (@attr == 'points' ? (@order== true ? :'🔼' : :'🔽') : :'⬜'), users_path(:attr => 'points', :order => @attr=='points' ? !@order : :false) %></th>
         <th> Action </th>
+        
     </tr>
+
+
 <% @users.each do |user| %>
     <tr>
         <td><%= user.firstName %></td>
@@ -83,31 +75,30 @@
 <% end %>
 
 </table>
-<!-- 
+
 <%# only an admin could access this %>
 <% if userlogin_signed_in? %>
   <div>Signed in as: <%= current_userlogin.email %></div>
   <div><%=  @auth.role == 0 ? :"Member" : :"Admin"  %> </div>
-<% end %> -->
+<% end %>
 
 
 <br>
 
 <% if @auth.role == 1 %>
 <div align="center" >
-    <div class="small">
-        <div class="h2-title">
-          <h3 class="text upper">CSV Actions</h3>
-        </div>
+    <div>
+        <h4> Import Data From CSV file </h4>
         <%= form_tag import_users_path, multipart: true do %>
             <%= file_field_tag :file %>
-            <%= button_tag :submit, class: "nor-button small" do %><%= fa_icon "upload", size: '3x'%><span class="lbl">Import</span><% end %>
+            <%= submit_tag "Import CSV", class: "button" %>
         <% end %>
         <%# make teo button to output 2 different kinds of CSV %>
-        <button class="btn" style="padding-left: 0rem;"> <%= link_to users_path(request.parameters.merge({:format => :csv, format_data: "email"})), class: "nor-button small" do %><%= fa_icon "download", size: '3x' %><span class="lbl">Download</span><% end %></button>
-        <button class="btn" style="padding-left: 0rem;"> <%= link_to users_path(request.parameters.merge({:format => :csv, format_data: "all"})), class: "nor-button small" do %><%= fa_icon "save", size: '3x' %><span class="lbl">Backup</span><% end %></button>
+        <button class="btn " style="padding-left: 0rem;"> <%= link_to "Download Email List", users_path(request.parameters.merge({:format => :csv, format_data: "email"})), class: "back-button" %> </button>
+        <button class="btn " style="padding-left: 0rem;"> <%= link_to "backup all users\' information", users_path(request.parameters.merge({:format => :csv, format_data: "all"})), class: "back-button" %> </button>
     </div>
 </div>
 <% end %>
 
 </section>
+<%= render "layouts/footer" %>

@@ -8,25 +8,21 @@
 }
 </style>
 <section style="padding-top: 0px;">
-<div class="header h2-title">
-  <button class="btn" style="padding-left: 0rem;"> <%= link_to event_index_path, class: "nor-button small" do %>
-    <%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
-  </button>
-</div>
 
 <% flash.each do |type, msg| %>
 	<div class="alert">
 		<%= msg %>
 	</div>
-	<% end %>
+<% end %>
 
-<!--Header -->
-<div class="header2">
-	<h2 class="active h2-title">Engagements</h2>
+	<!--Header -->
+<div class="header">
+	<h2 class="active h2-title">Admin Dashboard</h2>
 </div>
 
 <div class="h2-title">
 	<h3 class="text upper">Edit An Engagement</h3>
+	<button class="btn"  style="padding-left: 0rem;"> <%= link_to "Back to Events", event_index_path, class:"back-button" %> </button>
 </div> 
 
 <div class="wrapper fadeInDown">
@@ -41,6 +37,8 @@
 			<p style="color: red;"><%= message %></p>
 			<%end%>
 		<%end%>
+
+		</br> 
 
 		<%= form_with method: :patch, url: update_point_event_path(@point_event), model: @point_event, local: true do |form| %>
 			<table class="center-edit">
@@ -75,7 +73,7 @@
 		<h3 class="text upper">Attendance</h3>
 	</div>
 
-	<table class="styled-table small">
+	<table class="styled-table">
 		<tr>
 			<th>First Name</th>
 			<th>Last Name</th>
@@ -101,12 +99,9 @@
 	</table>
 
 	<div>
-	<br></br>
-	<div class="h2-title">
-		<h3 class="text upper">Force User Attendance</h3>
-	</div>
+		<h1>Force a user to attend the engagement</h1>
 		<%= form_with url: edit_point_event_path(@point_event), method: :get, local: true do |form| %>
-			<table class="styled-table small">
+			<table>
 				<tr>
 					<th>First Name</th>
 					<td><%= form.text_field :firstName, placeholder: "First Name" %></td>
@@ -119,10 +114,8 @@
 			</table>
 		<% end %>
 
-		<br></br>
-
 		<% if @users %>
-			<table class="styled-table small">
+			<table>
 				<tr>
 					<th>First Name</th>
 					<th>Last Name</th>
@@ -148,3 +141,4 @@
 		<% end %>
 	</div>
 </section>
+<%= render "layouts/footer" %>

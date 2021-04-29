@@ -2,10 +2,10 @@
 
 class EdithomepagesController < ApplicationController
   protect_from_forgery with: :exception
-  before_action :authenticate_userlogin!, :member_check
+  before_action :authenticate_userlogin!
 
   def index
-    @edithomepages = Edithomepage.all.order("created_at ASC")
+    @edithomepages = Edithomepage.all
   end
 
   def show
@@ -53,7 +53,7 @@ class EdithomepagesController < ApplicationController
   private
 
   def edithomepage_params
-    params.require(:edithomepage).permit(:name, :description, :h1, :d1, :h2, :d2, image: [])
+    params.require(:edithomepage).permit(:name, :description)
   end
 
   def image_params

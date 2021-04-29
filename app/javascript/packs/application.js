@@ -10,7 +10,6 @@ require("channels")
 
 import "bootstrap";
 import "../stylesheets/application"
-import "@fortawesome/fontawesome-free/js/all";
 
 //Home
 // import "../home/bootstrap/css/bootstrap.min.css"

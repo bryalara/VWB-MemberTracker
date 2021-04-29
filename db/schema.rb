@@ -38,13 +38,9 @@ ActiveRecord::Schema.define(version: 2021_04_10_220849) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "edithomepages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "edithomepages", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "h1"
-    t.string "d1"
-    t.string "h2"
-    t.string "d2"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -71,9 +67,10 @@ ActiveRecord::Schema.define(version: 2021_04_10_220849) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "officers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "officers", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "photoUrl"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
