@@ -89,7 +89,7 @@ Deploying a git repository to Heroku.
 ## 3. Deploying the code
 - Use ```git push``` to push the code to Heroku.
     ```
-    git push heroku main
+    $ git push heroku main
     Initializing repository, done.
     updating 'refs/heads/main'
     ...
