@@ -1,43 +1,51 @@
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: #222222;">
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg dark fixed-top white" id="mainNav" style="border-bottom: 2px solid #a36666;">
     <div class="container">
-      <%= link_to "Vets Without Borders", root_path, class: "navbar-brand js-scroll-trigger" %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <%= link_to root_path(@root, anchor: "page-top"), class: "navbar-brand" do %>
+      <%= image_tag "VWB-logo.png" %> <% end %>
+     <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> -->
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <%= link_to "About", root_path(@root, anchor: "about"), class: "nav-link nav-text" %>           
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Service</a>
+            <%= link_to "Service", root_path(@root, anchor: "services"), class: "nav-link nav-text" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#officers">Officers</a>
+            <%= link_to "Officers", root_path(@root, anchor: "officers"), class: "nav-link nav-text" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
+          <%= link_to "Contact Us", root_path(@root, anchor: "contact"), class: "nav-link nav-text" %>
           </li>
+          <% if userlogin_signed_in? %>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="<%= member_dashboard_path%>">Member</a>
+          <%= link_to "Member", member_dashboard_path, class: "nav-link nav-text" %>
           </li> 
-          <li class="nav-item"> 
-              <a class="nav-link js-scroll-trigger" href="<%= event_index_path%>">Events</a>
+        <%end%>
+          <% if userlogin_signed_in? && @signed_in_user%>
+            <li class="nav-item"> 
+              <%= link_to "Events", event_index_path, class: "nav-link nav-text" %>
             </li>
-          <%# <% if user.role == 0 %> 
-           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="<%= users_path %>">Admin</a>
-          </li> 
-          <%# <%end%>
+          <%end%>
+          <%if @signed_in_user&.role==1 && @signed_in_user %>
+            <li class="nav-item">
+              <%= link_to "Admin", users_path, class: "nav-link nav-text" %>
+            </li> 
+          <%end%>
+          
           <% if !userlogin_signed_in? %>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="<%= userlogin_google_oauth2_omniauth_authorize_path %>"><i class="fas fa-sign-in-alt"></i>Sign In</a>
+                <%= link_to userlogin_google_oauth2_omniauth_authorize_path, class: "nav-link nav-text" do %>
+                <%= fa_icon "sign-in-alt", text: "Sign In" %><% end %>
               </li>
           <%end%>
           <% if userlogin_signed_in? %>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="/userlogins/sign_out"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+              <%= link_to destroy_userlogin_session_path, class: "nav-link nav-text" do %>
+                <%= fa_icon "sign-out-alt", text: "Log Out" %><% end %>
               </li>
           <%end%>
         </ul>

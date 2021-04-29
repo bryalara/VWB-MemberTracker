@@ -63,7 +63,8 @@ RSpec.describe 'MemberDashboard', type: :feature do
 			it 'member able to edit their info' do
 				visit member_dashboard_path
 				sleep(1)
-				click_link 'Edit info'
+				click_link 'Edit Info'
+
 				sleep(1)
 				fill_in 'user_firstName', with: 'Doe'
 				fill_in 'user_lastName', with: 'John'
@@ -73,31 +74,6 @@ RSpec.describe 'MemberDashboard', type: :feature do
 				expect(page).to have_content('Hello, Doe John')
 				expect(page).to have_content('Current Total Points: 0')
 			end
-			# it 'new member is approved and shown member dashboard' do
-			# 	visit member_dashboard_path
-			# 	sleep(1)
-			# 	expect(page).to have_content('Hello, John Doe')
-			# 	expect(page).to have_content('Current Total Points: 0')
-			# end
-			# it 'member redirected to dashboard when trying to access users' do
-			# 	visit users_path
-			# 	sleep(1)
-			# 	expect(page).to have_content('Hello, John Doe')
-			# 	expect(page).to have_content('Current Total Points: 0')
-			# end
-			# it 'member able to edit their info' do
-			# 	visit member_dashboard_path
-			# 	sleep(1)
-			# 	click_link 'Edit info'
-			# 	sleep(1)
-			# 	fill_in 'user_firstName', with: 'Doe'
-			# 	fill_in 'user_lastName', with: 'John'
-			# 	sleep(1)
-			# 	click_on 'Update User'
-			# 	sleep(1)
-			# 	expect(page).to have_content('Hello, Doe John')
-			# 	expect(page).to have_content('Current Total Points: 0')
-			# end
 
 			describe "Member Attending events " do
 				setup do

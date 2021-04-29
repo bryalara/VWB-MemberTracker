@@ -6,17 +6,32 @@
 	color: #295529;
 }
 </style>
+<section style="padding-top: 0px;">
 
-<% flash.each do |type, msg| %>
-	<div class="alert">
-		<%= msg %>
+	<div class="header h2-title">
+        <button class="btn" style="padding-left: 0rem;"> <%= link_to event_index_path, class: "nor-button small" do %>
+		<%= fa_icon "arrow-circle-left", size: '3x' %><span class="lbl">Back</span><% end %>
+		</button>
+    </div>
+	
+	<% flash.each do |type, msg| %>
+		<div class="alert">
+			<%= msg %>
+		</div>
+	<% end %>
+
+	<div class="header2">
+        <h2 class="active h2-title">Engagement: <%= @point_event.name %></h2>
+    </div>
+
+	<div class="h2-title">
+		<h3 class="text upper"><%= @user.nil? ? "Please register to attend this event." : "Registered User: " + @user.firstName + " " + @user.lastName%></h3>
+
+		<% if !@user.nil? %>
+			<button class="btn" style="padding-left: 0rem;">
+			<%= link_to "Sign Up", sign_up_point_event_path(@point_event), method: :post, class:"back-button" %>
+			</button>
+		<% end %>
 	</div>
-<% end %>
 
-<h1>Engagement: <%= @point_event.name %></h1>
-<h1>User: <%= @user.nil? ? "Register first!" : "Hello " + @user.email %></h1>
-
-<%= if !@user.nil?
-        link_to "Click to sign up!", sign_up_point_event_path(@point_event), method: :post 
-    end
-%>
+</section>

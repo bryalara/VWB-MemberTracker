@@ -1,0 +1,15 @@
+<section style="padding-top: 0px;">
+
+    <div class="header">
+    <h2 class="active h2-title">Special Admin Actions</h2>
+    </div>
+    <!-- Header -->
+
+    <div style="margin-top: 20px" >
+    <div class="h2-title">
+        <button class="btn" style="padding-left: 0rem;"> <%= link_to special_index_path(:reset => true), class: "nor-button small", data: { confirm: "Are you sure? By resetting the website all events, users, and their documents will be deleted. Only your account will be left as an admin user." } do %>
+        <i class="fas fa-trash fa-3x" ></i><span class="lbl">Reset</span><% end %>
+        </button>
+    </div>
+    </div>
+</section>
