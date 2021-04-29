@@ -25,20 +25,19 @@
 
 <div class="title-bar" style="background-color: white;">
   <header class="bg-primary text-white" style="padding-left:0px; padding-right: 0px;" style="background-color: white;">
-    <div class=" text-center title-bar">
+    <div class="text-center title-bar">
       <h1 class="title">Veterinarians Without Borders</h1>
       <p class="lead title">Texas A&M University</p>
     </div>
   </header>
   </div>
-  <!-- About Us Section -->
 
   <%# Add back this section later! %>
 
  <% even_section = 0 %>
   <% @sections.each do |section| %>
     <% if even_section % 2 == 0 %>
-      <section class="page-section">
+      <section class="page-section" id="<% section.name %>">
     <% else %>
       <section class="page-section bg-light">
     <% end %>
@@ -258,7 +257,8 @@
               </span> 
             </div>
         </section> 
-
+<%
+=end%>
   <!-- Officers-->
         <section class="page-section" id="officers">
             <div class="container">
@@ -331,8 +331,7 @@
         </div>
     </div>
   </section> 
-<%
-=end%>
+
 
 <%= render "layouts/footer"%>
           <!-- Bootstrap core JS-->
