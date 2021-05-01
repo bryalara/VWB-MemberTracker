@@ -10,10 +10,11 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-require("packs/home")
-
 import "../stylesheets/application";
 import "@fortawesome/fontawesome-free/js/all";
+require("packs/home")
+require("packs/member")
+require("packs/users")
 
 
 //Home
