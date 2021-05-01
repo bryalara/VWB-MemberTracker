@@ -12,7 +12,8 @@ require("channels")
 
 import "../stylesheets/application";
 import "@fortawesome/fontawesome-free/js/all";
-
+require("packs/home")
+require("packs/users")
 //Home
 // import "../home/bootstrap/css/bootstrap.min.css"
 // import "../home/jquery/jquery.min.js"
