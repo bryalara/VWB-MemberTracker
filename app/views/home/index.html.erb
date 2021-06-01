@@ -24,7 +24,7 @@
 <body id="page-top">
 
 <div class="title-bar" style="background-color: white;">
-  <header class="bg-primary text-white" style="padding-left:0px; padding-right: 0px;" style="background-color: white;">
+  <header class="bg-primary text-white" style="padding-left:0px; padding-right: 0px;  background-image: url(<%= @image_url %>); " style="background-color: white;  " >
     <div class="text-center title-bar">
       <h1 class="title">Veterinarians Without Borders</h1>
       <p class="lead title">Texas A&M University</p>
@@ -36,6 +36,9 @@
 
  <% even_section = 0 %>
   <% @sections.each do |section| %>
+    <% if section.name == "Banner" %>
+      <%next%>
+    <%end%>
     <% if even_section % 2 == 0 %>
       <section class="page-section" id="<% section.name %>">
     <% else %>
