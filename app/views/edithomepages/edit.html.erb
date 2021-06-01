@@ -27,6 +27,11 @@
         <%= form.text_field :h2, placeholder: "heading 2" %>
         <%= form.text_field :d2, placeholder: "heading 2 description" %>
         <br>
+        <p> Current Images: </p>
+        <% @edithomepage.image.each do |file| %>
+          <p><%= link_to file.filename, rails_blob_path(file), style: 'color: maroon;' %></p>
+        <% end %>
+        <br>
         <%= form.file_field :image  , accept: 'image/png,image/jpeg', multiple:true %>
         <%= form.submit "save changes"%>
       </div>

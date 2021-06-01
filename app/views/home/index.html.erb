@@ -67,25 +67,32 @@
         </div>
  
         <%# Do images later %>
-
+        
         <div id="carouselExampleIndicators<%="#{even_section - 1}"%>" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
+          <ol class="carousel-indicators" >
             <% section.image.each_with_index do |image, i| %>
               <% if i == 0 %>
-                <li data-target="#carouselExampleIndicators<%="#{even_section - 1}"%>" data-slide-to= <%="#{i}"%> class="active"></li>
+                <li data-target="#carouselExampleIndicators<%="#{even_section - 1}"%>" data-slide-to= <%="#{i}"%> class="active" ></li>
               <% else %>
-                <li data-target="#carouselExampleIndicators<%="#{even_section - 1}"%>" data-slide-to= <%="#{i}"%>></li>
+                <li data-target="#carouselExampleIndicators<%="#{even_section - 1}"%>" data-slide-to= <%="#{i}"%> ></li>
               <% end %>
             <% end %>
           </ol>
-          <div class="carousel-inner">
+          <div class="carousel-inner" >
             <% section.image.each_with_index do |image, i| %>
             <% if i == 0 %>
-                <div class="carousel-item active">
+                <div class="carousel-item active" style = "background-color: maroon; " >
               <% else %>
-                <div class="carousel-item">
+                <div class="carousel-item"  style = "background-color: maroon; " >
               <% end %>
-                <%= image_tag image %>
+                <% Rails.logger.info image.metadata %>
+                <% Rails.logger.info '---------------------------+++++++++++++' %>
+                <div style='display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 60%;'>
+                <%= image_tag image  %>
+                </div>
               </div>
             <% end %>
 

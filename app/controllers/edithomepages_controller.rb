@@ -31,7 +31,12 @@ class EdithomepagesController < ApplicationController
 
   def update
     @edithomepage = Edithomepage.find(params[:id])
-
+    if @edithomepage.image.attached?
+      if edithomepage_params[:image]
+        Rails.logger.info 'Purging current images to add new upload'
+        @edithomepage.image.purge
+      end
+    end
     if @edithomepage.update(edithomepage_params)
       redirect_to edithomepages_path
     else
@@ -45,6 +50,7 @@ class EdithomepagesController < ApplicationController
 
   def destroy
     @edithomepage = Edithomepage.find(params[:id])
+    @edithomepage.image.purge
     @edithomepage.destroy
 
     redirect_to edithomepages_path
